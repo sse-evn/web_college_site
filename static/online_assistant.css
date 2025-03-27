@@ -1,0 +1,143 @@
+/* Кнопка открытия чата */
+.chat-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+}
+.chat-icon:hover {
+    background: linear-gradient(45deg, #ff4b2b, #ff416c);
+}
+
+/* Окно чата */
+.chat-box {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 350px;
+    max-width: 90%;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    display: none;
+    flex-direction: column;
+    z-index: 9999;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Анимация появления */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Заголовок чата */
+.chat-header {
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    color: white;
+    padding: 12px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    font-size: 16px;
+    text-align: center;
+}
+
+/* Контент чата */
+.chat-content {
+    padding: 15px;
+    max-height: 250px;
+    overflow-y: auto;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Сообщение ассистента */
+.chat-message {
+    background: #ff4b2b;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 5px 0;
+    align-self: flex-start;
+    color: white;
+}
+
+/* Сообщение пользователя */
+.chat-message.user {
+    background: #ff416c;
+    color: white;
+    align-self: flex-end;
+}
+
+/* Вопросы */
+.chat-questions {
+    padding: 10px;
+    border-top: 1px solid #ddd;
+}
+
+.chat-question {
+    background: #ff416c;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 5px 0;
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+}
+
+.chat-question:hover {
+    background: #ff4b2b;
+}
+
+/* 📌 Адаптивность */
+@media screen and (max-width: 768px) {
+    .chat-box {
+        width: 95%;
+        bottom: 80px;
+        right: 10px;
+        max-height: 50vh;
+    }
+    .chat-content {
+        max-height: 250px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .chat-box {
+        width: 100%;
+        bottom: 70px;
+        right: 0;
+        left: 0;
+        max-height: 55vh;
+        border-radius: 10px;
+    }
+    .chat-content {
+        max-height: 220px;
+    }
+    .chat-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+        bottom: 15px;
+        right: 15px;
+    }
+}
+@media screen and (max-width: 480px) {
+    .chat-icon {
+        display: none;
+    }
+}
