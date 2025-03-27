@@ -4,15 +4,23 @@
                 font-family: Arial, sans-serif;
                 margin: 0;
                 padding: 0;
-                background: url('https://s3-alpha-sig.figma.com/img/35fb/82aa/796c1eb3b42e9c5652a6f50161888ea4?Expires=1742774400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=UpJGMUJgA6fbwiv6hpuyEIeW4P4dQACN8AVocCUW61UgOiHyjgE1RQyuVs1r52dfTbu5PhMaAK1SXv7gOYUwvz3Z4VnxBg7ERrL4Z3ptyme1gCfsD3n-A4tRG4ZH-mtsTX-~duXx8aBv1mjRplELlfXJXPUG2xOQ6iogUuF1NT3rYs9bVy51Z~kOfi6FhQhWDIOyHZNy3DUTKnYrTWWgVpTa~B0YgojGpB9RSLflPDMY5XzWyBDSvOzz-~bOUgyEtpBGt-IsADey8XtavIhkZ6~ySDG5M2ei4cbP~N5cloNv7gqeBoinW6Uk2dZOsupYXiCxTOLDEEFXY4u20oCA~Q__') no-repeat;
-                background-size: 80%;
-                background-position: 165% 50px;
+                /* background: url('https://kiliman.info/sites/default/files/gallery/1_niger_0.jpg?itok=hibcYvh2') no-repeat; */
+                background-size: 100%;
+                /* background-position: 165% 50px; */
                 background-color: black;
                 color: rgb(255, 255, 255);
                 background-attachment: scroll;
             }
-            /* Подключаем красивый шрифт */
-            
+           
+            #particle-background {
+                position: fixed;
+                width: 100%;
+                height: 100%;
+                z-index: -1;
+                top: 0;
+                left: 0;
+            }
+
             @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
             /* Общий стиль для хедера */
             
@@ -27,7 +35,7 @@
                 display: flex;
                 justify-content: center;
             }
-            /* Контейнер */
+           
             
             nav {
                 display: flex;
@@ -189,7 +197,7 @@
                 text-align: center;
                 padding: 40px 20px;
                 position: relative;
-                background: #000000;
+               
                 margin-top: 100px;
             }
             
@@ -411,7 +419,7 @@
                 align-items: center;
                 justify-content: space-between;
                 padding: 80px 10%;
-                background: black;
+               
                 color: white;
                 border-radius: 10px;
                 margin: 0 auto;
@@ -505,7 +513,7 @@
             .partners {
                 text-align: center;
                 padding: 60px 10%;
-                background: #000;
+               
                 color: white;
                 overflow: hidden;
                 border-radius: 10px;
@@ -585,7 +593,6 @@
             
             .map-section {
                 text-align: center;
-                background: black;
                 color: white;
                 padding: 50px 5%;
             }

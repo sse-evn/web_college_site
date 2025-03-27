@@ -11,6 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
     }
+
+
     // Получаем контейнер для слайдов
     const majorsList = document.querySelector('.majors-list');
     const cards = document.querySelectorAll('.major-card');

@@ -1,30 +1,83 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="kk">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Главная</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Директордың блогы</title>
 </head>
+<style>.director-blog {
+    text-align: center;
+    margin: 40px auto;
+    width: 80%;
+}
 
+.title {
+    color: #8B0000;
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.blog-content {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    gap: 20px;
+}
+
+.director-photo {
+    width: 40%;
+    max-width: 400px;
+    border-radius: 10px;
+}
+
+.text {
+    flex: 1;
+}
+
+.subtitle {
+    color: #8B0000;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.text p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+</style>
 <body>
 
     <div id="header-container"></div>
-    <!-- Хедер будет загружаться сюда -->
-
-    <h1>Добро пожаловать на сайт</h1>
-
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            fetch("header.html")
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById("header-container").innerHTML = data;
-                })
-                .catch(error => console.error("Ошибка загрузки хедера:", error));
-        });
+        fetch('../header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("header-container").innerHTML = data;
+            })
+            .catch(error => console.error("Ошибка загрузки хедера:", error));
     </script>
+
+    <section class="director-blog">
+        <h1 class="title">Директордың блогы</h1>
+
+        <div class="blog-content">
+            <img src="/static/images/bastyk.jpg" alt="Директор" class="director-photo">
+            <div class="text">
+                <h2 class="subtitle">Құрметті сайтқа келушілер!</h2>
+                <p>Қазақстанның қазіргі даму қарқыны білім беру жүйесінің ақпараттық стратегиясына жоғары талаптар қояды. 
+                    Бүгінгі таңда Интернет коммуникация құралы ретінде азаматтық қоғамды қалыптастыруда маңызды рөл атқарады, 
+                    білім беру мекемесі қызметінің ашықтығы мен жариялылығының көрсеткіші болып табылады. 
+                    ALMATY POLYTECHNIC COLLEGE ресми сайты колледж қызметі туралы сенімді ақпарат көзі болып табылады. 
+                    «Директордың блогы» айдары колледж басшылығына сауалдар, ұсыныстар мен тілектерді тікелей жолдауға нақты мүмкіндік береді. 
+                    Бұл веб-сайт сізге жеке және біздің колледждің қызметіне қатысты әртүрлі мәселелерді шешуде пайдалы болады деп үміттенеміз.
+                </p>
+            </div>
+        </div>
+    </section>
 
 </body>
 
