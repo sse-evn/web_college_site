@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ-панель новостей</title>
+    <script src="https://unpkg.com/htmx.org@1.9.5"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        #news-list {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .news-item {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            padding: 20px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            opacity: 0;
+            transform: translateY(30px) scale(0.95);
+        }
+
+        .news-item.loaded {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            animation: slideIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .news-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .news-item p {
+            margin: 0 0 15px 0;
+            line-height: 1.6;
+            color: #333;
+            flex-grow: 1;
+        }
+
+        .news-item img {
+            width: 100%;
+            height: auto;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-top: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .news-item:hover img {
+            transform: scale(1.05);
+        }
+
+        @keyframes slideIn {
+            0% { opacity: 0; transform: translateY(30px) scale(0.95); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @media (max-width: 900px) {
+            #news-list { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+            .news-item { padding: 15px; }
+        }
+
+        @media (max-width: 600px) {
+            #news-list { grid-template-columns: 1fr; gap: 15px; }
+            .news-item p { font-size: 14px; }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-6 flex flex-col items-center">
+
+    <div class="w-full max-w-2xl bg-white p-6 rounded-2xl shadow-lg">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-800">Добавить новость</h2>
+        
+        <form id="newsForm" class="space-y-4" hx-post="http://10.40.0.51:8000/news/" hx-target="#news-list" 
+              hx-swap="beforebegin" enctype="multipart/form-data">
+            <input type="text" name="text" placeholder="Введите текст новости" required
+                   class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+            
+            <input type="file" name="image" accept="image/*" required
+                   class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+            
+            <button type="submit" id="submitBtn" 
+                    class="w-full bg-blue-600 text-white py-3 rounded-lg text-lg font-medium hover:bg-blue-700 transition disabled:bg-gray-400">
+                Добавить
+            </button>
+        </form>
+        <p id="newsCount" class="mt-2 text-sm text-gray-600">Новостей: 0/8</p>
+        <p id="fetchStatus" class="mt-2 text-sm text-red-600 hidden">Ошибка загрузки новостей</p>
+    </div>
+
+    <div class="w-full max-w-7xl bg-white p-6 mt-6 rounded-2xl shadow-lg">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-800">Список новостей</h2>
+        
+        <button class="w-full bg-red-600 text-white py-3 rounded-lg text-lg font-medium hover:bg-red-700 transition mb-6"
+                hx-delete="http://10.40.0.51:8000/news/" hx-confirm="Вы уверены?" hx-target="#news-list" hx-swap="innerHTML">
+            Очистить всё
+        </button>
+
+        <div id="news-list"></div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const newsList = document.getElementById("news-list");
+            const newsForm = document.getElementById("newsForm");
+            const submitBtn = document.getElementById("submitBtn");
+            const newsCount = document.getElementById("newsCount");
+            const fetchStatus = document.getElementById("fetchStatus");
+            const maxNews = 8;
+            let lastNewsIds = new Set(); // Храним ID новостей для отслеживания изменений
+
+            // Функция обновления счётчика
+            function updateNewsCount() {
+                const currentCount = newsList.children.length;
+                newsCount.textContent = `Новостей: ${currentCount}/${maxNews}`;
+                submitBtn.disabled = currentCount >= maxNews;
+            }
+
+            // Добавление новости в DOM
+            function addNewsToDOM(newsItem) {
+                if (newsList.children.length < maxNews && !lastNewsIds.has(newsItem.id)) {
+                    const newsElement = document.createElement("div");
+                    newsElement.className = "news-item";
+                    newsElement.setAttribute("data-id", newsItem.id);
+                    newsElement.innerHTML = `
+                        <div>
+                            <p class="text-gray-700">${newsItem.text || 'Без текста'}</p>
+                            ${newsItem.image ? `
+                                <img src="${newsItem.image}" 
+                                     alt="Новость" 
+                                     onerror="this.style.display='none'; this.nextSibling.style.display='block'">
+                                <span style="display:none; color:#666">Изображение не загрузилось</span>
+                            ` : ""}
+                        </div>
+                        <button class="bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition mt-2"
+                                hx-delete="http://10.40.0.51:8000/news/${newsItem.id}" 
+                                hx-target="closest .news-item" 
+                                hx-swap="outerHTML"
+                                hx-confirm="Вы уверены, что хотите удалить эту новость?">
+                            Удалить
+                        </button>
+                    `;
+                    newsList.prepend(newsElement);
+                    requestAnimationFrame(() => newsElement.classList.add("loaded"));
+                    lastNewsIds.add(newsItem.id);
+                    updateNewsCount();
+                }
+            }
+
+            // Очистка контейнера
+            function clearNewsContainer() {
+                newsList.innerHTML = "";
+                lastNewsIds.clear();
+                updateNewsCount();
+            }
+
+            // Функция загрузки новостей через HTTP
+            async function loadNews() {
+                try {
+                    const response = await fetch("http://10.40.0.51:8000/news/", {
+                        redirect: 'follow' // Следуем за перенаправлениями
+                    });
+                    if (!response.ok) throw new Error('Ошибка сети: ' + response.status);
+                    const newsListData = await response.json();
+                    
+                    // Проверяем, изменился ли список новостей
+                    const currentNewsIds = new Set(newsListData.map(item => item.id));
+                    if (currentNewsIds.size === 0) {
+                        clearNewsContainer();
+                    } else if (!areSetsEqual(currentNewsIds, lastNewsIds)) {
+                        clearNewsContainer();
+                        newsListData.slice(0, maxNews).forEach(newsItem => addNewsToDOM(newsItem));
+                    }
+
+                    fetchStatus.classList.add("hidden");
+                } catch (error) {
+                    console.error('Ошибка загрузки новостей:', error);
+                    fetchStatus.classList.remove("hidden");
+                }
+            }
+
+            // Сравнение двух Set для проверки изменений
+            function areSetsEqual(set1, set2) {
+                if (set1.size !== set2.size) return false;
+                for (let item of set1) {
+                    if (!set2.has(item)) return false;
+                }
+                return true;
+            }
+
+            // Первоначальная загрузка новостей
+            loadNews();
+
+            // Периодическое обновление каждые 2 секунды
+            setInterval(loadNews, 2000);
+
+            // Обработка HTMX после добавления
+            document.body.addEventListener('htmx:afterSwap', (event) => {
+                if (event.detail.target.id === "news-list" && newsList.children.length <= maxNews) {
+                    const newElement = event.detail.elt;
+                    if (newElement.classList.contains('news-item')) {
+                        requestAnimationFrame(() => newElement.classList.add("loaded"));
+                        updateNewsCount();
+                    }
+                }
+            });
+
+            // Обработка HTMX после удаления
+            document.body.addEventListener('htmx:afterRequest', (event) => {
+                if (event.detail.elt.tagName === 'BUTTON' && event.detail.elt.getAttribute('hx-delete')) {
+                    loadNews(); // Немедленно обновляем список после удаления
+                }
+            });
+        });
+    </script>
+</body>
+</html>

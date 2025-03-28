@@ -48,29 +48,6 @@ app.get("/api/year", (req, res) => {
 });
 
 // ========================== RSS-лента (новости) ==========================
-const RSS_FEED_URL = "https://rss.app/feeds/ROqxpqxtrig12IhL.xml";
-
-// Загружаем и парсим RSS-ленту новостей
-// Запрос: GET http://localhost:3000/news
-// Ответ: массив объектов с заголовком, ссылкой и изображением
-app.get("/news", async(req, res) => {
-    try {
-        const response = await axios.get(RSS_FEED_URL);
-        parser.parseString(response.data, (err, result) => {
-            if (err) {
-                return res.status(500).json({ error: "Ошибка обработки RSS" });
-            }
-            const items = result.rss.channel[0].item.map((item) => ({
-                title: item.title[0],
-                link: item.link[0],
-                image: `/proxy-image?url=${encodeURIComponent(item["media:content"][0].$.url)}`
-            }));
-            res.json(items);
-        });
-    } catch (error) {
-        res.status(500).json({ error: "Ошибка загрузки новостей" });
-    }
-});
 
 // ========================== Проксирование изображений ==========================
 // Позволяет загружать изображения по URL через наш сервер

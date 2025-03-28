@@ -114,56 +114,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     animate();
 
-    // --- Загрузка новостей из RSS ---
-    const RSS_URL = "https://api.rss2json.com/v1/api.json?rss_url=https://rss.app/feeds/ROqxpqxtrig12IhL.xml";
-    const newsSection = document.getElementById("news-section");
-
-    async function loadRSS() {
-        try {
-            let response = await fetch(RSS_URL);
-            let data = await response.json();
-            newsSection.innerHTML = ""; // Очищаем контейнер
-
-            data.items.slice(0, 6).forEach(item => { // 6 новостей
-                let newsHTML = `
-                 <div class="news-item">
-                     <img src="${item.enclosure.link || 'default.jpg'}" alt="Новость">
-                     <h3>${item.title}</h3>
-                     <a href="${item.link}" target="_blank">Читать далее</a>
-                 </div>
-             `;
-                newsSection.innerHTML += newsHTML;
-            });
-        } catch (error) {
-            console.error("Ошибка загрузки новостей:", error);
-        }
-    }
-
-    // --- Загрузка новостей из своего сервера ---
-    async function loadLocalNews() {
-        try {
-            const response = await fetch("/news");
-            const news = await response.json();
-            const newsContainer = document.getElementById("news");
-            newsContainer.innerHTML = "";
-
-            news.slice(0, 8).forEach((item) => { // 8 новостей
-                const newsItem = document.createElement("div");
-                newsItem.className = "news-item";
-                newsItem.innerHTML = `
-                 <img src="${item.image}" alt="Новость">
-                 <a href="${item.link}" target="_blank">${item.title}</a>
-             `;
-                newsContainer.appendChild(newsItem);
-            });
-        } catch (error) {
-            console.error("Ошибка загрузки новостей:", error);
-        }
-    }
-
-    // Запуск загрузки новостей
-    loadRSS();
-    loadLocalNews();
 
     function toggleMenu() {
         document.body.classList.toggle("menu-open");

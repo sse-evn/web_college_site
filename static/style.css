@@ -11,7 +11,7 @@
                 color: rgb(255, 255, 255);
                 background-attachment: scroll;
             }
-           
+           /* particle-background  */
             #particle-background {
                 position: fixed;
                 width: 100%;
@@ -36,6 +36,7 @@
                 justify-content: center;
             }
            
+            
             
             nav {
                 display: flex;
@@ -133,6 +134,8 @@
                     display: block;
                 }
             }
+
+            
             /**** HUINYA EBANAYA ***/
             
             .hero {
@@ -363,55 +366,120 @@
                 margin-bottom: 20px;
             }
             
-            #news-title h2 {
-                font-size: 28px;
-                font-weight: bold;
-                color: white;
-                /* Или любой контрастный цвет */
-            }
+
+
+                    /* Контейнер для новостей */
+                    #news-container {
+                        max-width: 1400px; /* Увеличиваем максимальную ширину для более крупного отображения */
+                        margin: 50px auto; /* Увеличиваем отступы сверху и снизу */
+                        padding: 0 30px; /* Увеличиваем боковые отступы */
+                        display: grid;
+                        grid-template-columns: repeat(3, 1fr); /* Уменьшаем до 3 колонок для более крупных карточек */
+                        gap: 40px; /* Увеличиваем расстояние между карточками */
+                    }
             
-            #news {
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                /* 4 колонки */
-                gap: 20px;
-                /* Отступы между элементами */
-                max-width: 1200px;
-                margin: auto;
-                padding: 20px;
-            }
+                    /* Стили для карточки новости */
+                    .news {
+                        background: #ffffff;
+                        border-radius: 16px; /* Более мягкие углы */
+                        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Более мягкая тень */
+                        padding: 30px; /* Увеличиваем внутренние отступы */
+                        transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Плавный переход */
+                        display: flex;
+                        flex-direction: column;
+                        height: 100%;
+                        opacity: 0;
+                        transform: translateY(40px) scale(0.95); /* Увеличиваем начальное смещение */
+                        border: 1px solid #e5e7eb; /* Добавляем тонкую границу для контраста */
+                    }
             
-            .news-item {
-                background: #fff;
-                border-radius: 10px;
-                overflow: hidden;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                transition: transform 0.2s;
-                text-align: center;
-            }
+                    /* Анимация появления карточки */
+                    .news.loaded {
+                        opacity: 1;
+                        transform: translateY(0) scale(1);
+                        animation: slideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards; /* Увеличиваем длительность анимации */
+                    }
             
-            .news-item:hover {
-                transform: scale(1.05);
-            }
+                    /* Эффект при наведении */
+                    .news:hover {
+                        transform: translateY(-10px) scale(1.03); /* Увеличиваем эффект поднятия */
+                        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15); /* Более выраженная тень */
+                    }
             
-            .news-item img {
-                width: 100%;
-                height: 150px;
-                object-fit: cover;
-                border-bottom: 2px solid #ddd;
-            }
+                    /* Стили для текста */
+                    .news p {
+                        margin: 0 0 20px 0; /* Увеличиваем нижний отступ */
+                        line-height: 1.8; /* Увеличиваем межстрочный интервал для читаемости */
+                        color: #2d3748; /* Более мягкий тёмный цвет текста */
+                        font-size: 18px; /* Увеличиваем размер шрифта */
+                        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; /* Современный шрифт */
+                        flex-grow: 1;
+                    }
             
-            .news-item a {
-                display: block;
-                padding: 10px;
-                text-decoration: none;
-                color: #333;
-                font-weight: bold;
-            }
+                    /* Стили для изображения */
+                    .news img {
+                        width: 100%;
+                        height: auto;
+                        max-height: 300px; /* Увеличиваем максимальную высоту изображения */
+                        object-fit: cover; /* Сохраняем пропорции */
+                        border-radius: 12px; /* Более мягкие углы для изображения */
+                        margin-top: 15px; /* Увеличиваем отступ сверху */
+                        transition: transform 0.4s ease; /* Плавный переход при наведении */
+                        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Лёгкая тень для изображения */
+                    }
             
-            .news-item a:hover {
-                color: #007bff;
-            }
+                    /* Эффект при наведении на изображение */
+                    .news:hover img {
+                        transform: scale(1.08); /* Увеличиваем масштаб при наведении */
+                    }
+            
+                    /* Анимация появления */
+                    @keyframes slideIn {
+                        0% {
+                            opacity: 0;
+                            transform: translateY(40px) scale(0.95);
+                        }
+                        100% {
+                            opacity: 1;
+                            transform: translateY(0) scale(1);
+                        }
+                    }
+            
+                    /* Адаптивность для средних экранов */
+                    @media (max-width: 1024px) {
+                        #news-container {
+                            grid-template-columns: repeat(2, 1fr); /* 2 колонки на средних экранах */
+                            gap: 30px; /* Уменьшаем расстояние */
+                            padding: 0 20px;
+                        }
+                        .news {
+                            padding: 25px; /* Уменьшаем внутренние отступы */
+                        }
+                        .news p {
+                            font-size: 16px; /* Уменьшаем шрифт */
+                        }
+                        .news img {
+                            max-height: 250px; /* Уменьшаем размер изображения */
+                        }
+                    }
+            
+                    /* Адаптивность для маленьких экранов */
+                    @media (max-width: 640px) {
+                        #news-container {
+                            grid-template-columns: 1fr; /* 1 колонка на маленьких экранах */
+                            gap: 20px;
+                            padding: 0 15px;
+                        }
+                        .news {
+                            padding: 20px;
+                        }
+                        .news p {
+                            font-size: 15px;
+                        }
+                        .news img {
+                            max-height: 200px;
+                        }
+                    }
             /* tour collage video */
             
             .college-tour {

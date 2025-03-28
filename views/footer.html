@@ -1,0 +1,144 @@
+<style>
+    footer {
+                background: black;
+                color: white;
+                padding: 80px 0 50px;
+                /* Увеличил верхний отступ */
+                text-align: center;
+                position: relative;
+            }
+            /* Свечение сверху */
+            
+            footer::before {
+                content: "";
+                position: absolute;
+                top: -10px;
+                /* Регулируй высоту свечения */
+                left: 0;
+                width: 100%;
+                height: 10px;
+                background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.5) 0%, rgba(0, 0, 0, 0) 80%);
+            }
+            /* Контейнер футера */
+            
+            .footer-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 20px;
+                flex-wrap: wrap;
+            }
+            /* Левая и правая части */
+            
+            .footer-left,
+            .footer-right {
+                width: 45%;
+                min-width: 300px;
+            }
+            /* Заголовки */
+            
+            .footer-left h3,
+            .footer-right h3 {
+                font-size: 22px;
+                margin-bottom: 15px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                color: white;
+            }
+            /* Обычный текст */
+            
+            .footer-left p,
+            .footer-right p {
+                font-size: 16px;
+                color: #ccc;
+                margin-bottom: 10px;
+            }
+            /* Линия-разделитель */
+            
+            .line {
+                width: 80%;
+                height: 2px;
+                background: white;
+                margin: 20px auto;
+                border-radius: 5px;
+            }
+            /* Иконки социальных сетей */
+            
+            .social-icons {
+                display: flex;
+                gap: 15px;
+                justify-content: center;
+            }
+            
+            .social-icons a img {
+                width: 40px;
+                height: 40px;
+                transition: transform 0.3s ease-in-out;
+            }
+            
+            .social-icons a img:hover {
+                transform: scale(1.2);
+            }
+            /* Значки контактов */
+            
+            .icon {
+                color: white;
+                font-size: 20px;
+                margin-right: 8
+            }
+            
+            @media (max-width: 1600px) {
+                .buttons button {
+                    padding: 30px 130px;
+                    /* кнопки были слишком большими */
+                }
+            }
+            
+            @media (max-width: 1400px) {
+                .hero {
+                    max-width: 70%;
+                    margin-left: 100px;
+                    margin-top: 250px;
+                }
+                .hero .hero-text * {
+                    white-space: normal;
+                }
+                .buttons button {
+                    padding: 30px 70px;
+                }
+            }
+</style>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-left">
+            <h3 data-translate="about_site">Сайт туралы</h3>
+            <p id="copyright-year"></p>
+            <p data-translate="college_name">Алматы қаласы Білім басқармасының «ALMATY POLYTECHNIC COLLEGE» КМҚК</p>
+            <div class="line"></div>
+            <h3 data-translate="social_networks">Әлеуметтік желілер</h3>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/polytechalmaty/#" target="_blank">
+                    <img src="/static/images/flot/instagram.png" alt="Instagram">
+                </a>
+                <a href="https://www.facebook.com/people/%D0%9F%D0%BE%D0%BB%D0%B8%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9-%D0%BA%D0%BE%D0%BB%D0%BB%D0%B5%D0%B4%D0%B6-%D0%90%D0%BB%D0%BC%D0%B0%D1%82%D1%8B/100070603250345/#" target="_blank">
+                    <img src="/static/images/flot/facebook.png" alt="Facebook">
+                </a>
+                <a href="https://www.youtube.com/@almatypolytechedukz" target="_blank">
+                    <img src="/static/images/flot/youtube.png" alt="YouTube">
+                </a>
+                <a href="https://www.tiktok.com/@polytech_college?_t=8ji5qQRP3v3&_r=1" target="_blank">
+                    <img src="/static/images/flot/tiktok.png" alt="TikTok">
+                </a>
+            </div>
+        </div>
+        <div class="footer-right">
+            <h3 data-translate="contacts">Байланыс</h3>
+            <p><span class="icon">📍</span> <strong data-translate="address_label">Мекенжай:</strong><br> <span data-translate="address">Қазақстан, Алматы қ., Тастақ-1 шағын ауданы, 1B</span></p>
+            <p><span class="icon">📞</span> <strong data-translate="contact_label">Байланыс:</strong><br> <span data-translate="phone">Тел.: 396 71 39</span><br> <span data-translate="admission_phone">Қабылдау комиссиясы: 8 707 171 0800</span></p>
+            <p><span class="icon">✉️</span> <strong data-translate="email_label">Пошта:</strong><br> <a href="mailto:polytech@aspc.kz">polytech@aspc.kz</a></p>
+        </div>
+    </div>
+</footer>
