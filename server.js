@@ -9,51 +9,37 @@ const fs = require("fs");
 const app = express();
 const PORT = 3000;
 
-// ========================== Миддлвары и статические файлы ==========================
-// Подключаем CORS (разрешает запросы с других доменов)
-app.use(cors());
+// ========================== Настройки CORS ==========================
+const allowedOrigins = [
+    "http://web.aspc.kz",
+    "http://10.40.0.23:9000",
+    "http://localhost:3000",
+];
 
-// Делаем папку "static" доступной по пути "/static" (для стилей, скриптов, изображений)
+app.use(cors({
+    origin: allowedOrigins,
+    methods: ["GET", "POST"],
+}));
+
+// ========================== Статические файлы ==========================
 app.use("/static", express.static(path.join(__dirname, "static")));
-
-// Делаем папку "public" доступной напрямую (например, файлы можно открыть в браузере)
 app.use(express.static("public"));
 
 // ========================== Основные маршруты ==========================
 
-// Отдаём главную страницу при запросе к корню сайта ("/")
+// Главная страница
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "views", "index.html"));
 });
 
-// Динамическое добавление HTML страниц из папки views
-// Любой .html файл в "views" становится доступен по его названию в URL
-// Пример: если есть файл "views/about.html", он будет доступен по адресу "http://localhost:3000/about"
-app.get("/:page", (req, res) => {
-    const pagePath = path.join(__dirname, "views", `${req.params.page}.html`);
-    if (fs.existsSync(pagePath)) {
-        res.sendFile(pagePath);
-    } else {
-        res.status(404).send("Страница не найдена. Проверьте, есть ли такой файл в папке views.");
-    }
-});
-
 // ========================== API ==========================
-
-// Простейшее API: выдаёт текущий год
-// Запрос: GET http://localhost:3000/api/year
-// Ответ: { "year": 2025 }
+// API: текущий год (Current year)
 app.get("/api/year", (req, res) => {
-    res.json({ year: new Date().getFullYear() });
+    res.json({ year: new Date().getFullYear() }); // e.g., {"year": 2025}
 });
-
-// ========================== RSS-лента (новости) ==========================
 
 // ========================== Проксирование изображений ==========================
-// Позволяет загружать изображения по URL через наш сервер
-// Нужно для обхода CORS-запретов при загрузке картинок с других сайтов
-// Запрос: GET http://localhost:3000/proxy-image?url={ссылка_на_изображение}
-app.get("/proxy-image", async(req, res) => {
+app.get("/proxy-image", async (req, res) => {
     try {
         const imageUrl = decodeURIComponent(req.query.url);
         const response = await axios.get(imageUrl, { responseType: "arraybuffer" });
@@ -64,16 +50,24 @@ app.get("/proxy-image", async(req, res) => {
     }
 });
 
-// ========================== Запуск сервера ==========================
-// Запускаем сервер на 0.0.0.0 (доступен из локальной сети) и порту 3000
-app.listen(PORT, "0.0.0.0", () => {
-    console.log(`✅ Сервер доступен по локальной сети: http://${getLocalIP()}:${PORT}`);
+// ========================== Динамическая загрузка страниц ==========================
+// This must come AFTER specific routes like /api/year
+app.get("/*", (req, res) => {
+    const pagePath = path.join(__dirname, "views/college", `${req.params[0]}.html`);
+    if (fs.existsSync(pagePath)) {
+        res.sendFile(pagePath);
+    } else {
+        res.status(404).send("Страница не найдена. Проверьте, есть ли такой файл в папке views/college.");
+    }
 });
 
-// ========================== Функция получения локального IP ==========================
-// Определяет локальный IP-адрес компьютера для удобства доступа к серверу в сети
-function getLocalIP() {
+// ========================== Запуск сервера ==========================
+app.listen(PORT, "0.0.0.0", () => {
+    console.log(`✅ Сервер запущен: http://${getLocalIP()}:${PORT}`);
+});
 
+// ========================== Функция определения локального IP ==========================
+function getLocalIP() {
     const nets = networkInterfaces();
     for (const name of Object.keys(nets)) {
         for (const net of nets[name]) {

@@ -18,30 +18,24 @@
 
 <body>
     <div id="particle-background"></div>
-
-
-
-    
     
     <header>
-
-    
         <nav>
             <div class="logo">
                 <img src="/static/images/header/LOGO_NEW.png" alt="Polytech Logo">
             </div>
             <ul>
-                <li><a href="#" data-translate="college">Колледж</a></li>
-                <li><a href="#" data-translate="applicants">Талапкерлерге</a></li>
-                <li><a href="#" data-translate="students">Студенттерге</a></li>
-                <li><a href="#" data-translate="state">Мемлекет</a></li>
-                <li><a href="#" data-translate="teachers">Оқытушыларға</a></li>
-                <li><a href="#" data-translate="news">Жаңалықтар</a></li>
-                <li><a href="#" data-translate="jobs">Бос жұмыс орны</a></li>
-                <li><a href="#" data-translate="eco">Экожүйе</a></li>
-                <li><a href="#" data-translate="contacts">Байланыс</a></li>
+                <li><a href="#" class="open-modal" data-modal="college-modal">Колледж</a></li>
+                <li><a href="#" class="open-modal" data-modal="college-modal">Талапкерлерге</a></li>
+                <li><a href="#" class="open-modal" data-modal="college-modal">Студенттерге</a></li>
+                <li><a href="#" class="open-modal" data-modal="college-modal">Мемлекет</a></li>
+                <li><a href="#" class="open-modal" data-modal="college-modal">Оқытушыларға</a></li>
+                <li><a href="#" class="open-modal" data-modal="college-modal">Жаңалықтар</a></li>
+                <li><a href="#" class="open-modal" data-modal="college-modal">Бос жұмыс орны</a></li>
+                <li><a href="#" class="open-modal" data-modal="college-modal">Экожүйе</a></li>
+                <li><a href="#" class="open-modal" data-modal="college-modal">Байланыс</a></li>
             </ul>
-            
+    
             <div class="language-switcher">
                 <select id="language-select">
                     <option value="ru">RU</option>
@@ -49,14 +43,46 @@
                     <option value="en">ENG</option>
                 </select>
             </div>
-
-
         </nav>
     </header>
-
-
-    <div class="svg-container">
-        <img src="static/images/logo.svg" alt="Лого">
+    
+    <!-- Модальное окно для "Колледж" -->
+    <div id="college-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Колледж туралы информациялар</h2>
+                <span class="close">&times;</span>  <!-- Крестик для закрытия -->
+            </div>
+            <div class="modal-body">
+                <div class="modal-buttons">
+                    <div class="dropdown">
+                        <button class="dropdown-btn">Басқару</button>
+                        <div class="dropdown-content">
+                            <a href="page" >АГПК-мен танысу</a>
+                            <a href="page2">Қызметкерлер</a>
+                            <a href="#">Құжаттар</a>
+                            <a href="#">Жоспар</a>
+                        </div>
+                    </div>
+    
+                    <div class="dropdown">
+                        <button class="dropdown-btn">Инфрақұрылым</button>
+                        <div class="dropdown-content">
+                            <a href="#">Кампус</a>
+                            <a href="#">Аудиториялар</a>
+                        </div>
+                    </div>
+    
+                    <div class="dropdown">
+                        <button class="dropdown-btn">Курстар</button>
+                        <div class="dropdown-content">
+                            <a href="#">IT курстар</a>
+                            <a href="#">Техникалық курстар</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     
 
@@ -212,7 +238,7 @@
             <div class="text-content">
                 <h2 data-translate="welcome_to_college">Добро пожаловать в наш колледж!</h2>
                 <p data-translate="tour_invitation">Мы рады каждому новому гостю! Записывайся на экскурсию и познакомься с нашими возможностями.</p>
-                <a href="#" class="tour-button" data-translate="book_tour">Записаться на экскурсию</a>
+                <a href="https://wa.me/77071710800?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%20%D0%A5%D0%BE%D1%82%D0%B5%D0%BB(%D0%B0)%20%D0%B1%D1%8B%20%D1%83%D0%B7%D0%BD%D0%B0%D1%82%D1%8C%20%D0%B8%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D1%8E%20%D0%BE%20%D0%BF%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%BB%D0%B5%D0%BD%D0%B8%D0%B8...", "_blank"" class="tour-button" data-translate="book_tour">Записаться на экскурсию</a>
             </div>
             <div class="video-content">
                 <video autoplay muted loop playsinline>
@@ -226,81 +252,171 @@
         <section id="news-title">
             <h2>IT инновациялар жаңалықтары</h2>
         </section>
+
+        <div id="fetchStatus" class="hidden">Ошибка загрузки новостей</div>
+
+        
+        
+        <style>
+            .news-container {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                max-width: 600px;
+                margin: auto;
+            }
+            .news-item {
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                padding: 15px;
+                background: #4b2a2a;
+                box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            }
+            .news-title {
+                font-size: 18px;
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+            .news-content {
+                font-size: 14px;
+                color: #333;
+                margin-bottom: 10px;
+            }
+            .news-date {
+                font-size: 12px;
+                color: gray;
+            }
+            .news-image {
+                max-width: 100%;
+                height: auto;
+                border-radius: 5px;
+                margin-bottom: 10px;
+            }
+        </style>
+        
         <div id="news-container"></div>
 
-        <script>
-        const newsContainer = document.getElementById("news-container");
-        const fetchStatus = document.getElementById("fetchStatus");
-        const maxNews = 8;
-        let lastNewsIds = new Set(); // Храним ID новостей для отслеживания изменений
+<script>
 
-        // Добавление новости в DOM
-        function addNewsToDOM(newsItem) {
-            if (newsContainer.children.length < maxNews && !lastNewsIds.has(newsItem.id)) {
-                const div = document.createElement("div");
-                div.className = "news";
-                div.setAttribute("data-id", newsItem.id);
-                div.innerHTML = `
-                    <p>${newsItem.text || 'Без текста'}</p>
-                    ${newsItem.image ? `
-                        <img src="${newsItem.image}" 
-                             alt="Новость" 
-                             onerror="this.style.display='none'; this.nextSibling.style.display='block'">
-                        <span style="display:none; color:#666">Изображение не загрузилось</span>
-                    ` : ""}
-                `;
-                newsContainer.prepend(div);
-                requestAnimationFrame(() => div.classList.add("loaded"));
-                lastNewsIds.add(newsItem.id);
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // Функция для форматирования даты
+            function formatDate(dateString) {
+                const options = { 
+                    day: '2-digit', 
+                    month: '2-digit', 
+                    year: 'numeric', 
+                    hour: '2-digit', 
+                    minute: '2-digit' 
+                };
+                return new Date(dateString).toLocaleString('ru-RU', options);
             }
-        }
 
-        // Очистка контейнера
-        function clearNewsContainer() {
-            newsContainer.innerHTML = "";
-            lastNewsIds.clear();
-        }
-
-        // Функция загрузки новостей через HTTP
-        async function loadNews() {
-            try {
-                const response = await fetch("http://10.40.0.51:8000/news");
-                if (!response.ok) throw new Error('Ошибка сети');
-                const newsList = await response.json();
-                
-                // Проверяем, изменился ли список новостей
-                const currentNewsIds = new Set(newsList.map(item => item.id));
-                if (currentNewsIds.size === 0) {
-                    clearNewsContainer();
-                } else if (!areSetsEqual(currentNewsIds, lastNewsIds)) {
-                    clearNewsContainer();
-                    newsList.slice(0, maxNews).forEach(newsItem => addNewsToDOM(newsItem));
+            // Обработка загруженных новостей
+            htmx.on("htmx:afterRequest", function(evt) {
+                if (evt.detail.requestConfig.path === '/api/news' && evt.detail.requestConfig.verb === 'get') {
+                    const newsList = document.getElementById('news-list');
+                    
+                    try {
+                        const response = evt.detail.xhr.responseText;
+                        if (!response) {
+                            newsList.innerHTML = '<p class="empty-message">Новостей пока нет</p>';
+                            return;
+                        }
+                        
+                        const newsData = JSON.parse(response);
+                        
+                        if (!Array.isArray(newsData)) {
+                            throw new Error("Некорректный формат данных");
+                        }
+                        
+                        renderNews(newsData);
+                    } catch (error) {
+                        console.error("Ошибка:", error);
+                        newsList.innerHTML = `
+                            <div class="error-message">
+                                Ошибка загрузки новостей: ${error.message}
+                                <button onclick="window.location.reload()" 
+                                        style="margin-top: 10px; padding: 5px 10px; background: var(--primary-color); color: white; border: none; border-radius: 4px; cursor: pointer;">
+                                    Обновить
+                                </button>
+                            </div>
+                        `;
+                    }
                 }
+            });
 
-                fetchStatus.classList.add("hidden");
-            } catch (error) {
-                console.error('Ошибка загрузки новостей:', error);
-                fetchStatus.classList.remove("hidden");
+            // Рендеринг новостей
+            function renderNews(newsData) {
+                const newsList = document.getElementById('news-list');
+                
+                if (newsData.length === 0) {
+                    newsList.innerHTML = '<p class="empty-message">Новостей пока нет</p>';
+                    return;
+                }
+                
+                let html = '';
+                
+                newsData.forEach(news => {
+                    const imageUrl = news.imageUrl 
+                        ? `http://localhost:9000${news.imageUrl.startsWith('/') ? '' : '/'}${news.imageUrl}`
+                        : 'https://via.placeholder.com/600x400?text=Нет+изображения';
+                    
+                    html += `
+                    <div class="news-item" id="news-${news.id}">
+                        <button class="delete-btn"
+                                hx-delete="/api/news/${news.id}"
+                                hx-target="#news-${news.id}"
+                                hx-swap="outerHTML"
+                                hx-confirm="Удалить эту новость?">
+                            ×
+                        </button>
+                        
+                        <img src="${imageUrl}" 
+                             alt="${news.title}"
+                             onerror="this.src='https://via.placeholder.com/600x400?text=Ошибка+загрузки'">
+                        
+                        <h3 class="news-title">${news.title}</h3>
+                        <p class="news-content">${news.content}</p>
+                        <p class="news-date">${formatDate(news.createdAt)}</p>
+                    </div>
+                    `;
+                });
+                
+                newsList.innerHTML = html;
+                
+                // Анимация появления
+                document.querySelectorAll(".news-item").forEach((item, index) => {
+                    setTimeout(() => {
+                        item.classList.add("loaded");
+                    }, index * 50);
+                });
             }
-        }
 
-        // Сравнение двух Set для проверки изменений
-        function areSetsEqual(set1, set2) {
-            if (set1.size !== set2.size) return false;
-            for (let item of set1) {
-                if (!set2.has(item)) return false;
-            }
-            return true;
-        }
+            // Обработка успешного добавления/удаления
+            htmx.on("htmx:afterSwap", function(evt) {
+                if (evt.detail.successful && 
+                    (evt.detail.requestConfig.verb === 'post' || evt.detail.requestConfig.verb === 'delete')) {
+                    htmx.trigger(document.body, "newsUpdated");
+                }
+            });
 
-        // Первоначальная загрузка новостей
-        loadNews();
+            // Обработка ошибок
+            htmx.on("htmx:responseError", function(evt) {
+                console.error("Ошибка:", evt.detail.xhr.responseText);
+                alert("Ошибка: " + (evt.detail.xhr.responseText || evt.detail.xhr.statusText));
+            });
+        });
 
-        // Периодическое обновление каждые 2 секунды
-        setInterval(loadNews, 6600);
 
-        </script>
-   
+</script>
+
+
+
+
+
+
+        
         
 
 

@@ -3,9 +3,9 @@
 LOG_FILE="server.log"
 
 # Функция записи логов
-log() {
-    echo "$(date +"%Y-%m-%d %H:%M:%S") - $1" | tee -a "$LOG_FILE"
-}
+# log() {
+#     echo "$(date +"%Y-%m-%d %H:%M:%S") - $1" | tee -a "$LOG_FILE"
+# }
 
 log "🚀 Запуск скрипта..."
 
