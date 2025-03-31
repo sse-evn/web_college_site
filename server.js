@@ -57,7 +57,7 @@ app.get("/*", (req, res) => {
     if (fs.existsSync(pagePath)) {
         res.sendFile(pagePath);
     } else {
-        res.status(404).send("Страница не найдена. Проверьте, есть ли такой файл в папке views/college.");
+        res.status(404).send("404");
     }
 });
 

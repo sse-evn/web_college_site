@@ -267,7 +267,20 @@
            margin-bottom: -30px;
        }
        /* ========== ОБНОВЛЕННЫЕ КНОПКИ ========== */
-       
+       .hero_img{
+        padding-top: 1%;
+        padding-right: 2%;
+        padding-left: 2%;
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto; 
+        box-sizing: border-box; 
+    }
+
+
        .buttons {
            display: flex;
            justify-content: center;
@@ -686,59 +699,69 @@
        }
        
        .partners-content h2 {
-           font-size: 36px;
-           margin-bottom: 10px;
-       }
+        font-size: 36px;
+        margin-bottom: 10px;
+    }
+    
+    .partners-content p {
+        font-size: 18px;
+    }
+    
+    .partner-card {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 150px;
+        height: 100px;
+        overflow: hidden;
+    }
+    
+    .partners-slider {
+        display: flex;
+        flex-direction: column; /* Два трека друг под другом */
+        overflow: hidden;
+        white-space: nowrap;
+        position: relative;
+        margin-top: 30px;
+    }
+    
+    .partners-track {
+        display: flex;
+        align-items: center;
+        gap: 50px;
+        width: max-content;
+        will-change: transform;
+    }
+    
+    .partners-track.top {
+        margin-bottom: 20px; /* Отступ между верхним и нижним треком */
+    }
+    
+    /* .partners-track.bottom { */
+        /* Ничего дополнительно не нужно, если только не хотите изменить стиль */
+    
+    
+    .partners-track .partner-card {
+        flex: 0 0 auto;
+    }
+    
+    .partners-track::after {
+        content: "";
+        display: flex;
+    }
+    
+    .partner-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        filter: brightness(0) invert(1);
+        transition: transform 0.3s ease;
+    }
+    
+    .partner-card img:hover {
+        transform: scale(1.1);
+    }
        
-       .partners-content p {
-           font-size: 18px;
-       }
-       
-       .partner-card {
-           display: flex;
-           align-items: center;
-           justify-content: center;
-           width: 150px;
-           height: 100px;
-           overflow: hidden;
-       }
-       
-       .partners-slider {
-           display: flex;
-           overflow: hidden;
-           white-space: nowrap;
-           position: relative;
-           margin-top: 30px;
-       }
-       
-       .partners-track {
-           display: flex;
-           align-items: center;
-           gap: 50px;
-           width: max-content;
-           will-change: transform;
-       }
-       
-       .partners-track .partner-card {
-           flex: 0 0 auto;
-       }
-       
-       .partners-track::after {
-           content: "";
-           display: flex;
-       }
-       
-       .partner-card img {
-           width: 100%;
-           height: 100%;
-           object-fit: contain;
-           filter: brightness(0) invert(1);
-           transition: transform 0.3s ease;
-       }
-       
-       .partner-card img:hover {
-           transform: scale(1.1);
-       }
        
        @keyframes script {
            0% {
@@ -1016,15 +1039,31 @@
            }
            .major-card p {
                font-size: 14px;
-           }
+           /* }
            .partners-content h2,
            .map-section h2 {
                font-size: 32px;
            }
            .partners-content p,
            .map-section p {
-               font-size: 16px;
-           }
+               font-size: 16px; */
+
+            .partners-slider {
+                overflow: hidden; /* Скрываем переполнение */
+            }
+            
+            .partners-track {
+                display: flex; /* Горизонтальное расположение */
+            }
+            
+            .partners-track.top {
+                margin-bottom: 20px; /* Отступ между верхним и нижним треком */
+            }
+            
+            .partners-track img {
+                margin: 0 15px; /* Отступы между логотипами */
+            }
+        }
        }
        
        @media (max-width: 1024px) {
