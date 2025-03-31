@@ -8,82 +8,216 @@
     <link rel="stylesheet" href="/static/style.css">
     <link rel="stylesheet" href="/static/online_assistant.css">
     <link rel="stylesheet" href="/static/tour_frame_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
 
     <!-- Подключение библиотеки particles.js -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    
+    <link rel="stylesheet" href="/static/header/styles.css">
+
 </head>
 
 <body>
     <div id="particle-background"></div>
-    
-    <header>
-        <nav>
-            <div class="logo">
-                <img src="/static/images/header/LOGO_NEW.png" alt="Polytech Logo">
+
+    <div class="info-bar">
+        <div class="info-container">
+            <div class="info-item">
+                <i class="fas fa-calendar-alt"></i>
+                <span id="current-date">29 МАРТА 2024</span>
             </div>
-            <ul>
-                <li><a href="#" class="open-modal" data-modal="college-modal">Колледж</a></li>
-                <li><a href="#" class="open-modal" data-modal="college-modal">Талапкерлерге</a></li>
-                <li><a href="#" class="open-modal" data-modal="college-modal">Студенттерге</a></li>
-                <li><a href="#" class="open-modal" data-modal="college-modal">Мемлекет</a></li>
-                <li><a href="#" class="open-modal" data-modal="college-modal">Оқытушыларға</a></li>
-                <li><a href="#" class="open-modal" data-modal="college-modal">Жаңалықтар</a></li>
-                <li><a href="#" class="open-modal" data-modal="college-modal">Бос жұмыс орны</a></li>
-                <li><a href="#" class="open-modal" data-modal="college-modal">Экожүйе</a></li>
-                <li><a href="#" class="open-modal" data-modal="college-modal">Байланыс</a></li>
-            </ul>
-    
-            <div class="language-switcher">
+            <div class="info-item">
+                <i class="fas fa-clock pulse"></i>
+                <span id="current-time">14:30:45</span>
+            </div>
+        </div>
+        <div class="info-container">
+            <div class="info-item">
+                <i class="fas fa-network-wired"></i>
+                <span id="ip-address">Загрузка IP...</span>
+            </div>
+ <div class="language-switcher">
                 <select id="language-select">
                     <option value="ru">RU</option>
                     <option value="kz">KZ</option>
                     <option value="en">ENG</option>
                 </select>
-            </div>
-        </nav>
-    </header>
-    
-    <!-- Модальное окно для "Колледж" -->
-    <div id="college-modal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Колледж туралы информациялар</h2>
-                <span class="close">&times;</span>  <!-- Крестик для закрытия -->
-            </div>
-            <div class="modal-body">
-                <div class="modal-buttons">
-                    <div class="dropdown">
-                        <button class="dropdown-btn">Басқару</button>
-                        <div class="dropdown-content">
-                            <a href="page" >АГПК-мен танысу</a>
-                            <a href="page2">Қызметкерлер</a>
-                            <a href="#">Құжаттар</a>
-                            <a href="#">Жоспар</a>
-                        </div>
-                    </div>
-    
-                    <div class="dropdown">
-                        <button class="dropdown-btn">Инфрақұрылым</button>
-                        <div class="dropdown-content">
-                            <a href="#">Кампус</a>
-                            <a href="#">Аудиториялар</a>
-                        </div>
-                    </div>
-    
-                    <div class="dropdown">
-                        <button class="dropdown-btn">Курстар</button>
-                        <div class="dropdown-content">
-                            <a href="#">IT курстар</a>
-                            <a href="#">Техникалық курстар</a>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>
+
+    <header>
+        <div class="header-container">
+            <a href="/" class="logo">
+                <img src="/static/images/header/LOGO_NEW.png" alt="POLYTECH">
+                <div class="logo-text">
+                    <div class="logo-title">POLYTECH</div>
+                    <div class="logo-subtitle">CYBERPUNK EDITION</div>
+                </div>
+            </a>
+
+            <nav class="desktop-menu">
+                <div class="menu-item">
+                    <a href="#" class="menu-link">
+                        <i class="fas fa-skull"></i>
+                        <span>КОЛЛЕДЖ</span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-item">
+                            <a href="#" class="dropdown-link">О НАС</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#" class="dropdown-link">АДМИНИСТРАЦИЯ</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#" class="dropdown-link">ДОКУМЕНТЫ</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#" class="dropdown-link">ИСТОРИЯ</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <a href="#" class="menu-link">
+                        <i class="fas fa-helmet-battle"></i>
+                        <span>АБИТУРИЕНТАМ</span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-item">
+                            <a href="#" class="dropdown-link">СПЕЦИАЛЬНОСТИ</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#" class="dropdown-link">ПРАВИЛА ПРИЁМА</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#" class="dropdown-link">ЭКЗАМЕНЫ</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <a href="#" class="menu-link">
+                        <i class="fas fa-user-astronaut"></i>
+                        <span>СТУДЕНТАМ</span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-item">
+                            <a href="#" class="dropdown-link">РАСПИСАНИЕ</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#" class="dropdown-link">БИБЛИОТЕКА</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#" class="dropdown-link">СТИПЕНДИЯ</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <a href="#" class="menu-link">
+                        <i class="fas fa-radar"></i>
+                        <span>НОВОСТИ</span>
+                    </a>
+                </div>
+
+                <div class="menu-item">
+                    <a href="#" class="menu-link">
+                        <i class="fas fa-comment-dots"></i>
+                        <span>КОНТАКТЫ</span>
+                    </a>
+                </div>
+            </nav>
+
+            <button class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="overlay"></div>
+    <nav class="mobile-menu">
+        <div class="menu-item">
+            <a href="#" class="menu-link">
+                <i class="fas fa-skull"></i>
+                <span>КОЛЛЕДЖ</span>
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+            </a>
+            <div class="dropdown-menu">
+                <div class="dropdown-item">
+                    <a href="#" class="dropdown-link">О НАС</a>
+                </div>
+                <div class="dropdown-item">
+                    <a href="#" class="dropdown-link">АДМИНИСТРАЦИЯ</a>
+                </div>
+                <div class="dropdown-item">
+                    <a href="#" class="dropdown-link">ДОКУМЕНТЫ</a>
+                </div>
+                <div class="dropdown-item">
+                    <a href="#" class="dropdown-link">ИСТОРИЯ</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <a href="#" class="menu-link">
+                <i class="fas fa-helmet-battle"></i>
+                <span>АБИТУРИЕНТАМ</span>
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+            </a>
+            <div class="dropdown-menu">
+                <div class="dropdown-item">
+                    <a href="#" class="dropdown-link">СПЕЦИАЛЬНОСТИ</a>
+                </div>
+                <div class="dropdown-item">
+                    <a href="#" class="dropdown-link">ПРАВИЛА ПРИЁМА</a>
+                </div>
+                <div class="dropdown-item">
+                    <a href="#" class="dropdown-link">ЭКЗАМЕНЫ</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <a href="#" class="menu-link">
+                <i class="fas fa-user-astronaut"></i>
+                <span>СТУДЕНТАМ</span>
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+            </a>
+            <div class="dropdown-menu">
+                <div class="dropdown-item">
+                    <a href="#" class="dropdown-link">РАСПИСАНИЕ</a>
+                </div>
+                <div class="dropdown-item">
+                    <a href="#" class="dropdown-link">БИБЛИОТЕКА</a>
+                </div>
+                <div class="dropdown-item">
+                    <a href="#" class="dropdown-link">СТИПЕНДИЯ</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <a href="#" class="menu-link">
+                <i class="fas fa-radar"></i>
+                <span>НОВОСТИ</span>
+            </a>
+        </div>
+
+        <div class="menu-item">
+            <a href="#" class="menu-link">
+                <i class="fas fa-comment-dots"></i>
+                <span>КОНТАКТЫ</span>
+            </a>
+        </div>
+    </nav>
+
+
     
 
         <section class="hero">
@@ -522,7 +656,7 @@
         <script src="/static/particles_config.js"></script>
         <script src="/static/major-body.js"></script>
         <script src="/static/partners-scroll.js"></script>
-
+        <script src="/static/header/main.js"></script>
         <script src="/static/yearUpdater.js"></script>
 
 </body>

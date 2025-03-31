@@ -23,7 +23,7 @@
        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
 
        /* ======= ОБЩИЙ СТИЛЬ ДЛЯ ХЕДЕРА ======= */
-       header {
+       /* header {
            background: transparent;
            padding: 20px 0;
            position: fixed;
@@ -33,9 +33,9 @@
            z-index: 1000;
            display: flex;
            justify-content: center;
-       }
+       } */
        
-       nav {
+       /* nav {
            display: flex;
            justify-content: space-between;
            align-items: center;
@@ -48,15 +48,15 @@
            transition: border 0.3s, backdrop-filter 0.3s, padding 0.3s;
            overflow: hidden;
        }
-       
-       /* ======= ЛОГОТИП ======= */
+        */
+       /* ======= ЛОГОТИП =======
        .logo img {
            height: 70px;
            max-width: 100%;
        }
        
        /* ======= НАВИГАЦИОННОЕ МЕНЮ ======= */
-       nav ul {
+        /* nav ul {
            list-style: none;
            display: flex;
            flex-wrap: nowrap;
@@ -80,8 +80,8 @@
            border-radius: 6px;
            transition: background 0.3s, transform 0.3s;
            display: block;
-       }
-       
+       } */
+        */
        /* ======= ПОДСВЕТКА ПРИ НАВЕДЕНИИ ======= */
        nav ul li a:hover {
            background: rgba(255, 255, 255, 0.445);
@@ -104,7 +104,7 @@
        }
        
        /* ======= МОБИЛЬНАЯ ВЕРСИЯ ======= */
-       @media (max-width: 1024px) {
+       /* @media (max-width: 1024px) {
            nav {
                flex-direction: column;
                align-items: flex-start;
@@ -118,8 +118,8 @@
            nav ul li {
                max-width: 100%;
            }
-       }
-       
+       } */ */
+        */
        /* ======= МОДАЛЬНОЕ ОКНО ======= */
        .modal {
            display: none;
@@ -408,7 +408,7 @@
            border-radius: 10px;
            padding: 20px;
            width: 250px;
-           height: 200px;
+           height: auto;
            /* Фиксированная высота */
            text-align: center;
            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
