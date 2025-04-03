@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Учебно-методическая работа</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/particles_style.css">
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .glowing-text {
+            text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8);
+        }
+
+        #particle-background {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .accordion {
+            width: 60%;
+            margin: 0 auto;
+        }
+
+        .accordion-item {
+            margin-bottom: 10px;
+            background: #1e1e1e;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+        }
+
+        .accordion-button {
+            width: 100%;
+            background: #2a2a2a;
+            color: #ffffff;
+            border: none;
+            padding: 15px;
+            font-size: 18px;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+            text-decoration: none;
+        }
+
+        .accordion-button:hover {
+            background: #3a3a3a;
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 15px;
+            background: #ffffff;
+            color: #000000;
+            text-align: left;
+            border-radius: 0 0 5px 5px;
+            line-height: 1.5;
+        }
+
+        .accordion-content p {
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .accordion-content p strong {
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .download-button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #2a2a2a;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .download-button:hover {
+            background-color: #3a3a3a;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8);
+        }
+    </style>
+    
+    <script>
+        function toggleAccordion(id) {
+            var content = document.getElementById(id);
+            content.style.display = content.style.display === "none" || content.style.display === "" ? "block" : "none";
+        }
+    </script>
+</head>
+
+<body>
+    <div id="particle-background"></div>
+
+    <div class="header">
+        <h1>Учебно-методическая работа</h1>
+    </div>
+ 
+    <div class="accordion">
+        <div class="accordion-item">
+            <button class="accordion-button" onclick="toggleAccordion('desc1')">
+                Методический кабинет
+            </button>
+            <div id="desc1" class="accordion-content">
+                <p>Описание: Здесь вы можете скачать отчет о методическом кабинете за 2023 год.</p>
+                <a href="/static/reports/2023_Q1.pdf" download="2023_Q1.pdf" class="download-button">Скачать PDF</a>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <button class="accordion-button" onclick="toggleAccordion('desc2')">
+                Аттестация педагогов
+            </button>
+            <div id="desc2" class="accordion-content">
+                <p>Описание: Отчет об аттестации педагогов за 2022 год.</p>
+                <a href="/static/reports/2022_Q4.pdf" download="2022_Q4.pdf" class="download-button">Скачать PDF</a>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <button class="accordion-button" onclick="toggleAccordion('desc3')">
+                Повышение квалификации педагогов
+            </button>
+            <div id="desc3" class="accordion-content">
+                <p>Описание: Отчет о повышении квалификации педагогов за 2022 год.</p>
+                <a href="/static/reports/2022_Q3.pdf" download="2022_Q3.pdf" class="download-button">Скачать PDF</a>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <button class="accordion-button" onclick="toggleAccordion('desc4')">
+                Рабочие учебные программы
+            </button>
+            <div id="desc4" class="accordion-content">
+                <p>Описание: Рабочие учебные программы за 2021 год.</p>
+                <a href="/static/reports/2021_Q4.pdf" download="2021_Q4.pdf" class="download-button">Скачать PDF</a>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <button class="accordion-button" onclick="toggleAccordion('desc5')">
+                Предметно-цикловые комиссии
+            </button>
+            <div id="desc5" class="accordion-content">
+                <p>Описание: Отчет о предметно-цикловых комиссиях за 2021 год.</p>
+                <a href="/static/reports/2021_Q3.pdf" download="2021_Q3.pdf" class="download-button">Скачать PDF</a>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <button class="accordion-button" onclick="toggleAccordion('desc6')">
+                Внедрение инноваций
+            </button>
+            <div id="desc6" class="accordion-content">
+                <p>Описание: Отчет о внедрении инноваций за 2020 год.</p>
+                <a href="/static/reports/2020_Q4.pdf" download="2020_Q4.pdf" class="download-button">Скачать PDF</a>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <button class="accordion-button" onclick="toggleAccordion('desc7')">
+                Итоговый отчет
+            </button>
+            <div id="desc7" class="accordion-content">
+                <p>Описание: Итоговый отчет за 2020 год.</p>
+                <a href="/static/reports/2020_Q3.pdf" download="2020_Q3.pdf" class="download-button">Скачать PDF</a>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/static/languageSwitcher.js"></script>
+<script src="/static/translations.js"></script>
+<script src="/static/particles_config.js"></script>
+</html>
