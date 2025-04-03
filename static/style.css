@@ -1,5 +1,9 @@
-   /* ========== ОБЩИЕ СТИЛИ ========== */
-            
+html{
+    scroll-behavior: smooth;
+}
+
+/* ========== ОБЩИЕ СТИЛИ ========== */
+          
    body {
     font-family: Arial, sans-serif;
            margin: 0;
@@ -22,66 +26,7 @@
        }
        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
 
-       /* ======= ОБЩИЙ СТИЛЬ ДЛЯ ХЕДЕРА ======= */
-       /* header {
-           background: transparent;
-           padding: 20px 0;
-           position: fixed;
-           width: 100%;
-           top: 0;
-           left: 0;
-           z-index: 1000;
-           display: flex;
-           justify-content: center;
-       } */
        
-       /* nav {
-           display: flex;
-           justify-content: space-between;
-           align-items: center;
-           width: 95%;
-           max-width: 1600px;
-           padding: 20px 40px;
-           border: 3px solid rgba(255, 255, 255, 0.8);
-           border-radius: 15px;
-           backdrop-filter: blur(10px);
-           transition: border 0.3s, backdrop-filter 0.3s, padding 0.3s;
-           overflow: hidden;
-       }
-        */
-       /* ======= ЛОГОТИП =======
-       .logo img {
-           height: 70px;
-           max-width: 100%;
-       }
-       
-       /* ======= НАВИГАЦИОННОЕ МЕНЮ ======= */
-        /* nav ul {
-           list-style: none;
-           display: flex;
-           flex-wrap: nowrap;
-           gap: 20px;
-           margin: 0;
-           padding: 0;
-       }
-       
-       nav ul li {
-           text-align: center;
-           white-space: nowrap;
-       }
-       
-       nav ul li a {
-           text-decoration: none;
-           color: white;
-           font-size: 16px;
-           font-weight: 600;
-           font-family: 'Montserrat', sans-serif;
-           padding: 10px 15px;
-           border-radius: 6px;
-           transition: background 0.3s, transform 0.3s;
-           display: block;
-       } */
-        */
        /* ======= ПОДСВЕТКА ПРИ НАВЕДЕНИИ ======= */
        nav ul li a:hover {
            background: rgba(255, 255, 255, 0.445);
@@ -103,23 +48,7 @@
            transition: background 0.3s;
        }
        
-       /* ======= МОБИЛЬНАЯ ВЕРСИЯ ======= */
-       /* @media (max-width: 1024px) {
-           nav {
-               flex-direction: column;
-               align-items: flex-start;
-               padding: 15px;
-           }
-           nav ul {
-               flex-direction: column;
-               align-items: center;
-               width: 100%;
-           }
-           nav ul li {
-               max-width: 100%;
-           }
-       } */ */
-        */
+       
        /* ======= МОДАЛЬНОЕ ОКНО ======= */
        .modal {
            display: none;
@@ -581,9 +510,11 @@
                        font-size: 15px;
                    }
                    .news img {
-                       max-height: 200px;
-                   }
-               }
+                     max-height: 200px;
+                  }
+           }
+
+
        /* tour collage video */
        
        .college-tour {
@@ -680,22 +611,18 @@
        .video-content video {
            max-width: 100%;
        }
+
        /* partners */
        
        .partners {
            text-align: center;
            padding: 60px 10%;
-          
            color: white;
            overflow: hidden;
            border-radius: 10px;
-           /* Закругленные углы */
            margin: 0 auto;
-           /* Центрируем контейнер */
            width: 80%;
-           /* Устанавливаем ширину контейнера */
            max-width: 1200px;
-           /* Максимальная ширина контейнера */
        }
        
        .partners-content h2 {
@@ -718,7 +645,7 @@
     
     .partners-slider {
         display: flex;
-        flex-direction: column; /* Два трека друг под другом */
+        flex-direction: column; 
         overflow: hidden;
         white-space: nowrap;
         position: relative;
@@ -734,12 +661,8 @@
     }
     
     .partners-track.top {
-        margin-bottom: 20px; /* Отступ между верхним и нижним треком */
+        margin-bottom: 20px; 
     }
-    
-    /* .partners-track.bottom { */
-        /* Ничего дополнительно не нужно, если только не хотите изменить стиль */
-    
     
     .partners-track .partner-card {
         flex: 0 0 auto;
@@ -771,6 +694,7 @@
                transform: translateX(-100%);
            }
        }
+
        /* maaaap */
        
        .map-section {
@@ -798,10 +722,8 @@
            border-radius: 15px;
            overflow: hidden;
            box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.8);
-           /* Свечение голубым цветом */
            transition: box-shadow 0.3s ease-in-out;
        }
-       /* Эффект свечения при наведении */
        
        .map-container:hover {
            box-shadow: 0 0 25px 10px rgb(222, 226, 227);
@@ -812,13 +734,13 @@
            height: 450px;
            border: none;
        }
+
        /* Основной стиль футера */
        
        footer {
            background: black;
            color: white;
            padding: 80px 0 50px;
-           /* Увеличил верхний отступ */
            text-align: center;
            position: relative;
        }
@@ -827,7 +749,7 @@
        footer::before {
            content: "";
            position: absolute;
-           top: -10px;
+           top: 20px;
            /* Регулируй высоту свечения */
            left: 0;
            width: 100%;

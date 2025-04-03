@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Положения колледжа</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #000000; /* Черный фон сайта */
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .glowing-text {
+            text-shadow: 0px 0px 10px rgba(27, 0, 0, 0.8)
+        }
+
+        #particle-background {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .accordion {
+            width: 60%; /* Уменьшена ширина аккордеона */
+            margin: 20px auto;
+            background-color: #000000; /* Белый фон аккордеона */
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .accordion-item {
+            margin-bottom: 10px;
+            background: #1e1e1e; /* Темный фон для аккордеона */
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+        }
+
+        .accordion-header {
+            padding: 15px 20px; /* Отступы внутри заголовка */
+            cursor: pointer;
+            background: #2a2a2a; /* Темный фон заголовка */
+            color: #ffffff; /* Белый текст */
+            font-size: 18px; /* Размер текста */
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+            text-decoration: none;
+        }
+
+        .accordion-header:hover {
+            background: #3a3a3a; /* Более темный фон при наведении */
+        }
+
+        .accordion-header::after {
+            content: '▼';
+            font-size: 12px;
+            color: #ffffff; /* Белый цвет стрелки */
+            transition: transform 0.3s;
+        }
+
+        .accordion-header.active::after {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 15px;
+            background: #3a3a3a; /* Белый фон содержимого */
+            color: #ffffff; /* Черный текст */
+            text-align: left;
+            border-radius: 0 0 5px 5px;
+            line-height: 1.5;
+        }
+
+        .accordion-content a {
+            display: block;
+            color: #596afff5; /* Синий цвет ссылок */
+            text-decoration: none;
+            margin: 5px 0;
+        }
+
+        .accordion-content a:hover {
+            text-decoration: underline;
+        }
+
+        .accordion-content p {
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .accordion-content p strong {
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .download-button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #2a2a2a;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .download-button:hover {
+            background-color: #3a3a3a;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <h1 class="header glowing-text">Положения регламентирующие основные виды деятельности колледжа</h1>
+    <div id="particle-background"></div>
+    <div class="accordion">
+        <div class="accordion-item">
+            <div class="accordion-header">Положение об организации и проведении производственного обучения</div>
+            <div class="accordion-content">
+                <a href="https://drive.google.com/file/d/1Sb1qLOtdTsZx_wYbdlasRAq2kWG-jAqk/view?usp=sharing" target="_blank">Положение об организации и проведении производственного обучения</a>
+                <a href="https://drive.google.com/file/d/1HyJ2B0J875fX6zgaSesST84DmqEex4es/view?usp=sharing" target="_blank">Өндірістік оқытуды ұйымдастыру және өткізу туралы Ереже</a>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <div class="accordion-header">Положение о попечительском совете</div>
+            <div class="accordion-content">
+                <a href="https://drive.google.com/file/d/1RNQRREvNq0ojwqjYWeX-AFbEQW1T9aP8/view?usp=sharing" target="_blank">Положение о попечительском совете</a>
+                <a href="https://drive.google.com/file/d/1MZY97wD31y6DlNn6WVxwtsO4ZFW1O3-_/view?usp=sharing" target="_blank">Өндірістік оқытуды ұйымдастыру және өткізу туралы Ереже</a>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <div class="accordion-header">Положение об учебном кабинете и лаборатории</div>
+            <div class="accordion-content">
+                <a href="https://drive.google.com/file/d/1eVw06SG3kiEfrl5o99dBqRBl1tbBXz53/view?usp=sharing" target="_blank">Положение об учебном кабинете и лаборатории</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        const headers = document.querySelectorAll('.accordion-header');
+
+        headers.forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                const isActive = header.classList.contains('active');
+
+                // Закрыть все открытые элементы
+                document.querySelectorAll('.accordion-header').forEach(h => h.classList.remove('active'));
+                document.querySelectorAll('.accordion-content').forEach(c => c.style.display = 'none');
+
+                // Открыть текущий элемент, если он не был активным
+                if (!isActive) {
+                    header.classList.add('active');
+                    content.style.display = 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

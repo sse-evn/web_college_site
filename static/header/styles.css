@@ -14,19 +14,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap');
 
-/* * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-} */
 
-/* body {
-    font-family: var(--font-main);
-    background: var(--black);
-    color: var(--light);
-    line-height: 1.6;
-    overflow-x: hidden;
-} */
 
 /* Info Bar - общий для всех версий */
 .info-bar {
@@ -212,12 +200,48 @@ header {
     padding-left: 25px;
     color: var(--neon);
 }
+/* Стили для вложенного sub-dropdown */
+.desktop-menu .sub-dropdown-menu {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    background: var(--coal);
+    width: 220px;
+    border-radius: 5px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(10px);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    z-index: 100;
+    border: 1px solid var(--metal);
+    pointer-events: none;
+}
 
-/* Переключатель языка - общий стиль */
-/* .language-switcher {
-    position: relative;
-    margin-left: 10px;
-} */
+.desktop-menu .dropdown-item:hover .sub-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+    pointer-events: auto;
+}
+
+.desktop-menu .sub-dropdown-link {
+    display: block;
+    padding: 12px 20px;
+    color: var(--light);
+    text-decoration: none;
+    transition: var(--transition);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.desktop-menu .sub-dropdown-link:hover {
+    background: rgba(0, 240, 255, 0.15);
+    padding-left: 25px;
+    color: var(--neon);
+    box-shadow: inset 2px 0 0 var(--neon);
+}
 
 .language-btn {
     background: transparent;
