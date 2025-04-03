@@ -2,7 +2,7 @@
   "name": "backend_site",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,6 +11,10 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "@adminjs/express": "^6.1.1",
+    "@adminjs/mongoose": "^4.1.0",
+    "@adminjs/sequelize": "^4.1.1",
+    "adminjs": "^6.8.7",
     "axios": "^1.8.4",
     "bcrypt": "^5.1.1",
     "connect-sqlite3": "^0.9.15",
@@ -20,9 +24,13 @@
     "express-rate-limit": "^7.5.0",
     "express-session": "^1.18.1",
     "helmet": "^8.1.0",
+    "mongoose": "^8.13.1",
     "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.2",
+    "mysql2": "^3.14.0",
+    "sequelize": "^6.37.7",
     "sqlite3": "^5.1.7",
+    "tslib": "^2.8.1",
     "xml2js": "^0.6.2"
   }
 }
