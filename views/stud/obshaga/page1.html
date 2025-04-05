@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Студенттер үйі</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/particles_style.css">
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <!-- Подключаем CSS для Splide -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Splide/3.5.0/splide.min.css">
+
+<!-- Подключаем JavaScript для Splide -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Splide/3.5.0/splide.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000000;
+            color: #fff;
+            text-align: center;
+        }
+
+        h1 {
+            color: darkred;
+            font-size: 32px;
+            font-weight: 700;
+            margin-top: 20px;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .card {
+            background: #444;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+            width: 300px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .role {
+            font-size: 16px;
+            color: #ddd;
+        }
+
+        .document-list {
+            display: block;
+            background:#444;
+            color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 100%; 
+            max-width: 1000px; 
+            margin: 20px auto;
+            text-align: left;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+        }
+
+        .document-list ul {
+            padding: 0;
+        }
+
+        .document-list li {
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .card {
+                width: 80%; 
+                margin-bottom: 20px;
+            }
+
+            .document-list {
+                width: 90%; 
+                margin: 10px auto;
+            }
+        }
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: rgb(255, 0, 0);
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .arrow-left {
+            left: 39%;
+            transform: translateX(-150%) translateY(-50%);
+        }
+
+        .arrow-right {
+            right: 39%;
+            transform: translateX(150%) translateY(-50%);
+        }
+        .center-image {
+            position: relative;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .center-image h2 {
+            margin: 15px;
+        }
+
+        .center-image img {
+            display: block;
+            margin: 0 auto;
+            width: 100%;
+            max-width: 600px;
+            border-radius: 12px;
+        }
+     
+</style>
+
+        
+        
+    </style>
+</head>
+<body>
+    <div id="particle-background"></div>
+    <h1>СТУДЕНТТЕР ҮЙІ</h1>
+    <h2>Құрылымдық бірліктер</h2>
+
+    <div class="container">
+        <div class="card">
+            <img src="https://i.ibb.co.com/YPqxBYb/7P6A0692.jpg" alt="Аманова Нұргүл">
+            <div class="card-title">Аманова Нұргүл Уристемалиқызы</div>
+            <div class="role">Студенттер үйінің меңгерушісі</div>
+        </div>
+        <div class="card">
+            <img src="https://i.ibb.co/zhSKwJs/Whats-App-Image-2022-10-21-at-09-39-34.jpg" alt="Ермекхан Жансая">
+            <div class="card-title">Ермекхан Жансая Маратқызы</div>
+            <div class="role">Тәрбиеші</div>
+        </div>
+        <div class="card">
+            <img src="https://i.ibb.co.com/r7Vn8RB/38.png" alt="Сарсенов Алтынбек">
+            <div class="card-title">Сарсенов Алтынбек Жарылқапұлы</div>
+            <div class="role">Тәрбиеші</div>
+        </div>
+    </div>
+    <h2>Құжаттар тізімі</h2>
+    <div class="document-list" id="documentList">
+        <h3>ЖАТАҚХАНАҒА ОРНАЛАСУ ҮШІН ҚҰЖАТТАР ТІЗІМІ:</h3>
+        <ul>
+            <li>1. Жатақханадан орын алуға өтініш (құжаттарды тапсыру кезінде толтырылады);</li>
+            <li>2. Отбасы құрамы туралы анықтама (eGov арқылы);</li>
+            <li>3. Отбасында 4 және одан да көп баланың болуы туралы анықтама (көп балалы отбасы балалары үшін);</li>
+            <li>4. Мүгедектігін растау туралы анықтама, мемлекеттік атаулы әлеуметтік көмек алу құқығын растау туралы анықтама және жан басына шаққандағы орташа табысы ең төменгі күнкөріс деңгейінен төмен отбасылардан шыққан балалар үшін атаулы әлеуметтік көмектің жоқтығы туралы анықтама;</li>
+            <li>5. Студенттің жеке басын куәландыратын құжаттың көшірмесі 2 дана;</li>
+            <li>6. Студент ата-анасының жеке басын куәландыратын құжаттың көшірмесі 2 дана;</li>
+            <li>7. Фотосурет 3*4 – 4 дана.</li>
+            <li>8. Алматы қаласында жылжымайтын мүліктің болмауы (болуы) туралы анықтама (eGov арқылы). Мекенжай анықтамасы;</li>
+            <li>9. Кәмелетке толмаған студенттерге нотириалды куәландыратын сенімхат және сенім білдірілген тұлғаның жеке басын куәландыратын құжаттың көшірмесі;</li>
+            <li>10. Ата-анасының қайтыс болуы туралы куәлігінің көшірмесі (жетім балалар және ата-анасының қамқорлығынсыз қалған балалар);</li>
+            <li>11. Эпидемияға қарсы орталықтан анықтама.</li>
+            <li>12. 20 беттік көк папка.</li>
+        </ul>
+    </div>
+    <h2>Жатақхананың ішкі тәртіп ережесі</h2>
+    <iframe src="https://drive.google.com/file/d/18zYSLcWcoqtCirBahbIx4LBZ63w91RKO/preview" height="600px" width="1000px"></iframe>
+    <h2>Біздің жатақханадағы өміріміз</h2>
+    <div class="center-image">
+        <img class="parent-image" src="https://i.ibb.co.com/Ct7BkmN/1.jpg" alt="">
+        <span class="arrow arrow-left" onclick="prevImage('parent')">←</span>
+        <span class="arrow arrow-right" onclick="nextImage('parent')">→</span>
+    </div>
+    
+    <script>
+        let parentImages = [
+            "https://i.ibb.co.com/Ct7BkmN/1.jpg",
+            "https://i.ibb.co.com/wNvzfpr/2.jpg",
+            "https://i.ibb.co.com/wQGNzck/3.jpg",
+            "https://i.ibb.co.com/QdYBg19/4.jpg",
+            "https://i.ibb.co.com/Dz44Y3J/5.jpg",
+            "https://i.ibb.co.com/5TY8J7n/6.jpg"
+        ];
+        let parentIndex = 0;
+
+function showImage(section, index) {
+    const imageClass = section === 'student' ? '.student-image' :
+                       section === 'teacher' ? '.teacher-image' :
+                       section === 'parent' ? '.parent-image' : '';
+    let images = section === 'student' ? studentImages :
+                 section === 'teacher' ? teacherImages :
+                 section === 'parent' ? parentImages : [];
+    document.querySelector(imageClass).src = images[index];
+}
+       function nextImage(section) {
+            if (section === 'parent') {
+                parentIndex = (parentIndex + 1) % parentImages.length;
+                showImage('parent', parentIndex);
+            } 
+        }
+
+        function prevImage(section) {
+            if (section === 'parent') {
+                parentIndex = (parentIndex - 1 + parentImages.length) % parentImages.length;
+                showImage('parent', parentIndex);
+            } }
+    
+
+    
+    </script>
+
+</body>
+<script src="/static/particles_config.js"></script>
+</html>
