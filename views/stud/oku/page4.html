@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="kk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мамандықтар бойынша контингент</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/particles_style.css">
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .qualification {
+            background: #1e1e1e;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            text-align: left; /* Выровнять текст по левому краю */
+        }
+
+        .qualification:hover {
+            background: #333;
+        }
+
+        .details {
+            display: none;
+            background: #2a2a2a;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="particle-background"></div>
+    <h1>Қоңырау кестесі</h1>
+    <div class="container">
+        <div class="qualification" onclick="toggleDetails(this)">
+            Қоңырау кестесі
+            <div class="details">
+                Қазіргі уақыттағы актуалды қоңырау кестесі
+                <a href="/files/paid_groups_2020_2021_4S06130105.pdf" download class="download-button">PDF жүктеу</a>
+            </div>
+        </div>
+        <div class="qualification" onclick="toggleDetails(this)">
+            Апталық бөлу
+    <div class="details">
+                Апталық бөлу кестесі
+                <a href="/files/paid_groups_2020_2021_4S06130105.pdf" download class="download-button">PDF жүктеу</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        function toggleDetails(element) {
+            const detail = element.querySelector('.details');
+            const isVisible = detail.style.display === 'block';
+            // Скрываем все детали
+            document.querySelectorAll('.details').forEach(d => d.style.display = 'none');
+            // Показываем только если не был открыт
+            detail.style.display = isVisible ? 'none' : 'block';
+        }
+    </script>
+
+    <script src="/static/languageSwitcher.js"></script>
+    <script src="/static/translations.js"></script>
+    <script src="/static/particles_config.js"></script>
+</body>
+
+</html>
