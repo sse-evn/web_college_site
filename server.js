@@ -11,7 +11,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // ========================== Настройки Directus ==========================
-const DIRECTUS_URL = process.env.DIRECTUS_URL || 'http://10.25.0.33:8055';
+const DIRECTUS_URL = process.env.DIRECTUS_URL || 'http://localhost:8055';
 const DIRECTUS_API_KEY = process.env.DIRECTUS_API_KEY || 'NM_dTn_hkRBjZCAXazqaYVdoRBz6qoaL';
 
 // ========================== Логирование ==========================
@@ -20,7 +20,7 @@ app.use(morgan('combined'));
 // ========================== CORS ==========================
 const allowedOrigins = [
     "http://web.aspc.kz",
-    "http://10.40.0.23:9000",
+    "http://localhost:8055",
     "http://localhost:3000",
     "http://web.aspc.kz:3000"
 ];
@@ -42,6 +42,8 @@ app.use(express.static("public"));
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "views", "index.html"));
 });
+//years update
+
 
 // ========================== Прокси для всего Directus (включая админку) ==========================
 app.use('/directus', async (req, res) => {
@@ -64,6 +66,10 @@ app.use('/directus', async (req, res) => {
     }
 });
 
+
+app.get("/api/evn/year", (req, res) => {
+    res.json({ year: new Date().getFullYear() }); // e.g., {"year": 2025}
+});
 // ========================== Прокси изображений ==========================
 app.get("/proxy-image", async (req, res) => {
     try {
