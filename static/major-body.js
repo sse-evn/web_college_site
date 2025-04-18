@@ -1,23 +1,32 @@
 const majorsList = document.querySelector('.majors-list');
 const cards = document.querySelectorAll('.major-card');
+const majorsContainer = document.querySelector('.majors-container');
 
+// Определяем ширину контейнера и карточки
+const containerWidth = majorsContainer.offsetWidth;
+const cardWidth = 300 + 20; // Ширина карточки (300px) + gap (20px)
+const cardsToShow = Math.ceil(containerWidth / cardWidth) + 1; // Сколько карточек нужно для заполнения + запас
 
-// Клонируем карточки для бесконечности
-cards.forEach(card => {
-    const clonedCard = card.cloneNode(true);
-    majorsList.appendChild(clonedCard);
-});
+// Динамическое клонирование карточек для заполнения контейнера
+let clonedCardsCount = 0;
+while (clonedCardsCount < cardsToShow) {
+    cards.forEach(card => {
+        const clonedCard = card.cloneNode(true);
+        majorsList.appendChild(clonedCard);
+    });
+    clonedCardsCount += cards.length;
+}
 
-// Анимация для секции "Мамандықтар"
-const majorCards = document.querySelectorAll(".major-card");
+// Обновляем ширину .majors-list после клонирования
+const majorCards = document.querySelectorAll('.major-card');
+majorsList.style.width = `${cardWidth * majorCards.length}px`;
 
+// Анимация появления карточек
 majorCards.forEach((card, index) => {
     setTimeout(() => {
-        card.style.opacity = "1";
-        card.style.transform = "translateX(0)";
-    }, index * 500);
+        card.classList.add('visible');
+    }, index * 300); // Задержка 300 мс для последовательного появления
 });
-
 
 
 const cardsContainer = document.querySelector(".cards-container");

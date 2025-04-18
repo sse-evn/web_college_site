@@ -67,9 +67,9 @@ app.use('/directus', async (req, res) => {
 });
 
 
-app.get("/api/evn/year", (req, res) => {
-    res.json({ year: new Date().getFullYear() }); // e.g., {"year": 2025}
-});
+// app.get("/api/evn/year", (req, res) => {
+//     res.json({ year: new Date().getFullYear() }); // e.g., {"year": 2025}
+// });
 // ========================== Прокси изображений ==========================
 app.get("/proxy-image", async (req, res) => {
     try {
