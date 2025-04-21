@@ -1,242 +1,190 @@
 <!DOCTYPE html>
-<html lang="kk">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Студенттер үйі</title>
-    <link rel="stylesheet" href="/static/style.css">
-    <link rel="stylesheet" href="/static/particles_style.css">
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <!-- Подключаем CSS для Splide -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Splide/3.5.0/splide.min.css">
-
-<!-- Подключаем JavaScript для Splide -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Splide/3.5.0/splide.min.js"></script>
-
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #000000;
-            color: #fff;
-            text-align: center;
-        }
-
-        h1 {
-            color: darkred;
-            font-size: 32px;
-            font-weight: 700;
-            margin-top: 20px;
-        }
-
-        h2 {
-            font-size: 24px;
-            margin-bottom: 30px;
-        }
-
-        .container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            padding: 20px;
-        }
-
-        .card {
-            background: #444;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
-            width: 300px;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .card img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
-
-        .card-title {
-            font-size: 18px;
-            font-weight: 600;
-            margin-top: 10px;
-        }
-
-        .role {
-            font-size: 16px;
-            color: #ddd;
-        }
-
-        .document-list {
-            display: block;
-            background:#444;
-            color: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            width: 100%; 
-            max-width: 1000px; 
-            margin: 20px auto;
-            text-align: left;
-            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
-        }
-
-        .document-list ul {
-            padding: 0;
-        }
-
-        .document-list li {
-            margin-bottom: 10px;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .card {
-                width: 80%; 
-                margin-bottom: 20px;
-            }
-
-            .document-list {
-                width: 90%; 
-                margin: 10px auto;
-            }
-        }
-        .arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 2rem;
-            color: rgb(255, 0, 0);
-            padding: 10px;
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 10;
-        }
-
-        .arrow-left {
-            left: 39%;
-            transform: translateX(-150%) translateY(-50%);
-        }
-
-        .arrow-right {
-            right: 39%;
-            transform: translateX(150%) translateY(-50%);
-        }
-        .center-image {
-            position: relative;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .center-image h2 {
-            margin: 15px;
-        }
-
-        .center-image img {
-            display: block;
-            margin: 0 auto;
-            width: 100%;
-            max-width: 600px;
-            border-radius: 12px;
-        }
-     
-</style>
-
-        
-        
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Общежитие для студентов</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Orbitron', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(ellipse at top left, #0d1b2a, #1b263b);
+      color: #fff;
+    }
+    header, footer {
+      background: #0a192f;
+      color: #00d9ff;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 2px solid #00d9ff;
+    }
+    header h2 {
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: 1px;
+    }
+    .hero-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: url('/static/images/stud/1.JPG') center/cover;
+      height: 100vh;
+      position: relative;
+      text-align: left;
+      padding: 20px;
+    }
+    .hero-section::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 0;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      color: #00d9ff;
+    }
+    .hero-content h1 {
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+    .hero-content p {
+      font-size: 16px;
+      color: #ffffff;
+    }
+    .hero-image {
+      position: relative;
+      z-index: 1;
+      max-width: 00px;
+      margin-left: 400px;
+    }
+    .hero-image img {
+      width: 100%;
+    }
+    .form-block, .why-us, .dorms, .documents, .contacts {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+      background: rgba(13, 27, 42, 0.7);
+      border-radius: 16px;
+      margin-top: 30px;
+    }
+    .form-block input {
+      padding: 10px;
+      margin: 10px;
+      width: 28%;
+      border: none;
+      border-radius: 6px;
+      font-family: 'Orbitron', sans-serif;
+    }
+    .form-block button {
+      background: #00d9ff;
+      border: none;
+      padding: 10px 20px;
+      font-weight: bold;
+      font-size: 16px;
+      color: #000;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    h3 {
+      color: #00d9ff;
+      text-align: center;
+      font-size: 24px;
+    }
+    .why-us div, .documents li {
+      margin: 12px 0;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    .dorms img {
+      width: 100%;
+      max-width: 300px;
+      margin: 10px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 217, 255, 0.4);
+    }
+    .documents ul {
+      list-style: circle;
+      padding-left: 20px;
+    }
+    .contacts iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      border-radius: 12px;
+      margin-top: 20px;
+    }
+    footer p {
+      margin: 0;
+      font-size: 14px;
+    }
+  </style>
 </head>
 <body>
-    <div id="particle-background"></div>
-    <h1>СТУДЕНТТЕР ҮЙІ</h1>
-    <h2>Құрылымдық бірліктер</h2>
+  <header>
+    <h2>Общежитие для студентов</h2>
+  </header>
 
-    <div class="container">
-        <div class="card">
-            <img src="https://i.ibb.co.com/YPqxBYb/7P6A0692.jpg" alt="Аманова Нұргүл">
-            <div class="card-title">Аманова Нұргүл Уристемалиқызы</div>
-            <div class="role">Студенттер үйінің меңгерушісі</div>
-        </div>
-        <div class="card">
-            <img src="https://i.ibb.co/zhSKwJs/Whats-App-Image-2022-10-21-at-09-39-34.jpg" alt="Ермекхан Жансая">
-            <div class="card-title">Ермекхан Жансая Маратқызы</div>
-            <div class="role">Тәрбиеші</div>
-        </div>
-        <div class="card">
-            <img src="https://i.ibb.co.com/r7Vn8RB/38.png" alt="Сарсенов Алтынбек">
-            <div class="card-title">Сарсенов Алтынбек Жарылқапұлы</div>
-            <div class="role">Тәрбиеші</div>
-        </div>
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1>Общежитие для студентов</h1>
+      <p>Видео об общежитии</p>
     </div>
-    <h2>Құжаттар тізімі</h2>
-    <div class="document-list" id="documentList">
-        <h3>ЖАТАҚХАНАҒА ОРНАЛАСУ ҮШІН ҚҰЖАТТАР ТІЗІМІ:</h3>
-        <ul>
-            <li>1. Жатақханадан орын алуға өтініш (құжаттарды тапсыру кезінде толтырылады);</li>
-            <li>2. Отбасы құрамы туралы анықтама (eGov арқылы);</li>
-            <li>3. Отбасында 4 және одан да көп баланың болуы туралы анықтама (көп балалы отбасы балалары үшін);</li>
-            <li>4. Мүгедектігін растау туралы анықтама, мемлекеттік атаулы әлеуметтік көмек алу құқығын растау туралы анықтама және жан басына шаққандағы орташа табысы ең төменгі күнкөріс деңгейінен төмен отбасылардан шыққан балалар үшін атаулы әлеуметтік көмектің жоқтығы туралы анықтама;</li>
-            <li>5. Студенттің жеке басын куәландыратын құжаттың көшірмесі 2 дана;</li>
-            <li>6. Студент ата-анасының жеке басын куәландыратын құжаттың көшірмесі 2 дана;</li>
-            <li>7. Фотосурет 3*4 – 4 дана.</li>
-            <li>8. Алматы қаласында жылжымайтын мүліктің болмауы (болуы) туралы анықтама (eGov арқылы). Мекенжай анықтамасы;</li>
-            <li>9. Кәмелетке толмаған студенттерге нотириалды куәландыратын сенімхат және сенім білдірілген тұлғаның жеке басын куәландыратын құжаттың көшірмесі;</li>
-            <li>10. Ата-анасының қайтыс болуы туралы куәлігінің көшірмесі (жетім балалар және ата-анасының қамқорлығынсыз қалған балалар);</li>
-            <li>11. Эпидемияға қарсы орталықтан анықтама.</li>
-            <li>12. 20 беттік көк папка.</li>
-        </ul>
+    <div class="hero-image">
+      <img src="/static/images/stud/фыв-Photoroom.png" alt="Студент PNG">
     </div>
-    <h2>Жатақхананың ішкі тәртіп ережесі</h2>
-    <iframe src="https://drive.google.com/file/d/18zYSLcWcoqtCirBahbIx4LBZ63w91RKO/preview" height="600px" width="1000px"></iframe>
-    <h2>Біздің жатақханадағы өміріміз</h2>
-    <div class="center-image">
-        <img class="parent-image" src="https://i.ibb.co.com/Ct7BkmN/1.jpg" alt="">
-        <span class="arrow arrow-left" onclick="prevImage('parent')">←</span>
-        <span class="arrow arrow-right" onclick="nextImage('parent')">→</span>
-    </div>
-    
-    <script>
-        let parentImages = [
-            "https://i.ibb.co.com/Ct7BkmN/1.jpg",
-            "https://i.ibb.co.com/wNvzfpr/2.jpg",
-            "https://i.ibb.co.com/wQGNzck/3.jpg",
-            "https://i.ibb.co.com/QdYBg19/4.jpg",
-            "https://i.ibb.co.com/Dz44Y3J/5.jpg",
-            "https://i.ibb.co.com/5TY8J7n/6.jpg"
-        ];
-        let parentIndex = 0;
+  </section>
 
-function showImage(section, index) {
-    const imageClass = section === 'student' ? '.student-image' :
-                       section === 'teacher' ? '.teacher-image' :
-                       section === 'parent' ? '.parent-image' : '';
-    let images = section === 'student' ? studentImages :
-                 section === 'teacher' ? teacherImages :
-                 section === 'parent' ? parentImages : [];
-    document.querySelector(imageClass).src = images[index];
-}
-       function nextImage(section) {
-            if (section === 'parent') {
-                parentIndex = (parentIndex + 1) % parentImages.length;
-                showImage('parent', parentIndex);
-            } 
-        }
+  <section class="form-block">
+    <h3>Заполните заявку</h3>
+    <input type="text" placeholder="Ваше имя">
+    <input type="text" placeholder="Ваш телефон">
+    <input type="email" placeholder="Ваш email">
+    <button>Отправить</button>
+  </section>
 
-        function prevImage(section) {
-            if (section === 'parent') {
-                parentIndex = (parentIndex - 1 + parentImages.length) % parentImages.length;
-                showImage('parent', parentIndex);
-            } }
-    
+  <section class="why-us">
+    <h3>Почему мы?</h3>
+    <div>В общежитии проживают только студенты</div>
+    <div>Комфортное размещение</div>
+    <div>Удобное расположение</div>
+    <div>Охраняемая территория 24/7</div>
+    <div>Спортзал, столовая, прачечная</div>
+  </section>
 
-    
-    </script>
+  <section class="dorms">
+    <h3>Наши общежития</h3>
+    <img src="/images/room1.jpg" alt="Комната">
+    <img src="/images/room2.jpg" alt="Тренажёры">
+  </section>
 
+  <section class="documents">
+    <h3>Что нужно для заселения?</h3>
+    <ul>
+      <li>Паспорт гражданина РФ / иностранного гражданина</li>
+      <li>Студенческий билет или справка из учебного заведения</li>
+      <li>Медицинская справка (форма 086/у)</li>
+      <li>Фотографии 3x4 – 2 шт.</li>
+      <li>Копия полиса ОМС</li>
+      <li>Квитанция об оплате</li>
+    </ul>
+  </section>
+
+  <section class="contacts">
+    <h3>Контакты</h3>
+    <p>г. Москва, Ленинградский проспект, д. 80, к. 4</p>
+    <p>+7 (495) 200-75-85 | info@studenthostel.ru</p>
+    <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Aexample&amp;source=constructor"></iframe>
+  </section>
+
+  <footer>
+    <p>Центр размещения студентов © 2025</p>
+  </footer>
 </body>
-<script src="/static/particles_config.js"></script>
 </html>

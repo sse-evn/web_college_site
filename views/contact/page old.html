@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Колледж контакты</title>
+  <link rel="stylesheet" href="/static/style.css"/>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #000; /* чёрный фон */
+      color: #000; /* основной текст чёрный */
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      top: 0;
+      left: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .header {
+      font-size: 32px;
+      font-weight: bold;
+      margin: 40px 0 20px;
+      color: #8b0000; /* тёмно-красный */
+      text-align: center;
+    }
+
+    .info-section {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 20px;
+    }
+
+    .info-box {
+      width: 30%;
+      min-width: 250px;
+      margin-bottom: 20px;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(255, 255, 255, 0.1);
+    }
+
+    .contacts {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .contact-box {
+      width: 45%;
+      min-width: 280px;
+      text-align: left;
+      margin-bottom: 20px;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(255, 255, 255, 0.1);
+    }
+
+    h2 {
+      margin-top: 40px;
+      color: #8b0000; /* тёмно-красный */
+      text-align: center;
+    }
+
+    h3 {
+      color: #8b0000;
+    }
+
+    p {
+      color: #000; /* основной текст чёрный */
+    }
+
+    @media (max-width: 768px) {
+      .info-box,
+      .contact-box {
+        width: 100%;
+      }
+
+      .header {
+        font-size: 26px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Анимированный фон -->
+  <div id="particles-js"></div>
+
+  <div class="container">
+    <div class="header">ALMATY POLYTECHNIC COLLEGE</div>
+
+    <div class="info-section">
+      <div class="info-box">
+        <h3>Қабылдау уақыты</h3>
+        <p>Дүйсенбі - Жұма: 08:00-17:30</p>
+      </div>
+      <div class="info-box">
+        <h3>Мекен-жай</h3>
+        <p>Қазақстан, Алматы қаласы, Тастақ 1 ықшам ауданы, 1 үй</p>
+      </div>
+      <div class="info-box">
+        <h3>Байланыс нөміріміз</h3>
+        <p>Баспасөз қызметі/WhatsApp: +77029582637</p>
+        <p>Телефон: 396-71-39</p>
+      </div>
+    </div>
+
+    <div class="info-section">
+      <div class="info-box">
+        <h3>Біздің деректемелеріміз</h3>
+        <p>БИН: 990 340 002 803</p>
+        <p>ИИК: KZ76722S000001046462 в АО "KASPI BANK"</p>
+        <p>БИК: CASPKZKA</p>
+        <p>Банк: АО Каспий банк</p>
+        <p>Кбе 16</p>
+        <p>Email: almatypolytech@edu.kz</p>
+      </div>
+    </div>
+
+    <h2>Байланыс нөміріміз</h2>
+    <div class="contacts">
+      <div class="contact-box">
+        <h3>Мәлікова Маржан Сабырқызы</h3>
+        <p>Директордың оқу ісі жөніндегі орынбасары</p>
+        <p>Телефон: 396-71-40</p>
+      </div>
+      <div class="contact-box">
+        <h3>Калышева Айдана Магауяновна</h3>
+        <p>Директордың оқу-өндірістік жұмыс жөніндегі орынбасары</p>
+        <p>Телефон: 396-71-46</p>
+      </div>
+      <div class="contact-box">
+        <h3>Абылханова Назым Жумаханова</h3>
+        <p>Директордың оқу-әдістемелік жұмыс жөніндегі орынбасары</p>
+        <p>Телефон: 396-71-39</p>
+      </div>
+      <div class="contact-box">
+        <h3>Кадр бөлімі</h3>
+        <p>Телефон: 396-71-35</p>
+      </div>
+      <div class="contact-box">
+        <h3>Колледж директорның қабылдау бөлімі</h3>
+        <p>Телефон: 396-71-39</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Подключаем библиотеку particles.js -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+  <!-- Конфигурация для черно-белого фона -->
+  <script>
+    particlesJS("particles-js", {
+      "particles": {
+        "number": {
+          "value": 80,
+          "density": {
+            "enable": true,
+            "value_area": 800
+          }
+        },
+        "color": {
+          "value": "#ffffff" // белые частицы
+        },
+        "shape": {
+          "type": "circle"
+        },
+        "opacity": {
+          "value": 0.5
+        },
+        "size": {
+          "value": 3,
+          "random": true
+        },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#ffffff", // белые линии
+          "opacity": 0.4,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 3,
+          "direction": "none",
+          "random": false,
+          "straight": false,
+          "out_mode": "out"
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": {
+            "enable": true,
+            "mode": "grab"
+          },
+          "onclick": {
+            "enable": true,
+            "mode": "push"
+          }
+        },
+        "modes": {
+          "grab": {
+            "distance": 140,
+            "line_linked": {
+              "opacity": 1
+            }
+          },
+          "push": {
+            "particles_nb": 4
+          }
+        }
+      },
+      "retina_detect": true
+    });
+  </script>
+</body>
+</html>

@@ -11,6 +11,7 @@
   "description": "",
   "dependencies": {
     "directus": "^11.6.1",
+    "isolated-vm": "^5.0.4",
     "sqlite3": "^5.1.7"
   }
 }

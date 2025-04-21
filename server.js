@@ -19,7 +19,7 @@ app.use(morgan('combined'));
 
 // ========================== CORS ==========================
 const allowedOrigins = [
-    "http://web.aspc.kz",
+    "https://almatypolytech.edu.kz",
     "http://localhost:8055",
     "http://localhost:3000",
     "http://web.aspc.kz:3000"
