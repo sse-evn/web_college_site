@@ -92,7 +92,7 @@
                         <div class="dropdown-item">
                             <a href="#" class="dropdown-link" data-translate="documents">Документы</a>
                             <div class="sub-dropdown-menu">
-                                <a href="director.html" class="sub-dropdown-link" data-translate="licenses">Лицензии</a>
+                                <a href="/" class="sub-dropdown-link" data-translate="licenses">Лицензии</a>
                                 <a href="/views/college/doc/page1.html" class="sub-dropdown-link" data-translate="report">Отчет о доходах и расходах</a>
                                 <a href="director.html" class="sub-dropdown-link" data-translate="charter">Устав колледжа</a>
                                 <a href="staff.html" class="sub-dropdown-link" data-translate="accreditation">Международная аккредитация</a>
@@ -130,8 +130,8 @@
                         <div class="dropdown-item">
                             <a href="#" class="dropdown-link" data-translate="results">Итоги</a>
                             <div class="sub-dropdown-menu">
-                                <a href="/views/college/uprav/page1.html" class="sub-dropdown-link" data-translate="first">первое</a>
-                                <a href="/views/college/uprav/page2.html" class="sub-dropdown-link" data-translate="second">второе</a>
+                                <a href="" class="sub-dropdown-link" data-translate="first">первое</a>
+                                <a href="" class="sub-dropdown-link" data-translate="second">второе</a>
                             </div>
                         </div>
                         <div class="dropdown-item">
@@ -218,8 +218,8 @@
                     </a>
                     <div class="dropdown-menu">
                         <div class="dropdown-item">
-                            <a href="#" class="dropdown-link" data-translate="state_symbols">Государственные символы</a>
-                            <a href="#" class="dropdown-link" data-translate="citizen_reception_schedule">График приема граждан</a>
+                            <a href="/views/memleket/page1.html" class="dropdown-link" data-translate="state_symbols">Государственные символы</a>
+                            <a href="/views/memleket/page3.html" class="dropdown-link" data-translate="citizen_reception_schedule">График приема граждан</a>
                             <a href="#" class="dropdown-link" data-translate="constitution">Конституция</a>
                             <a href="#" class="dropdown-link" data-translate="open_almaty">Open Almaty</a>
                         </div>
@@ -767,47 +767,72 @@ document.addEventListener('DOMContentLoaded', async () => {
             <img src="/static/images/down-0.svg" alt="upImg">
 
         </div>
-        <footer>
+        <footer class="footer">
             <div class="footer-container">
-                <div class="footer-left">
-                    <h3 data-translate="about_site">Сайт туралы</h3>
-                    <p id="copyright-year"></p>
-                    <script>
-                      const currentYear = new Date().getFullYear();
-                      document.getElementById("copyright-year").textContent = `©1940–${currentYear}`;
-                    </script>
-                    
-
-
-                    
-                    <p data-translate="college_name">Алматы қаласы Білім басқармасының «ALMATY POLYTECHNIC COLLEGE» КМҚК</p>
-                    <div class="line"></div>
-                    <h3 data-translate="social_networks">Әлеуметтік желілер</h3>
-                    <div class="social-icons">
-                        <a href="https://www.instagram.com/polytechalmaty/#" target="_blank">
-                            <img src="/static/images/flot/instagram.png" alt="Instagram">
-                        </a>
-                        <a href="https://www.facebook.com/people/%D0%9F%D0%BE%D0%BB%D0%B8%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9-%D0%BA%D0%BE%D0%BB%D0%BB%D0%B5%D0%B4%D0%B6-%D0%90%D0%BB%D0%BC%D0%B0%D1%82%D1%8B/100070603250345/#" target="_blank">
-                            <img src="/static/images/flot/facebook.png" alt="Facebook">
-                        </a>
-                        <a href="https://www.youtube.com/@almatypolytechedukz" target="_blank">
-                            <img src="/static/images/flot/youtube.png" alt="YouTube">
-                        </a>
-                        <a href="https://www.tiktok.com/@polytech_college?_t=8ji5qQRP3v3&_r=1" target="_blank">
-                            <img src="/static/images/flot/tiktok.png" alt="TikTok">
-                        </a>
-                    </div>
+              <!-- О сайте -->
+              <div class="footer-section">
+                <h3 data-translate="about_site">Сайт туралы</h3>
+                <p id="copyright-year"></p>
+                <script>
+                  const currentYear = new Date().getFullYear();
+                  document.getElementById("copyright-year").textContent = `©1940–${currentYear}`;
+                </script>
+                <p data-translate="college_name">
+                  Алматы қаласы Білім басқармасының «ALMATY POLYTECHNIC COLLEGE» КМҚК
+                </p>
+          
+                <h3 data-translate="social_networks">Әлеуметтік желілер</h3>
+                <div class="social-icons">
+                  <a href="https://www.instagram.com/polytechalmaty/#" target="_blank" aria-label="Instagram">
+                    <img src="/static/images/flot/instagram.png" alt="Instagram" />
+                  </a>
+                  <a href="https://www.facebook.com/people/..." target="_blank" aria-label="Facebook">
+                    <img src="/static/images/flot/facebook.png" alt="Facebook" />
+                  </a>
+                  <a href="https://www.youtube.com/@almatypolytechedukz" target="_blank" aria-label="YouTube">
+                    <img src="/static/images/flot/youtube.png" alt="YouTube" />
+                  </a>
+                  <a href="https://www.tiktok.com/@polytech_college?_t=8ji5qQRP3v3&_r=1" target="_blank" aria-label="TikTok">
+                    <img src="/static/images/flot/tiktok.png" alt="TikTok" />
+                  </a>
                 </div>
+              </div>
+          
+              <!-- Контакты -->
+              <div class="footer-section">
+                <h3 data-translate="contact_label">Байланыс</h3>
+                <p>
+                  <span class="icon">📍</span>
+                  <strong data-translate="address_label">Мекенжай:</strong><br />
+                  <span data-translate="address">Қазақстан, Алматы қ., Тастақ-1 шағын ауданы, 1B</span>
+                </p>
+                <p>
+                  <span class="icon">📞</span>
+                  <strong data-translate="contact_label">Байланыс:</strong><br />
+                  <span data-translate="phone">Тел.: 396 71 39</span><br />
+                  <span data-translate="admission_phone">Қабылдау комиссиясы: 8 707 171 0800</span>
+                </p>
+                <p>
+                  <span class="icon">✉️</span>
+                  <strong data-translate="email_label">Пошта:</strong><br />
+                  <a href="mailto:polytech@aspc.kz">polytech@aspc.kz</a>
+                </p>
+              </div>
+          
+              <!-- Разработчики -->
+              <div class="footer-section">
+                <h3 data-translate="developers">Разработчики сайта</h3>
+                <p>
+                  <span class="icon">👨‍💻</span>
+                  <strong data-translate="developer_name">Жобаны жасаған:</strong><br />
+                  <span data-translate="developer_info">Колледж студенттері мен оқытушылары</span>
+                </p>
                 
-                <div class="footer-right">
-                    <h3 data-translate="contacts">Байланыс</h3>
-                    <p><span class="icon">📍</span> <strong data-translate="address_label">Мекенжай:</strong><br> <span data-translate="address">Қазақстан, Алматы қ., Тастақ-1 шағын ауданы, 1B</span></p>
-                    <p><span class="icon">📞</span> <strong data-translate="contact_label">Байланыс:</strong><br> <span data-translate="phone">Тел.: 396 71 39</span><br> <span data-translate="admission_phone">Қабылдау комиссиясы: 8 707 171 0800</span></p>
-                    <p><span class="icon">✉️</span> <strong data-translate="email_label">Пошта:</strong><br> <a href="mailto:polytech@aspc.kz">polytech@aspc.kz</a></p>
-                </div>
+                <a href="https://www.instagram.com/jasi.you/" class="dev-button" data-translate="contact_developer">Связаться с разработчиком</a>
+              </div>
             </div>
-        </footer>
-
+          </footer>
+          
         <!-- Подключение скриптов -->
         <script src="/static/translations.js"></script>
         <script src="/static/languageSwitcher.js"></script>

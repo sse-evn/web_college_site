@@ -121,7 +121,23 @@ const translations = {
         "contact_label": "Контакты:",
         "phone": "Тел.: 396 71 39",
         "admission_phone": "Приёмная комиссия: 8 707 171 0800",
-        "email_label": "Почта:"
+        "email_label": "Почта:",
+        "about_site": "О сайте",
+        "college_name": "ГККП «ALMATY POLYTECHNIC COLLEGE» Управления образования города Алматы",
+        "social_networks": "Социальные сети",
+        "contact_label": "Контакты",
+        "address_label": "Адрес:",
+        "address": "Казахстан, г. Алматы, мкр. Тастак-1, д. 1B",
+        "phone": "Тел.: 396 71 39",
+        "admission_phone": "Приёмная комиссия: 8 707 171 0800",
+        "email_label": "Эл. почта:",
+        "developers": "Разработчики сайта",
+        "developer_name": "Проект создали:",
+        "developer_info": "Команда poly.dev",   
+        "developer_contact": "Для связи:",
+        "contact_developer": "Связаться с разработчиком",
+          
+          
     },
     "en": {
         "college": "ALMATY POLYTECHNIC COLLEGE",
@@ -245,7 +261,22 @@ const translations = {
         "contact_label": "Contact:",
         "phone": "Tel.: 396 71 39",
         "admission_phone": "Admissions Office: 8 707 171 0800",
-        "email_label": "Email:"
+        "email_label": "Email:",
+        "about_site": "About the Site",
+        "college_name": "State Municipal Public Enterprise 'ALMATY POLYTECHNIC COLLEGE' under the Education Department of Almaty",
+        "social_networks": "Social Networks",
+        "contact_label": "Contact",
+        "address_label": "Address:",
+        "address": "Kazakhstan, Almaty, Tastak-1 microdistrict, 1B",
+        "phone": "Phone: 396 71 39",
+        "admission_phone": "Admission office: +7 707 171 0800",
+        "email_label": "Email:",
+        "developers": "Site Developers",
+        "developer_name": "Project developed by:",
+        "developer_info": "Team poly.dev",
+        "developer_contact": "For inquiries:",
+        "contact_developer": "Contact the developer"
+        
     },
     "kz": {
         "college": "АЛМАТЫ ПОЛИТЕХНИКАЛЫҚ КОЛЛЕДЖІ",
@@ -369,6 +400,19 @@ const translations = {
         "contact_label": "Байланыс:",
         "phone": "Тел.: 396 71 39",
         "admission_phone": "Қабылдау комиссиясы: 8 707 171 0800",
-        "email_label": "Пошта:"
+        "email_label": "Пошта:",
+        "college_name": "Алматы қаласы Білім басқармасының «ALMATY POLYTECHNIC COLLEGE» КМҚК",
+        "social_networks": "Әлеуметтік желілер",
+        "contact_label": "Байланыс",
+        "address_label": "Мекенжай:",
+        "address": "Қазақстан, Алматы қ., Тастақ-1 шағын ауданы, 1B",
+        "phone": "Тел.: 396 71 39",
+        "admission_phone": "Қабылдау комиссиясы: 8 707 171 0800",
+        "email_label": "Пошта:",
+        "developers": "Сайт жасаушылары",
+        "developer_name": "Жобаны жасаған:",
+        "developer_info": "Poly.dev командасы",
+        "developer_contact": "Байланыс үшін:",
+        "contact_developer": "Жасаушымен байланысу"
     }
 };
