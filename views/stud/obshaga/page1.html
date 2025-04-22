@@ -1,242 +1,453 @@
 <!DOCTYPE html>
-<html lang="kk">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Студенттер үйі</title>
-    <link rel="stylesheet" href="/static/style.css">
-    <link rel="stylesheet" href="/static/particles_style.css">
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <!-- Подключаем CSS для Splide -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Splide/3.5.0/splide.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Общежитие для студентов</title>
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+<!-- Google Fonts link for Poppins -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet"> 
 
-<!-- Подключаем JavaScript для Splide -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Splide/3.5.0/splide.min.js"></script>
+<!-- Font Awesome link for icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #000000;
-            color: #fff;
-            text-align: center;
-        }
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(ellipse at top, #000000, #000000, #000000);
+      color: #ffffff;
+      font-family: 'Russo One', sans-serif;
+    }
 
-        h1 {
-            color: darkred;
-            font-size: 32px;
-            font-weight: 700;
-            margin-top: 20px;
-        }
+    .hero-section {
+      background: url('/static/images/stud/12.jpg') center/cover no-repeat;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
 
-        h2 {
-            font-size: 24px;
-            margin-bottom: 30px;
-        }
+    .hero-section::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1;
+    }
 
-        .container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            padding: 20px;
-        }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: #00d9ff;
+    }
 
-        .card {
-            background: #444;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
-            width: 300px;
-            padding: 20px;
-            text-align: center;
-        }
+    .hero-content h2 {
+      font-size: 48px;
+      margin: 0 0 20px;
+    }
 
-        .card img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
+    .hero-content .video-btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #00d9ff;
+      color: #000;
+      font-size: 16px;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 0 15px rgba(0, 217, 255, 0.5);
+      transition: background-color 0.3s ease;
+    }
 
-        .card-title {
-            font-size: 18px;
-            font-weight: 600;
-            margin-top: 10px;
-        }
+    .hero-content .video-btn:hover {
+      background-color: #00aacc;
+    }
 
-        .role {
-            font-size: 16px;
-            color: #ddd;
-        }
+    .about-dorm {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: 40px auto;
+      border: 2px solid #00d9ff;
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(0, 217, 255, 0.5);
+    }
 
-        .document-list {
-            display: block;
-            background:#444;
-            color: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            width: 100%; 
-            max-width: 1000px; 
-            margin: 20px auto;
-            text-align: left;
-            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
-        }
+    .about-dorm h3 {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 30px;
+      color: #00d9ff;
+      text-shadow: 0 0 8px #00d9ff;
+    }
 
-        .document-list ul {
-            padding: 0;
-        }
+    .about-text {
+      max-width: 800px;
+      margin: 0 auto 40px;
+      text-align: center;
+      line-height: 1.8;
+      font-size: 18px;
+    }
 
-        .document-list li {
-            margin-bottom: 10px;
-        }
+    .about-icons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      justify-items: center;
+    }
 
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-                align-items: center;
-            }
+    .about-icons img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(0, 217, 255, 0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-            .card {
-                width: 80%; 
-                margin-bottom: 20px;
-            }
+    .about-icons img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 35px rgba(0, 217, 255, 0.8);
+    }
+    
+    .dormitory-features {
+        padding: 40px 0;
+        background-color: rgba(0, 0, 0, 0.6);
+        border-radius: 10px;
+    }
 
-            .document-list {
-                width: 90%; 
-                margin: 10px auto;
-            }
-        }
-        .arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 2rem;
-            color: rgb(255, 0, 0);
-            padding: 10px;
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 10;
-        }
+    .container {
+        width: 80%;
+        margin: 0 auto;
+    }
 
-        .arrow-left {
-            left: 39%;
-            transform: translateX(-150%) translateY(-50%);
-        }
+    .dormitory-features h2 {
+        text-align: center;
+        font-size: 32px;
+        margin-bottom: 40px;
+        color: #00bcd4; /* Голубой оттенок */
+    }
 
-        .arrow-right {
-            right: 39%;
-            transform: translateX(150%) translateY(-50%);
-        }
-        .center-image {
-            position: relative;
-            text-align: center;
-            margin-bottom: 20px;
-        }
+    .features {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* 4 колонки в одном ряду */
+        gap: 20px;
+        justify-items: center;
+    }
 
-        .center-image h2 {
-            margin: 15px;
-        }
+    .feature-card {
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        text-align: center;
+        transition: transform 0.3s ease-in-out;
+        width: 250px;
+        margin: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 
-        .center-image img {
-            display: block;
-            margin: 0 auto;
-            width: 100%;
-            max-width: 600px;
-            border-radius: 12px;
-        }
-     
-</style>
+    .feature-card:hover {
+        transform: translateY(-10px);
+    }
 
-        
-        
-    </style>
+    .feature-card i {
+        font-size: 40px;
+        margin-bottom: 15px;
+        color: #00bcd4; /* Голубой оттенок для иконок */
+    }
+
+    .feature-card h3 {
+        font-size: 18px;
+        color: #00bcd4; /* Голубой оттенок для заголовков */
+        margin-bottom: 10px;
+    }
+
+    .feature-card p {
+        font-size: 14px;
+        color: #ecf0f1;
+    }
+    .dormitory-requirements {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 60px 0;
+    font-family: 'Poppins', sans-serif;
+    color: #ecf0f1;
+    border-radius: 16px;
+    margin-top: 50px;
+  }
+
+  .dormitory-requirements .container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .dormitory-requirements h2 {
+    font-size: 36px;
+    margin-bottom: 50px;
+    color: #00bcd4;
+    text-shadow: 0 0 8px rgba(0, 188, 212, 0.5);
+  }
+
+  .requirements-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .requirements-list li {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 188, 212, 0.3);
+    border-radius: 16px;
+    padding: 25px 20px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  }
+
+  .requirements-list li:hover {
+    transform: translateY(-8px);
+    background-color: rgba(0, 188, 212, 0.15);
+  }
+
+  .requirements-list i {
+    font-size: 26px;
+    color: #00bcd4;
+    margin-right: 15px;
+    flex-shrink: 0;
+    width: 32px;
+    text-align: center;
+  }
+  .slider-gallery {
+  background: transparent;
+  padding: 60px 0;
+  font-family: 'Poppins', sans-serif;
+  color: #ecf0f1;
+  text-align: center;
+}
+
+.slider-gallery h2 {
+  font-size: 36px;
+  color: #00bcd4;
+  margin-bottom: 40px;
+  text-shadow: 0 0 8px rgba(0, 188, 212, 0.4);
+}
+
+.slider-wrapper {
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.slider-track {
+  display: flex;
+  gap: 30px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px;
+}
+
+.slider-track img {
+  width: 600px;
+  height: 340px;
+  border-radius: 20px;
+  object-fit: cover;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.slider-track img:hover {
+  transform: scale(1.05);
+}
+
+.slide-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 188, 212, 0.4);
+  border: none;
+  color: white;
+  font-size: 30px;
+  padding: 12px 18px;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 10;
+  backdrop-filter: blur(6px);
+}
+
+.slide-btn:hover {
+  background: rgba(0, 188, 212, 0.8);
+}
+
+.slide-btn.prev {
+  left: 10px;
+}
+
+.slide-btn.next {
+  right: 10px;
+}
+
+/* Скрыть скролл */
+.slider-track::-webkit-scrollbar {
+  display: none;
+}
+
+.slider-track {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@media (max-width: 1000px) {
+  .slider-track img {
+    width: 90%;
+    height: auto;
+  }
+}
+  </style>
 </head>
 <body>
-    <div id="particle-background"></div>
-    <h1>СТУДЕНТТЕР ҮЙІ</h1>
-    <h2>Құрылымдық бірліктер</h2>
+  <section class="hero-section">
+    <div class="hero-content">
+      <h2>Общежитие для студентов</h2>
+      <a href="#" class="video-btn">Видео об общежитии</a>
+    </div>
+  </section>
 
+  <section class="about-dorm">
+    <h3>О нашем общежитии</h3>
+    <div class="about-text">
+      <p>Общежитие Алматинского политехнического колледжа представляет собой комфортное и удобное место для проживания студентов, обучающихся в этом учебном заведении. Оно расположено в непосредственной близости от учебных корпусов, что позволяет студентам легко добираться до учебных помещений и принимать участие в различных мероприятиях колледжа.</p>
+      <p>Общежитие оборудовано всем необходимым для комфортного проживания студентов. В номерах есть удобные кровати, шкафы для одежды, столы для учебы и другие необходимые предметы мебели. Для удобства студентов предусмотрены общие кухни, где можно готовить пищу, а также санузлы и душевые комнаты, обеспечивающие комфорт и чистоту.</p>
+      <p>В общежитии создаются условия для того, чтобы студенты могли не только учиться, но и отдыхать. Здесь проводятся культурные и развлекательные мероприятия, организуются досуговые зоны, где студенты могут общаться и проводить время в компании сверстников.</p>
+      <p>Кроме того, общежитие обеспечивает безопасность студентов. Вход в здание контролируется охраной, а также установлены системы видеонаблюдения, что позволяет создать безопасную атмосферу для проживания.</p>
+      <p>В целом, общежитие Алматинского политехнического колледжа является отличным местом для проживания студентов, обеспечивая комфорт, безопасность и возможность активно участвовать в жизни колледжа.</p>
+    </div>
+    <div class="about-icons">
+      <img src="/static/images/stud/com.jpg" alt="Комфорт" title="Удобные комнаты">
+      <img src="/static/images/stud/uu.jpg" alt="Спорт" title="Тренажёрный зал">
+      <img src="/static/images/stud/wi.jpg" alt="Wi-Fi" title="Бесплатный Wi-Fi">
+    </div>
+  </section>
+
+  <section class="dormitory-features">
     <div class="container">
-        <div class="card">
-            <img src="https://i.ibb.co.com/YPqxBYb/7P6A0692.jpg" alt="Аманова Нұргүл">
-            <div class="card-title">Аманова Нұргүл Уристемалиқызы</div>
-            <div class="role">Студенттер үйінің меңгерушісі</div>
-        </div>
-        <div class="card">
-            <img src="https://i.ibb.co/zhSKwJs/Whats-App-Image-2022-10-21-at-09-39-34.jpg" alt="Ермекхан Жансая">
-            <div class="card-title">Ермекхан Жансая Маратқызы</div>
-            <div class="role">Тәрбиеші</div>
-        </div>
-        <div class="card">
-            <img src="https://i.ibb.co.com/r7Vn8RB/38.png" alt="Сарсенов Алтынбек">
-            <div class="card-title">Сарсенов Алтынбек Жарылқапұлы</div>
-            <div class="role">Тәрбиеші</div>
+        <h2>Условия проживания в общежитии</h2>
+        <div class="features">
+            <div class="feature-card">
+                <i class="fas fa-wifi"></i>
+                <h3>Бесплатный Wi-Fi</h3>
+                <p>Всегда быстрый и стабильный интернет для учебы и связи с близкими.</p>
+            </div>
+
+            <div class="feature-card">
+                <i class="fas fa-dumbbell"></i>
+                <h3>Спортивные тренажеры</h3>
+                <p>Поддержите форму в спортивном зале с тренажерами и кардионагрузками.</p>
+            </div>
+
+            <div class="feature-card">
+                <i class="fas fa-bed"></i>
+                <h3>Комфортное размещение</h3>
+                <p>Обеспечены комфортные условия для отдыха и учебы.</p>
+            </div>
+
+            <div class="feature-card">
+                <i class="fas fa-user-graduate"></i>
+                <h3>Только для студентов</h3>
+                <p>В общежитии проживают исключительно студенты колледжа.</p>
+            </div>
+
+            <div class="feature-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Удобное расположение</h3>
+                <p>Общежитие находится рядом с учебными корпусами колледжа.</p>
+            </div>
+
+            <div class="feature-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Охрана 24/7</h3>
+                <p>Территория общежития находится под круглосуточной охраной.</p>
+            </div>
+
+            <div class="feature-card">
+                <i class="fas fa-dumbbell"></i>
+                <h3>Спортзал</h3>
+                <p>Для студентов доступен современный спортзал с разнообразными тренажерами.</p>
+            </div>
+
+            <div class="feature-card">
+                <i class="fas fa-utensils"></i>
+                <h3>Общая кухня</h3>
+                <p>Удобные кухни для самостоятельного приготовления пищи.</p>
+            </div>
         </div>
     </div>
-    <h2>Құжаттар тізімі</h2>
-    <div class="document-list" id="documentList">
-        <h3>ЖАТАҚХАНАҒА ОРНАЛАСУ ҮШІН ҚҰЖАТТАР ТІЗІМІ:</h3>
-        <ul>
-            <li>1. Жатақханадан орын алуға өтініш (құжаттарды тапсыру кезінде толтырылады);</li>
-            <li>2. Отбасы құрамы туралы анықтама (eGov арқылы);</li>
-            <li>3. Отбасында 4 және одан да көп баланың болуы туралы анықтама (көп балалы отбасы балалары үшін);</li>
-            <li>4. Мүгедектігін растау туралы анықтама, мемлекеттік атаулы әлеуметтік көмек алу құқығын растау туралы анықтама және жан басына шаққандағы орташа табысы ең төменгі күнкөріс деңгейінен төмен отбасылардан шыққан балалар үшін атаулы әлеуметтік көмектің жоқтығы туралы анықтама;</li>
-            <li>5. Студенттің жеке басын куәландыратын құжаттың көшірмесі 2 дана;</li>
-            <li>6. Студент ата-анасының жеке басын куәландыратын құжаттың көшірмесі 2 дана;</li>
-            <li>7. Фотосурет 3*4 – 4 дана.</li>
-            <li>8. Алматы қаласында жылжымайтын мүліктің болмауы (болуы) туралы анықтама (eGov арқылы). Мекенжай анықтамасы;</li>
-            <li>9. Кәмелетке толмаған студенттерге нотириалды куәландыратын сенімхат және сенім білдірілген тұлғаның жеке басын куәландыратын құжаттың көшірмесі;</li>
-            <li>10. Ата-анасының қайтыс болуы туралы куәлігінің көшірмесі (жетім балалар және ата-анасының қамқорлығынсыз қалған балалар);</li>
-            <li>11. Эпидемияға қарсы орталықтан анықтама.</li>
-            <li>12. 20 беттік көк папка.</li>
-        </ul>
+</section>
+<section class="slider-gallery">
+  <div class="container">
+    <h2>Фотогалерея общежития</h2>
+    <div class="slider-wrapper">
+      <button class="slide-btn prev" onclick="scrollSlider(-1)">
+        &#10094;
+      </button>
+      <div class="slider-track" id="sliderTrack">
+        <!-- Фото с 2.jpg до 16.jpg -->
+        <img src="/static/images/stud/2.jpg" alt="Фото 2">
+        <img src="/static/images/stud/3.jpg" alt="Фото 3">
+        <img src="/static/images/stud/4.jpg" alt="Фото 4">
+        <img src="/static/images/stud/5.jpg" alt="Фото 5">
+        <img src="/static/images/stud/6.jpg" alt="Фото 6">
+        <img src="/static/images/stud/7.jpg" alt="Фото 7">
+        <img src="/static/images/stud/8.jpg" alt="Фото 8">
+        <img src="/static/images/stud/9.jpg" alt="Фото 9">
+        <img src="/static/images/stud/10.jpg" alt="Фото 10">
+        <img src="/static/images/stud/11.jpg" alt="Фото 11">
+        <img src="/static/images/stud/12.jpg" alt="Фото 12">
+        <img src="/static/images/stud/13.jpg" alt="Фото 13">
+        <img src="/static/images/stud/14.jpg" alt="Фото 14">
+        <img src="/static/images/stud/15.jpg" alt="Фото 15">
+        <img src="/static/images/stud/16.jpg" alt="Фото 16">
+      </div>
+      <button class="slide-btn next" onclick="scrollSlider(1)">
+        &#10095;
+      </button>
     </div>
-    <h2>Жатақхананың ішкі тәртіп ережесі</h2>
-    <iframe src="https://drive.google.com/file/d/18zYSLcWcoqtCirBahbIx4LBZ63w91RKO/preview" height="600px" width="1000px"></iframe>
-    <h2>Біздің жатақханадағы өміріміз</h2>
-    <div class="center-image">
-        <img class="parent-image" src="https://i.ibb.co.com/Ct7BkmN/1.jpg" alt="">
-        <span class="arrow arrow-left" onclick="prevImage('parent')">←</span>
-        <span class="arrow arrow-right" onclick="nextImage('parent')">→</span>
-    </div>
-    
-    <script>
-        let parentImages = [
-            "https://i.ibb.co.com/Ct7BkmN/1.jpg",
-            "https://i.ibb.co.com/wNvzfpr/2.jpg",
-            "https://i.ibb.co.com/wQGNzck/3.jpg",
-            "https://i.ibb.co.com/QdYBg19/4.jpg",
-            "https://i.ibb.co.com/Dz44Y3J/5.jpg",
-            "https://i.ibb.co.com/5TY8J7n/6.jpg"
-        ];
-        let parentIndex = 0;
-
-function showImage(section, index) {
-    const imageClass = section === 'student' ? '.student-image' :
-                       section === 'teacher' ? '.teacher-image' :
-                       section === 'parent' ? '.parent-image' : '';
-    let images = section === 'student' ? studentImages :
-                 section === 'teacher' ? teacherImages :
-                 section === 'parent' ? parentImages : [];
-    document.querySelector(imageClass).src = images[index];
-}
-       function nextImage(section) {
-            if (section === 'parent') {
-                parentIndex = (parentIndex + 1) % parentImages.length;
-                showImage('parent', parentIndex);
-            } 
-        }
-
-        function prevImage(section) {
-            if (section === 'parent') {
-                parentIndex = (parentIndex - 1 + parentImages.length) % parentImages.length;
-                showImage('parent', parentIndex);
-            } }
-    
-
-    
-    </script>
-
+  </div>
+</section>
+<section class="dormitory-requirements">
+  <div class="container">
+    <h2>Что нужно для заселения в общежитие</h2>
+    <ul class="requirements-list">
+      <li><i class="fas fa-id-card"></i> Удостоверение личности (оригинал и копия)</li>
+      <li><i class="fas fa-file-signature"></i> Заявление на поселение</li>
+      <li><i class="fas fa-notes-medical"></i> Медицинская справка формы № 075-У</li>
+      <li><i class="fas fa-images"></i> 2 фотографии 3x4</li>
+      <li><i class="fas fa-money-check-alt"></i> Квитанция об оплате</li>
+      <li><i class="fas fa-user-shield"></i> Согласие от родителей (для несовершеннолетних)</li>
+    </ul>
+  </div>
+</section>
+<script>
+  function scrollSlider(direction) {
+    const track = document.getElementById('sliderTrack');
+    const scrollAmount = 300; // px
+    track.scrollBy({ left: scrollAmount * direction, behavior: 'smooth' });
+  }
+</script>
 </body>
-<script src="/static/particles_config.js"></script>
 </html>
