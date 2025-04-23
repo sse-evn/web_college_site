@@ -298,6 +298,8 @@ nav ul li a:hover {
     background: transparent;
     padding: 50px 5%;
     text-align: center;
+    overflow: visible; /* Добавлено */
+    position: relative; /* На всякий случай */
 }
 
 .majors h2 {
@@ -314,15 +316,16 @@ nav ul li a:hover {
 .majors-container {
     max-width: 1200px;
     margin: 0 auto;
-    overflow: hidden;
+    overflow: visible; /* Исправлено */
 }
 
 .majors-list {
     display: flex;
     flex-wrap: nowrap;
     gap: 20px;
-    animation: marquee 60s linear infinite; /* Увеличил длительность до 50 секунд */
+    animation: marquee 60s linear infinite;
     width: calc(300px * 12);
+    overflow: visible; /* Добавлено */
 }
 
 .majors-list:hover {
