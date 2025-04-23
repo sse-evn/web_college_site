@@ -316,7 +316,31 @@ nav ul li a:hover {
 .majors-container {
     max-width: 1200px;
     margin: 0 auto;
-    overflow: visible; /* Исправлено */
+    position: relative;
+    overflow: hidden; /* Снимаем ограничения — будем делать маски сами */
+}
+
+.majors-container::before,
+.majors-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 60px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Левая дымка */
+.majors-container::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), transparent);
+}
+
+/* Правая дымка */
+.majors-container::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.8), transparent);
 }
 
 .majors-list {
@@ -393,7 +417,10 @@ nav ul li a:hover {
 .majors-list .major-card .specialty-btn:hover {
     background: var(--neon);
     color: var(--dark);
+    
 }
+
+
 @media (max-width: 768px) {
     .majors-list .major-card {
         flex: 0 0 250px;
