@@ -1,4 +1,5 @@
 particlesJS("particle-background", {
+    
     particles: {
         number: {
             value: 60, // Уменьшил количество частиц для более "воздушного" эффекта
@@ -7,6 +8,7 @@ particlesJS("particle-background", {
         color: {
             value: ["#ffccdd", "#ccffdd", "#ddccff", "#ffffff"] // Мягкие пастельные цвета: розовый, мятный, лавандовый, белый
         },
+        
         shape: {
             type: "circle", // Оставляем круги для мягкости
             stroke: { width: 0, color: "#ffffff" } // Без обводки

@@ -298,6 +298,8 @@ nav ul li a:hover {
     background: transparent;
     padding: 50px 5%;
     text-align: center;
+    overflow: visible; /* Добавлено */
+    position: relative; /* На всякий случай */
 }
 
 .majors h2 {
@@ -314,15 +316,16 @@ nav ul li a:hover {
 .majors-container {
     max-width: 1200px;
     margin: 0 auto;
-    overflow: hidden;
+    overflow: visible; /* Исправлено */
 }
 
 .majors-list {
     display: flex;
     flex-wrap: nowrap;
     gap: 20px;
-    animation: marquee 60s linear infinite; /* Увеличил длительность до 50 секунд */
+    animation: marquee 60s linear infinite;
     width: calc(300px * 12);
+    overflow: visible; /* Добавлено */
 }
 
 .majors-list:hover {
@@ -523,12 +526,14 @@ nav ul li a:hover {
     font-size: 42px;
     color: var(--bright-purple); /* Обновлено */
     margin-bottom: 10px;
+    text-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff, 0 0 30px #00bfff;
 }
 
 .hero p {
     font-size: 20px;
     margin-bottom: 0;
     padding-bottom: 0;
+    text-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff, 0 0 30px #00bfff;
 }
 
 .hero-text {

@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Бесплатное обучение</title>
- 
     <link rel="icon" href="/static/images/header/icon_site_logo.svg" type="image/x-icon">
 
 
@@ -60,49 +59,99 @@
             max-width: 900px;
             margin-left: auto;
             margin-right: auto;
+            padding: 10px;
         }
         .faq h2 {
             color: #ffffff;
             font-size: 2em;
+            text-align: center;
+            margin-bottom: 20px;
         }
         .faq-item {
-            background: #222;
+            background: linear-gradient(90deg, #333, #444);
             padding: 15px;
             border-radius: 8px;
             margin-bottom: 15px;
             cursor: pointer;
             position: relative;
-            font-size: 1.5em;
+            font-size: 1.2em;
+            color: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .faq-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
         }
         .faq-item span {
             position: absolute;
             right: 20px;
             font-size: 28px;
+            color: #ff0000;
         }
         .faq-answer {
             display: none;
             padding-top: 10px;
             color: #ddd;
             animation: fadeIn 0.3s ease-in-out;
-            font-size: 1.3em;
+            font-size: 1em;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        @media (max-width: 768px) {
+            .faq {
+                padding: 5px;
+            }
+            .faq-item {
+                font-size: 1em;
+                padding: 10px;
+            }
+            .faq-item span {
+                font-size: 24px;
+            }
+            .faq-answer {
+                font-size: 0.9em;
+            }
         }
         .button {
-            display: inline-block;
-            margin-top: 30px;
+            display: block;
+            margin: 30px auto;
             padding: 18px 30px;
-            background: #ff0000;
+            background: linear-gradient(90deg, #ff0000, #e63900);
             color: white;
             text-decoration: none;
             font-size: 20px;
-            border-radius: 5px;
-            transition: 0.3s;
+            font-weight: bold;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+            max-width: 300px;
         }
         .button:hover {
-            background: #e63900;
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+        }
+        h1[data-translate="free_edu"] {
+            text-align: center;
+        }
+        .fullscreen-img {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .fullscreen-img img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+        }
+        .fullscreen-img.close {
+            cursor: pointer;
         }
     </style>
 </head>
@@ -505,49 +554,34 @@
         </div>
     </nav>
     
-    <h1>Бесплатное обучение для всех!</h1>
+    <h1 data-translate="free_edu">Бесплатное обучение для всех!</h1>
     <div class="content">
-        <img src="https://i.ibb.co/kx40Smz/Whats-App-Image-2022-06-23-at-22-08-42.jpg" alt="Обучение">
+        <img src="https://i.ibb.co/kx40Smz/Whats-App-Image-2022-06-23-at-22-08-42.jpg" alt="Обучение" onclick="openFullscreen(this)">
         <video controls poster>
             <source src="https://gz.bilimalmaty.kz/videos/ru.mp4" type="video/mp4">
             Ваш браузер не поддерживает видео.
         </video>
     </div>
+    <div class="fullscreen-img" id="fullscreenImg" onclick="closeFullscreen()">
+        <img src="" alt="Fullscreen Image">
+    </div>
     <div class="faq">
-        <h2>Часто задаваемые вопросы:</h2>
+        <h2 data-translate="faq_title">Часто задаваемые вопросы:</h2>
         <div class="faq-item" onclick="toggleFAQ(this)">
-            <strong>По каким специальностям ведется набор в платные группы? Сколько стоит обучение?</strong><span>+</span>
-            <div class="faq-answer">В этом году ведется набор на коммерческой основе очного обучения по специальностям:
-
-                06130100 Программное обеспечение (по видам)
-                Квалификация: 4S06130103 Разработчик программного обеспечения
-                Срок обучения: на базе 9 классов 3 года 10 месяцев;.
-                25 мест на государственном и 25 мест на русском языках обучения
-                
-                Стоимость ОЧНОГО обучения за учебный год составляет 400 000 тенге.
-                
-                Набор на коммерческой основе заочного обучения по специальностям:
-                
-                06130100 Программное обеспечение (по видам)
-                Квалификация: 4S06130105 Техник информационных систем
-                Срок обучения: на базе 11 классов 2 года 10 месяцев;
-                
-                                          на базе ТиПО 10 месяцев
-                30 мест на русском языке обучения.
-                
-                Стоимость ЗАОЧНОГО обучения за учебный год составляет 150 000 тенге.
-                </div>
+            <strong data-translate="faq_paid_specialties">По каким специальностям ведется набор в платные группы? Сколько стоит обучение?</strong><span>+</span>
+            <div class="faq-answer" data-translate="faq_paid_specialties_answer">В этом году ведется набор на коммерческой основе очного обучения по специальностям:06130100 Программное обеспечение (по видам)Квалификация: 4S06130103 Разработчик программного обеспечения. Срок обучения: на базе 9 классов 3 года 10 месяцев. 25 мест на государственном и 25 мест на русском языках обучения. Стоимость ОЧНОГО обучения за учебный год составляет 400 000 тенге. Набор на коммерческой основе заочного обучения по специальностям: 06130100 Программное обеспечение (по видам) Квалификация: 4S06130105 Техник информационных систем Срок обучения: на базе 11 классов 2 года 10 месяцев; на базе ТиПО 10 месяцев 30 мест на русском языке обучения. Стоимость ЗАОЧНОГО обучения за учебный год составляет 150 000 тенге.
+            </div>
         </div>
         <div class="faq-item" onclick="toggleFAQ(this)">
-            <strong>Как записаться?</strong><span>+</span>
-            <div class="faq-answer">Просто перейдите по ссылке ниже и заполните форму.</div>
+            <strong data-translate="faq_how_to_apply">Как записаться?</strong><span>+</span>
+            <div class="faq-answer" data-translate="faq_how_to_apply_answer">Просто перейдите по ссылке ниже и заполните форму.</div>
         </div>
         <div class="faq-item" onclick="toggleFAQ(this)">
-            <strong>Сколько это стоит?</strong><span>+</span>
-            <div class="faq-answer">Обучение полностью бесплатное!</div>
+            <strong data-translate="faq_cost">Сколько это стоит?</strong><span>+</span>
+            <div class="faq-answer" data-translate="faq_cost_answer">Обучение полностью бесплатное!</div>
         </div>
     </div>
-    <a href="https://example.com" class="button">Перейти на сайт</a>
+    <a href="https://www.gz.bilimalmaty.kz/login" class="button" data-translate="go_to_site">Перейти на сайт</a>
     <script>
         function toggleFAQ(item) {
             let answer = item.querySelector(".faq-answer");
@@ -560,8 +594,87 @@
                 sign.textContent = "-";
             }
         }
+
+        function openFullscreen(img) {
+            const fullscreenDiv = document.getElementById('fullscreenImg');
+            const fullscreenImg = fullscreenDiv.querySelector('img');
+            fullscreenImg.src = img.src;
+            fullscreenDiv.style.display = 'flex';
+        }
+
+        function closeFullscreen() {
+            const fullscreenDiv = document.getElementById('fullscreenImg');
+            fullscreenDiv.style.display = 'none';
+        }
     </script>
 </body>
+
+</div>
+        <footer class="footer">
+            <div class="footer-container">
+              <!-- О сайте -->
+              <div class="footer-section">
+                <h3 data-translate="about_site">Сайт туралы</h3>
+                <p id="copyright-year"></p>
+                <script>
+                  const currentYear = new Date().getFullYear();
+                  document.getElementById("copyright-year").textContent = `©1940–${currentYear}`;
+                </script>
+                <p data-translate="college_name">
+                  Алматы қаласы Білім басқармасының «ALMATY POLYTECHNIC COLLEGE» КМҚК
+                </p>
+          
+                <h3 data-translate="social_networks">Әлеуметтік желілер</h3>
+                <div class="social-icons">
+                  <a href="https://www.instagram.com/polytechalmaty/#" target="_blank" aria-label="Instagram">
+                    <img src="/static/images/flot/instagram.png" alt="Instagram" />
+                  </a>
+                  <a href="https://www.facebook.com/people/..." target="_blank" aria-label="Facebook">
+                    <img src="/static/images/flot/facebook.png" alt="Facebook" />
+                  </a>
+                  <a href="https://www.youtube.com/@almatypolytechedukz" target="_blank" aria-label="YouTube">
+                    <img src="/static/images/flot/youtube.png" alt="YouTube" />
+                  </a>
+                  <a href="https://www.tiktok.com/@polytech_college?_t=8ji5qQRP3v3&_r=1" target="_blank" aria-label="TikTok">
+                    <img src="/static/images/flot/tiktok.png" alt="TikTok" />
+                  </a>
+                </div>
+              </div>
+          
+              <!-- Контакты -->
+              <div class="footer-section">
+                <h3 data-translate="contact_label">Байланыс</h3>
+                <p>
+                  <span class="icon">📍</span>
+                  <strong data-translate="address_label">Мекенжай:</strong><br />
+                  <span data-translate="address">Қазақстан, Алматы қ., Тастақ-1 шағын ауданы, 1B</span>
+                </p>
+                <p>
+                  <span class="icon">📞</span>
+                  <strong data-translate="contact_label">Байланыс:</strong><br />
+                  <span data-translate="phone">Тел.: 396 71 39</span><br />
+                  <span data-translate="admission_phone">Қабылдау комиссиясы: 8 707 171 0800</span>
+                </p>
+                <p>
+                  <span class="icon">✉️</span>
+                  <strong data-translate="email_label">Пошта:</strong><br />
+                  <a href="mailto:polytech@aspc.kz">polytech@aspc.kz</a>
+                </p>
+              </div>
+          
+              <!-- Разработчики -->
+              <div class="footer-section">
+                <h3 data-translate="developers">Разработчики сайта</h3>
+                <p>
+                  <span class="icon">👨‍💻</span>
+                  <strong data-translate="developer_name">Жобаны жасаған:</strong><br />
+                  <span data-translate="developer_info">Колледж студенттері мен оқытушылары</span>
+                </p>
+                
+                <a href="https://www.instagram.com/polytech_it_hub?igsh=MXFvd3I1enNxeHpoOA==" class="dev-button" data-translate="contact_developer">Связаться с разработчиком</a>
+              </div>
+            </div>
+          </footer>
 
 <script src="/static/translations.js"></script>
 <script src="/static/languageSwitcher.js"></script>
