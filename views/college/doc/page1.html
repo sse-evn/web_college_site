@@ -1,401 +1,1063 @@
 <!DOCTYPE html>
 <html lang="ru">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Кірістер мен шығыстар</title>
-
-    <link rel="stylesheet" href="/static/style.css">
-    <link rel="stylesheet" href="/static/modal_frame.css">
-    <link rel="stylesheet" href="/static/particles_style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-        
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #000000;
-            color: #ffffff;
-            padding: 20px;
-            text-align: center;
-            position: relative;
-        }
-
-        .glowing-text {
-            text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8);
-        }
-
-        #particle-background {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: -1;
-        }
-
-        .accordion {
-            width: 60%;
-            margin: 0 auto;
-        }
-
-        .accordion-item {
-            margin-bottom: 10px;
-            background: #1e1e1e;
-            border-radius: 5px;
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
-        }
-
-        .accordion-button {
-            width: 100%;
-            background: #2a2a2a;
-            color: #ffffff;
-            border: none;
-            padding: 15px;
-            font-size: 18px;
-            text-align: left;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background 0.3s;
-        }
-
-        .accordion-button:hover {
-            background: #3a3a3a;
-        }
-
-        .accordion-content {
-            display: none;
-            padding: 15px;
-            background: #ffffff;
-            color: #000000;
-            text-align: left;
-            border-radius: 0 0 5px 5px;
-            line-height: 1.5;
-        }
-
-        .accordion-content p {
-            font-size: 13px; /* Уменьшенный текст отчетов */
-            line-height: 1.5;
-        }
-
-        .accordion-content p strong {
-            font-size: 13px; /* Теперь <strong> такой же, как <p> */
-            font-weight: bold;
-        }
-
-        .accordion-content iframe {
-            width: 100%;
-            height: 600px;
-            border: none;
-        }
-        .header {
-            text-align: center;
-            margin-bottom: 20px;
-            text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8);
-        }
-    </style>
-    
-    
-    <script>
-        function toggleAccordion(id) {
-            var content = document.getElementById(id);
-            content.style.display = content.style.display === "none" || content.style.display === "" ? "block" : "none";
-        }
-    </script>
-</head>
-
-<body>
-    <div id="particle-background"></div>
-
-    <div class="header">
-        <h1>Almaty Polytechnic College бойынша кірістер мен шығыстар туралы есептер</h1>
-        <p>Ұйымның орналасқан жері Алматы қаласы, Әуезов ауданы, Тастақ-1 шағын ауданы, 15 корпус.</p> 
-
-    </div>
- 
-    <div class="accordion">
-        <div class="accordion-item">
-            <button class="accordion-button" onclick="toggleAccordion('report1')">2023 жылдың 1 тоқсанындағы кірістер мен шығыстар туралы есеп<span>▼</span></button>
-            <div class="accordion-content" id="report1">
-                <strong>Пояснительная записка</strong>  
-
-
-
-<p><strong>Доходы за 1 квартал 2023 года</strong> составили <strong>296 462,4 тыс. тенге</strong>, из них:</p>  
-<p>- из бюджета – <strong>270 986,0 тыс. тенге</strong></p>  
-
-<p><strong>Расходы за 1 квартал 2023 года</strong> составили <strong>250 525,95 тыс. тенге</strong>, в том числе:</p>  
-
-<p><strong>1. Фонд заработной платы с учетом налогов и компенсационных выплат</strong> – <strong>99 449,4 тыс. тенге</strong>, из них:</p>  
-<p>- Оплата труда – <strong>66 474,3 тыс. тенге</strong></p>  
-<p>- Компенсационные выплаты – <strong>0,0 тыс. тенге</strong></p>  
-<p>- Социальный налог – <strong>8 423,4 тыс. тенге</strong></p>  
-<p>- Социальные отчисления в гос. фонд соц. страхования – <strong>24 551,7 тыс. тенге</strong></p>  
-
-<p><strong>2. Коммунальные услуги</strong> – <strong>18 684,9 тыс. тенге</strong>, в том числе:</p>  
-<p>- Холодная вода – <strong>536,4 тыс. тенге</strong></p>  
-<p>- Отведение сточных вод – <strong>597,3 тыс. тенге</strong></p>  
-<p>- Электроэнергия – <strong>2 124,2 тыс. тенге</strong></p>  
-<p>- Отопление – <strong>14 632,2 тыс. тенге</strong></p>  
-<p>- Горячая вода – <strong>457,3 тыс. тенге</strong></p>  
-
-<p><strong>3. Приобретение хоз. товаров и инвентаря</strong> – <strong>8 371,8 тыс. тенге</strong></p>  
-<p>- Канцелярские товары – <strong>1 304,5 тыс. тенге</strong></p>  
-<p>- Спортивные товары – <strong>350,0 тыс. тенге</strong></p>  
-<p>- Хозяйственные товары – <strong>5 369,0 тыс. тенге</strong></p>  
-<p>- Расходные материалы – <strong>1 063,4 тыс. тенге</strong></p>  
-<p>- Основные средства – <strong>234,0 тыс. тенге</strong></p>  
-
-<p><strong>4. Оплата услуг связи</strong> (телефон, интернет и т. д.) – <strong>1 658,1 тыс. тенге</strong></p>  
-
-<p><strong>5. Оплата транспортных услуг</strong> – <strong>0 тыс. тенге</strong></p>  
-
-<p><strong>6. Оплата прочих услуг и работ</strong> – <strong>1 897,3 тыс. тенге</strong></p>  
-<p>- Финансовые услуги банка за перечисление зарплаты – <strong>5,4 тыс. тенге</strong></p>  
-<p>- Вывоз мусора – <strong>76,38 тыс. тенге</strong></p>  
-<p>- Дератизация и дезинсекция – <strong>25,9 тыс. тенге</strong></p>  
-<p>- Техническое обслуживание пожарной сигнализации – <strong>101,1 тыс. тенге</strong></p>  
-<p>- Прачечные услуги – <strong>181,6 тыс. тенге</strong></p>  
-<p>- Услуги военизированной охраны – <strong>1 055,5 тыс. тенге</strong></p>  
-<p>- Прочие услуги – <strong>477,32 тыс. тенге</strong></p>  
-
-<p><strong>7. Командировки и служебные разъезды</strong> – <strong>1 430,9 тыс. тенге</strong></p>  
-
-<p><strong>8. Прочие текущие затраты</strong> – <strong>94 147,5 тыс. тенге</strong></p>  
-<p>- Питание – <strong>17 348,1 тыс. тенге</strong></p>  
-<p>- Проездные за летние каникулы – <strong>5 727,0 тыс. тенге</strong></p>  
-<p>- Стипендия – <strong>71 072,4 тыс. тенге</strong></p>  
-
-<p><strong>Директор</strong>: Омарбеков М.А.</p>  
-<p><strong>Главный бухгалтер</strong>: Дынисбаева К.М.</p>  
-
-
-            </div>
-        </div>
-        <div class="accordion-item">
-            <button class="accordion-button" onclick="toggleAccordion('report2')">2022 жылдың 4 тоқсанындағы кірістер мен шығыстар туралы есеп<span>▼</span></button>
-            <div class="accordion-content" id="report2">
-                <strong>Пояснительная записка</strong>  
-
-<p>ГККП Алматинский государственный политехнический колледж Управления образования г. Алматы</p>  
-<p>Местонахождение организации: г. Алматы, Ауэзовский район, мкр. Тастак-1, дом 1В</p>  
-
-<p><strong>Доходы за 4 квартал 2022 года</strong> составили <strong>308 807,69 тыс. тенге</strong>, из них:</p>  
-<p>- из бюджета – <strong>281 447,05 тыс. тенге</strong></p>  
-
-<p><strong>Расходы за 4 квартал 2022 года</strong> составили <strong>368 231,67 тыс. тенге</strong>, в том числе:</p>  
-
-<p><strong>1. Фонд заработной платы с учетом налогов и компенсационных выплат</strong> – <strong>201 456,75 тыс. тенге</strong>, из них:</p>  
-<p>- Оплата труда – <strong>188 230,9 тыс. тенге</strong></p>  
-<p>- Компенсационные выплаты – <strong>0,0 тыс. тенге</strong></p>  
-<p>- Социальный налог – <strong>6 470,55 тыс. тенге</strong></p>  
-<p>- Социальные отчисления в гос. фонд соц. страхования – <strong>6 755,31 тыс. тенге</strong></p>  
-
-<p><strong>2. Коммунальные услуги</strong> – <strong>9 118,3 тыс. тенге</strong>, в том числе:</p>  
-<p>- Холодная вода – <strong>536,4 тыс. тенге</strong></p>  
-<p>- Отведение сточных вод – <strong>381,5 тыс. тенге</strong></p>  
-<p>- Электроэнергия – <strong>2 571,0 тыс. тенге</strong></p>  
-<p>- Отопление – <strong>4 693,1 тыс. тенге</strong></p>  
-<p>- Горячая вода – <strong>936,0 тыс. тенге</strong></p>  
-
-<p><strong>3. Приобретение хоз. товаров и инвентаря</strong></p>  
-<p>- Хозяйственные товары – <strong>95,3 тыс. тенге</strong></p>  
-
-<p><strong>4. Оплата услуг связи</strong> (телефон, интернет и т. д.) – <strong>1 318,1 тыс. тенге</strong></p>  
-
-<p><strong>5. Оплата транспортных услуг</strong> – <strong>0 тыс. тенге</strong></p>  
-
-<p><strong>6. Оплата прочих услуг и работ</strong> – <strong>25 854,5 тыс. тенге</strong></p>  
-<p>- Финансовые услуги банка за перечисление зарплаты – <strong>5,4 тыс. тенге</strong></p>  
-<p>- Вывоз мусора – <strong>76,38 тыс. тенге</strong></p>  
-<p>- Дератизация и дезинсекция – <strong>25,9 тыс. тенге</strong></p>  
-<p>- Техническое обслуживание пожарной сигнализации – <strong>350,6 тыс. тенге</strong></p>  
-<p>- Прачечные услуги – <strong>181,6 тыс. тенге</strong></p>  
-<p>- Услуги военизированной охраны – <strong>1 055,5 тыс. тенге</strong></p>  
-<p>- Ремонт водопровода – <strong>860,0 тыс. тенге</strong></p>  
-<p>- Прочие услуги – <strong>23 299,12 тыс. тенге</strong></p>  
-
-<p><strong>7. Командировки и служебные разъезды</strong> – <strong>6 142,8 тыс. тенге</strong></p>  
-
-<p><strong>8. Прочие текущие затраты</strong> – <strong>65 216,9 тыс. тенге</strong></p>  
-<p>- Питание – <strong>15 771,06 тыс. тенге</strong></p>  
-<p>- Проездные за летний каникулы – <strong>0,0 тыс. тенге</strong></p>  
-
-<p><strong>Директор</strong>: Омарбеков М.А.</p>  
-<p><strong>Главный бухгалтер</strong>: Гаипов А.Б.</p>  
-
-            </div>
-        </div>
-        <div class="accordion-item">
-            <button class="accordion-button" onclick="toggleAccordion('report3')">2022 жылдың 3 тоқсанындағы кірістер мен шығыстар туралы есеп<span>▼</span></button>
-            <div class="accordion-content" id="report3">
-                <strong>Пояснительная записка</strong>  
-
-<p>ГККП Алматинский государственный политехнический колледж Управления образования г. Алматы</p>  
-<p>Местонахождение организации: г. Алматы, Ауэзовский район, мкр. Тастак-1, дом 1В</p>  
-
-<p><strong>Доходы за 3 квартал 2022 года</strong> составили <strong>249 430,0 тыс. тенге</strong>, из них:</p>  
-<p>- из бюджета – <strong>213 160,2 тыс. тенге</strong></p>  
-
-<p><strong>Расходы за 3 квартал 2022 года</strong> составили <strong>102 039,9 тыс. тенге</strong>, в том числе:</p>  
-
-<p><strong>1. Фонд заработной платы с учетом налогов и компенсационных выплат</strong> – <strong>74 017,0 тыс. тенге</strong>, из них:</p>  
-<p>- Оплата труда – <strong>69 557,1 тыс. тенге</strong></p>  
-<p>- Компенсационные выплаты – <strong>0,0 тыс. тенге</strong></p>  
-<p>- Социальный налог – <strong>2 005,0 тыс. тенге</strong></p>  
-<p>- Социальные отчисления в гос. фонд соц. страхования – <strong>2 454,9 тыс. тенге</strong></p>  
-
-<p><strong>2. Коммунальные услуги</strong> – <strong>3 239,7 тыс. тенге</strong>, в том числе:</p>  
-<p>- Холодная вода – <strong>1 004,1 тыс. тенге</strong></p>  
-<p>- Отведение сточных вод – <strong>479,1 тыс. тенге</strong></p>  
-<p>- Электроэнергия – <strong>1 515,8 тыс. тенге</strong></p>  
-<p>- Отопление – <strong>0,0 тыс. тенге</strong></p>  
-<p>- Горячая вода – <strong>240,3 тыс. тенге</strong></p>  
-
-<p><strong>3. Приобретение хоз. товаров и инвентаря</strong> – <strong>14 131,6 тыс. тенге</strong></p>  
-<p>- Канцелярские товары – <strong>1 657,1 тыс. тенге</strong></p>  
-<p>- Строительные материалы – <strong>2 973,2 тыс. тенге</strong></p>  
-<p>- Хозяйственные товары – <strong>95,3 тыс. тенге</strong></p>  
-
-<p><strong>4. Приобретение прочих запасов</strong> – <strong>9 406,0 тыс. тенге</strong></p>  
-<p>- Оперативная память SKHunix HMT41GU6BFR8A 8GB – <strong>132,8 тыс. тенге</strong></p>  
-<p>- Специальная форма – <strong>326,7 тыс. тенге</strong></p>  
-<p>- Расходные материалы – <strong>291,1 тыс. тенге</strong></p>  
-<p>- Основные средства – <strong>6 109,0 тыс. тенге</strong></p>  
-<p>- LED UV отверждаемые чернила – <strong>327,0 тыс. тенге</strong></p>  
-<p>- Жесткий диск – <strong>2 219,4 тыс. тенге</strong></p>  
-
-<p><strong>5. Оплата услуг связи</strong> (телефон, интернет и т. д.) – <strong>1 003,6 тыс. тенге</strong></p>  
-
-<p><strong>6. Оплата транспортных услуг</strong> – <strong>10,2 тыс. тенге</strong></p>  
-
-<p><strong>7. Оплата прочих услуг и работ</strong> – <strong>6 321,9 тыс. тенге</strong></p>  
-<p>- Финансовые услуги банка за перечисление зарплаты – <strong>6,94 тыс. тенге</strong></p>  
-<p>- Вывоз мусора – <strong>50,8 тыс. тенге</strong></p>  
-<p>- Дератизация и дезинсекция – <strong>25,8 тыс. тенге</strong></p>  
-<p>- Услуги по промывке и опрессовке системы отопления – <strong>170,0 тыс. тенге</strong></p>  
-<p>- Техническое обслуживание пожарной сигнализации – <strong>54,5 тыс. тенге</strong></p>  
-<p>- Прачечные услуги – <strong>48,0 тыс. тенге</strong></p>  
-<p>- Услуги военизированной охраны – <strong>1 592,8 тыс. тенге</strong></p>  
-<p>- Услуги установки и монтажа кондиционеров – <strong>142,3 тыс. тенге</strong></p>  
-<p>- Плата за эмиссии в окружающую среду – <strong>1,1 тыс. тенге</strong></p>  
-<p>- Услуги по сервисному обслуживанию абонентов – <strong>15,4 тыс. тенге</strong></p>  
-<p>- Работа и монтаж керамогранита кабинета мехатроники – <strong>488,0 тыс. тенге</strong></p>  
-<p>- Монтажные и пусконаладочные работы по установке речевых оповещателей – <strong>557,0 тыс. тенге</strong></p>  
-<p>- Прочие услуги – <strong>3 169,26 тыс. тенге</strong></p>  
-
-<p><strong>8. Командировки и служебные разъезды</strong> – <strong>237,2 тыс. тенге</strong></p>  
-
-<p><strong>9. Прочие текущие затраты</strong> – <strong>3 078,7 тыс. тенге</strong></p>  
-<p>- Питание – <strong>2 993,1 тыс. тенге</strong></p>  
-<p>- Проездные за летний каникулы – <strong>85,7 тыс. тенге</strong></p>  
-
-<p><strong>Директор</strong>: Омарбеков М.А.</p>  
-<p><strong>Главный бухгалтер</strong>: Гаипов А.Б.</p>  
-
-            </div>
-        </div>
-        <div class="accordion-item">
-            <button class="accordion-button" onclick="toggleAccordion('report4')">2022 жылдың 2 тоқсанындағы кірістер мен шығыстар туралы есеп<span>▼</span></button>
-            <div class="accordion-content" id="report4">
-                <strong>Пояснительная записка</strong>  
-
-<p>ГККП Алматинский государственный политехнический колледж Управления образования г. Алматы</p>  
-<p>Местонахождение организации: г. Алматы, Ауэзовский район, мкр. Тастак-1, дом 1В</p>  
-
-<p><strong>Доходы за 2 квартал 2022 года</strong> составили <strong>212 040,0 тыс. тенге</strong>, из них:</p>  
-<p>- из бюджета – <strong>190 389,0 тыс. тенге</strong></p>  
-
-<p><strong>Расходы за 2 квартал 2022 года</strong> составили <strong>275 737,0 тыс. тенге</strong>, в том числе:</p>  
-
-<p><strong>1. Фонд заработной платы с учетом налогов и компенсационных выплат</strong> – <strong>230 410,0 тыс. тенге</strong>, из них:</p>  
-<p>- Оплата труда – <strong>193 862,0 тыс. тенге</strong></p>  
-<p>- Компенсационные выплаты – <strong>15 857,0 тыс. тенге</strong></p>  
-<p>- Социальный налог – <strong>11 997,0 тыс. тенге</strong></p>  
-<p>- Социальные отчисления в гос. фонд соц. страхования – <strong>8 694,0 тыс. тенге</strong></p>  
-
-<p><strong>2. Коммунальные услуги</strong> – <strong>6 630,0 тыс. тенге</strong>, в том числе:</p>  
-<p>- Холодная вода – <strong>1 845,0 тыс. тенге</strong></p>  
-<p>- Отведение сточных вод – <strong>834,0 тыс. тенге</strong></p>  
-<p>- Электроэнергия – <strong>1 943,0 тыс. тенге</strong></p>  
-<p>- Отопление – <strong>1 447,0 тыс. тенге</strong></p>  
-<p>- Горячая вода – <strong>561,0 тыс. тенге</strong></p>  
-
-<p><strong>3. Приобретение хоз. товаров и инвентаря</strong> – <strong>19 328,0 тыс. тенге</strong></p>  
-<p>- Канцелярские товары – <strong>114,0 тыс. тенге</strong></p>  
-<p>- Спортивные товары – <strong>375,0 тыс. тенге</strong></p>  
-<p>- Строительные материалы – <strong>537,0 тыс. тенге</strong></p>  
-<p>- Хозяйственные товары – <strong>2 264,0 тыс. тенге</strong></p>  
-
-<p><strong>4. Приобретение прочих запасов</strong> – <strong>6 852,0 тыс. тенге</strong></p>  
-<p>- Угол, стойка телекоммуникационная – <strong>814,0 тыс. тенге</strong></p>  
-<p>- Кабель – <strong>925,0 тыс. тенге</strong></p>  
-<p>- Специальная форма – <strong>2 745,0 тыс. тенге</strong></p>  
-<p>- Расходные материалы – <strong>2 368,0 тыс. тенге</strong></p>  
-
-<p><strong>5. Основные средства</strong> – <strong>9 186,0 тыс. тенге</strong></p>  
-<p>- Роботоконструктор – <strong>3 920,0 тыс. тенге</strong></p>  
-<p>- Жесткий диск – <strong>1 060,0 тыс. тенге</strong></p>  
-<p>- Доски – <strong>654,0 тыс. тенге</strong></p>  
-<p>- Прочие ОС – <strong>3 552,0 тыс. тенге</strong></p>  
-
-<p><strong>6. Оплата услуг связи</strong> (телефон, интернет и т. д.) – <strong>902,0 тыс. тенге</strong></p>  
-
-<p><strong>7. Оплата транспортных услуг</strong> – <strong>0,0 тыс. тенге</strong></p>  
-
-<p><strong>8. Оплата прочих услуг и работ</strong> – <strong>3 702,0 тыс. тенге</strong></p>  
-<p>- Финансовые услуги банка за перечисление зарплаты – <strong>21,0 тыс. тенге</strong></p>  
-<p>- Вывоз мусора – <strong>76,0 тыс. тенге</strong></p>  
-<p>- Дератизация и дезинсекция – <strong>26,0 тыс. тенге</strong></p>  
-<p>- Услуги по обучению сотрудников – <strong>1 493,0 тыс. тенге</strong></p>  
-<p>- Техническое обслуживание пожарной сигнализации – <strong>164,0 тыс. тенге</strong></p>  
-<p>- Прачечные услуги – <strong>67,0 тыс. тенге</strong></p>  
-<p>- Услуги военизированной охраны – <strong>1 195,0 тыс. тенге</strong></p>  
-<p>- Услуги по подготовке к чемпионату W.Skills – <strong>470,0 тыс. тенге</strong></p>  
-<p>- Страхование автомобиля – <strong>175,0 тыс. тенге</strong></p>  
-<p>- Услуги по сервисному обслуживанию абонентов – <strong>15,0 тыс. тенге</strong></p>  
-<p>- Прочие услуги – <strong>0,0 тыс. тенге</strong></p>  
-
-<p><strong>9. Командировки и служебные разъезды</strong> – <strong>0,0 тыс. тенге</strong></p>  
-
-<p><strong>10. Прочие текущие затраты</strong> – <strong>14 765,0 тыс. тенге</strong></p>  
-<p>- Питание – <strong>14 765,0 тыс. тенге</strong></p>  
-<p>- Проездные за зимние каникулы – <strong>0,0 тыс. тенге</strong></p>  
-
-<p><strong>Директор</strong>: Омарбеков М.А.</p>  
-<p><strong>Главный бухгалтер</strong>: Гаипов А.Б.</p>  
-
-            </div>
-        </div>
-        <div class="accordion-item">
-            <button class="accordion-button" onclick="toggleAccordion('report2022_Q1')">
-                2022 жылдың 1 тоқсанындағы кірістер мен шығыстар туралы есеп<span>▼</span>
-            </button>
-            <div class="accordion-content" id="report2022_Q1">
-                <iframe src="https://drive.google.com/file/d/1VjXLsD2__LPnmRRM09nmOq9Wa5ZIW129/preview" width="100%" height="600" allow="autoplay"></iframe>
-            </div>
-        </div>
-        
-        <div class="accordion-item">
-            <button class="accordion-button" onclick="toggleAccordion('report2021_Q4')">
-                2021 жылдың 4 тоқсанындағы кірістер мен шығыстар туралы есеп<span>▼</span>
-            </button>
-            <div class="accordion-content" id="report2021_Q4">
-                <iframe src="https://drive.google.com/file/d/1pRY5Xunm38KQ4LyNAfbDbGXGpQAHWVeR/preview" width="100%" height="600" allow="autoplay"></iframe>
-            </div>
-        </div>
-        
-    </div>
-    
-    
-</body>
-<script src="/static/languageSwitcher.js"></script>
-<script src="/static/translations.js"></script>
-<script src="/static/particles_config.js"></script>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<link
+			rel="icon"
+			href="/static/images/header/icon_site_logo.svg"
+			type="image/x-icon"
+		/>
+
+		<link rel="stylesheet" href="/static/style.css" />
+		<link rel="stylesheet" href="/static/online_assistant.css" />
+		<link rel="stylesheet" href="/static/tour_frame_style.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+		/>
+
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap"
+			rel="stylesheet"
+		/>
+
+		<!-- Подключение библиотеки particles.js -->
+		<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+		<link rel="stylesheet" href="/static/header/styles.css" />
+		<title>Положения колледжа</title>
+		<style>
+			.regulations-section {
+				background-color: #00000000;
+				color: #fff;
+				padding: 30px 20px;
+				font-family: 'Segoe UI', sans-serif;
+				display: flex;
+				justify-content: center;
+			}
+
+			.content-wrapper {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				max-width: 1000px; /* было 800px */
+				width: 100%;
+			}
+
+			.regulations-section h1 {
+				font-size: 1.8em;
+				font-weight: bold;
+				text-align: center;
+				color: #a6d8ff;
+				text-shadow: 2px 2px 8px #33ccff;
+				margin-bottom: 30px;
+			}
+
+			.accordion {
+				width: 100%;
+			}
+
+			.accordion-item {
+				background-color: #1b1b1b;
+				border-radius: 8px;
+				margin-bottom: 15px;
+				overflow: hidden;
+				box-shadow: 0 0 10px rgba(0, 145, 255, 0.15);
+			}
+
+			.accordion-header {
+				padding: 20px 24px;
+				cursor: pointer;
+				position: relative;
+				font-size: 18px;
+				font-weight: 600;
+				color: #9fdfff;
+				background-color: #1f1f1f;
+				transition: background-color 0.3s;
+			}
+
+			.accordion-header:hover {
+				background-color: #22222200;
+			}
+
+			.accordion-header::after {
+				content: '▼';
+				position: absolute;
+				right: 20px;
+				transition: transform 0.3s;
+			}
+
+			.accordion-header.active::after {
+				transform: rotate(180deg);
+			}
+
+			.accordion-content {
+				max-height: 0;
+				overflow: hidden;
+				background-color: #12121200;
+				padding: 0 20px;
+				transition: max-height 0.3s ease;
+			}
+
+			.accordion-content p {
+				margin: 15px 0 10px;
+				font-size: 14px;
+				color: #cdeeff;
+			}
+
+			.download-btn {
+				display: inline-flex;
+				align-items: center;
+				background-color: #33ccff;
+				color: #000;
+				padding: 10px 15px;
+				margin: 10px 0 20px;
+				border: none;
+				border-radius: 6px;
+				text-decoration: none;
+				font-weight: bold;
+				transition: background-color 0.3s;
+				font-size: 14px;
+			}
+
+			.download-btn:hover {
+				background-color: #00aaff;
+			}
+
+			.download-btn svg {
+				margin-right: 8px;
+				width: 18px;
+				height: 18px;
+				fill: currentColor;
+			}
+
+			/* Адаптивность */
+			@media (max-width: 600px) {
+				.regulations-section h1 {
+					font-size: 1.3em;
+				}
+
+				.accordion-header {
+					font-size: 15px;
+					padding: 14px 16px;
+				}
+
+				.accordion-content p {
+					font-size: 13px;
+				}
+
+				.download-btn {
+					font-size: 13px;
+					padding: 8px 12px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="particle-background"></div>
+
+		<div class="info-bar">
+			<div class="info-container">
+				<div class="info-item">
+					<i class="fas fa-calendar-alt"></i>
+					<span id="current-date">29 МАРТА 2024</span>
+				</div>
+				<div class="info-item">
+					<i class="fas fa-clock pulse"></i>
+					<span id="current-time">14:30:45</span>
+				</div>
+			</div>
+			<div class="info-container">
+				<div class="info-item">
+					<i class="fas fa-network-wired"></i>
+					<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+					<span id="ip-address">Загрузка IP...</span>
+				</div>
+				<div class="language-switcher">
+					<select id="language-select">
+						<option value="ru">RU</option>
+						<option value="kz">KZ</option>
+						<option value="en">ENG</option>
+					</select>
+				</div>
+			</div>
+		</div>
+
+		<header>
+			<div class="header-container">
+				<div class="logo">
+					<a href="" target="_self">
+						<img src="/static/images/header/LOGO_NEW.png" alt="POLYTECH" />
+					</a>
+					<button
+						onclick="window.open('https://edu.aspc.kz/?ysclid=lscxoszymx908089861', '_blank')"
+						style="background: none; border: none; padding: 0; cursor: pointer"
+					>
+						<img src="/static/images/header/moodle123-01.svg" alt="Moodle" />
+					</button>
+				</div>
+
+				<nav class="desktop-menu">
+					<div class="menu-item">
+						<a href="#" class="menu-link">
+							<i class="fas fa-school"></i>
+							<span data-translate="menu_college">КОЛЛЕДЖ</span>
+						</a>
+						<div class="dropdown-menu">
+							<div class="dropdown-item">
+								<a href="#" class="dropdown-link" data-translate="management"
+									>Управление</a
+								>
+								<div class="sub-dropdown-menu">
+									<a
+										href="/views/college/uprav/page1.html"
+										class="sub-dropdown-link"
+										data-translate="about_us"
+										>О нас</a
+									>
+									<a
+										href="/views/college/uprav/page2.html"
+										class="sub-dropdown-link"
+										data-translate="structure"
+										>Организационная структура управления</a
+									>
+									<a
+										href="/views/college/uprav/page3.html"
+										class="sub-dropdown-link"
+										data-translate="administration"
+										>Администрация</a
+									>
+									<a
+										href="/views/college/uprav/page4.html"
+										class="sub-dropdown-link"
+										data-translate="departments"
+										>Отделения</a
+									>
+								</div>
+							</div>
+							<div class="dropdown-item">
+								<a href="#" class="dropdown-link" data-translate="documents"
+									>Документы</a
+								>
+								<div class="sub-dropdown-menu">
+									<a
+										href="/"
+										class="sub-dropdown-link"
+										data-translate="licenses"
+										>Лицензии</a
+									>
+									<a
+										href="/views/college/doc/page1.html"
+										class="sub-dropdown-link"
+										data-translate="report"
+										>Отчет о доходах и расходах</a
+									>
+									<a
+										href="director.html"
+										class="sub-dropdown-link"
+										data-translate="charter"
+										>Устав колледжа</a
+									>
+									<a
+										href="staff.html"
+										class="sub-dropdown-link"
+										data-translate="accreditation"
+										>Международная аккредитация</a
+									>
+									<a
+										href="director.html"
+										class="sub-dropdown-link"
+										data-translate="regulations"
+										>Положение</a
+									>
+									<a
+										href="staff.html"
+										class="sub-dropdown-link"
+										data-translate="rules"
+										>Правила внутреннего распорядка</a
+									>
+									<a
+										href="director.html"
+										class="sub-dropdown-link"
+										data-translate="certification"
+										>Государственная аттестация</a
+									>
+									<a
+										href="staff.html"
+										class="sub-dropdown-link"
+										data-translate="catalog"
+										>Онлайн каталог НПА</a
+									>
+								</div>
+							</div>
+							<div class="dropdown-item">
+								<a href="#" class="dropdown-link" data-translate="planning"
+									>ПЛАНИРОВАНИЕ</a
+								>
+								<div class="sub-dropdown-menu">
+									<a
+										href="/views/college/plan/page2.html"
+										class="sub-dropdown-link"
+										data-translate="strategy"
+										>Стратегический план</a
+									>
+									<a
+										href="/views/college/plan/page1.html"
+										class="sub-dropdown-link"
+										data-translate="monitoring"
+										>План работы внутриколледжного контроля</a
+									>
+								</div>
+							</div>
+							<div class="dropdown-item">
+								<a href="#" class="dropdown-link" data-translate="activities"
+									>Направления деятельности колледжа</a
+								>
+								<div class="sub-dropdown-menu">
+									<a
+										href="founders.html"
+										class="sub-dropdown-link"
+										data-translate="education"
+										>Учебная работа</a
+									>
+									<a
+										href="/views/college/naprav/page1.html"
+										class="sub-dropdown-link"
+										data-translate="upbringing"
+										>Воспитательная работа</a
+									>
+									<a
+										href="/views/college/naprav/page3.html"
+										class="sub-dropdown-link"
+										data-translate="methodical"
+										>Учебно-методическая работа</a
+									>
+									<a
+										href="/views/college/naprav/page4.html"
+										class="sub-dropdown-link"
+										data-translate="production"
+										>Учебно-производственная работа</a
+									>
+									<a
+										href="/views/college/naprav/page5.html"
+										class="sub-dropdown-link"
+										data-translate="union"
+										>Учебно-методическое объединение</a
+									>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="menu-item">
+						<a href="#" class="menu-link">
+							<i class="fas fa-school"></i>
+							<span data-translate="menu_admissions">АБИТУРИЕНТАМ</span>
+						</a>
+						<div class="dropdown-menu">
+							<div class="dropdown-item">
+								<a href="#" class="dropdown-link" data-translate="results"
+									>Итоги</a
+								>
+								<div class="sub-dropdown-menu">
+									<a href="" class="sub-dropdown-link" data-translate="first"
+										>первое</a
+									>
+									<a href="" class="sub-dropdown-link" data-translate="second"
+										>второе</a
+									>
+								</div>
+							</div>
+							<div class="dropdown-item">
+								<a href="#" class="dropdown-link" data-translate="admissions"
+									>Кабылдау</a
+								>
+								<div class="sub-dropdown-menu">
+									<a
+										href="director.html"
+										class="sub-dropdown-link"
+										data-translate="admission_rules"
+										>Правила приема</a
+									>
+									<a
+										href="/views/college/doc/page1.html"
+										class="sub-dropdown-link"
+										data-translate="admission_plan"
+										>План приема</a
+									>
+									<a
+										href="director.html"
+										class="sub-dropdown-link"
+										data-translate="document_list"
+										>Перечень документов</a
+									>
+									<a
+										href="staff.html"
+										class="sub-dropdown-link"
+										data-translate="free_education"
+										>Бесплатное обучение</a
+									>
+									<a
+										href="director.html"
+										class="sub-dropdown-link"
+										data-translate="online_applications"
+										>Онлайн подача заявок</a
+									>
+									<a
+										href="staff.html"
+										class="sub-dropdown-link"
+										data-translate="faq"
+										>Информация для абитуриентов «Вопросы и ответы»</a
+									>
+									<a
+										href="director.html"
+										class="sub-dropdown-link"
+										data-translate="document_submission"
+										>Прием документов</a
+									>
+								</div>
+							</div>
+							<div class="dropdown-item">
+								<a href="#" class="dropdown-link" data-translate="specialties"
+									>Выбор спецальности</a
+								>
+								<div class="sub-dropdown-menu">
+									<a
+										href="/views/college/plan/page2.html"
+										class="sub-dropdown-link"
+										data-translate="career_diagnostics"
+										>Профессиональная диагностика</a
+									>
+									<a
+										href="/views/college/plan/page1.html"
+										class="sub-dropdown-link"
+										data-translate="programming_profession"
+										>Профессия программиста</a
+									>
+									<a
+										href="/views/college/plan/page1.html"
+										class="sub-dropdown-link"
+										data-translate="new_professions"
+										>Атлас новых профессий</a
+									>
+								</div>
+							</div>
+							<div class="dropdown-item">
+								<a
+									href="www.youtube.com"
+									class="dropdown-link"
+									data-translate="specialties_video"
+									>спецальности</a
+								>
+							</div>
+						</div>
+					</div>
+
+					<div class="menu-item">
+						<a href="#" class="menu-link">
+							<i class="fas fa-user-graduate"></i>
+							<span data-translate="menu_students">СТУДЕНТАМ</span>
+						</a>
+						<div class="dropdown-menu">
+							<div class="dropdown-item">
+								<a
+									href="ССЫЛКА ТУТ ДОЛЖНА БЫТЬ"
+									class="dropdown-link"
+									data-translate="student_house"
+									>Дом студентов</a
+								>
+							</div>
+							<div class="dropdown-item">
+								<a href="#" class="dropdown-link" data-translate="education"
+									>Обучение</a
+								>
+								<div class="sub-dropdown-menu">
+									<a
+										href="/views/college/plan/page2.html"
+										class="sub-dropdown-link"
+										data-translate="internal_rules"
+										>Правила внутреннего распорядка</a
+									>
+									<a
+										href="/views/college/plan/page1.html"
+										class="sub-dropdown-link"
+										data-translate="students_by_specialty"
+										>Контингент по специальностям</a
+									>
+									<a
+										href="/views/college/plan/page2.html"
+										class="sub-dropdown-link"
+										data-translate="study_schedule"
+										>График учебного процесса</a
+									>
+									<a
+										href="/views/college/plan/page1.html"
+										class="sub-dropdown-link"
+										data-translate="midterm_schedule"
+										>График промежуточной аттестации</a
+									>
+									<a
+										href="/views/college/plan/page2.html"
+										class="sub-dropdown-link"
+										data-translate="final_exam_schedule"
+										>График итоговой аттестации</a
+									>
+									<a
+										href="/views/college/plan/page1.html"
+										class="sub-dropdown-link"
+										data-translate="vacant_places_info"
+										>Информация по наличию вакантных мест</a
+									>
+								</div>
+							</div>
+							<div class="dropdown-item">
+								<a
+									href="#"
+									class="dropdown-link"
+									data-translate="psychological_service"
+									>Психологическая служба колледжа</a
+								>
+								<div class="sub-dropdown-menu">
+									<a
+										href="founders.html"
+										class="sub-dropdown-link"
+										data-translate="educational_work"
+										>Учебная работа</a
+									>
+									<a
+										href="/views/college/naprav/page1.html"
+										class="sub-dropdown-link"
+										data-translate="psychologist"
+										>Психолог</a
+									>
+									<a
+										href="/views/college/naprav/page3.html"
+										class="sub-dropdown-link"
+										data-translate="student_recommendations"
+										>Рекомендации для студентов</a
+									>
+								</div>
+							</div>
+							<div class="dropdown-item">
+								<a
+									href="ССЫЛКА ТУТ ДОЛЖНА БЫТЬ"
+									class="dropdown-link"
+									data-translate="rules"
+									>Правила</a
+								>
+							</div>
+						</div>
+					</div>
+
+					<div class="menu-item">
+						<a href="#" class="menu-link">
+							<i class="fas fa-chalkboard-teacher"></i>
+							<span data-translate="menu_teachers">ПРЕПОДАВАТЕЛЯМ</span>
+						</a>
+						<div class="dropdown-menu">
+							<div class="dropdown-item">
+								<a href="#" class="dropdown-link" data-translate="resources"
+									>Ресурсы</a
+								>
+								<div class="sub-dropdown-menu">
+									<a
+										href="methodology.html"
+										class="sub-dropdown-link"
+										data-translate="methodology"
+										>Методические рекомендации</a
+									>
+									<a
+										href="training.html"
+										class="sub-dropdown-link"
+										data-translate="forms_of_upd"
+										>Формы УПД</a
+									>
+									<a
+										href="community.html"
+										class="sub-dropdown-link"
+										data-translate="educational_programs"
+										>Образовательные программы</a
+									>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="menu-item">
+						<a href="#" class="menu-link">
+							<i class="fas fa-university"></i>
+							<span data-translate="menu_government">ГОСУДАРСТВО</span>
+						</a>
+						<div class="dropdown-menu">
+							<div class="dropdown-item">
+								<a href="#" class="dropdown-link" data-translate="state_symbols"
+									>Государственные символы</a
+								>
+								<a
+									href="#"
+									class="dropdown-link"
+									data-translate="citizen_reception_schedule"
+									>График приема граждан</a
+								>
+								<a href="#" class="dropdown-link" data-translate="constitution"
+									>Конституция</a
+								>
+								<a href="#" class="dropdown-link" data-translate="open_almaty"
+									>Open Almaty</a
+								>
+							</div>
+						</div>
+					</div>
+
+					<div class="menu-item">
+						<a href="#" class="menu-link">
+							<i class="fas fa-briefcase"></i>
+							<span data-translate="menu_vacancies">ВАКАНСИИ</span>
+						</a>
+						<div class="dropdown-menu">
+							<div class="dropdown-item">
+								<a
+									href="тут должна быть ссылка"
+									class="dropdown-link"
+									data-translate="apply"
+									>Подать заявку</a
+								>
+							</div>
+						</div>
+					</div>
+
+					<div class="menu-item">
+						<a href="#" class="menu-link">
+							<i class="fas fa-envelope"></i>
+							<span data-translate="menu_contacts">КОНТАКТЫ</span>
+						</a>
+						<div class="dropdown-menu">
+							<div class="dropdown-item">
+								<a
+									href="/views/contact/page1.html"
+									class="dropdown-link"
+									data-translate="contact_us"
+									>Связаться с нами</a
+								>
+							</div>
+						</div>
+					</div>
+				</nav>
+
+				<button class="mobile-menu-toggle">
+					<span></span>
+					<span></span>
+					<span></span>
+				</button>
+			</div>
+		</header>
+
+		<div class="overlay"></div>
+		<nav class="mobile-menu">
+			<div class="menu-item">
+				<a href="#" class="menu-link">
+					<i class="fas fa-school"></i>
+					<span>КОЛЛЕДЖ</span>
+					<i class="fas fa-chevron-down dropdown-arrow"></i>
+				</a>
+				<div class="dropdown-menu">
+					<div class="dropdown-item">
+						<a href="/views/college/uprav/page1.html" class="dropdown-link"
+							>О нас</a
+						>
+						<a href="/views/college/uprav/page2.html" class="dropdown-link"
+							>Организационная структура управления</a
+						>
+						<a href="/views/college/uprav/page3.html" class="dropdown-link"
+							>Адмистрация</a
+						>
+						<a href="/views/college/uprav/page4.html" class="dropdown-link"
+							>Отделении</a
+						>
+					</div>
+					<div class="dropdown-item">
+						<a href="director.html" class="dropdown-link">Лицензии</a>
+						<a href="/views/college/doc/page1.html" class="dropdown-link"
+							>Отчет о доходах и расходах</a
+						>
+						<a href="director.html" class="dropdown-link">Устав колледжа</a>
+						<a href="staff.html" class="dropdown-link"
+							>Международная аккредитация</a
+						>
+						<a href="director.html" class="dropdown-link">Положение</a>
+						<a href="staff.html" class="dropdown-link"
+							>Правила внутреннего распорядка</a
+						>
+						<a href="director.html" class="dropdown-link"
+							>Госсударственная аттестация</a
+						>
+						<a href="staff.html" class="dropdown-link">Онлайн каталог НПА</a>
+					</div>
+					<div class="dropdown-item">
+						<a href="/views/college/plan/page2.html" class="dropdown-link"
+							>Стратегический план</a
+						>
+						<a href="/views/college/plan/page1.html" class="dropdown-link"
+							>План работы внутриколледжного контроля</a
+						>
+					</div>
+					<div class="dropdown-item">
+						<a href="founders.html" class="dropdown-link">Учебная работа</a>
+						<a href="/views/college/naprav/page1.html" class="dropdown-link"
+							>Воспитательная работа</a
+						>
+						<a href="/views/college/naprav/page3.html" class="dropdown-link"
+							>Учебно-методическая работа</a
+						>
+						<a href="/views/college/naprav/page4.html" class="dropdown-link"
+							>Учебно-произведственная работа</a
+						>
+						<a href="/views/college/naprav/page5.html" class="dropdown-link"
+							>Учебно-методическое объединение</a
+						>
+					</div>
+				</div>
+			</div>
+
+			<div class="menu-item">
+				<a href="#" class="menu-link">
+					<i class="fas fa-user-graduate"></i>
+					<span>АБИТУРИЕНТАМ</span>
+					<i class="fas fa-chevron-down dropdown-arrow"></i>
+				</a>
+				<div class="dropdown-menu">
+					<div class="dropdown-item">
+						<a href="/views/college/uprav/page1.html" class="dropdown-link"
+							>Итоги: первое</a
+						>
+						<a href="/views/college/uprav/page2.html" class="dropdown-link"
+							>Итоги: второе</a
+						>
+					</div>
+					<div class="dropdown-item">
+						<a href="director.html" class="dropdown-link">Правила приема</a>
+						<a href="/views/college/doc/page1.html" class="dropdown-link"
+							>План приема</a
+						>
+						<a href="director.html" class="dropdown-link"
+							>Перечень документов</a
+						>
+						<a href="staff.html" class="dropdown-link">Бесплатное обучение</a>
+						<a href="director.html" class="dropdown-link"
+							>Онлайн подача заявок</a
+						>
+						<a href="staff.html" class="dropdown-link">Инфо для абитуриентов</a>
+						<a href="director.html" class="dropdown-link">Прием документов</a>
+					</div>
+					<div class="dropdown-item">
+						<a href="/views/college/plan/page2.html" class="dropdown-link"
+							>Проф. диагностика</a
+						>
+						<a href="/views/college/plan/page1.html" class="dropdown-link"
+							>Профессия программиста</a
+						>
+						<a href="/views/college/plan/page1.html" class="dropdown-link"
+							>Атлас новых профессий</a
+						>
+					</div>
+					<div class="dropdown-item">
+						<a href="www.youtube.com" class="dropdown-link">Специальности</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="menu-item">
+				<a href="#" class="menu-link">
+					<i class="fas fa-book-open"></i>
+					<span>СТУДЕНТАМ</span>
+					<i class="fas fa-chevron-down dropdown-arrow"></i>
+				</a>
+				<div class="dropdown-menu">
+					<div class="dropdown-item">
+						<a href="ССЫЛКА ТУТ ДОЛЖНА БЫТЬ" class="dropdown-link"
+							>Дом студентов</a
+						>
+					</div>
+					<div class="dropdown-item">
+						<a href="/views/college/plan/page2.html" class="dropdown-link"
+							>Правила внутреннего распорядка</a
+						>
+						<a href="/views/college/plan/page1.html" class="dropdown-link"
+							>Контингент по специальностям</a
+						>
+						<a href="/views/college/plan/page2.html" class="dropdown-link"
+							>График учебного процесса</a
+						>
+						<a href="/views/college/plan/page1.html" class="dropdown-link"
+							>График промежуточной аттестации</a
+						>
+						<a href="/views/college/plan/page2.html" class="dropdown-link"
+							>График итоговой аттестации</a
+						>
+						<a href="/views/college/plan/page1.html" class="dropdown-link"
+							>Вакантные места</a
+						>
+					</div>
+					<div class="dropdown-item">
+						<a href="founders.html" class="dropdown-link">Учебная работа</a>
+						<a href="/views/college/naprav/page1.html" class="dropdown-link"
+							>Психолог</a
+						>
+						<a href="/views/college/naprav/page3.html" class="dropdown-link"
+							>Рекомендации</a
+						>
+					</div>
+					<div class="dropdown-item">
+						<a href="ССЫЛКА ТУТ ДОЛЖНА БЫТЬ" class="dropdown-link">Правила</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="menu-item">
+				<a href="#" class="menu-link">
+					<i class="fas fa-chalkboard-teacher"></i>
+					<span>ПРЕПОДАВАТЕЛЯМ</span>
+					<i class="fas fa-chevron-down dropdown-arrow"></i>
+				</a>
+				<div class="dropdown-menu">
+					<div class="dropdown-item">
+						<a href="methodology.html" class="dropdown-link"
+							>Методические рекомендации</a
+						>
+						<a href="training.html" class="dropdown-link">Формы УПД</a>
+						<a href="community.html" class="dropdown-link"
+							>Образовательные программы</a
+						>
+					</div>
+				</div>
+			</div>
+
+			<div class="menu-item">
+				<a href="#" class="menu-link">
+					<i class="fas fa-university"></i>
+					<span>ГОСУДАРСТВО</span>
+					<i class="fas fa-chevron-down dropdown-arrow"></i>
+				</a>
+				<div class="dropdown-menu">
+					<div class="dropdown-item">
+						<a href="#" class="dropdown-link">Гос. символы</a>
+						<a href="#" class="dropdown-link">График приёма граждан</a>
+						<a href="#" class="dropdown-link">Конституция</a>
+						<a href="#" class="dropdown-link">Open Almaty</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="menu-item">
+				<a href="#" class="menu-link">
+					<i class="fas fa-briefcase"></i>
+					<span>ВАКАНСИИ</span>
+					<i class="fas fa-chevron-down dropdown-arrow"></i>
+				</a>
+				<div class="dropdown-menu">
+					<div class="dropdown-item">
+						<a href="тут должна быть ссылка" class="dropdown-link"
+							>Подать заявку</a
+						>
+					</div>
+				</div>
+			</div>
+
+			<div class="menu-item">
+				<a href="/views/contact/page1.html" class="menu-link">
+					<i class="fas fa-envelope"></i>
+					<span>КОНТАКТЫ</span>
+				</a>
+			</div>
+		</nav>
+		<!-- Секция "Положения колледжа" -->
+		<div class="regulations-section">
+			<div class="content-wrapper">
+				<h1 data-translate="lic_rules_title">Лицензии</h1>
+
+				<div class="accordion">
+					<!-- Элемент аккордеона 1 -->
+					<div class="accordion-item">
+						<div class="accordion-header" data-translate="admission_rules_2022">
+							Қабылдау ережелері 2022-2023
+						</div>
+						<div class="accordion-content">
+							<a
+								class="download-btn"
+								href="/static/reports/2023_Q1.pdf"
+								download
+							>
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+									<path
+										d="M5 20h14v-2H5v2zm7-18L5.33 11h3.67v4h6v-4h3.67L12 2z"
+									/>
+								</svg>
+								<span data-translate="download_pdf">Скачать PDF</span>
+							</a>
+						</div>
+					</div>
+
+					<!-- Элемент аккордеона 2 -->
+					<div class="accordion-item">
+						<div class="accordion-header" data-translate="admission_rules_2023">
+							Қабылдау ережелері 2023-2024
+						</div>
+						<div class="accordion-content">
+							<a
+								class="download-btn"
+								href="docs/popechitelskiy-sovet.pdf"
+								download
+							>
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+									<path
+										d="M5 20h14v-2H5v2zm7-18L5.33 11h3.67v4h6v-4h3.67L12 2z"
+									/>
+								</svg>
+								<span data-translate="download_pdf">Скачать PDF</span>
+							</a>
+						</div>
+					</div>
+
+					<!-- Элемент аккордеона 3 -->
+					<div class="accordion-item">
+						<div class="accordion-header" data-translate="admission_rules_2024">
+							Қабылдау ережелері 2024-2025
+						</div>
+						<div class="accordion-content">
+							<a class="download-btn" href="docs/laboratoriya.pdf" download>
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+									<path
+										d="M5 20h14v-2H5v2zm7-18L5.33 11h3.67v4h6v-4h3.67L12 2z"
+									/>
+								</svg>
+								<span data-translate="download_pdf">Скачать PDF</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- JS для аккордеона -->
+		<script>
+			const headers = document.querySelectorAll('.accordion-header')
+			headers.forEach(header => {
+				header.addEventListener('click', () => {
+					const content = header.nextElementSibling
+					header.classList.toggle('active')
+					if (content.style.maxHeight) {
+						content.style.maxHeight = null
+					} else {
+						content.style.maxHeight = content.scrollHeight + 'px'
+					}
+				})
+			})
+		</script>
+
+		<script src="/static/translations.js"></script>
+		<script src="/static/languageSwitcher.js"></script>
+		<script src="/static/virtualTour.js"></script>
+		<script src="/static/online_assistant.js"></script>
+		<script src="/static/script.js"></script>
+		<script src="/static/particles_config.js"></script>
+		<script src="/static/major-body.js"></script>
+		<script src="/static/partners-scroll.js"></script>
+		<script src="/static/header/main.js"></script>
+		<!-- <script src="/static/yearUpdater.js"></script> -->
+		<script src="/static/modal-page/js/specialtyPopup.js"></script>
+	</body>
+	<footer class="footer">
+		<div class="footer-container">
+			<!-- О сайте -->
+			<div class="footer-section">
+				<h3 data-translate="about_site">Сайт туралы</h3>
+				<p id="copyright-year"></p>
+				<script>
+					const currentYear = new Date().getFullYear()
+					document.getElementById(
+						'copyright-year'
+					).textContent = `©1940–${currentYear}`
+				</script>
+				<p data-translate="college_name">
+					Алматы қаласы Білім басқармасының «ALMATY POLYTECHNIC COLLEGE» КМҚК
+				</p>
+
+				<h3 data-translate="social_networks">Әлеуметтік желілер</h3>
+				<div class="social-icons">
+					<a
+						href="https://www.instagram.com/polytechalmaty/#"
+						target="_blank"
+						aria-label="Instagram"
+					>
+						<img src="/static/images/flot/instagram.png" alt="Instagram" />
+					</a>
+					<a
+						href="https://www.facebook.com/people/..."
+						target="_blank"
+						aria-label="Facebook"
+					>
+						<img src="/static/images/flot/facebook.png" alt="Facebook" />
+					</a>
+					<a
+						href="https://www.youtube.com/@almatypolytechedukz"
+						target="_blank"
+						aria-label="YouTube"
+					>
+						<img src="/static/images/flot/youtube.png" alt="YouTube" />
+					</a>
+					<a
+						href="https://www.tiktok.com/@polytech_college?_t=8ji5qQRP3v3&_r=1"
+						target="_blank"
+						aria-label="TikTok"
+					>
+						<img src="/static/images/flot/tiktok.png" alt="TikTok" />
+					</a>
+				</div>
+			</div>
+
+			<!-- Контакты -->
+			<div class="footer-section">
+				<h3 data-translate="contact_label">Байланыс</h3>
+				<p>
+					<span class="icon">📍</span>
+					<strong data-translate="address_label">Мекенжай:</strong><br />
+					<span data-translate="address"
+						>Қазақстан, Алматы қ., Тастақ-1 шағын ауданы, 1B</span
+					>
+				</p>
+				<p>
+					<span class="icon">📞</span>
+					<strong data-translate="contact_label">Байланыс:</strong><br />
+					<span data-translate="phone">Тел.: 396 71 39</span><br />
+					<span data-translate="admission_phone"
+						>Қабылдау комиссиясы: 8 707 171 0800</span
+					>
+				</p>
+				<p>
+					<span class="icon">✉️</span>
+					<strong data-translate="email_label">Пошта:</strong><br />
+					<a href="mailto:polytech@aspc.kz">polytech@aspc.kz</a>
+				</p>
+			</div>
+
+			<!-- Разработчики -->
+			<div class="footer-section">
+				<h3 data-translate="developers">Разработчики сайта</h3>
+				<p>
+					<span class="icon">👨‍💻</span>
+					<strong data-translate="developer_name">Жобаны жасаған:</strong><br />
+					<span data-translate="developer_info"
+						>Колледж студенттері мен оқытушылары</span
+					>
+				</p>
+
+				<a
+					href="https://www.instagram.com/jasi.you/"
+					class="dev-button"
+					data-translate="contact_developer"
+					>Связаться с разработчиком</a
+				>
+			</div>
+		</div>
+	</footer>
 </html>
