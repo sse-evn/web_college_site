@@ -248,6 +248,7 @@ const translations = {
 		grafika_rules_title: 'График промежуточной аттестации',
 		grafiki_rules_title: 'График итоговой аттестации',
 		info_rules_title: 'Информация по наличию вакантных мест',
+		educational_work: 'Учебная работа',
 	},
 	en: {
 		college: 'ALMATY POLYTECHNIC COLLEGE',
@@ -498,6 +499,7 @@ const translations = {
 		grafika_rules_title: 'Final Exam Schedule',
 		grafiki_rules_title: 'Final Certification Schedule',
 		info_rules_title: 'Information on Vacant Places',
+		educational_work: 'Educational Work',
 	},
 	kz: {
 		college: 'АЛМАТЫ ПОЛИТЕХНИКАЛЫҚ КОЛЛЕДЖІ',
@@ -749,5 +751,6 @@ const translations = {
 		grafika_rules_title: 'Қорытынды аттестация кестесі',
 		grafiki_rules_title: 'Қорытынды аттестаттау кестесі',
 		info_rules_title: 'Бос орындар туралы ақпарат',
+		educational_work: 'Тәрбиелік жұмыс',
 	},
 }
