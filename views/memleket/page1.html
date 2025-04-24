@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="/static/images/header/icon_site_logo.svg" type="image/x-icon">
+
+
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="/static/online_assistant.css">
+  <link rel="stylesheet" href="/static/tour_frame_style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
+  <!-- Подключение библиотеки particles.js -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <link rel="stylesheet" href="/static/header/styles.css">
+
+  <title>Государственные символы Казахстана</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #000;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      line-height: 1.6;
+    }
+
+  
+
+    .section {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .section h2 {
+      color: #33ccff;
+      font-size: 26px;
+      margin-bottom: 10px;
+      border-bottom: 2px solid #33ccff;
+      padding-bottom: 5px;
+    }
+
+    .section img {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      display: block;
+      margin: 20px auto;
+      border: 2px solid #33ccff;
+      border-radius: 10px;
+    }
+
+    .video-container {
+      margin: 30px 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .video-container iframe {
+      width: 100%;
+      max-width: 800px;
+      height: 450px;
+      border: 2px solid #33ccff;
+      border-radius: 12px;
+    }
+
+    .lyrics {
+      background-color: #1a1a1a;
+      padding: 20px;
+      margin-top: 20px;
+      border-left: 4px solid #33ccff;
+      font-style: italic;
+      color: #cceeff;
+    }
+
+
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 22px;
+      }
+      .section h2 {
+        font-size: 20px;
+      }
+      .video-container iframe {
+        height: 220px;
+      }
+    }
+  </style>
+</head>
+<body>
+    <div id="particle-background"></div>
+
+    <div class="info-bar">
+        <div class="info-container">
+            <div class="info-item">
+                <i class="fas fa-calendar-alt"></i>
+                <span id="current-date">29 МАРТА 2024</span>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-clock pulse"></i>
+                <span id="current-time">14:30:45</span>
+            </div>
+        </div>
+        <div class="info-container">
+            <div class="info-item">
+                <i class="fas fa-network-wired"></i> <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+                <span id="ip-address">Загрузка IP...</span>
+            </div>
+ <div class="language-switcher">
+                <select id="language-select">
+                    <option value="ru">RU</option>
+                    <option value="kz">KZ</option>
+                    <option value="en">ENG</option>
+                </select>
+
+            </div>
+        </div>
+    </div>
+
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <a href="" target="_self">
+                    <img src="/static/images/header/LOGO_NEW.png" alt="POLYTECH">
+                </a>
+                <button 
+                onclick="window.open('https://edu.aspc.kz/?ysclid=lscxoszymx908089861', '_blank')"
+                style="
+                  background: none;
+                  border: none;
+                  padding: 0;
+                  cursor: pointer;
+                "
+              >
+                <img src="/static/images/header/moodle123-01.svg" alt="Moodle">
+              </button>
+            </div>
+
+            <nav class="desktop-menu">
+                <div class="menu-item">
+                    <a href="#" class="menu-link">
+                        <i class="fas fa-school"></i>
+                        <span data-translate="menu_college">КОЛЛЕДЖ</span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-item">
+                            <a href="#" class="dropdown-link" data-translate="management">Управление</a>
+                            <div class="sub-dropdown-menu">
+                                <a href="/views/college/uprav/page1.html" class="sub-dropdown-link" data-translate="about_us">О нас</a>
+                                <a href="/views/college/uprav/page2.html" class="sub-dropdown-link" data-translate="structure">Организационная структура управления</a>
+                                <a href="/views/college/uprav/page3.html" class="sub-dropdown-link" data-translate="administration">Администрация</a>
+                                <a href="/views/college/uprav/page4.html" class="sub-dropdown-link" data-translate="departments">Отделения</a>
+                            </div>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#" class="dropdown-link" data-translate="documents">Документы</a>
+                            <div class="sub-dropdown-menu">
+                                <a href="/" class="sub-dropdown-link" data-translate="licenses">Лицензии</a>
+                                <a href="/views/college/doc/page1.html" class="sub-dropdown-link" data-translate="report">Отчет о доходах и расходах</a>
+                                <a href="director.html" class="sub-dropdown-link" data-translate="charter">Устав колледжа</a>
+                                <a href="staff.html" class="sub-dropdown-link" data-translate="accreditation">Международная аккредитация</a>
+                                <a href="director.html" class="sub-dropdown-link" data-translate="regulations">Положение</a>
+                                <a href="staff.html" class="sub-dropdown-link" data-translate="rules">Правила внутреннего распорядка</a>
+                                <a href="director.html" class="sub-dropdown-link" data-translate="certification">Государственная аттестация</a>
+                                <a href="staff.html" class="sub-dropdown-link" data-translate="catalog">Онлайн каталог НПА</a>
+                            </div>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#" class="dropdown-link" data-translate="planning">ПЛАНИРОВАНИЕ</a>
+                            <div class="sub-dropdown-menu">
+                                <a href="/views/college/plan/page2.html" class="sub-dropdown-link" data-translate="strategy">Стратегический план</a>
+                                <a href="/views/college/plan/page1.html" class="sub-dropdown-link" data-translate="monitoring">План работы внутриколледжного контроля</a>
+                            </div>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#" class="dropdown-link" data-translate="activities">Направления деятельности колледжа</a>
+                            <div class="sub-dropdown-menu">
+                                <a href="founders.html" class="sub-dropdown-link" data-translate="education">Учебная работа</a>
+                                <a href="/views/college/naprav/page1.html" class="sub-dropdown-link" data-translate="upbringing">Воспитательная работа</a>
+                                <a href="/views/college/naprav/page3.html" class="sub-dropdown-link" data-translate="methodical">Учебно-методическая работа</a>
+                                <a href="/views/college/naprav/page4.html" class="sub-dropdown-link" data-translate="production">Учебно-производственная работа</a>
+                                <a href="/views/college/naprav/page5.html" class="sub-dropdown-link" data-translate="union">Учебно-методическое объединение</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <a href="#" class="menu-link">
+                        <i class="fas fa-school"></i>
+                        <span data-translate="menu_admissions">АБИТУРИЕНТАМ</span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-item">
+                            <a href="#" class="dropdown-link" data-translate="results">Итоги</a>
+                            <div class="sub-dropdown-menu">
+                                <a href="" class="sub-dropdown-link" data-translate="first">первое</a>
+                                <a href="" class="sub-dropdown-link" data-translate="second">второе</a>
+                            </div>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#" class="dropdown-link" data-translate="admissions">Кабылдау</a>
+                            <div class="sub-dropdown-menu">
+                                <a href="director.html" class="sub-dropdown-link" data-translate="admission_rules">Правила приема</a>
+                                <a href="/views/college/doc/page1.html" class="sub-dropdown-link" data-translate="admission_plan">План приема</a>
+                                <a href="director.html" class="sub-dropdown-link" data-translate="document_list">Перечень документов</a>
+                                <a href="staff.html" class="sub-dropdown-link" data-translate="free_education">Бесплатное обучение</a>
+                                <a href="director.html" class="sub-dropdown-link" data-translate="online_applications">Онлайн подача заявок</a>
+                                <a href="staff.html" class="sub-dropdown-link" data-translate="faq">Информация для абитуриентов «Вопросы и ответы»</a>
+                                <a href="director.html" class="sub-dropdown-link" data-translate="document_submission">Прием документов</a>
+                            </div>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#" class="dropdown-link" data-translate="specialties">Выбор спецальности</a>
+                            <div class="sub-dropdown-menu">
+                                <a href="/views/college/plan/page2.html" class="sub-dropdown-link" data-translate="career_diagnostics">Профессиональная диагностика</a>
+                                <a href="/views/college/plan/page1.html" class="sub-dropdown-link" data-translate="programming_profession">Профессия программиста</a>
+                                <a href="/views/college/plan/page1.html" class="sub-dropdown-link" data-translate="new_professions">Атлас новых профессий</a>
+                            </div>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="www.youtube.com" class="dropdown-link" data-translate="specialties_video">спецальности</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <a href="#" class="menu-link">
+                        <i class="fas fa-user-graduate"></i>
+                        <span data-translate="menu_students">СТУДЕНТАМ</span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-item">
+                            <a href="ССЫЛКА ТУТ ДОЛЖНА БЫТЬ" class="dropdown-link" data-translate="student_house">Дом студентов</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#" class="dropdown-link" data-translate="education">Обучение</a>
+                            <div class="sub-dropdown-menu">
+                                <a href="/views/college/plan/page2.html" class="sub-dropdown-link" data-translate="internal_rules">Правила внутреннего распорядка</a>
+                                <a href="/views/college/plan/page1.html" class="sub-dropdown-link" data-translate="students_by_specialty">Контингент по специальностям</a>
+                                <a href="/views/college/plan/page2.html" class="sub-dropdown-link" data-translate="study_schedule">График учебного процесса</a>
+                                <a href="/views/college/plan/page1.html" class="sub-dropdown-link" data-translate="midterm_schedule">График промежуточной аттестации</a>
+                                <a href="/views/college/plan/page2.html" class="sub-dropdown-link" data-translate="final_exam_schedule">График итоговой аттестации</a>
+                                <a href="/views/college/plan/page1.html" class="sub-dropdown-link" data-translate="vacant_places_info">Информация по наличию вакантных мест</a>
+                            </div>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#" class="dropdown-link" data-translate="psychological_service">Психологическая служба колледжа</a>
+                            <div class="sub-dropdown-menu">
+                                <a href="founders.html" class="sub-dropdown-link" data-translate="educational_work">Учебная работа</a>
+                                <a href="/views/college/naprav/page1.html" class="sub-dropdown-link" data-translate="psychologist">Психолог</a>
+                                <a href="/views/college/naprav/page3.html" class="sub-dropdown-link" data-translate="student_recommendations">Рекомендации для студентов</a>
+                            </div>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="ССЫЛКА ТУТ ДОЛЖНА БЫТЬ" class="dropdown-link" data-translate="rules">Правила</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <a href="#" class="menu-link">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <span data-translate="menu_teachers">ПРЕПОДАВАТЕЛЯМ</span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-item">
+                            <a href="#" class="dropdown-link" data-translate="resources">Ресурсы</a>
+                            <div class="sub-dropdown-menu">
+                                <a href="methodology.html" class="sub-dropdown-link" data-translate="methodology">Методические рекомендации</a>
+                                <a href="training.html" class="sub-dropdown-link" data-translate="forms_of_upd">Формы УПД</a>
+                                <a href="community.html" class="sub-dropdown-link" data-translate="educational_programs">Образовательные программы</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <a href="#" class="menu-link">
+                        <i class="fas fa-university"></i>
+                        <span data-translate="menu_government">ГОСУДАРСТВО</span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-item">
+                            <a href="#" class="dropdown-link" data-translate="state_symbols">Государственные символы</a>
+                            <a href="#" class="dropdown-link" data-translate="citizen_reception_schedule">График приема граждан</a>
+                            <a href="#" class="dropdown-link" data-translate="constitution">Конституция</a>
+                            <a href="#" class="dropdown-link" data-translate="open_almaty">Open Almaty</a>
+                        </div>
+                    </div>
+                </div>
+       
+                <div class="menu-item">
+                    <a href="#" class="menu-link">
+                        <i class="fas fa-briefcase"></i>
+                        <span data-translate="menu_vacancies">ВАКАНСИИ</span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-item">
+                            <a href="тут должна быть ссылка" class="dropdown-link" data-translate="apply">Подать заявку</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <a href="#" class="menu-link">
+                        <i class="fas fa-envelope"></i>
+                        <span data-translate="menu_contacts">КОНТАКТЫ</span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-item">
+                            <a href="/views/contact/page1.html" class="dropdown-link" data-translate="contact_us">Связаться с нами</a>
+                        </div>
+                    </div>
+                </div>
+                
+            </nav>
+
+            <button class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="overlay"></div>
+    <nav class="mobile-menu">
+        <div class="menu-item">
+            <a href="#" class="menu-link">
+                <i class="fas fa-school"></i>
+                <span>КОЛЛЕДЖ</span>
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+            </a>
+            <div class="dropdown-menu">
+                <div class="dropdown-item">
+                    <a href="/views/college/uprav/page1.html" class="dropdown-link">О нас</a>
+                    <a href="/views/college/uprav/page2.html" class="dropdown-link">Организационная структура управления</a>
+                    <a href="/views/college/uprav/page3.html" class="dropdown-link">Адмистрация</a>
+                    <a href="/views/college/uprav/page4.html" class="dropdown-link">Отделении</a>
+                </div>
+                <div class="dropdown-item">
+                    <a href="director.html" class="dropdown-link">Лицензии</a>
+                    <a href="/views/college/doc/page1.html" class="dropdown-link">Отчет о доходах и расходах</a>
+                    <a href="director.html" class="dropdown-link">Устав колледжа</a>
+                    <a href="staff.html" class="dropdown-link">Международная аккредитация</a>
+                    <a href="director.html" class="dropdown-link">Положение</a>
+                    <a href="staff.html" class="dropdown-link">Правила внутреннего распорядка</a>
+                    <a href="director.html" class="dropdown-link">Госсударственная аттестация</a>
+                    <a href="staff.html" class="dropdown-link">Онлайн каталог НПА</a>
+                </div>
+                <div class="dropdown-item">
+                    <a href="/views/college/plan/page2.html" class="dropdown-link">Стратегический план</a>
+                    <a href="/views/college/plan/page1.html" class="dropdown-link">План работы внутриколледжного контроля</a>
+                </div>
+                <div class="dropdown-item">
+                    <a href="founders.html" class="dropdown-link">Учебная работа</a>
+                    <a href="/views/college/naprav/page1.html" class="dropdown-link">Воспитательная работа</a>
+                    <a href="/views/college/naprav/page3.html" class="dropdown-link">Учебно-методическая работа</a>
+                    <a href="/views/college/naprav/page4.html" class="dropdown-link">Учебно-произведственная работа</a>
+                    <a href="/views/college/naprav/page5.html" class="dropdown-link">Учебно-методическое объединение</a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="menu-item">
+            <a href="#" class="menu-link">
+                <i class="fas fa-user-graduate"></i>
+                <span>АБИТУРИЕНТАМ</span>
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+            </a>
+            <div class="dropdown-menu">
+                <div class="dropdown-item">
+                    <a href="/views/college/uprav/page1.html" class="dropdown-link">Итоги: первое</a>
+                    <a href="/views/college/uprav/page2.html" class="dropdown-link">Итоги: второе</a>
+                </div>
+                <div class="dropdown-item">
+                    <a href="director.html" class="dropdown-link">Правила приема</a>
+                    <a href="/views/college/doc/page1.html" class="dropdown-link">План приема</a>
+                    <a href="director.html" class="dropdown-link">Перечень документов</a>
+                    <a href="staff.html" class="dropdown-link">Бесплатное обучение</a>
+                    <a href="director.html" class="dropdown-link">Онлайн подача заявок</a>
+                    <a href="staff.html" class="dropdown-link">Инфо для абитуриентов</a>
+                    <a href="director.html" class="dropdown-link">Прием документов</a>
+                </div>
+                <div class="dropdown-item">
+                    <a href="/views/college/plan/page2.html" class="dropdown-link">Проф. диагностика</a>
+                    <a href="/views/college/plan/page1.html" class="dropdown-link">Профессия программиста</a>
+                    <a href="/views/college/plan/page1.html" class="dropdown-link">Атлас новых профессий</a>
+                </div>
+                <div class="dropdown-item">
+                    <a href="www.youtube.com" class="dropdown-link">Специальности</a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="menu-item">
+            <a href="#" class="menu-link">
+                <i class="fas fa-book-open"></i>
+                <span>СТУДЕНТАМ</span>
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+            </a>
+            <div class="dropdown-menu">
+                <div class="dropdown-item">
+                    <a href="ССЫЛКА ТУТ ДОЛЖНА БЫТЬ" class="dropdown-link">Дом студентов</a>
+                </div>
+                <div class="dropdown-item">
+                    <a href="/views/college/plan/page2.html" class="dropdown-link">Правила внутреннего распорядка</a>
+                    <a href="/views/college/plan/page1.html" class="dropdown-link">Контингент по специальностям</a>
+                    <a href="/views/college/plan/page2.html" class="dropdown-link">График учебного процесса</a>
+                    <a href="/views/college/plan/page1.html" class="dropdown-link">График промежуточной аттестации</a>
+                    <a href="/views/college/plan/page2.html" class="dropdown-link">График итоговой аттестации</a>
+                    <a href="/views/college/plan/page1.html" class="dropdown-link">Вакантные места</a>
+                </div>
+                <div class="dropdown-item">
+                    <a href="founders.html" class="dropdown-link">Учебная работа</a>
+                    <a href="/views/college/naprav/page1.html" class="dropdown-link">Психолог</a>
+                    <a href="/views/college/naprav/page3.html" class="dropdown-link">Рекомендации</a>
+                </div>
+                <div class="dropdown-item">
+                    <a href="ССЫЛКА ТУТ ДОЛЖНА БЫТЬ" class="dropdown-link">Правила</a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="menu-item">
+            <a href="#" class="menu-link">
+                <i class="fas fa-chalkboard-teacher"></i>
+                <span>ПРЕПОДАВАТЕЛЯМ</span>
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+            </a>
+            <div class="dropdown-menu">
+                <div class="dropdown-item">
+                    <a href="methodology.html" class="dropdown-link">Методические рекомендации</a>
+                    <a href="training.html" class="dropdown-link">Формы УПД</a>
+                    <a href="community.html" class="dropdown-link">Образовательные программы</a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="menu-item">
+            <a href="#" class="menu-link">
+                <i class="fas fa-university"></i>
+                <span>ГОСУДАРСТВО</span>
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+            </a>
+            <div class="dropdown-menu">
+                <div class="dropdown-item">
+                    <a href="#" class="dropdown-link">Гос. символы</a>
+                    <a href="#" class="dropdown-link">График приёма граждан</a>
+                    <a href="#" class="dropdown-link">Конституция</a>
+                    <a href="#" class="dropdown-link">Open Almaty</a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="menu-item">
+            <a href="#" class="menu-link">
+                <i class="fas fa-briefcase"></i>
+                <span>ВАКАНСИИ</span>
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+            </a>
+            <div class="dropdown-menu">
+                <div class="dropdown-item">
+                    <a href="тут должна быть ссылка" class="dropdown-link">Подать заявку</a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="menu-item">
+            <a href="/views/contact/page1.html" class="menu-link">
+                <i class="fas fa-envelope"></i>
+                <span>КОНТАКТЫ</span>
+            </a>
+        </div>
+    </nav>
+  
+
+  <div class="section">
+    <h2>🏴 Государственный флаг</h2>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Flag_of_Kazakhstan.svg" alt="Флаг Казахстана">
+    <p>
+      Флаг – это один из главных символов государства, олицетворяющий его суверенитет и идентичность. Термин «флаг» происходит от нидерландского слова «vlag». Флаг — это прикрепленное к древку или шнуру полотнище установленных размеров и цветов, обычно с изображением на нем герба или эмблемы. С древних времен флаг выполнял функции объединения народа страны и его идентификации с определенным государственным образованием.
+    </p>
+    <p>
+      Государственный флаг независимого Казахстана был официально принят в 1992 году. Его автором является художник Шакен Ниязбеков.
+    </p>
+    <p>
+      Государственный флаг Республики Казахстан представляет собой прямоугольное полотнище небесно-голубого цвета с изображением в центре солнца с лучами, под которым – парящий орел (беркут). У древка – вертикальная полоса с национальным орнаментом. Изображение солнца, его лучей, орла и национального орнамента – цвета золота. Соотношение ширины флага к его длине – 1:2.
+    </p>
+    <p>
+      В традициях геральдики каждый цвет символизирует определенное понятие. Так, небесно-голубой цвет символизирует честность, верность и безупречность. Кроме того, небесно-голубой цвет имеет глубокое символическое значение в тюркской культуре. Древние тюрки всегда почитали небо своим богом-отцом, а их небесно-голубое знамя символизировало преданность отцу-прародителю. На государственном флаге Казахстана он символизирует чистое небо, мир и благополучие, а одноцветие фона – единство нашей страны.
+    </p>
+    <p>
+      Исходя из геральдических канонов, солнце символизирует богатство и изобилие, жизнь и энергию. Поэтому лучи солнца на флаге страны имеют форму зерна – символа достатка и благополучия. Изображение солнца в государственной атрибутике Казахстана подтверждает его приверженность общечеловеческим ценностям и свидетельствует о том, что новое молодое государство полно жизнеутверждающей энергии и открыто всем странам мира для партнерства и сотрудничества.
+    </p>
+    <p>
+      Образ орла (беркута) является одним из главных геральдических атрибутов, издавна применяемых в гербах и флагах многих народов. Этот образ обычно воспринимается как символ власти, прозорливости и великодушия. Парящий под солнцем беркут олицетворяет собой силу государства, его суверенитет и независимость, стремление к высоким целям и устойчивому будущему. Особое место занимает образ беркута в мировоззрении евразийских кочевников. Он ассоциируется у них с такими понятиями как свобода и верность, чувство достоинства и мужество, мощь и чистота помыслов. Стилизованный силуэт золотого беркута отражает стремление молодого суверенного государства к высотам мировой цивилизации.
+    </p>
+    <p>
+      Важным элементом государственного флага является расположенная у его древка вертикальная полоса с национальным орнаментом. Казахский орнамент – одна из форм специфического художественного восприятия мира в строгом соответствии с эстетическими вкусами народа. Представляющий собой гармонию различных форм и линий, он является выразительным средством раскрытия внутреннего мира народа. Национальный орнамент вдоль древка символизирует культуру и традиции народа Казахстана.
+    </p>
+  </div>
+  
+
+  <div class="section">
+    <h2>🛡 Государственный герб</h2>
+    <img src="/static/images/KZ/GERB.svg" alt="Герб Казахстана">
+    
+    <p>
+      Герб – один из главных символов государства. Термин «герб» происходит от немецкого слова «erbe» (наследство) и означает наследственный отличительный знак – сочетание фигур и предметов, которым придается символическое значение.
+    </p>
+    <p>
+      История свидетельствует, что еще кочевники эпохи бронзы, проживавшие на территории современного Казахстана, идентифицировали себя с особым символом – тотемом, графическое выражение которого впоследствии получило наименование «тамга». Впервые данный термин начал употребляться в Тюркском каганате.
+    </p>
+    <p>
+      Герб суверенного Казахстана был официально принят в 1992 году. Его авторами являются известные архитекторы Жандарбек Малибеков и Шот-Аман Уалиханов.
+    </p>
+    <p>
+      Государственный герб Республики Казахстан имеет форму круга (колеса) – это символ жизни и вечности, который пользовался особым почетом среди кочевников Великой степи.
+    </p>
+    <p>
+      Центральным геральдическим элементом в государственном гербе является изображение шанырака (верхняя сводчатая часть юрты) на голубом фоне, от которого во все стороны в виде солнечных лучей расходятся уыки (опоры). Справа и слева от шанырака расположены изображения мифических крылатых коней. В верхней части находится объемная пятиконечная звезда, а в нижней части надпись «Қазақстан». Изображение звезды, шанырака, уыков, мифических коней, а также надписи «Қазақстан» – выполнены в цвете золота.
+    </p>
+    <p>
+      Шанырақ – это главная системообразующая часть юрты, по форме напоминающая небесный купол и являющаяся одним из ключевых элементов жизнеустройства в традиционной культуре евразийских кочевников. В Государственном гербе республики образ шанырака – это символ общего дома и единой Родины для всех народов, проживающих в стране. Стабильное развитие Казахстана зависит от благополучия каждого гражданина, как прочность и устойчивость шанырака зависит от надежности всех его уыков (опор).
+    </p>
+    <p>
+      Крылатые мифические кони – тулпары в государственном гербе являются ключевым геральдическим элементом. Образ коня с незапамятных времен олицетворяет такие понятия, как храбрость, верность и силу. Крылья символизируют многовековую мечту многонационального народа Казахстана о построении сильного и процветающего государства. Они свидетельствуют о чистых помыслах и стремлении к последовательному совершенствованию и созидательному развитию. Золотые крылья скакунов напоминают также золотые колосья и олицетворяют собой трудолюбие казахстанцев и материальное благополучие страны.
+    </p>
+    <p>
+      В прошлые века рога активно использовались в культовых обрядах кочевников, а также в качестве навершия их боевых стягов. Изображения небесной благодати, земного плодородия и воинской удачи в виде рогов различных животных всегда занимали значимые места в символических композициях различных народов. Таким образом, крылатый конь с рогом изобилия является важным типологическим образом, который имеет глубокие семантические и исторические корни.
+    </p>
+    <p>
+      Еще одна деталь в государственном гербе республики – пятиконечная звезда. Данный символ используется человечеством с давних времен и олицетворяет постоянное стремление людей к свету истины, ко всему возвышенному и вечному. Изображение звезды в государственном гербе отражает желание казахстанцев созидать страну, открытую для сотрудничества и партнерства со всеми народами мира. Сердца и объятия жителей Казахстана открыты представителям всех пяти континентов.
+    </p>
+    <p>
+      Основным цветом, используемым в государственном гербе, является цвет золота, который служит символом богатства, справедливости и великодушия. Также присутствует цвет флага – небесно-голубой, который гармонирует с цветом золота и символизирует чистое небо, мир и благополучие.
+    </p>
+  </div>
+  
+
+  <div class="section">
+    <h2>🎵 Государственный гимн</h2>
+    <p>
+      Гимн Республики Казахстан — это торжественная песня, отражающая любовь к родине, стремление к процветанию и уважение к истории.
+      Текущая версия гимна была утверждена в 2006 году.
+    </p>
+
+    <div class="video-container">
+        <iframe width="560" height="315" 
+        src="/static/images/KZ/GIMN.mp4" 
+        title="YouTube video player" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        allowfullscreen></iframe>
+    </div>
+
+    <div class="lyrics">
+        <strong>Гимн Республики Казахстан:</strong><br><br>
+    
+        Алтын күн аспаны,<br>
+        Алтын дән даласы,<br>
+        Ерліктің дастаны,<br>
+        Еліме қарашы!<br>
+        Ежелден ер деген,<br>
+        Даңқымыз шықты ғой.<br>
+        Намысын бермеген,<br>
+        Қазағым мықты ғой!<br><br>
+    
+        <em>Қайырмасы:</em><br>
+        Менің елім, менің елім,<br>
+        Гүлің болып егілемін,<br>
+        Жырың болып төгілемін, елім!<br>
+        Туған жерім менің – Қазақстаным!<br><br>
+    
+        Ұрпаққа жол ашқан,<br>
+        Кең байтақ жерім бар.<br>
+        Бірлігі жарасқан,<br>
+        Тәуелсіз елім бар.<br>
+        Қарсы алған уақытты,<br>
+        Мәңгілік досындай,<br>
+        Біздің ел бақытты,<br>
+        Біздің ел осындай!<br><br>
+    
+        <em>Қайырмасы:</em><br>
+        Менің елім, менің елім,<br>
+        Гүлің болып егілемін,<br>
+        Жырың болып төгілемін, елім!<br>
+        Туған жерім менің – Қазақстаным!<br>
+      </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <!-- О сайте -->
+      <div class="footer-section">
+        <h3 data-translate="about_site">Сайт туралы</h3>
+        <p id="copyright-year"></p>
+        <script>
+          const currentYear = new Date().getFullYear();
+          document.getElementById("copyright-year").textContent = `©1940–${currentYear}`;
+        </script>
+        <p data-translate="college_name">
+          Алматы қаласы Білім басқармасының «ALMATY POLYTECHNIC COLLEGE» КМҚК
+        </p>
+  
+        <h3 data-translate="social_networks">Әлеуметтік желілер</h3>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/polytechalmaty/#" target="_blank" aria-label="Instagram">
+            <img src="/static/images/flot/instagram.png" alt="Instagram" />
+          </a>
+          <a href="https://www.facebook.com/people/..." target="_blank" aria-label="Facebook">
+            <img src="/static/images/flot/facebook.png" alt="Facebook" />
+          </a>
+          <a href="https://www.youtube.com/@almatypolytechedukz" target="_blank" aria-label="YouTube">
+            <img src="/static/images/flot/youtube.png" alt="YouTube" />
+          </a>
+          <a href="https://www.tiktok.com/@polytech_college?_t=8ji5qQRP3v3&_r=1" target="_blank" aria-label="TikTok">
+            <img src="/static/images/flot/tiktok.png" alt="TikTok" />
+          </a>
+        </div>
+      </div>
+  
+      <!-- Контакты -->
+      <div class="footer-section">
+        <h3 data-translate="contact_label">Байланыс</h3>
+        <p>
+          <span class="icon">📍</span>
+          <strong data-translate="address_label">Мекенжай:</strong><br />
+          <span data-translate="address">Қазақстан, Алматы қ., Тастақ-1 шағын ауданы, 1B</span>
+        </p>
+        <p>
+          <span class="icon">📞</span>
+          <strong data-translate="contact_label">Байланыс:</strong><br />
+          <span data-translate="phone">Тел.: 396 71 39</span><br />
+          <span data-translate="admission_phone">Қабылдау комиссиясы: 8 707 171 0800</span>
+        </p>
+        <p>
+          <span class="icon">✉️</span>
+          <strong data-translate="email_label">Пошта:</strong><br />
+          <a href="mailto:polytech@aspc.kz">polytech@aspc.kz</a>
+        </p>
+      </div>
+  
+      <!-- Разработчики -->
+      <div class="footer-section">
+        <h3 data-translate="developers">Разработчики сайта</h3>
+        <p>
+          <span class="icon">👨‍💻</span>
+          <strong data-translate="developer_name">Жобаны жасаған:</strong><br />
+          <span data-translate="developer_info">Колледж студенттері мен оқытушылары</span>
+        </p>
+        
+        <a href="https://www.instagram.com/jasi.you/" class="dev-button" data-translate="contact_developer">Связаться с разработчиком</a>
+      </div>
+    </div>
+  </footer>
+  <!-- Подключение скриптов -->
+  <script src="/static/translations.js"></script>
+  <script src="/static/languageSwitcher.js"></script>
+  <script src="/static/virtualTour.js"></script>
+  <script src="/static/online_assistant.js"></script>
+  <script src="/static/script.js"></script>
+  <script src="/static/particles_config.js"></script>
+  <script src="/static/major-body.js"></script>
+  <script src="/static/partners-scroll.js"></script>
+  <script src="/static/header/main.js"></script>
+  <!-- <script src="/static/yearUpdater.js"></script> -->
+  <script src="/static/modal-page/js/specialtyPopup.js"></script>
+</body>
+</html>

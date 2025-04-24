@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Әкімшілік</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/particles_style.css">
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            color: white; /* Устанавливаем белый цвет текста для всего содержимого */
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+        }
+        .card {
+            background: rgb(0, 0, 0, 100, 73, 73);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            padding: 30px; /* Увеличиваем внутренние отступы */
+            margin: 20px auto;
+            width: 400px; /* Увеличиваем ширину карточки */
+            text-align: center;
+            color: black; /* Устанавливаем черный цвет текста только для карточек */
+        }
+        .card img {
+            width: 100%; /* Изображение занимает всю ширину карточки */
+            height: auto; /* Сохраняем пропорции изображения */
+            border-radius: 10px;
+        }
+        .email {
+            color: red; /* Устанавливаем красный цвет текста */
+            text-decoration: none; /* Убираем подчеркивание */
+        }
+        .grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .card p::before {
+            font-family: "Font Awesome 5 Free";
+            content: "\f2b9"; /* Код иконки fa-address-book */
+            margin-right: 8px;
+            font-weight: 900;
+        }
+        .grid .row-1 .card {
+            border: 3px solid #000; /* Увеличиваем размер границы */
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <div id="particle-background"></div>
+    <div class="header">
+        <h1>Әкімшілік</h1>
+    </div>
+    <div class="container">
+        <div class="card">
+            <img src="https://i.ibb.co/ss3ndK4/IMG-2817.jpg" alt="Директор">
+            <h3>Омарбеков Медет Астетович</h3>
+            <p>Колледж директоры</p>
+            <a class="email" href="mailto:polytech@aspc.kz">
+                <i class="fa-solid fa-envelope"></i> polytech@aspc.kz
+            </a>
+        </div>
+        <h2>Директордың орынбасарлары</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="https://i.ibb.co.com/R9nTCKS/image.jpg" alt="Орынбасар 1">
+                <h3>Мәлікoва Маржан Сабырқызы</h3>
+                <p>Директордың оқу-ісі жөніндегі орынбасары</p>
+                <a class="email" href="mailto:malikova_m@agpk.kz">
+                    <i class="fa-solid fa-envelope"></i> malikova_m@agpk.kz
+                </a>
+            </div>
+            <div class="card">
+                <img src="https://i.ibb.co.com/GM5V915/image.jpg" alt="Орынбасар 2">
+                <h3>Косерова Нағашкүл Макеновна</h3>
+                <p>Директордың оқу-ісі жөніндегі орынбасары</p>
+                <a class="email" href="mailto:Koserova.89@mail.ru">
+                    <i class="fa-solid fa-envelope"></i> Koserova.89@mail.ru
+                </a>
+            </div>
+            <div class="card">
+                <img src="https://i.ibb.co.com/ZGhjRhN/image.jpg" alt="Орынбасар 3">
+                <h3>Абылханова Назым Жумахановна</h3>
+                <p>Директордың оқу-өндірістік жұмысы жөніндегі орынбасары</p>
+                <a class="email" href="mailto:merei_nasim@mail.ru">
+                    <i class="fa-solid fa-envelope"></i> merei_nasim@mail.ru
+                </a>
+            </div>
+
+            <!-- Новые карточки -->
+            <div class="card">
+                <img src="https://i.ibb.co.com/new1.jpg" alt="Орынбасар 4">
+                <h3>Жанарбекова Айгүл Тұрсынқызы</h3>
+                <p>Директордың тәрбие жұмысы жөніндегі орынбасары</p>
+                <a class="email" href="mailto:janarbekova@mail.kz">
+                    <i class="fa-solid fa-envelope"></i> janarbekova@mail.kz
+                </a>
+            </div>
+            <div class="card">
+                <img src="https://i.ibb.co.com/new2.jpg" alt="Орынбасар 5">
+                <h3>Сейітов Ерлан Қайратұлы</h3>
+                <p>Директордың ғылыми жұмысы жөніндегі орынбасары</p>
+                <a class="email" href="mailto:seitov@mail.kz">
+                    <i class="fa-solid fa-envelope"></i> seitov@mail.kz
+                </a>
+            </div>
+            <div class="card">
+                <img src="https://i.ibb.co.com/new3.jpg" alt="Орынбасар 6">
+                <h3>Нұрғалиева Гүлжанат Әбдірахманқызы</h3>
+                <p>Директордың кадр жұмысы жөніндегі орынбасары</p>
+                <a class="email" href="mailto:nurgalieva@mail.kz">
+                    <i class="fa-solid fa-envelope"></i> nurgalieva@mail.kz
+                </a>
+            </div>
+            <div class="card">
+                <img src="https://i.ibb.co.com/new4.jpg" alt="Орынбасар 7">
+                <h3>Ахметов Бауыржан Серікұлы</h3>
+                <p>Директордың қаржы жұмысы жөніндегі орынбасары</p>
+                <a class="email" href="mailto:ahmetov@mail.kz">
+                    <i class="fa-solid fa-envelope"></i> ahmetov@mail.kz
+                </a>
+            </div>
+            <div class="card">
+                <img src="https://i.ibb.co.com/new5.jpg" alt="Орынбасар 8">
+                <h3>Қасымова Әлия Мұратқызы</h3>
+                <p>Директордың әкімшілік жұмысы жөніндегі орынбасары</p>
+                <a class="email" href="mailto:kassymova@mail.kz">
+                    <i class="fa-solid fa-envelope"></i> kassymova@mail.kz
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/static/languageSwitcher.js"></script>
+<script src="/static/translations.js"></script>
+<script src="/static/particles_config.js"></script>
+</html>

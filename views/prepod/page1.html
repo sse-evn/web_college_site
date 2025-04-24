@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="kk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Әдістемелік ұсынымдар</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/particles_style.css">
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .qualification {
+            background: #1e1e1e;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            text-align: left; /* Выровнять текст по левому краю */
+        }
+
+        .qualification:hover {
+            background: #333;
+        }
+
+        .details {
+            display: none;
+            background: #2a2a2a;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <div id="particle-background"></div>
+    <h1>Методические рекомендации</h1>
+    <div class="container">
+        <div class="qualification" onclick="toggleDetails(this)">
+            Разработка УМК и ЦОР
+            <div class="details">
+                Положение об УМКД
+                <a href="/files/paid_groups_2020_2021_4S06130105.pdf" download class="download-button">Скачать</a>
+            </div>
+        </div>
+        <div class="qualification" onclick="toggleDetails(this)">
+            Методические рекомендации по организации и проведению демо-экзамена                    
+            <div class="details">
+                Методические рекомендации по организации и проведению демонстрационного экзамена по требованиям WorldSkills                    
+                <a href="/files/paid_groups_2020_2021_4S06130105.pdf" download class="download-button">PDF скачать</a>
+            </div>
+        </div>
+        <div class="qualification" onclick="toggleDetails(this)">
+            Инструкция по ведению журнала учебный занятий                    
+            <div class="details">
+                Инструкция по ведению журнала учебный занятий                    
+                <a href="/files/paid_groups_2020_2021_4S06130105.pdf" download class="download-button">PDF скачать</a>
+            </div>
+        </div>
+        <div class="qualification" onclick="toggleDetails(this)">
+            Инструкция по ДОТ
+            <div class="details">
+                Инструкция по ДОТ
+                <a href="/files/paid_groups_2020_2021_4S06130105.pdf" download class="download-button">PDF скачать</a>
+            </div>
+        </div>
+        <div class="qualification" onclick="toggleDetails(this)">
+            Бально-рейтинговая оценка
+            <div class="details">
+                Бально-рейтинговая оценка
+                <a href="/files/paid_groups_2020_2021_4S06130103.pdf" download class="download-button">PDF скачать</a>
+            </div>
+        </div>
+        <div class="qualification" onclick="toggleDetails(this)">
+            Разработка тестовых задний
+            <div class="details">
+                Методические рекомендации по созданию тестовых заданий на платформе Moodle
+                <a href="/files/paid_groups_2020_2021_4S06130105.pdf" download class="download-button">PDF скачать</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        function toggleDetails(element) {
+            const detail = element.querySelector('.details');
+            const isVisible = detail.style.display === 'block';
+            // Скрываем все детали
+            document.querySelectorAll('.details').forEach(d => d.style.display = 'none');
+            // Показываем только если не был открыт
+            detail.style.display = isVisible ? 'none' : 'block';
+        }
+    </script>
+
+</body>
+<script src="/static/languageSwitcher.js"></script>
+<script src="/static/translations.js"></script>
+<script src="/static/particles_config.js"></script>
+</html>
