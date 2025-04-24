@@ -579,7 +579,17 @@ nav ul li a:hover {
     max-width: 1200px;
     margin: 0 auto;
     box-sizing: border-box;
+    flex-wrap: wrap; /* позволяет содержимому переходить на новую строку при необходимости */
 }
+
+/* Адаптация под устройства шириной 768px и меньше (обычные планшеты и телефоны) */
+@media (max-width: 768px) {
+    .hero_img {
+        flex-direction: column;
+        padding: 5% 4%;
+    }
+}
+
 
 /* Кнопки */
 .buttons {
@@ -680,20 +690,6 @@ nav ul li a:hover {
     transform: scale(1.1);
 }
 
-/* Новости */
-#news-title {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-#news-container {
-    max-width: 1400px;
-    margin: 50px auto;
-    padding: 0 30px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-}
 
 .news {
     background: var(--bs-white);

@@ -603,16 +603,28 @@
           <div id="news-gallery"></div>
           
           <style>
-            #news-title {
-              padding: 2rem 1rem;
-              text-align: center;
-              background: linear-gradient(to right, #0077ff, #00bbff);
-              color: white;
-              max-width: 1000px;
-              margin: 0 auto 2rem;
-              border-radius: 12px;
-              font-size: 1.5rem;
-            }
+#news-title {
+    padding: 2rem 1rem;
+    text-align: center;
+    background: transparent;
+    color: var(--light);
+    max-width: 1000px;
+    margin: 0 auto 2rem;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+/* Эффект неона при наведении */
+#news-title:hover {
+    color: var(--neon);
+    text-shadow:
+        0 0 5px var(--neon),
+        0 0 10px var(--neon),
+        0 0 20px var(--neon),
+        var(--shadow-purple);
+    border-color: var(--neon);
+}
+
         
             #news-gallery {
               display: grid;
