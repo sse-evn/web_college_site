@@ -560,7 +560,7 @@ nav ul li a:hover {
     font-size: 20px;
     margin-bottom: 0;
     padding-bottom: 0;
-    text-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff, 0 0 30px #00bfff;
+   
 }
 
 .hero-text {
@@ -628,7 +628,7 @@ nav ul li a:hover {
     border-radius: var(--border-radius-lg);
     padding: 20px;
     width: 250px;
-    height: auto;
+    height: 220px;  /* Устанавливаем фиксированную высоту */
     text-align: center;
     box-shadow: 0 4px 10px var(--glass-white-20);
     transition: transform var(--transition);
@@ -783,7 +783,7 @@ nav ul li a:hover {
     font-size: 18px;
     color: var(--bordeaux);
     text-decoration: none;
-    font-weight: bold;в
+    font-weight: bold;
     display: inline-block;
     border-bottom: 2px solid var(--bordeaux);
     transition: all var(--transition);
