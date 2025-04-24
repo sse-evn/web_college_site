@@ -1,22 +1,17 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="kk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - АЛМАТЫ ПОЛИТЕХНИКАЛЫҚ КОЛЛЕДЖІ</title>
+    <title>Қате - АЛМАТЫ ПОЛИТЕХНИКАЛЫҚ КОЛЛЕДЖІ</title>
     <link rel="icon" href="/static/images/header/icon_site_logo.svg" type="image/x-icon">
-    <link rel="stylesheet" href="/static/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <link rel="stylesheet" href="/static/header/styles.css">
     <style>
         :root {
-            --neon-green: #0f0;
-            --neon-purple: #f0f;
-            --neon-blue: #0ff;
-            --dark-bg: #0a0a0a;
+            --neon-blue: #00bfff;
+            --neon-pink: #ff00ff;
+            --neon-green: #00ff00;
+            --dark-bg: #0a0e17;
         }
         
         body {
@@ -24,6 +19,9 @@
             color: var(--neon-green);
             font-family: 'Share Tech Mono', monospace;
             overflow: hidden;
+            margin: 0;
+            position: relative;
+            min-height: 100vh;
         }
         
         .matrix-rain {
@@ -36,49 +34,66 @@
             opacity: 0.3;
         }
         
-        .error-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-            padding: 2rem;
-            position: relative;
+        .error-windows {
+            position: absolute;
+            width: 100%;
+            height: 100%;
             z-index: 1;
         }
         
+        .error-window {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid var(--neon-blue);
+            padding: 1rem;
+            box-shadow: 0 0 15px var(--neon-blue);
+            text-align: center;
+            animation: glitch-window 2s infinite;
+        }
+        
+        /* Расположение окон на десктопе */
+        .error-window:nth-child(1) { top: 10%; left: 5%; width: 300px; animation-delay: 0s; }
+        .error-window:nth-child(2) { top: 15%; left: 30%; width: 280px; animation-delay: 0.2s; }
+        .error-window:nth-child(3) { top: 40%; left: 20%; width: 320px; animation-delay: 0.4s; }
+        .error-window:nth-child(4) { top: 50%; left: 45%; width: 300px; animation-delay: 0.6s; }
+        .error-window:nth-child(5) { top: 20%; left: 60%; width: 280px; animation-delay: 0.8s; }
+        .error-window:nth-child(6) { top: 60%; left: 10%; width: 300px; animation-delay: 1s; }
+        .error-window:nth-child(7) { top: 30%; left: 70%; width: 280px; animation-delay: 1.2s; }
+        
         .error-code {
-            font-size: 8rem;
+            font-size: 2.5rem;
             font-weight: 700;
             margin: 0;
             text-shadow: 
-                0 0 10px var(--neon-green),
-                0 0 20px var(--neon-green),
-                0 0 30px var(--neon-green);
-            animation: flicker 1.5s infinite alternate;
+                0 0 10px var(--neon-blue),
+                0 0 20px var(--neon-blue),
+                0 0 30px var(--neon-blue);
+            animation: loading 2s infinite;
         }
         
         .error-message {
-            font-size: 2rem;
-            margin: 1rem 0;
-            text-shadow: 0 0 5px var(--neon-green);
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+            text-shadow: 0 0 5px var(--neon-pink);
+            animation: glitch 1.5s infinite;
         }
         
         .error-description {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
             color: #ccc;
         }
         
         .home-button {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             background: transparent;
             color: var(--neon-green);
             border: 2px solid var(--neon-green);
             padding: 12px 30px;
             font-size: 1.1rem;
-            border-radius: 0;
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 
@@ -86,8 +101,7 @@
                 inset 0 0 10px var(--neon-green);
             text-decoration: none;
             font-family: 'Share Tech Mono', monospace;
-            position: relative;
-            overflow: hidden;
+            z-index: 2;
         }
         
         .home-button:hover {
@@ -123,78 +137,167 @@
         .glitch::before {
             color: var(--neon-blue);
             z-index: -1;
-            animation: glitch-effect 3s infinite;
+            animation: glitch-effect 2s infinite;
         }
         
         .glitch::after {
-            color: var(--neon-purple);
+            color: var(--neon-pink);
             z-index: -2;
-            animation: glitch-effect 2s infinite reverse;
+            animation: glitch-effect 1.8s infinite reverse;
         }
         
-        @keyframes flicker {
-            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-                text-shadow: 
-                    0 0 10px var(--neon-green),
-                    0 0 20px var(--neon-green),
-                    0 0 30px var(--neon-green);
-            }
-            20%, 24%, 55% {
-                text-shadow: none;
-            }
+        @keyframes loading {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
+        
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-5px, 5px); }
+            40% { transform: translate(-5px, -5px); }
+            60% { transform: translate(5px, 5px); }
+            80% { transform: translate(5px, -5px); }
+            100% { transform: translate(0); }
         }
         
         @keyframes glitch-effect {
-            0% {
-                transform: translate(0);
-            }
-            20% {
-                transform: translate(-5px, 5px);
-            }
-            40% {
-                transform: translate(-5px, -5px);
-            }
-            60% {
-                transform: translate(5px, 5px);
-            }
-            80% {
-                transform: translate(5px, -5px);
-            }
-            100% {
-                transform: translate(0);
-            }
+            0% { transform: translate(0); }
+            20% { transform: translate(-3px, 3px); }
+            40% { transform: translate(-3px, -3px); }
+            60% { transform: translate(3px, 3px); }
+            80% { transform: translate(3px, -3px); }
+            100% { transform: translate(0); }
         }
         
+        @keyframes glitch-window {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(2px, -2px); }
+            60% { transform: translate(-2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+        
+        /* Адаптация для планшетов (ширина < 768px) */
         @media (max-width: 768px) {
+            .error-window {
+                width: 200px;
+                padding: 0.8rem;
+            }
             .error-code {
-                font-size: 5rem;
+                font-size: 1.8rem;
             }
-            
             .error-message {
-                font-size: 1.5rem;
-            }
-            
-            .error-description {
                 font-size: 1rem;
             }
+            .error-description {
+                font-size: 0.8rem;
+            }
+            .home-button {
+                font-size: 0.9rem;
+                padding: 8px 20px;
+            }
+            /* Перераспределение окон */
+            .error-window:nth-child(1) { top: 5%; left: 5%; }
+            .error-window:nth-child(2) { top: 15%; left: 50%; }
+            .error-window:nth-child(3) { top: 30%; left: 10%; }
+            .error-window:nth-child(4) { top: 40%; left: 55%; }
+            .error-window:nth-child(5) { top: 55%; left: 5%; }
+            .error-window:nth-child(6) { top: 65%; left: 50%; }
+            .error-window:nth-child(7) { top: 80%; left: 10%; }
+        }
+        
+        /* Адаптация для телефонов (ширина < 480px) */
+        @media (max-width: 480px) {
+            .error-window {
+                width: 160px;
+                padding: 0.5rem;
+            }
+            .error-code {
+                font-size: 1.4rem;
+            }
+            .error-message {
+                font-size: 0.9rem;
+            }
+            .error-description {
+                font-size: 0.7rem;
+            }
+            .home-button {
+                font-size: 0.8rem;
+                padding: 6px 15px;
+                top: 90%; /* Перемещаем кнопку вниз, чтобы не перекрывать окна */
+                transform: translateX(-50%);
+            }
+            /* Более компактное расположение окон */
+            .error-window:nth-child(1) { top: 2%; left: 2%; }
+            .error-window:nth-child(2) { top: 12%; left: 40%; }
+            .error-window:nth-child(3) { top: 25%; left: 5%; }
+            .error-window:nth-child(4) { top: 35%; left: 45%; }
+            .error-window:nth-child(5) { top: 48%; left: 2%; }
+            .error-window:nth-child(6) { top: 58%; left: 40%; }
+            .error-window:nth-child(7) { top: 71%; left: 5%; }
         }
     </style>
 </head>
 <body>
     <canvas id="matrix" class="matrix-rain"></canvas>
 
-    <div class="error-container">
-        <h1 class="error-code glitch" data-text="404">404</h1>
-        <h2 class="error-message" data-translate="page_not_found">SYSTEM FAILURE</h2>
-        <p class="error-description" data-translate="page_not_found_desc">
-            ERROR 0x1A3F: PAGE NOT FOUND IN DATABASE<br>
-            THE REQUESTED RESOURCE DOES NOT EXIST OR HAS BEEN TERMINATED
-        </p>
-        <a href="/" class="home-button" data-translate="go_home">RETURN TO MAINFRAME</a>
+    <div class="error-windows">
+        <div class="error-window">
+            <h1 class="error-code glitch" data-text="0x9C4E">0x9C4E</h1>
+            <h2 class="error-message" data-translate="resource_locked">РЕСУРС ҚҰЛЫПТАЛҒАН</h2>
+            <p class="error-description" data-translate="resource_locked_desc">
+                ҚАТЕ 0x9C4E: РЕСУРС БЛОКТАЛҒАН<br>ҚАУІПСІЗДІК СЕБЕПТЕРІМЕН ҚҰЛЫПТАЛҒАН.
+            </p>
+        </div>
+        <div class="error-window">
+            <h1 class="error-code glitch" data-text="0x3A7F">0x3A7F</h1>
+            <h2 class="error-message" data-translate="server_overloaded">СЕРВЕР ШАМАДАН ТЫС ЖҮКТЕЛГЕН</h2>
+            <p class="error-description" data-translate="server_overloaded_desc">
+                ҚАТЕ 0x3A7F: СЕРВЕР ЖҮКТЕЛУІ<br>СҰРАНЫСТАРДЫҢ КӨПТІГІНЕН ЖЕТІСПЕЙДІ.
+            </p>
+        </div>
+        <div class="error-window">
+            <h1 class="error-code glitch" data-text="0x5E2B">0x5E2B</h1>
+            <h2 class="error-message" data-translate="protocol_violation">ПРОТОКОЛ БҰЗЫЛҒАН</h2>
+            <p class="error-description" data-translate="protocol_violation_desc">
+                ҚАТЕ 0x5E2B: ПРОТОКОЛ БҰЗЫЛҒАН<br>СҰРАНЫС ПРОТОКОЛЫ ДҰРЫС ЕМЕС.
+            </p>
+        </div>
+        <div class="error-window">
+            <h1 class="error-code glitch" data-text="0x6D4C">0x6D4C</h1>
+            <h2 class="error-message" data-translate="data_corruption">ДЕРЕКТЕР БҰЗЫЛҒАН</h2>
+            <p class="error-description" data-translate="data_corruption_desc">
+                ҚАТЕ 0x6D4C: ДЕРЕКТЕР БҰЗЫЛҒАН<br>СҰРАЛҒАН ДЕРЕКТЕР БҰЗЫЛҒАН НЕМЕСЕ ЖОҚ.
+            </p>
+        </div>
+        <div class="error-window">
+            <h1 class="error-code glitch" data-text="0x8F5D">0x8F5D</h1>
+            <h2 class="error-message" data-translate="network_disconnected">ЖЕЛІ АЖЫРАТЫЛҒАН</h2>
+            <p class="error-description" data-translate="network_disconnected_desc">
+                ҚАТЕ 0x8F5D: ЖЕЛІ АЖЫРАТЫЛҒАН<br>СЕРВЕРМЕН БАЙЛАНЫС ҮЗІЛДІ.
+            </p>
+        </div>
+        <div class="error-window">
+            <h1 class="error-code glitch" data-text="0x9G6E">0x9G6E</h1>
+            <h2 class="error-message" data-translate="memory_exhausted">ЖАДЫ ТАУСЫЛҒАН</h2>
+            <p class="error-description" data-translate="memory_exhausted_desc">
+                ҚАТЕ 0x9G6E: ЖАДЫ ТАУСЫЛҒАН<br>ЖҮЙЕ ЖАДЫ ТОЛЫҒЫМЕН ПАЙДАЛАНЫЛДЫ.
+            </p>
+        </div>
+        <div class="error-window">
+            <h1 class="error-code glitch" data-text="0x0H7F">0x0H7F</h1>
+            <h2 class="error-message" data-translate="system_infected">ЖҮЙЕ ЗАҚЫМДАЛҒАН</h2>
+            <p class="error-description" data-translate="system_infected_desc">
+                ҚАТЕ 0x0H7F: ЖҮЙЕ ЗАҚЫМДАЛҒАН<br>ЗИЯНДЫ КОДПЕН ЗАҚЫМДАЛҒАН.
+            </p>
+        </div>
     </div>
 
+    <a href="/" class="home-button" data-translate="go_home">БАСТЫ ЖҮЙЕГЕ ОРАЛУ</a>
+
     <script>
-        // Matrix rain effect
         const canvas = document.getElementById('matrix');
         const ctx = canvas.getContext('2d');
         
@@ -208,7 +311,10 @@
         
         const alphabet = katakana + latin + nums + symbols;
         
-        const fontSize = 16;
+        let fontSize = 16;
+        if (window.innerWidth <= 480) {
+            fontSize = 12; // Уменьшаем размер символов матрицы для телефонов
+        }
         const columns = canvas.width / fontSize;
         
         const rainDrops = [];
@@ -221,7 +327,7 @@
             ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             
-            ctx.fillStyle = '#0f0';
+            ctx.fillStyle = '#00ff00';
             ctx.font = fontSize + 'px monospace';
             
             for (let i = 0; i < rainDrops.length; i++) {
@@ -235,21 +341,7 @@
             }
         };
         
-        setInterval(draw, 30);
-        
-        // Обновление даты и времени
-        function updateDateTime() {
-            const now = new Date();
-            const options = { day: 'numeric', month: 'long', year: 'numeric' };
-            document.getElementById('current-date').textContent = now.toLocaleDateString('ru-RU', options).toUpperCase();
-            document.getElementById('current-time').textContent = now.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-        }
-        setInterval(updateDateTime, 1000);
-        updateDateTime();
-        
-        // Генерация случайного IP
-        document.getElementById('ip-address').textContent = 
-            `${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}`;
+        setInterval(draw, 35);
     </script>
 </body>
 </html>

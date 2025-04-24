@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="widthQn-device-width, initial-scale=1.0">
+    <title>404 - АЛМАТЫ ПОЛИТЕХНИКАЛЫҚ КОЛЛЕДЖІ</title>
+    <link rel="icon" href="/static/images/header/icon_site_logo.svg" type="image/x-icon">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" as="style">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap">
+    <style>
+        :root {
+            --neon-blue: #00bfff;
+            --neon-pink: #ff00ff;
+            --neon-green: #00ff00;
+            --dark-bg: #0a0e17;
+            --light-text: rgba(255, 255, 255, 0.9);
+            --glow-blue: 0 0 10px rgba(0, 191, 255, 0.7);
+            --glow-pink: 0 0 10px rgba(255, 0, 255, 0.7);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            font-family: 'Share Tech Mono', monospace;
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .error-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+        
+        .error-code {
+            font-size: clamp(6rem, 22vw, 9rem);
+            font-weight: 700;
+            color: var(--neon-blue);
+            text-shadow: 
+                var(--glow-blue),
+                0 0 20px var(--neon-blue),
+                0 0 40px rgba(0, 191, 255, 0.3);
+            margin-bottom: 1rem;
+            position: relative;
+            animation: flicker 1.5s infinite alternate;
+        }
+        
+        .error-message {
+            font-size: clamp(1.8rem, 6vw, 2.5rem);
+            color: var(--neon-pink);
+            margin-bottom: 1.5rem;
+            text-shadow: var(--glow-pink);
+            animation: glitch 2s linear infinite;
+        }
+        
+        .error-description {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .home-button {
+            background: transparent;
+            color: var(--neon-green);
+            border: 1px solid var(--neon-green);
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-family: 'Share Tech Mono', monospace;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
+            z-index: 1;
+        }
+        
+        .home-button:hover {
+            background: rgba(0, 255, 0, 0.1);
+            box-shadow: 
+                0 0 15px var(--neon-green),
+                0 0 30px rgba(0, 255, 0, 0.2);
+        }
+        
+        .home-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(0, 255, 0, 0.2),
+                transparent
+            );
+            transition: 0.5s;
+            z-index: -1;
+        }
+        
+        .home-button:hover::before {
+            left: 100%;
+        }
+        
+        .cyber-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(rgba(0, 191, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 191, 255, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        .scanline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(
+                to bottom,
+                transparent,
+                rgba(255, 0, 255, 0.2),
+                transparent
+            );
+            animation: scan 6s linear infinite;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .hacker-figure {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background: url('https://i.imgur.com/9Z3X7kL.png') no-repeat center bottom;
+            background-size: contain;
+            opacity: 0.2;
+            z-index: 0;
+            animation: glitch-hacker 3s infinite;
+        }
+        
+        @keyframes flicker {
+            0% {
+                opacity: 0.8;
+                text-shadow: 
+                    var(--glow-blue),
+                    0 0 20px var(--neon-blue);
+            }
+            50% {
+                opacity: 1;
+                text-shadow: 
+                    var(--glow-blue),
+                    0 0 30px var(--neon-blue),
+                    0 0 50px rgba(0, 191, 255, 0.3);
+            }
+            100% {
+                opacity: 0.8;
+                text-shadow: 
+                    var(--glow-blue),
+                    0 0 20px var(--neon-blue);
+            }
+        }
+        
+        @keyframes glitch {
+            0% {
+                transform: translate(0);
+            }
+            20% {
+                transform: translate(-2px, 2px);
+            }
+            40% {
+                transform: translate(-2px, -2px);
+            }
+            60% {
+                transform: translate(2px, 2px);
+            }
+            80% {
+                transform: translate(2px, -2px);
+            }
+            100% {
+                transform: translate(0);
+            }
+        }
+        
+        @keyframes glitch-hacker {
+            0% {
+                transform: translate(0);
+                opacity: 0.2;
+            }
+            10% {
+                transform: translate(-5px, 5px);
+                opacity: 0.15;
+            }
+            20% {
+                transform: translate(5px, -5px);
+                opacity: 0.25;
+            }
+            30% {
+                transform: translate(-3px, 3px);
+                opacity: 0.18;
+            }
+            100% {
+                transform: translate(0);
+                opacity: 0.2;
+            }
+        }
+        
+        @keyframes scan {
+            0% {
+                top: -10px;
+            }
+            100% {
+                top: 100%;
+            }
+        }
+        
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div class="cyber-grid"></div>
+    <div class="scanline"></div>
+    <div class="hacker-figure"></div>
+
+    <div class="error-container">
+        <h1 class="error-code">404</h1>
+        <h2 class="error-message">ЖҮЙЕ БҰЗЫЛДЫ</h2>
+        <p class="error-description">
+            Сұралған ресурсқа рұқсат жоқ.<br>
+            Координаттарды тексеріңіз немесе басты базаға қайтыңыз.
+        </p>
+        <a href="/" class="home-button">МАТРИЦАҒА ОРАЛУ</a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof particlesJS !== 'undefined') {
+                particlesJS('particles-js', {
+                    particles: {
+                        number: { value: 80, density: { enable: true, value_area: 800 } },
+                        color: { value: ["#00bfff", "#ff00ff", "#00ff00"] },
+                        shape: { type: "circle" },
+                        opacity: { value: 0.5, random: true },
+                        size: { value: 3, random: true },
+                        line_linked: {
+                            enable: true,
+                            distance: 150,
+                            color: "#00bfff",
+                            opacity: 0.3,
+                            width: 1
+                        },
+                        move: {
+                            enable: true,
+                            speed: 3,
+                           954
+                            direction: "none",
+                            random: true,
+                            straight: false,
+                            out_mode: "out"
+                        }
+                    },
+                    interactivity: {
+                        detect_on: "canvas",
+                        events: {
+                            onhover: { enable: true, mode: "repulse" },
+                            onclick: { enable: true, mode: "push" }
+                        }
+                    }
+                });
+            }
+
+            function updateDateTime() {
+                const now = new Date();
+                const options = { 
+                    day: 'numeric', 
+                    month: 'long', 
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit'
+                };
+                const dateTimeStr = now.toLocaleDateString('kk-KZ', options).toUpperCase();
+                console.log('Жүйелік уақыт:', dateTimeStr);
+            }
+            setInterval(updateDateTime, 1000);
+            updateDateTime();
+        });
+    </script>
+</body>
+</html>

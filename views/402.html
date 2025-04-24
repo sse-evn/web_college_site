@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - АЛМАТЫ ПОЛИТЕХНИКАЛЫҚ КОЛЛЕДЖІ</title>
+    <link rel="icon" href="/static/images/header/icon_site_logo.svg" type="image/x-icon">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" as="style">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap">
+    <style>
+        :root {
+            --neon-blue: #00bfff;
+            --neon-blue-dark: #00688b;
+            --dark-bg: #0a0e17;
+            --light-text: rgba(255, 255, 255, 0.9);
+            --glow: 0 0 10px rgba(0, 191, 255, 0.7);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            font-family: 'Share Tech Mono', monospace;
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .error-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+        
+        .error-code {
+            font-size: clamp(5rem, 20vw, 8rem);
+            font-weight: 700;
+            color: var(--neon-blue);
+            text-shadow: 
+                var(--glow),
+                0 0 20px var(--neon-blue),
+                0 0 40px rgba(0, 191, 255, 0.3);
+            margin-bottom: 1rem;
+            position: relative;
+            animation: pulse 2s infinite alternate;
+        }
+        
+        .error-message {
+            font-size: clamp(1.5rem, 5vw, 2rem);
+            color: var(--neon-blue);
+            margin-bottom: 1.5rem;
+            text-shadow: var(--glow);
+        }
+        
+        .error-description {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .home-button {
+            background: transparent;
+            color: var(--neon-blue);
+            border: 1px solid var(--neon-blue);
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-family: 'Share Tech Mono', monospace;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--glow);
+            z-index: 1;
+        }
+        
+        .home-button:hover {
+            background: rgba(0, 191, 255, 0.1);
+            box-shadow: 
+                0 0 15px var(--neon-blue),
+                0 0 30px rgba(0, 191, 255, 0.2);
+        }
+        
+        .home-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(0, 191, 255, 0.2),
+                transparent
+            );
+            transition: 0.5s;
+            z-index: -1;
+        }
+        
+        .home-button:hover::before {
+            left: 100%;
+        }
+        
+        .cyber-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(rgba(0, 191, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 191, 255, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        .scanline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(
+                to bottom,
+                transparent,
+                rgba(0, 191, 255, 0.2),
+                transparent
+            );
+            animation: scan 8s linear infinite;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        @keyframes pulse {
+            0% {
+                opacity: 0.9;
+                text-shadow: 
+                    0 0 10px var(--neon-blue),
+                    0 0 20px var(--neon-blue);
+            }
+            100% {
+                opacity: 1;
+                text-shadow: 
+                    0 0 15px var(--neon-blue),
+                    0 0 30px var(--neon-blue),
+                    0 0 45px rgba(0, 191, 255, 0.3);
+            }
+        }
+        
+        @keyframes scan {
+            0% {
+                top: -10px;
+            }
+            100% {
+                top: 100%;
+            }
+        }
+        
+        /* Анимация частиц */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div class="cyber-grid"></div>
+    <div class="scanline"></div>
+
+    <div class="error-container">
+        <h1 class="error-code">404</h1>
+        <h2 class="error-message">Страница не найдена</h2>
+        <p class="error-description">
+            Запрошенный ресурс не существует или был перемещен.<br>
+            Пожалуйста, проверьте URL или вернитесь на главную страницу.
+        </p>
+        <a href="/" class="home-button">Вернуться на главную</a>
+    </div>
+
+    <!-- Частицы вместо матрицы для производительности -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Инициализация частиц
+            if (typeof particlesJS !== 'undefined') {
+                particlesJS('particles-js', {
+                    particles: {
+                        number: { value: 60, density: { enable: true, value_area: 800 } },
+                        color: { value: "#00bfff" },
+                        shape: { type: "circle" },
+                        opacity: { value: 0.5, random: true },
+                        size: { value: 3, random: true },
+                        line_linked: {
+                            enable: true,
+                            distance: 150,
+                            color: "#00bfff",
+                            opacity: 0.3,
+                            width: 1
+                        },
+                        move: {
+                            enable: true,
+                            speed: 2,
+                            direction: "none",
+                            random: true,
+                            straight: false,
+                            out_mode: "out"
+                        }
+                    },
+                    interactivity: {
+                        detect_on: "canvas",
+                        events: {
+                            onhover: { enable: true, mode: "repulse" },
+                            onclick: { enable: true, mode: "push" }
+                        }
+                    }
+                });
+            }
+
+            // Обновление даты и времени
+            function updateDateTime() {
+                const now = new Date();
+                const options = { 
+                    day: 'numeric', 
+                    month: 'long', 
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit'
+                };
+                const dateTimeStr = now.toLocaleDateString('ru-RU', options).toUpperCase();
+                console.log('Текущее время:', dateTimeStr); // Для отладки
+            }
+            setInterval(updateDateTime, 1000);
+            updateDateTime();
+        });
+    </script>
+</body>
+</html>
