@@ -42,10 +42,8 @@ app.use(express.static("public"));
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "views", "index.html"));
 });
-//years update
 
-
-// ========================== Прокси для всего Directus (включая админку) ==========================
+// ========================== Прокси для всего Directus ==========================
 app.use('/directus', async (req, res) => {
     try {
         const response = await axios({
@@ -66,17 +64,13 @@ app.use('/directus', async (req, res) => {
     }
 });
 
-
-// app.get("/api/evn/year", (req, res) => {
-//     res.json({ year: new Date().getFullYear() }); // e.g., {"year": 2025}
-// });
 // ========================== Прокси изображений ==========================
 app.get("/proxy-image", async (req, res) => {
     try {
         const imageUrl = decodeURIComponent(req.query.url);
         const response = await axios.get(imageUrl, { 
             responseType: "arraybuffer",
-            maxContentLength: 10 * 1024 * 1024 // 10MB limit
+            maxContentLength: 10 * 1024 * 1024
         });
         
         const contentType = response.headers['content-type'] || 'image/jpeg';
@@ -122,7 +116,7 @@ app.get("/*", (req, res) => {
         }
     }
     
-    res.status(404).send("404: Страница не найдена");
+    res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
 });
 
 // ========================== Запуск сервера ==========================
