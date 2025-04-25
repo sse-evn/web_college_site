@@ -1,419 +1,1051 @@
 <!DOCTYPE html>
 <html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/style.css">
-    <link rel="stylesheet" href="/static/online_assistant.css">
-    <link rel="stylesheet" href="/static/tour_frame_style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+		<link
+			rel="icon"
+			href="/static/images/header/icon_site_logo.svg"
+			type="image/x-icon"
+		/>
 
+		<link rel="stylesheet" href="/static/style.css" />
+		<link rel="stylesheet" href="/static/online_assistant.css" />
+		<link rel="stylesheet" href="/static/tour_frame_style.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+		/>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap"
+			rel="stylesheet"
+		/>
 
-    <!-- Подключение библиотеки particles.js -->
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <link rel="stylesheet" href="/static/header/styles.css">
+		<!-- Подключение библиотеки particles.js -->
+		<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+		<link rel="stylesheet" href="/static/header/styles.css" />
+		<title>Стратегический план колледжа</title>
+		<style>
+			.regulations-section {
+				background-color: #00000000;
+				color: #fff;
+				padding: 30px 20px;
+				font-family: 'Segoe UI', sans-serif;
+				display: flex;
+				justify-content: center;
+			}
 
-</head>
+			.content-wrapper {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				max-width: 1000px; /* было 800px */
+				width: 100%;
+			}
 
-   
+			.regulations-section h1 {
+				font-size: 1.8em;
+				font-weight: bold;
+				text-align: center;
+				color: #a6d8ff;
+				text-shadow: 2px 2px 8px #33ccff;
+				margin-bottom: 30px;
+			}
 
+			.accordion {
+				width: 100%;
+			}
 
-    <title>Документы</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-     
-        
-        .main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-}
+			.accordion-item {
+				background-color: #1b1b1b;
+				border-radius: 8px;
+				margin-bottom: 15px;
+				overflow: hidden;
+				box-shadow: 0 0 10px rgba(0, 145, 255, 0.15);
+			}
 
-        .document-container {
-            width: 60%;
-            margin: 0 auto;
-            flex-direction: column;
-            align-items: center;
-        } 
-        
-         .document {
-            margin-bottom: 10px;
-            background: #2c2c2c;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-            text-align: center;
-            border-radius: 5px;
-            overflow: hidden;
-            width: 100%;
-            
-        }
-        
-        .document button {
-            width: 100%;
-            background: #3a3a3a;
-            color: white;
-            border: none;
-            padding: 15px;
-            font-size: 18px;
-            text-align: left;
-            cursor: pointer;
-            outline: none;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background 0.3s, box-shadow 0.3s;
-            border-radius: 10px;
-        } 
-        
-        .document button:hover {
-            background: #4a4a4a;
-            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8);
-        }
-        
-        .document-content {
-            display: none;
-            padding: 10px;
-        }
-        
-        iframe {
-            width: 100%;
-            height: 400px;
-            border: none;
-            background: #ffffff;
-        } 
-    </style>
-    <script>
-        function toggleDocument(id) {
-            var content = document.getElementById(id);
-            content.style.display = content.style.display === "none" || content.style.display === "" ? "block" : "none";
-        }
-    </script>
-</head>
+			.accordion-header {
+				padding: 20px 24px;
+				cursor: pointer;
+				position: relative;
+				font-size: 18px;
+				font-weight: 600;
+				color: #9fdfff;
+				background-color: #1f1f1f;
+				transition: background-color 0.3s;
+			}
 
+			.accordion-header:hover {
+				background-color: #22222200;
+			}
 
+			.accordion-header::after {
+				content: '▼';
+				position: absolute;
+				right: 20px;
+				transition: transform 0.3s;
+			}
 
-<body>
-    <div id="particle-background"></div>
+			.accordion-header.active::after {
+				transform: rotate(180deg);
+			}
 
-    <div class="info-bar">
-        <div class="info-container">
-            <div class="info-item">
-                <i class="fas fa-calendar-alt"></i>
-                <span id="current-date">29 МАРТА 2024</span>
-            </div>
-            <div class="info-item">
-                <i class="fas fa-clock pulse"></i>
-                <span id="current-time">14:30:45</span>
-            </div>
-        </div>
-        <div class="info-container">
-            <div class="info-item">
-                <i class="fas fa-network-wired"></i> <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-                <span id="ip-address">Загрузка IP...</span>
-            </div>
- <div class="language-switcher">
-                <select id="language-select">
-                    <option value="ru">RU</option>
-                    <option value="kz">KZ</option>
-                    <option value="en">ENG</option>
-                </select>
+			.accordion-content {
+				max-height: 0;
+				overflow: hidden;
+				background-color: #12121200;
+				padding: 0 20px;
+				transition: max-height 0.3s ease;
+			}
 
-            </div>
-        </div>
-    </div>
-</body>
-    <header>
-        <div class="header-container">
-            <a href="/index" class="logo">
-                <img src="/static/images/header/LOGO_NEW.png" alt="POLYTECH">
-                <div class="logo-text">
-                    <div class="logo-title">POLYTECH</div>
-                    <div class="logo-subtitle">CYBERPUNKDITION</div>
-                </div>
-            </a>
+			.accordion-content p {
+				margin: 15px 0 10px;
+				font-size: 14px;
+				color: #cdeeff;
+			}
 
-            <nav class="desktop-menu">
-                <div class="menu-item">
-                    <a href="#" class="menu-link">
-                        <i class="fas fa-school"></i>
-                        <span>КОЛЛЕДЖ</span>
-                    </a>
-                    <div class="dropdown-menu">
-                        <div class="dropdown-item">
-                            <a href="#" class="dropdown-link">Управление</a>
-                            <div class="sub-dropdown-menu">
-                                <a href="/views/college/page.html" class="sub-dropdown-link">О нас</a>
-                                <a href="mission.html" class="sub-dropdown-link">Организационная структура управления</a>
-                                <a href="about.html" class="sub-dropdown-link">Адмистрация</a>
-                                <a href="mission.html" class="sub-dropdown-link">Отделении</a>
-                            </div>
-                        </div>
-                        <div class="dropdown-item">
-                            <a href="#" class="dropdown-link">Документы</a>
-                            <div class="sub-dropdown-menu">
-                                <a href="director.html" class="sub-dropdown-link">Лицензии</a>
-                                <a href="/views/college/page5.html" class="sub-dropdown-link">Отчет о доходах и расходах</a>
-                                <a href="director.html" class="sub-dropdown-link">Устав колледжа</a>
-                                <a href="staff.html" class="sub-dropdown-link">Международная аккредитация</a>
-                                <a href="director.html" class="sub-dropdown-link">Положение</a>
-                                <a href="staff.html" class="sub-dropdown-link">Правила внутреннего распорядка</a>
-                                <a href="director.html" class="sub-dropdown-link">Госсударственная аттестация</a>
-                                <a href="staff.html" class="sub-dropdown-link">Онлайн каталог НПА</a>
-                            </div>
-                        </div>
-                        <div class="dropdown-item">
-                            <a href="#" class="dropdown-link">ПЛАНИРОВАНИЕ</a>
-                            <div class="sub-dropdown-menu">
-                                <a href="/views/college/page4.html" class="sub-dropdown-link">Стратегический план</a>
-                                <a href="/views/college/page3.html" class="sub-dropdown-link">План работы внутриколледжного контроля</a>
-                            </div>
-                        </div>
-                        <div class="dropdown-item">
-                            <a href="#" class="dropdown-link">Направления деятельности колледжа</a>
-                            <div class="sub-dropdown-menu">
-                                <a href="founders.html" class="sub-dropdown-link">Учебная работа</a>
-                                <a href="achievements.html" class="sub-dropdown-link">Воспитательная работа</a>
-                                <a href="founders.html" class="sub-dropdown-link">Учебно-методическая работа</a>
-                                <a href="achievements.html" class="sub-dropdown-link">УЧебно-произведственная работа/a>
-                                <a href="founders.html" class="sub-dropdown-link">Учебно-методическое объединение</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <a href="#" class="menu-link">
-                        <i class="fas fa-school"></i>
-                        <span>АБИТУРИЕНТАМ</span>
-                    </a>
-                    <div class="dropdown-menu">
-                        <div class="dropdown-item">
-                            <a href="#" class="dropdown-link">Поступление</a>
-                            <div class="sub-dropdown-menu">
-                                <a href="admission.html" class="sub-dropdown-link">Правила приема</a>
-                                <a href="documents.html" class="sub-dropdown-link">Необходимые документы</a>
-                                <a href="scholarships.html" class="sub-dropdown-link">Стипендии</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <a href="#" class="menu-link">
-                        <i class="fas fa-user-graduate"></i>
-                        <span>СТУДЕНТАМ</span>
-                    </a>
-                    <div class="dropdown-menu">
-                        <div class="dropdown-item">
-                            <a href="#" class="dropdown-link">Образование</a>
-                            <div class="sub-dropdown-menu">
-                                <a href="schedule.html" class="sub-dropdown-link">Расписание</a>
-                                <a href="resources.html" class="sub-dropdown-link">Учебные материалы</a>
-                                <a href="events.html" class="sub-dropdown-link">Мероприятия</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <a href="#" class="menu-link">
-                        <i class="fas fa-chalkboard-teacher"></i>
-                        <span>ПРЕПОДАВАТЕЛЯМ</span>
-                    </a>
-                    <div class="dropdown-menu">
-                        <div class="dropdown-item">
-                            <a href="#" class="dropdown-link">Ресурсы</a>
-                            <div class="sub-dropdown-menu">
-                                <a href="methodology.html" class="sub-dropdown-link">Методические материалы</a>
-                                <a href="training.html" class="sub-dropdown-link">Повышение квалификации</a>
-                                <a href="community.html" class="sub-dropdown-link">Сообщество</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <a href="#" class="menu-link">
-                        <i class="fas fa-university"></i>
-                        <span>ГОСУДАРСТВО</span>
-                    </a>
-                    <div class="dropdown-menu">
-                        <div class="dropdown-item">
-                            <a href="#" class="dropdown-link">Документы</a>
-                            <div class="sub-dropdown-menu">
-                                <a href="laws.html" class="sub-dropdown-link">Законодательство</a>
-                                <a href="reports.html" class="sub-dropdown-link">Отчеты</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <a href="#" class="menu-link">
-                        <i class="fas fa-briefcase"></i>
-                        <span>ВАКАНСИИ</span>
-                    </a>
-                    <div class="dropdown-menu">
-                        <div class="dropdown-item">
-                            <a href="#" class="dropdown-link">Карьера</a>
-                            <div class="sub-dropdown-menu">
-                                <a href="jobs.html" class="sub-dropdown-link">Открытые вакансии</a>
-                                <a href="internships.html" class="sub-dropdown-link">Стажировки</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <a href="#" class="menu-link">
-                        <i class="fas fa-globe"></i>
-                        <span>ЭКОСИСТЕМА</span>
-                    </a>
-                    <div class="dropdown-menu">
-                        <div class="dropdown-item">
-                            <a href="#" class="dropdown-link">Инициативы</a>
-                            <div class="sub-dropdown-menu">
-                                <a href="projects.html" class="sub-dropdown-link">Проекты</a>
-                                <a href="partners.html" class="sub-dropdown-link">Партнеры</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <a href="#" class="menu-link">
-                        <i class="fas fa-envelope"></i>
-                        <span>КОНТАКТЫ</span>
-                    </a>
-                    <div class="dropdown-menu">
-                        <div class="dropdown-item">
-                            <a href="#" class="dropdown-link">Связаться с нами</a>
-                            <div class="sub-dropdown-menu">
-                                <a href="contact.html" class="sub-dropdown-link">Обратная связь</a>
-                                <a href="map.html" class="sub-dropdown-link">Как нас найти</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
+			.download-btn {
+				display: inline-flex;
+				align-items: center;
+				background-color: #33ccff;
+				color: #000;
+				padding: 10px 15px;
+				margin: 10px 0 20px;
+				border: none;
+				border-radius: 6px;
+				text-decoration: none;
+				font-weight: bold;
+				transition: background-color 0.3s;
+				font-size: 14px;
+			}
 
-               
-            </nav>
+			.download-btn:hover {
+				background-color: #00aaff;
+			}
 
-            <button class="mobile-menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </header>
+			.download-btn svg {
+				margin-right: 8px;
+				width: 18px;
+				height: 18px;
+				fill: currentColor;
+			}
 
-    <div class="overlay"></div>
-    <nav class="mobile-menu">
-        <div class="menu-item">
-            <a href="#" class="menu-link">
-                <i class="fas fa-school"></i>
-                <span>КОЛЛЕДЖ</span>
-                <i class="fas fa-chevron-down dropdown-arrow"></i>
-            </a>
-            <div class="dropdown-menu">
-                <div class="dropdown-item">
-                    <a href="#" class="dropdown-link">О НАС</a>
-                </div>
-                <div class="dropdown-item">
-                    <a href="#" class="dropdown-link">АДМИНИСТРАЦИЯ</a>
-                </div>
-                <div class="dropdown-item">
-                    <a href="#" class="dropdown-link">ДОКУМЕНТЫ</a>
-                </div>
-                <div class="dropdown-item">
-                    <a href="#" class="dropdown-link">ИСТОРИЯ</a>
-                </div>
-            </div>
-        </div>
+			/* Адаптивность */
+			@media (max-width: 600px) {
+				.regulations-section h1 {
+					font-size: 1.3em;
+				}
 
-        <div class="menu-item">
-            <a href="#" class="menu-link">
-                <i class="fas fa-user-graduate"></i>
-                <span>АБИТУРИЕНТАМ</span>
-                <i class="fas fa-chevron-down dropdown-arrow"></i>
-            </a>
-            <div class="dropdown-menu">
-                <div class="dropdown-item">
-                    <a href="#" class="dropdown-link">СПЕЦИАЛЬНОСТИ</a>
-                </div>
-                <div class="dropdown-item">
-                    <a href="#" class="dropdown-link">ПРАВИЛА ПРИЁМА</a>
-                </div>
-                <div class="dropdown-item">
-                    <a href="#" class="dropdown-link">ЭКЗАМЕНЫ</a>
-                </div>
-            </div>
-        </div>
+				.accordion-header {
+					font-size: 15px;
+					padding: 14px 16px;
+				}
 
-        <div class="menu-item">
-            <a href="#" class="menu-link">
-                <i class="fas fa-book-open"></i>
-                <span>СТУДЕНТАМ</span>
-                <i class="fas fa-chevron-down dropdown-arrow"></i>
-            </a>
-            <div class="dropdown-menu">
-                <div class="dropdown-item">
-                    <a href="#" class="dropdown-link">РАСПИСАНИЕ</a>
-                </div>
-                <div class="dropdown-item">
-                    <a href="#" class="dropdown-link">БИБЛИОТЕКА</a>
-                </div>
-                <div class="dropdown-item">
-                    <a href="#" class="dropdown-link">СТИПЕНДИЯ</a>
-                </div>
-            </div>
-        </div>
+				.accordion-content p {
+					font-size: 13px;
+				}
 
-        <div class="menu-item">
-            <a href="#news-container" class="menu-link">
-                <i class="fas fa-newspaper"></i>
-                <span>НОВОСТИ</span>
-            </a>
-        </div>
+				.download-btn {
+					font-size: 13px;
+					padding: 8px 12px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="particle-background"></div>
 
-        <div class="menu-item">
-            <a href="#copyright-year" class="menu-link">
-                <i class="fas fa-phone"></i>
-                <span>КОНТАКТЫ</span>
-            </a>
-        </div>
-    </nav>
+		<div class="info-bar">
+			<div class="info-container">
+				<div class="info-item">
+					<i class="fas fa-calendar-alt"></i>
+					<span id="current-date">29 МАРТА 2024</span>
+				</div>
+				<div class="info-item">
+					<i class="fas fa-clock pulse"></i>
+					<span id="current-time">14:30:45</span>
+				</div>
+			</div>
+			<div class="info-container">
+				<div class="info-item">
+					<i class="fas fa-network-wired"></i>
+					<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+					<span id="ip-address">Загрузка IP...</span>
+				</div>
+				<div class="language-switcher">
+					<select id="language-select">
+						<option value="ru">RU</option>
+						<option value="kz">KZ</option>
+						<option value="en">ENG</option>
+					</select>
+				</div>
+			</div>
+		</div>
 
-    <div class="main">
-        <h1>Внутриколледжный план</h1>
-    </div>
-    <div class="document-container">
-        <div class="document">
-            <button onclick="toggleDocument('doc1')">ВНУТРИКОЛЛЕДЖНЫЙ ПЛАН 2020-2021<span>▼</span></button>
-            <div class="document-content" id="doc1">
-                <iframe src="https://drive.google.com/file/d/1R8WrtolD_j88oT5RvoCfRcF6419GaBe-/preview"></iframe>
-            </div>
-        </div>
-        <div class="document">
-            <button onclick="toggleDocument('doc2')">ВНУТРИКОЛЛЕДЖНЫЙ ПЛАН 2021-2022<span>▼</span></button>
-            <div class="document-content" id="doc2">
-                <iframe src="https://drive.google.com/file/d/1Ip604WyFV_NEDe3FHucxlmc3IlsJEtuh/preview"></iframe>
-                </div>            </div>
-        </div>
-    </div>
+		<header>
+			<div class="header-container">
+				<div class="logo">
+					<a href="" target="_self">
+						<img src="/static/images/header/LOGO_NEW.png" alt="POLYTECH" />
+					</a>
+					<button
+						onclick="window.open('https://edu.aspc.kz/?ysclid=lscxoszymx908089861', '_blank')"
+						style="background: none; border: none; padding: 0; cursor: pointer"
+					>
+						<img src="/static/images/header/moodle123-01.svg" alt="Moodle" />
+					</button>
+				</div>
 
-<script src="/static/translations.js"></script>
-<script src="/static/languageSwitcher.js"></script>
+				<nav class="desktop-menu">
+					<div class="menu-item">
+						<a href="#" class="menu-link">
+							<i class="fas fa-school"></i>
+							<span data-translate="menu_college">КОЛЛЕДЖ</span>
+						</a>
+						<div class="dropdown-menu">
+							<div class="dropdown-item">
+								<a href="#" class="dropdown-link" data-translate="management"
+									>Управление</a
+								>
+								<div class="sub-dropdown-menu">
+									<a
+										href="/views/college/uprav/page1.html"
+										class="sub-dropdown-link"
+										data-translate="about_us"
+										>О нас</a
+									>
+									<a
+										href="/views/college/uprav/page2.html"
+										class="sub-dropdown-link"
+										data-translate="structure"
+										>Организационная структура управления</a
+									>
+									<a
+										href="/views/college/uprav/page3.html"
+										class="sub-dropdown-link"
+										data-translate="administration"
+										>Администрация</a
+									>
+									<a
+										href="/views/college/uprav/page4.html"
+										class="sub-dropdown-link"
+										data-translate="departments"
+										>Отделения</a
+									>
+								</div>
+							</div>
+							<div class="dropdown-item">
+								<a href="#" class="dropdown-link" data-translate="documents"
+									>Документы</a
+								>
+								<div class="sub-dropdown-menu">
+									<a
+										href="/"
+										class="sub-dropdown-link"
+										data-translate="licenses"
+										>Лицензии</a
+									>
+									<a
+										href="/views/college/doc/page1.html"
+										class="sub-dropdown-link"
+										data-translate="report"
+										>Отчет о доходах и расходах</a
+									>
+									<a
+										href="director.html"
+										class="sub-dropdown-link"
+										data-translate="charter"
+										>Устав колледжа</a
+									>
+									<a
+										href="staff.html"
+										class="sub-dropdown-link"
+										data-translate="accreditation"
+										>Международная аккредитация</a
+									>
+									<a
+										href="director.html"
+										class="sub-dropdown-link"
+										data-translate="regulations"
+										>Положение</a
+									>
+									<a
+										href="staff.html"
+										class="sub-dropdown-link"
+										data-translate="rules"
+										>Правила внутреннего распорядка</a
+									>
+									<a
+										href="director.html"
+										class="sub-dropdown-link"
+										data-translate="certification"
+										>Государственная аттестация</a
+									>
+									<a
+										href="staff.html"
+										class="sub-dropdown-link"
+										data-translate="catalog"
+										>Онлайн каталог НПА</a
+									>
+								</div>
+							</div>
+							<div class="dropdown-item">
+								<a href="#" class="dropdown-link" data-translate="planning"
+									>ПЛАНИРОВАНИЕ</a
+								>
+								<div class="sub-dropdown-menu">
+									<a
+										href="/views/college/plan/page2.html"
+										class="sub-dropdown-link"
+										data-translate="strategy"
+										>Стратегический план</a
+									>
+									<a
+										href="/views/college/plan/page1.html"
+										class="sub-dropdown-link"
+										data-translate="monitoring"
+										>План работы внутриколледжного контроля</a
+									>
+								</div>
+							</div>
+							<div class="dropdown-item">
+								<a href="#" class="dropdown-link" data-translate="activities"
+									>Направления деятельности колледжа</a
+								>
+								<div class="sub-dropdown-menu">
+									<a
+										href="founders.html"
+										class="sub-dropdown-link"
+										data-translate="education"
+										>Учебная работа</a
+									>
+									<a
+										href="/views/college/naprav/page1.html"
+										class="sub-dropdown-link"
+										data-translate="upbringing"
+										>Воспитательная работа</a
+									>
+									<a
+										href="/views/college/naprav/page3.html"
+										class="sub-dropdown-link"
+										data-translate="methodical"
+										>Учебно-методическая работа</a
+									>
+									<a
+										href="/views/college/naprav/page4.html"
+										class="sub-dropdown-link"
+										data-translate="production"
+										>Учебно-производственная работа</a
+									>
+									<a
+										href="/views/college/naprav/page5.html"
+										class="sub-dropdown-link"
+										data-translate="union"
+										>Учебно-методическое объединение</a
+									>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="menu-item">
+						<a href="#" class="menu-link">
+							<i class="fas fa-school"></i>
+							<span data-translate="menu_admissions">АБИТУРИЕНТАМ</span>
+						</a>
+						<div class="dropdown-menu">
+							<div class="dropdown-item">
+								<a href="#" class="dropdown-link" data-translate="results"
+									>Итоги</a
+								>
+								<div class="sub-dropdown-menu">
+									<a href="" class="sub-dropdown-link" data-translate="first"
+										>первое</a
+									>
+									<a href="" class="sub-dropdown-link" data-translate="second"
+										>второе</a
+									>
+								</div>
+							</div>
+							<div class="dropdown-item">
+								<a href="#" class="dropdown-link" data-translate="admissions"
+									>Кабылдау</a
+								>
+								<div class="sub-dropdown-menu">
+									<a
+										href="director.html"
+										class="sub-dropdown-link"
+										data-translate="admission_rules"
+										>Правила приема</a
+									>
+									<a
+										href="/views/college/doc/page1.html"
+										class="sub-dropdown-link"
+										data-translate="admission_plan"
+										>План приема</a
+									>
+									<a
+										href="director.html"
+										class="sub-dropdown-link"
+										data-translate="document_list"
+										>Перечень документов</a
+									>
+									<a
+										href="staff.html"
+										class="sub-dropdown-link"
+										data-translate="free_education"
+										>Бесплатное обучение</a
+									>
+									<a
+										href="director.html"
+										class="sub-dropdown-link"
+										data-translate="online_applications"
+										>Онлайн подача заявок</a
+									>
+									<a
+										href="staff.html"
+										class="sub-dropdown-link"
+										data-translate="faq"
+										>Информация для абитуриентов «Вопросы и ответы»</a
+									>
+									<a
+										href="director.html"
+										class="sub-dropdown-link"
+										data-translate="document_submission"
+										>Прием документов</a
+									>
+								</div>
+							</div>
+							<div class="dropdown-item">
+								<a href="#" class="dropdown-link" data-translate="specialties"
+									>Выбор спецальности</a
+								>
+								<div class="sub-dropdown-menu">
+									<a
+										href="/views/college/plan/page2.html"
+										class="sub-dropdown-link"
+										data-translate="career_diagnostics"
+										>Профессиональная диагностика</a
+									>
+									<a
+										href="/views/college/plan/page1.html"
+										class="sub-dropdown-link"
+										data-translate="programming_profession"
+										>Профессия программиста</a
+									>
+									<a
+										href="/views/college/plan/page1.html"
+										class="sub-dropdown-link"
+										data-translate="new_professions"
+										>Атлас новых профессий</a
+									>
+								</div>
+							</div>
+							<div class="dropdown-item">
+								<a
+									href="www.youtube.com"
+									class="dropdown-link"
+									data-translate="specialties_video"
+									>спецальности</a
+								>
+							</div>
+						</div>
+					</div>
 
-<script src="/static/online_assistant.js"></script>
+					<div class="menu-item">
+						<a href="#" class="menu-link">
+							<i class="fas fa-user-graduate"></i>
+							<span data-translate="menu_students">СТУДЕНТАМ</span>
+						</a>
+						<div class="dropdown-menu">
+							<div class="dropdown-item">
+								<a
+									href="ССЫЛКА ТУТ ДОЛЖНА БЫТЬ"
+									class="dropdown-link"
+									data-translate="student_house"
+									>Дом студентов</a
+								>
+							</div>
+							<div class="dropdown-item">
+								<a href="#" class="dropdown-link" data-translate="education"
+									>Обучение</a
+								>
+								<div class="sub-dropdown-menu">
+									<a
+										href="/views/college/plan/page2.html"
+										class="sub-dropdown-link"
+										data-translate="internal_rules"
+										>Правила внутреннего распорядка</a
+									>
+									<a
+										href="/views/college/plan/page1.html"
+										class="sub-dropdown-link"
+										data-translate="students_by_specialty"
+										>Контингент по специальностям</a
+									>
+									<a
+										href="/views/college/plan/page2.html"
+										class="sub-dropdown-link"
+										data-translate="study_schedule"
+										>График учебного процесса</a
+									>
+									<a
+										href="/views/college/plan/page1.html"
+										class="sub-dropdown-link"
+										data-translate="midterm_schedule"
+										>График промежуточной аттестации</a
+									>
+									<a
+										href="/views/college/plan/page2.html"
+										class="sub-dropdown-link"
+										data-translate="final_exam_schedule"
+										>График итоговой аттестации</a
+									>
+									<a
+										href="/views/college/plan/page1.html"
+										class="sub-dropdown-link"
+										data-translate="vacant_places_info"
+										>Информация по наличию вакантных мест</a
+									>
+								</div>
+							</div>
+							<div class="dropdown-item">
+								<a
+									href="#"
+									class="dropdown-link"
+									data-translate="psychological_service"
+									>Психологическая служба колледжа</a
+								>
+								<div class="sub-dropdown-menu">
+									<a
+										href="founders.html"
+										class="sub-dropdown-link"
+										data-translate="educational_work"
+										>Учебная работа</a
+									>
+									<a
+										href="/views/college/naprav/page1.html"
+										class="sub-dropdown-link"
+										data-translate="psychologist"
+										>Психолог</a
+									>
+									<a
+										href="/views/college/naprav/page3.html"
+										class="sub-dropdown-link"
+										data-translate="student_recommendations"
+										>Рекомендации для студентов</a
+									>
+								</div>
+							</div>
+							<div class="dropdown-item">
+								<a
+									href="ССЫЛКА ТУТ ДОЛЖНА БЫТЬ"
+									class="dropdown-link"
+									data-translate="rules"
+									>Правила</a
+								>
+							</div>
+						</div>
+					</div>
 
-<script src="/static/particles_config.js"></script>
+					<div class="menu-item">
+						<a href="#" class="menu-link">
+							<i class="fas fa-chalkboard-teacher"></i>
+							<span data-translate="menu_teachers">ПРЕПОДАВАТЕЛЯМ</span>
+						</a>
+						<div class="dropdown-menu">
+							<div class="dropdown-item">
+								<a href="#" class="dropdown-link" data-translate="resources"
+									>Ресурсы</a
+								>
+								<div class="sub-dropdown-menu">
+									<a
+										href="methodology.html"
+										class="sub-dropdown-link"
+										data-translate="methodology"
+										>Методические рекомендации</a
+									>
+									<a
+										href="training.html"
+										class="sub-dropdown-link"
+										data-translate="forms_of_upd"
+										>Формы УПД</a
+									>
+									<a
+										href="community.html"
+										class="sub-dropdown-link"
+										data-translate="educational_programs"
+										>Образовательные программы</a
+									>
+								</div>
+							</div>
+						</div>
+					</div>
 
-<script src="/static/partners-scroll.js"></script>
-<script src="/static/header/main.js"></script>
-<script src="/static/yearUpdater.js"></script>
+					<div class="menu-item">
+						<a href="#" class="menu-link">
+							<i class="fas fa-university"></i>
+							<span data-translate="menu_government">ГОСУДАРСТВО</span>
+						</a>
+						<div class="dropdown-menu">
+							<div class="dropdown-item">
+								<a href="#" class="dropdown-link" data-translate="state_symbols"
+									>Государственные символы</a
+								>
+								<a
+									href="#"
+									class="dropdown-link"
+									data-translate="citizen_reception_schedule"
+									>График приема граждан</a
+								>
+								<a href="#" class="dropdown-link" data-translate="constitution"
+									>Конституция</a
+								>
+								<a href="#" class="dropdown-link" data-translate="open_almaty"
+									>Open Almaty</a
+								>
+							</div>
+						</div>
+					</div>
+
+					<div class="menu-item">
+						<a href="#" class="menu-link">
+							<i class="fas fa-briefcase"></i>
+							<span data-translate="menu_vacancies">ВАКАНСИИ</span>
+						</a>
+						<div class="dropdown-menu">
+							<div class="dropdown-item">
+								<a
+									href="тут должна быть ссылка"
+									class="dropdown-link"
+									data-translate="apply"
+									>Подать заявку</a
+								>
+							</div>
+						</div>
+					</div>
+
+					<div class="menu-item">
+						<a href="#" class="menu-link">
+							<i class="fas fa-envelope"></i>
+							<span data-translate="menu_contacts">КОНТАКТЫ</span>
+						</a>
+						<div class="dropdown-menu">
+							<div class="dropdown-item">
+								<a
+									href="/views/contact/page1.html"
+									class="dropdown-link"
+									data-translate="contact_us"
+									>Связаться с нами</a
+								>
+							</div>
+						</div>
+					</div>
+				</nav>
+
+				<button class="mobile-menu-toggle">
+					<span></span>
+					<span></span>
+					<span></span>
+				</button>
+			</div>
+		</header>
+
+		<div class="overlay"></div>
+		<nav class="mobile-menu">
+			<div class="menu-item">
+				<a href="#" class="menu-link">
+					<i class="fas fa-school"></i>
+					<span>КОЛЛЕДЖ</span>
+					<i class="fas fa-chevron-down dropdown-arrow"></i>
+				</a>
+				<div class="dropdown-menu">
+					<div class="dropdown-item">
+						<a href="/views/college/uprav/page1.html" class="dropdown-link"
+							>О нас</a
+						>
+						<a href="/views/college/uprav/page2.html" class="dropdown-link"
+							>Организационная структура управления</a
+						>
+						<a href="/views/college/uprav/page3.html" class="dropdown-link"
+							>Адмистрация</a
+						>
+						<a href="/views/college/uprav/page4.html" class="dropdown-link"
+							>Отделении</a
+						>
+					</div>
+					<div class="dropdown-item">
+						<a href="director.html" class="dropdown-link">Лицензии</a>
+						<a href="/views/college/doc/page1.html" class="dropdown-link"
+							>Отчет о доходах и расходах</a
+						>
+						<a href="director.html" class="dropdown-link">Устав колледжа</a>
+						<a href="staff.html" class="dropdown-link"
+							>Международная аккредитация</a
+						>
+						<a href="director.html" class="dropdown-link">Положение</a>
+						<a href="staff.html" class="dropdown-link"
+							>Правила внутреннего распорядка</a
+						>
+						<a href="director.html" class="dropdown-link"
+							>Госсударственная аттестация</a
+						>
+						<a href="staff.html" class="dropdown-link">Онлайн каталог НПА</a>
+					</div>
+					<div class="dropdown-item">
+						<a href="/views/college/plan/page2.html" class="dropdown-link"
+							>Стратегический план</a
+						>
+						<a href="/views/college/plan/page1.html" class="dropdown-link"
+							>План работы внутриколледжного контроля</a
+						>
+					</div>
+					<div class="dropdown-item">
+						<a href="founders.html" class="dropdown-link">Учебная работа</a>
+						<a href="/views/college/naprav/page1.html" class="dropdown-link"
+							>Воспитательная работа</a
+						>
+						<a href="/views/college/naprav/page3.html" class="dropdown-link"
+							>Учебно-методическая работа</a
+						>
+						<a href="/views/college/naprav/page4.html" class="dropdown-link"
+							>Учебно-произведственная работа</a
+						>
+						<a href="/views/college/naprav/page5.html" class="dropdown-link"
+							>Учебно-методическое объединение</a
+						>
+					</div>
+				</div>
+			</div>
+
+			<div class="menu-item">
+				<a href="#" class="menu-link">
+					<i class="fas fa-user-graduate"></i>
+					<span>АБИТУРИЕНТАМ</span>
+					<i class="fas fa-chevron-down dropdown-arrow"></i>
+				</a>
+				<div class="dropdown-menu">
+					<div class="dropdown-item">
+						<a href="/views/college/uprav/page1.html" class="dropdown-link"
+							>Итоги: первое</a
+						>
+						<a href="/views/college/uprav/page2.html" class="dropdown-link"
+							>Итоги: второе</a
+						>
+					</div>
+					<div class="dropdown-item">
+						<a href="director.html" class="dropdown-link">Правила приема</a>
+						<a href="/views/college/doc/page1.html" class="dropdown-link"
+							>План приема</a
+						>
+						<a href="director.html" class="dropdown-link"
+							>Перечень документов</a
+						>
+						<a href="staff.html" class="dropdown-link">Бесплатное обучение</a>
+						<a href="director.html" class="dropdown-link"
+							>Онлайн подача заявок</a
+						>
+						<a href="staff.html" class="dropdown-link">Инфо для абитуриентов</a>
+						<a href="director.html" class="dropdown-link">Прием документов</a>
+					</div>
+					<div class="dropdown-item">
+						<a href="/views/college/plan/page2.html" class="dropdown-link"
+							>Проф. диагностика</a
+						>
+						<a href="/views/college/plan/page1.html" class="dropdown-link"
+							>Профессия программиста</a
+						>
+						<a href="/views/college/plan/page1.html" class="dropdown-link"
+							>Атлас новых профессий</a
+						>
+					</div>
+					<div class="dropdown-item">
+						<a href="www.youtube.com" class="dropdown-link">Специальности</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="menu-item">
+				<a href="#" class="menu-link">
+					<i class="fas fa-book-open"></i>
+					<span>СТУДЕНТАМ</span>
+					<i class="fas fa-chevron-down dropdown-arrow"></i>
+				</a>
+				<div class="dropdown-menu">
+					<div class="dropdown-item">
+						<a href="ССЫЛКА ТУТ ДОЛЖНА БЫТЬ" class="dropdown-link"
+							>Дом студентов</a
+						>
+					</div>
+					<div class="dropdown-item">
+						<a href="/views/college/plan/page2.html" class="dropdown-link"
+							>Правила внутреннего распорядка</a
+						>
+						<a href="/views/college/plan/page1.html" class="dropdown-link"
+							>Контингент по специальностям</a
+						>
+						<a href="/views/college/plan/page2.html" class="dropdown-link"
+							>График учебного процесса</a
+						>
+						<a href="/views/college/plan/page1.html" class="dropdown-link"
+							>График промежуточной аттестации</a
+						>
+						<a href="/views/college/plan/page2.html" class="dropdown-link"
+							>График итоговой аттестации</a
+						>
+						<a href="/views/college/plan/page1.html" class="dropdown-link"
+							>Вакантные места</a
+						>
+					</div>
+					<div class="dropdown-item">
+						<a href="founders.html" class="dropdown-link">Учебная работа</a>
+						<a href="/views/college/naprav/page1.html" class="dropdown-link"
+							>Психолог</a
+						>
+						<a href="/views/college/naprav/page3.html" class="dropdown-link"
+							>Рекомендации</a
+						>
+					</div>
+					<div class="dropdown-item">
+						<a href="ССЫЛКА ТУТ ДОЛЖНА БЫТЬ" class="dropdown-link">Правила</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="menu-item">
+				<a href="#" class="menu-link">
+					<i class="fas fa-chalkboard-teacher"></i>
+					<span>ПРЕПОДАВАТЕЛЯМ</span>
+					<i class="fas fa-chevron-down dropdown-arrow"></i>
+				</a>
+				<div class="dropdown-menu">
+					<div class="dropdown-item">
+						<a href="methodology.html" class="dropdown-link"
+							>Методические рекомендации</a
+						>
+						<a href="training.html" class="dropdown-link">Формы УПД</a>
+						<a href="community.html" class="dropdown-link"
+							>Образовательные программы</a
+						>
+					</div>
+				</div>
+			</div>
+
+			<div class="menu-item">
+				<a href="#" class="menu-link">
+					<i class="fas fa-university"></i>
+					<span>ГОСУДАРСТВО</span>
+					<i class="fas fa-chevron-down dropdown-arrow"></i>
+				</a>
+				<div class="dropdown-menu">
+					<div class="dropdown-item">
+						<a href="#" class="dropdown-link">Гос. символы</a>
+						<a href="#" class="dropdown-link">График приёма граждан</a>
+						<a href="#" class="dropdown-link">Конституция</a>
+						<a href="#" class="dropdown-link">Open Almaty</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="menu-item">
+				<a href="#" class="menu-link">
+					<i class="fas fa-briefcase"></i>
+					<span>ВАКАНСИИ</span>
+					<i class="fas fa-chevron-down dropdown-arrow"></i>
+				</a>
+				<div class="dropdown-menu">
+					<div class="dropdown-item">
+						<a href="тут должна быть ссылка" class="dropdown-link"
+							>Подать заявку</a
+						>
+					</div>
+				</div>
+			</div>
+
+			<div class="menu-item">
+				<a href="/views/contact/page1.html" class="menu-link">
+					<i class="fas fa-envelope"></i>
+					<span>КОНТАКТЫ</span>
+				</a>
+			</div>
+		</nav>
+		<!-- Секция "Стратегический план колледжа" -->
+<div class="regulations-section">
+	<div class="content-wrapper">
+		<h1 data-translate="strategic_plan_title">Стратегический план колледжа</h1>
+
+		<div class="accordion">
+			<!-- План 2021-2025 -->
+			<div class="accordion-item">
+				<div class="accordion-header" data-translate="strategic_plan_2021_2025">
+					Стратегический план 2021–2025
+				</div>
+				<div class="accordion-content">
+					<a class="download-btn" href="/static/plans/plan_2021_2025.pdf" download>
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+							<path d="M5 20h14v-2H5v2zm7-18L5.33 11h3.67v4h6v-4h3.67L12 2z" />
+						</svg>
+						<span data-translate="download_pdf">Скачать PDF</span>
+					</a>
+				</div>
+			</div>
+
+			<!-- План 2025-2030 -->
+			<div class="accordion-item">
+				<div class="accordion-header" data-translate="strategic_plan_2025_2030">
+					Стратегический план 2025–2030
+				</div>
+				<div class="accordion-content">
+					<a class="download-btn" href="docs/strategic_plan_2025_2030.pdf" download>
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+							<path d="M5 20h14v-2H5v2zm7-18L5.33 11h3.67v4h6v-4h3.67L12 2z" />
+						</svg>
+						<span data-translate="download_pdf">Скачать PDF</span>
+					</a>
+				</div>
+			</div>
+
+			<!-- Дополнительные материалы -->
+			<div class="accordion-item">
+				<div class="accordion-header" data-translate="strategic_plan_attachments">
+					Дополнительные материалы
+				</div>
+				<div class="accordion-content">
+					<a class="download-btn" href="docs/attachments.pdf" download>
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+							<path d="M5 20h14v-2H5v2zm7-18L5.33 11h3.67v4h6v-4h3.67L12 2z" />
+						</svg>
+						<span data-translate="download_pdf">Скачать PDF</span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+		</div>
+
+		<!-- JS для аккордеона -->
+		<script>
+			const headers = document.querySelectorAll('.accordion-header')
+			headers.forEach(header => {
+				header.addEventListener('click', () => {
+					const content = header.nextElementSibling
+					header.classList.toggle('active')
+					if (content.style.maxHeight) {
+						content.style.maxHeight = null
+					} else {
+						content.style.maxHeight = content.scrollHeight + 'px'
+					}
+				})
+			})
+		</script>
+
+		<script src="/static/translations.js"></script>
+		<script src="/static/languageSwitcher.js"></script>
+		<script src="/static/virtualTour.js"></script>
+		<script src="/static/online_assistant.js"></script>
+		<script src="/static/script.js"></script>
+		<script src="/static/particles_config.js"></script>
+		<script src="/static/major-body.js"></script>
+		<script src="/static/partners-scroll.js"></script>
+		<script src="/static/header/main.js"></script>
+		<!-- <script src="/static/yearUpdater.js"></script> -->
+		<script src="/static/modal-page/js/specialtyPopup.js"></script>
+	</body>
+	<footer class="footer">
+		<div class="footer-container">
+			<!-- О сайте -->
+			<div class="footer-section">
+				<h3 data-translate="about_site">Сайт туралы</h3>
+				<p id="copyright-year"></p>
+				<script>
+					const currentYear = new Date().getFullYear()
+					document.getElementById(
+						'copyright-year'
+					).textContent = `©1940–${currentYear}`
+				</script>
+				<p data-translate="college_name">
+					Алматы қаласы Білім басқармасының «ALMATY POLYTECHNIC COLLEGE» КМҚК
+				</p>
+
+				<h3 data-translate="social_networks">Әлеуметтік желілер</h3>
+				<div class="social-icons">
+					<a
+						href="https://www.instagram.com/polytechalmaty/#"
+						target="_blank"
+						aria-label="Instagram"
+					>
+						<img src="/static/images/flot/instagram.png" alt="Instagram" />
+					</a>
+					<a
+						href="https://www.facebook.com/people/..."
+						target="_blank"
+						aria-label="Facebook"
+					>
+						<img src="/static/images/flot/facebook.png" alt="Facebook" />
+					</a>
+					<a
+						href="https://www.youtube.com/@almatypolytechedukz"
+						target="_blank"
+						aria-label="YouTube"
+					>
+						<img src="/static/images/flot/youtube.png" alt="YouTube" />
+					</a>
+					<a
+						href="https://www.tiktok.com/@polytech_college?_t=8ji5qQRP3v3&_r=1"
+						target="_blank"
+						aria-label="TikTok"
+					>
+						<img src="/static/images/flot/tiktok.png" alt="TikTok" />
+					</a>
+				</div>
+			</div>
+
+			<!-- Контакты -->
+			<div class="footer-section">
+				<h3 data-translate="contact_label">Байланыс</h3>
+				<p>
+					<span class="icon">📍</span>
+					<strong data-translate="address_label">Мекенжай:</strong><br />
+					<span data-translate="address"
+						>Қазақстан, Алматы қ., Тастақ-1 шағын ауданы, 1B</span
+					>
+				</p>
+				<p>
+					<span class="icon">📞</span>
+					<strong data-translate="contact_label">Байланыс:</strong><br />
+					<span data-translate="phone">Тел.: 396 71 39</span><br />
+					<span data-translate="admission_phone"
+						>Қабылдау комиссиясы: 8 707 171 0800</span
+					>
+				</p>
+				<p>
+					<span class="icon">✉️</span>
+					<strong data-translate="email_label">Пошта:</strong><br />
+					<a href="mailto:polytech@aspc.kz">polytech@aspc.kz</a>
+				</p>
+			</div>
+
+			<!-- Разработчики -->
+			<div class="footer-section">
+				<h3 data-translate="developers">Разработчики сайта</h3>
+				<p>
+					<span class="icon">👨‍💻</span>
+					<strong data-translate="developer_name">Жобаны жасаған:</strong><br />
+					<span data-translate="developer_info"
+						>Колледж студенттері мен оқытушылары</span
+					>
+				</p>
+
+				<a
+					href="https://www.instagram.com/jasi.you/"
+					class="dev-button"
+					data-translate="contact_developer"
+					>Связаться с разработчиком</a
+				>
+			</div>
+		</div>
+	</footer>
 </html>
