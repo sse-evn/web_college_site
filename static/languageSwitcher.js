@@ -1,21 +1,42 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const languageSelector = document.getElementById("language-select"); // Исправил ID на твой из HTML
-    const elementsToTranslate = document.querySelectorAll("[data-translate]");
+    const languageSelector = document.getElementById("language-select");
+    const elementsToTranslate = document.querySelectorAll("[data-translate]");  // Элементы для перевода
+    const rulesFrame = document.getElementById("rulesFrame"); // Наш iframe с правилами
 
-    // Функция установки языка
+    // Функция смены языка
     const setLanguage = (lang) => {
-        localStorage.setItem("selectedLanguage", lang); // Исправил ключ на твой из предыдущего кода
+        localStorage.setItem("selectedLanguage", lang);  // Сохраняем выбранный язык
+
+        // Обновляем текст на странице (перевод элементов)
         elementsToTranslate.forEach(element => {
             const key = element.getAttribute("data-translate");
-            element.textContent = translations[lang]?.[key] || `Missing translation: ${key}`; // Fallback для отсутствующих переводов
+            element.textContent = translations[lang]?.[key] || `Missing translation: ${key}`; // Если нет перевода, показываем предупреждение
         });
+
+        // Обновляем содержимое iframe
+        let iframeSrc = "";
+        if (lang === "ru") {
+            iframeSrc = "ru.html";
+        } else if (lang === "kz") {
+            iframeSrc = "kk.html";
+        } else if (lang === "en") {
+            iframeSrc = "en.html";  // Указываем файл для английского языка
+        }
+
+        // Очищаем и перезагружаем iframe
+        if (rulesFrame) {
+            rulesFrame.src = "";  // Очищаем текущий src
+            setTimeout(() => {
+                rulesFrame.src = iframeSrc;  // Устанавливаем новый src
+            }, 100);  // Задержка, чтобы iframe успел перезагрузиться
+        }
     };
 
-    // Получение сохранённого языка или "ru" по умолчанию
+    // Загрузка сохранённого языка из localStorage или по умолчанию "ru"
     const savedLanguage = localStorage.getItem("selectedLanguage") || "ru";
-    setLanguage(savedLanguage);
+    setLanguage(savedLanguage);  // Устанавливаем язык на основе сохранённого значения
 
-    // Проверка и установка слушателя для переключателя
+    // Устанавливаем значение в селекторе языка и добавляем слушатель для изменения
     if (languageSelector) {
         languageSelector.value = savedLanguage;
         languageSelector.addEventListener("change", (event) => setLanguage(event.target.value));
