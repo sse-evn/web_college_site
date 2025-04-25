@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Обновляем содержимое iframe
         let iframeSrc = "";
-        if (lang === "ru") {
+        if (lang === "kz") {
             iframeSrc = "ru.html";
         } else if (lang === "kz") {
             iframeSrc = "kk.html";
