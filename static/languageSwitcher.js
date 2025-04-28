@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
     const languageSelector = document.getElementById("language-select");
-    const elementsToTranslate = document.querySelectorAll("[data-translate]");  // Элементы для перевода
+    const elementsToTranslate = document.querySelectorAll("[data-translate]"); // Элементы для перевода
     const rulesFrame = document.getElementById("rulesFrame"); // Наш iframe с правилами
 
     // Функция смены языка
     const setLanguage = (lang) => {
-        localStorage.setItem("selectedLanguage", lang);  // Сохраняем выбранный язык
+        localStorage.setItem("selectedLanguage", lang); // Сохраняем выбранный язык
 
         // Обновляем текст на странице (перевод элементов)
         elementsToTranslate.forEach(element => {
@@ -20,21 +20,21 @@ document.addEventListener("DOMContentLoaded", () => {
         } else if (lang === "ru") {
             iframeSrc = "ru.html";
         } else if (lang === "en") {
-            iframeSrc = "en.html";  // Указываем файл для английского языка
+            iframeSrc = "en.html"; // Указываем файл для английского языка
         }
 
         // Очищаем и перезагружаем iframe
         if (rulesFrame) {
-            rulesFrame.src = "";  // Очищаем текущий src
+            rulesFrame.src = ""; // Очищаем текущий src
             setTimeout(() => {
-                rulesFrame.src = iframeSrc;  // Устанавливаем новый src
-            }, 100);  // Задержка, чтобы iframe успел перезагрузиться
+                rulesFrame.src = iframeSrc; // Устанавливаем новый src
+            }, 100); // Задержка, чтобы iframe успел перезагрузиться
         }
     };
 
-    // Загрузка сохранённого языка из localStorage или по умолчанию "ru"
-    const savedLanguage = localStorage.getItem("selectedLanguage") || "ru";
-    setLanguage(savedLanguage);  // Устанавливаем язык на основе сохранённого значения
+    // Загрузка сохранённого языка из localStorage или по умолчанию "kz"
+    const savedLanguage = localStorage.getItem("selectedLanguage") || "kz";
+    setLanguage(savedLanguage); // Устанавливаем язык на основе сохранённого значения
 
     // Устанавливаем значение в селекторе языка и добавляем слушатель для изменения
     if (languageSelector) {
