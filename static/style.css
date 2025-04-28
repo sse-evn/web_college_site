@@ -1126,3 +1126,9 @@ nav ul li a:hover {
         max-height: 200px;
     }
 }
+/* Адаптация для мобильных устройств */
+@media (max-width: 480px) {
+    .hero_img {
+        display: none; /* Скрываем элемент на мобильных устройствах */
+    }
+}
