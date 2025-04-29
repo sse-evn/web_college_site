@@ -1,564 +1,239 @@
 <!DOCTYPE html>
-<html lang="kk">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Әкімшілік</title>
+    <title>Администрация АГПК</title>
+    <link rel="stylesheet" href="/static/why_us.css">
+    <link rel="icon" href="/static/images/header/icon_site_logo.svg" type="image/x-icon">
+   
     <link rel="stylesheet" href="/static/style.css">
-    <link rel="stylesheet" href="/static/particles_style.css">
+    <link rel="stylesheet" href="/static/online_assistant.css">
+    <link rel="stylesheet" href="/static/tour_frame_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
+    <!-- Подключение библиотеки particles.js -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/header/styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-            color: white; /* Устанавливаем белый цвет текста для всего содержимого */
+        /* body {
+            background: linear-gradient(180deg, #0a0a23 0%, #1a1a3d 100%);
+            color: #e0e0ff;
+            overflow-x: hidden;
+        } */
+        .branch-line::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: -20px;
+            height: 20px;
+            width: 2px;
+            background: #00b7ff;
         }
-        .container {
-            width: 80%;
-            margin: auto;
+        .branch-line::after {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background:#00b7ff;
         }
-        .card {
-            background: rgb(0, 0, 0, 100, 73, 73);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            border-radius: 10px;
-            padding: 30px; /* Увеличиваем внутренние отступы */
-            margin: 20px auto;
-            width: 400px; /* Увеличиваем ширину карточки */
-            text-align: center;
-            color: black; /* Устанавливаем черный цвет текста только для карточек */
+        .admin-node {
+            position: relative;
+            transition: all 0.3s ease;
+            border: 1px solid #00b7ff;
+            box-shadow: 0 0 15px rgba(0, 119, 255, 0.3);
         }
-        .card img {
-            width: 100%; /* Изображение занимает всю ширину карточки */
-            height: auto; /* Сохраняем пропорции изображения */
-            border-radius: 10px;
+        .admin-node:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 25px rgba(0, 255, 204, 0.5);
         }
-        .email {
-            color: red; /* Устанавливаем красный цвет текста */
-            text-decoration: none; /* Убираем подчеркивание */
+        .hidden-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
         }
-        .grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+        .hidden-content.show {
+            max-height: 300px;
         }
-        .card p::before {
-            font-family: "Font Awesome 5 Free";
-            content: "\f2b9"; /* Код иконки fa-address-book */
-            margin-right: 8px;
-            font-weight: 900;
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><circle cx="2" cy="2" r="1" fill="white"/></svg>') repeat;
+            opacity: 0.2;
+            animation: twinkle 10s infinite;
         }
-        .grid .row-1 .card {
-            border: 3px solid #000; /* Увеличиваем размер границы */
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 0.4; }
         }
-        .header {
-            text-align: center;
-            margin-bottom: 20px;
-            text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8);
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #00ffcc;
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+            transition: transform 0.3s ease;
+        }
+        .admin-node:hover .avatar {
+            transform: scale(1.1);
         }
     </style>
 </head>
-<body>
-    <div id="particle-background"></div>
-    <div class="info-bar">
-        <div class="info-container">
-            <div class="info-item">
-                <i class="fas fa-calendar-alt"></i>
-                <span id="current-date">29 МАРТА 2024</span>
-            </div>
-            <div class="info-item">
-                <i class="fas fa-clock pulse"></i>
-                <span id="current-time">14:30:45</span>
-            </div>
-        </div>
-        <div class="info-container">
-            <div class="info-item">
-                <i class="fas fa-network-wired"></i> <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-                <span id="ip-address">Загрузка IP...</span>
-            </div>
- <div class="language-switcher">
-                <select id="language-select">
-                    <option value="ru">RU</option>
-                    <option value="kz">KZ</option>
-                    <option value="en">ENG</option>
-                </select>
+<body class="font-sans">
+    <div class="stars"></div>
+    <main class="container mx-auto px-4 py-8 relative z-10">
+        <section class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-cyan-300 animate-pulse">Администрация АГПК</h1>
+            <p class="text-lg text-gray-300 mt-2">Космическая команда Алматинского государственного политехнического колледжа</p>
+        </section>
 
-            </div>
-        </div>
-    </div>
+        <section class="max-w-4xl mx-auto">
+            <h2 class="text-2xl font-semibold text-cyan-200 mb-6">Иерархия управления</h2>
+            <ul class="space-y-6">
+                <!-- Директор -->
+                <li class="admin-node bg-gray-900 bg-opacity-80 p-6 rounded-lg text-center">
+                    <img src="/static/images/admin/4096-2731-max.jpg" alt="Директор" class="avatar mx-auto mb-4">
+                    <div>
+                        <h3 class="text-xl font-medium text-cyan-300">Директор</h3>
+                        <p class="text-gray-300">ФИО: [Укажите имя директора]</p>
+                        <p class="text-gray-300">Контакты: [Укажите email/телефон]</p>
+                        <button class="mt-2 text-cyan-400 hover:underline toggle-btn" data-target="director-info">Подробнее</button>
+                        <div id="director-info" class="hidden-content text-gray-300 mt-4">
+                            Руководит образовательной и административной деятельностью колледжа, обеспечивая высокое качество подготовки специалистов.
+                        </div>
+                    </div>
+                </li>
 
-    <header>
-        <div class="header-container">
-            <div class="logo">
-                <button 
-onclick="window.location.href='https://almatypolytech.edu.kz/';" 
-style="background: none; border: none; padding: 0; cursor: pointer;">
-<img 
-src="/static/images/header/LOGO_NEW.png" 
-alt="POLYTECH" 
-style="height: 80px;" 
->
-</button>
+                <!-- Заместители -->
+                <li class="branch-line pl-8 space-y-6">
+                    <ul class="space-y-6">
+                        <li class="admin-node bg-gray-900 bg-opacity-80 p-6 rounded-lg text-center">
+                            <img src="https://picsum.photos/150/150?random=2" alt="Заместитель по учебной работе" class="avatar mx-auto mb-4">
+                            <div>
+                                <h3 class="text-xl font-medium text-cyan-300">Заместитель директора по учебной работе</h3>
+                                <p class="text-gray-300">ФИО: [Укажите имя]</p>
+                                <p class="text-gray-300">Контакты: [Укажите email/телефон]</p>
+                                <button class="mt-2 text-cyan-400 hover:underline toggle-btn" data-target="deputy-academic-info">Подробнее</button>
+                                <div id="deputy-academic-info" class="hidden-content text-gray-300 mt-4">
+                                    Отвечает за организацию учебного процесса и внедрение современных образовательных стандартов.
+                                </div>
+                            </div>
+                        </li>
+                        <li class="admin-node bg-gray-900 bg-opacity-80 p-6 rounded-lg text-center">
+                            <img src="https://picsum.photos/150/150?random=3" alt="Заместитель по воспитательной работе" class="avatar mx-auto mb-4">
+                            <div>
+                                <h3 class="text-xl font-medium text-cyan-300">Заместитель директора по воспитательной работе</h3>
+                                <p class="text-gray-300">ФИО: Маржан Сабыркызы Мәлікова</p>
+                                <p class="text-gray-300">Контакты: gaipov_6325@mail.ru</p>
+                                <button class="mt-2 text-cyan-400 hover:underline toggle-btn" data-target="deputy-educational-info">Подробнее</button>
+                                <div id="deputy-educational-info" class="hidden-content text-gray-300 mt-4">
+                                    Координирует воспитательные программы, организует мероприятия и публикует статьи по IT в образовании. Награждена за вклад в воспитательную работу.
+                                </div>
+                            </div>
+                        </li>
+                        <li class="admin-node bg-gray-900 bg-opacity-80 p-6 rounded-lg text-center">
+                            <img src="https://picsum.photos/150/150?random=4" alt="Заместитель по учебно-производственной работе" class="avatar mx-auto mb-4">
+                            <div>
+                                <h3 class="text-xl font-medium text-cyan-300">Заместитель директора по учебно-производственной работе</h3>
+                                <p class="text-gray-300">ФИО: Маржан Сабыркызы Мәлікова (с 2018 года)</p>
+                                <p class="text-gray-300">Контакты: gaipov_6325@mail.ru</p>
+                                <button class="mt-2 text-cyan-400 hover:underline toggle-btn" data-target="deputy-production-info">Подробнее</button>
+                                <div id="deputy-production-info" class="hidden-content text-gray-300 mt-4">
+                                    Руководит производственной практикой студентов, обеспечивая их готовность к профессиональной деятельности.
+                                </div>
+                            </div>
+                        </li>
+                        <li class="admin-node bg-gray-900 bg-opacity-80 p-6 rounded-lg text-center">
+                            <img src="https://picsum.photos/150/150?random=5" alt="Заместитель по административно-хозяйственной части" class="avatar mx-auto mb-4">
+                            <div>
+                                <h3 class="text-xl font-medium text-cyan-300">Заместитель директора по административно-хозяйственной части</h3>
+                                <p class="text-gray-300">ФИО: [Укажите имя]</p>
+                                <p class="text-gray-300">Контакты: [Укажите email/телефон]</p>
+                                <button class="mt-2 text-cyan-400 hover:underline toggle-btn" data-target="deputy-admin-info">Подробнее</button>
+                                <div id="deputy-admin-info" class="hidden-content text-gray-300 mt-4">
+                                    Обеспечивает функционирование инфраструктуры колледжа и комфортные условия для обучения.
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
 
-                <button 
-                    onclick="window.open('https://edu.aspc.kz/?ysclid=lscxoszymx908089861', '_blank')"
-                    style="
-                        background: none;
-                        border: none;
-                        padding: 0;
-                        cursor: pointer;
-                    "
-                >
-                    <img 
-                        src="/static/images/header/moodle123-01.svg" 
-                        alt="Moodle" 
-                        style="height: 20px;" 
-                    >
-                </button>
-            </div>
-            
+                <!-- Другие сотрудники -->
+                <li class="branch-line pl-16 space-y-6">
+                    <ul class="space-y-6">
+                        <li class="admin-node bg-gray-900 bg-opacity-80 p-6 rounded-lg text-center">
+                            <img src="https://picsum.photos/150/150?random=6" alt="Руководитель отдела кадров" class="avatar mx-auto mb-4">
+                            <div>
+                                <h3 class="text-xl font-medium text-cyan-300">Руководитель отдела кадров</h3>
+                                <p class="text-gray-300">ФИО: [Укажите имя]</p>
+                                <p class="text-gray-300">Контакты: [Укажите email/телефон]</p>
+                                <button class="mt-2 text-cyan-400 hover:underline toggle-btn" data-target="hr-info">Подробнее</button>
+                                <div id="hr-info" class="hidden-content text-gray-300 mt-4">
+                                    Отвечает за подбор персонала, ведение документации и управление кадровыми процессами.
+                                </div>
+                            </div>
+                        </li>
+                        <li class="admin-node bg-gray-900 bg-opacity-80 p-6 rounded-lg text-center">
+                            <img src="https://picsum.photos/150/150?random=7" alt="Главный бухгалтер" class="avatar mx-auto mb-4">
+                            <div>
+                                <h3 class="text-xl font-medium text-cyan-300">Главный бухгалтер</h3>
+                                <p class="text-gray-300">ФИО: [Укажите имя]</p>
+                                <p class="text-gray-300">Контакты: [Укажите email/телефон]</p>
+                                <button class="mt-2 text-cyan-400 hover:underline toggle-btn" data-target="accountant-info">Подробнее</button>
+                                <div id="accountant-info" class="hidden-content text-gray-300 mt-4">
+                                    Управляет финансовой деятельностью колледжа, обеспечивая точность и прозрачность учета.
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
 
-            <nav class="desktop-menu">
-                <div class="menu-item">
-                    <a href="#" class="menu-link">
-                        <i class="fas fa-school"></i>
-                        <span data-translate="menu_college">КОЛЛЕДЖ</span>
-                    </a>
-                    <div class="dropdown-menu">
-                        <div class="dropdown-item">
-                            <a href="#" class="dropdown-link" data-translate="management">Управление</a>
-                            <div class="sub-dropdown-menu">
-                                <a href="/views/college/uprav/page1.html" class="sub-dropdown-link" data-translate="about_us">О нас</a>
-                                <a href="/views/college/uprav/page2.html" class="sub-dropdown-link" data-translate="structure">Организационная структура управления</a>
-                                <a href="/views/college/uprav/page3.html" class="sub-dropdown-link" data-translate="administration">Администрация</a>
-                                <a href="/views/college/uprav/page4.html" class="sub-dropdown-link" data-translate="departments">Отделения</a>
-                            </div>
-                        </div>
-                        <div class="dropdown-item">
-                            <a href="#" class="dropdown-link" data-translate="documents">Документы</a>
-                            <div class="sub-dropdown-menu">
-                                <a href="/views/college/doc/page1.html" class="sub-dropdown-link" data-translate="licenses">Лицензии</a>
-                                <a href="/views/college/doc/page2.html" class="sub-dropdown-link" data-translate="report">Отчет о доходах и расходах</a>
-                                <a href="/views/college/doc/page3.html" class="sub-dropdown-link" data-translate="charter">Устав колледжа</a>
-                                <a href="/views/college/doc/page4.html" class="sub-dropdown-link" data-translate="accreditation">Международная аккредитация</a>
-                                <a href="/views/college/doc/page5.html" class="sub-dropdown-link" data-translate="regulations">Положение</a>
-                                <a href="/views/college/doc/page6.html" class="sub-dropdown-link" data-translate="rules">Правила внутреннего распорядка</a>
-                                <a href="/views/college/doc/page7.html" class="sub-dropdown-link" data-translate="certification">Государственная аттестация</a>
-                                <a href="/views/college/doc/page8.html" class="sub-dropdown-link" data-translate="catalog">Онлайн каталог НПА</a>
-                            </div>
-                        </div>
-                        <div class="dropdown-item">
-                            <a href="#" class="dropdown-link" data-translate="planning">ПЛАНИРОВАНИЕ</a>
-                            <div class="sub-dropdown-menu">
-                                <a href="/views/college/plan/page2.html" class="sub-dropdown-link" data-translate="strategy">Стратегический план</a>
-                                <a href="/views/college/plan/page1.html" class="sub-dropdown-link" data-translate="monitoring">План работы внутриколледжного контроля</a>
-                            </div>
-                        </div>
-                        <div class="dropdown-item">
-                            <a href="#" class="dropdown-link" data-translate="activities">Направления деятельности колледжа</a>
-                            <div class="sub-dropdown-menu">
-                                <a href="/views/college/naprav/page1.html" class="sub-dropdown-link" data-translate="education">Учебная работа</a>
-                                <a href="/views/college/naprav/page2.html" class="sub-dropdown-link" data-translate="upbringing">Воспитательная работа</a>
-                                <a href="/views/college/naprav/page3.html" class="sub-dropdown-link" data-translate="methodical">Учебно-методическая работа</a>
-                                <a href="/views/college/naprav/page4.html" class="sub-dropdown-link" data-translate="production">Учебно-производственная работа</a>
-                                <a href="/views/college/naprav/page5.html" class="sub-dropdown-link" data-translate="union">Учебно-методическое объединение</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <a href="#" class="menu-link">
-                        <i class="fas fa-school"></i>
-                        <span data-translate="menu_admissions">АБИТУРИЕНТАМ</span>
-                    </a>
-                    <div class="dropdown-menu">
-                        <div class="dropdown-item">
-                            <a href="#" class="dropdown-link" data-translate="results">Итоги</a>
-                            <div class="sub-dropdown-menu">
-                                <a href="/views/abit/itog/page1.html" class="sub-dropdown-link" data-translate="first">первое</a>
-                                <a href="/views/abit/itog/page2.html" class="sub-dropdown-link" data-translate="second">второе</a>
-                            </div>
-                        </div>
-                        <div class="dropdown-item">
-                            <a href="#" class="dropdown-link" data-translate="admissions">Кабылдау</a>
-                            <div class="sub-dropdown-menu">
-                                <a href="/views/abit/kabyldau/page1.html" class="sub-dropdown-link" data-translate="admission_rules">Правила приема</a>
-                                <a href="/views/abit/kabyldau/page2.html" class="sub-dropdown-link" data-translate="admission_plan">План приема</a>
-                                <a href="/views/abit/kabyldau/page3.html" class="sub-dropdown-link" data-translate="document_list">Перечень документов</a>
-                                <a href="/views/abit/kabyldau/page4.html" class="sub-dropdown-link" data-translate="free_education">Бесплатное обучение</a>
-                                <a href="https://gz.bilimalmaty.kz/login" class="sub-dropdown-link" data-translate="online_applications">Онлайн подача заявок</a>
-                            </div>
-                        </div>
-                        <div class="dropdown-item">
-                            <a href="#" class="dropdown-link" data-translate="specialties">Выбор спецальности</a>
-                            <div class="sub-dropdown-menu">
-                                <a href="/views/abit/maman tandau/page1.html" class="sub-dropdown-link" data-translate="career_diagnostics">Профессиональная диагностика</a>
-                                <a href="/views/abit/maman tandau/page2.html" class="sub-dropdown-link" data-translate="programming_profession">Профессия программиста</a>
-                                <a href="https://atlasbt.enbek.kz/" class="sub-dropdown-link" data-translate="new_professions">Атлас новых профессий</a>
-                            </div>
-                        </div>
-                        <div class="dropdown-item">
-                            <a href="/views/abit/mamandyk/page1.html" class="dropdown-link" data-translate="specialties_video">спецальности</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <a href="#" class="menu-link">
-                        <i class="fas fa-user-graduate"></i>
-                        <span data-translate="menu_students">СТУДЕНТАМ</span>
-                    </a>
-                    <div class="dropdown-menu">
-                        <div class="dropdown-item">
-                            <a href="/views/stud/obshaga/page1.html" class="dropdown-link" data-translate="student_house">Дом студентов</a>
-                        </div>
-                        <div class="dropdown-item">
-                            <a href="#" class="dropdown-link" data-translate="education">Обучение</a>
-                            <div class="sub-dropdown-menu">
-                                <a href="/views/stud/oku/page1.html" class="dropdown-link" data-translate="internal_rules">Правила внутреннего распорядка</a>
-                                <a href="/views/stud/oku/page2.html" class="dropdown-link" data-translate="students_by_specialty">Контингент по специальностям</a>
-                                <a href="/views/stud/oku/page3.html" class="dropdown-link" data-translate="study_schedule">График учебного процесса</a>
-                                <a href="/views/stud/oku/page4.html" class="dropdown-link" data-translate="midterm_schedule">График промежуточной аттестации</a>
-                                <a href="/views/stud/oku/page5.html" class="dropdown-link" data-translate="final_exam_schedule">График итоговой аттестации</a>
-                                <a href="/views/stud/oku/page6.html" class="dropdown-link" data-translate="vacant_places_info">Информация по наличию вакантных мест</a>
-                            </div>
-                        </div>
-                        <div class="dropdown-item">
-                            <a href="#" class="dropdown-link" data-translate="psychological_service">Психологическая служба колледжа</a>
-                            <div class="sub-dropdown-menu">
-                                <a href="/views/stud/psih/page1.html" class="dropdown-link" data-translate="educational_work">Учебная работа</a>
-                                <a href="/views/stud/psih/page2.html" class="dropdown-link" data-translate="psychologist">Психолог</a>
-                                <a href="/views/stud/psih/page3.html" class="dropdown-link" data-translate="student_recommendations">Рекомендации для студентов</a>
-                            </div>
-                        </div>
-                        <div class="dropdown-item">
-                            <a href="/views/stud/rule/page1.html" class="dropdown-link" data-translate="rules">Правила</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <a href="#" class="menu-link">
-                        <i class="fas fa-chalkboard-teacher"></i>
-                        <span data-translate="menu_teachers">ПРЕПОДАВАТЕЛЯМ</span>
-                    </a>
-                    <div class="dropdown-menu">
-                        <div class="dropdown-item">
-                            <a href="#" class="dropdown-link" data-translate="resources">Ресурсы</a>
-                            <div class="sub-dropdown-menu">
-                                <a href="/views/prepod/page1.html" class="sub-dropdown-link" data-translate="methodology">Методические рекомендации</a>
-                                <a href="/views/prepod/page2.html" class="sub-dropdown-link" data-translate="forms_of_upd">Формы УПД</a>
-                                <a href="/views/prepod/page3.html" class="sub-dropdown-link" data-translate="educational_programs">Образовательные программы</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <a href="#" class="menu-link">
-                        <i class="fas fa-university"></i>
-                        <span data-translate="menu_government">ГОСУДАРСТВО</span>
-                    </a>
-                    <div class="dropdown-menu">
-                        <div class="dropdown-item">
-                            <a href="/views/memleket/page1.html" class="dropdown-link" data-translate="state_symbols">Государственные символы</a>
-                            <a href="/views/memleket/page3.html" class="dropdown-link" data-translate="citizen_reception_schedule">График приема граждан</a>
-                            <a href="https://www.akorda.kz/ru/official_documents/constitution" class="dropdown-link" data-translate="constitution">Конституция</a>
-                            <a href="https://open-almaty.kz/" class="dropdown-link" data-translate="open_almaty">Open Almaty</a>
-                        </div>
-                    </div>
-                </div>
-       
-                <div class="menu-item">
-                    <a href="#" class="menu-link">
-                        <i class="fas fa-briefcase"></i>
-                        <span data-translate="menu_vacancies">ВАКАНСИИ</span>
-                    </a>
-                    <div class="dropdown-menu">
-                        <div class="dropdown-item">
-                            <a href="/views/vaka/page1.html" class="dropdown-link" data-translate="apply">Подать заявку</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <a href="#" class="menu-link">
-                        <i class="fas fa-envelope"></i>
-                        <span data-translate="menu_contacts">КОНТАКТЫ</span>
-                    </a>
-                    <div class="dropdown-menu">
-                        <div class="dropdown-item">
-                            <a href="/views/contact/page1.html" class="dropdown-link" data-translate="contact_us">Связаться с нами</a>
-                        </div>
-                    </div>
-                </div>
-                
-            </nav>
+        <section class="max-w-4xl mx-auto mt-12">
+            <h2 class="text-2xl font-semibold text-cyan-200 mb-6">Контактная информация</h2>
+            <div class="bg-gray-900 bg-opacity-80 p-6 rounded-lg border border-cyan-400 text-center">
+                <p class="text-gray-300">Адрес: Казахстан, г. Алматы, мкрн. Тастак 1, д. 1В</p>
+                <p class="text-gray-300">Телефон: +7 (727) 393-41-91</p>
+                <p class="text-gray-300">WhatsApp: +7 702 958 2637</p>
+                <p class="text-gray-300">Электронная почта: gaipov_6325@mail.ru</p>
+                <p class="text-gray-300">Официальный сайт: <a href="http://agpk.kz" class="text-cyan-400 hover:underline">agpk.kz</a></p>
+            </div>
+        </section>
+    </main>
 
-            <button class="mobile-menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </header>
-    <div class="overlay"></div>
+  
 
-    <nav class="mobile-menu">
-        <div class="menu-item">
-            <a href="#" class="menu-link">
-                <i class="fas fa-school"></i>
-                <span data-translate="menu_college">КОЛЛЕДЖ</span>
-                <i class="fas fa-chevron-down dropdown-arrow"></i>
-            </a>
-            <div class="dropdown-menu">
-                <div class="dropdown-item">
-                    <a href="#" class="dropdown-link" data-translate="management">Управление</a>
-                    <div class="sub-dropdown-menu">
-                        <a href="/views/college/uprav/page1.html" class="dropdown-link" data-translate="about_us">О нас</a>
-                        <a href="/views/college/uprav/page2.html" class="dropdown-link" data-translate="structure">Организационная структура управления</a>
-                        <a href="/views/college/uprav/page3.html" class="dropdown-link" data-translate="administration">Администрация</a>
-                        <a href="/views/college/uprav/page4.html" class="dropdown-link" data-translate="departments">Отделения</a>
-                    </div>
-                </div>
-                <div class="dropdown-item">
-                    <a href="#" class="dropdown-link" data-translate="documents">Документы</a>
-                    <div class="sub-dropdown-menu">
-                        <a href="/views/college/doc/page1.html" class="dropdown-link" data-translate="licenses">Лицензии</a>
-                        <a href="/views/college/doc/page2.html" class="dropdown-link" data-translate="report">Отчет о доходах и расходах</a>
-                        <a href="/views/college/doc/page3.html" class="dropdown-link" data-translate="charter">Устав колледжа</a>
-                        <a href="/views/college/doc/page4.html" class="dropdown-link" data-translate="accreditation">Международная аккредитация</a>
-                        <a href="/views/college/doc/page5.html" class="dropdown-link" data-translate="regulations">Положение</a>
-                        <a href="/views/college/doc/page6.html" class="dropdown-link" data-translate="rules">Правила внутреннего распорядка</a>
-                        <a href="/views/college/doc/page7.html" class="dropdown-link" data-translate="certification">Государственная аттестация</a>
-                        <a href="/views/college/doc/page8.html" class="dropdown-link" data-translate="catalog">Онлайн каталог НПА</a>
-                    </div>
-                </div>
-                <div class="dropdown-item">
-                    <a href="#" class="dropdown-link" data-translate="planning">ПЛАНИРОВАНИЕ</a>
-                    <div class="sub-dropdown-menu">
-                        <a href="/views/college/plan/page2.html" class="dropdown-link" data-translate="strategy">Стратегический план</a>
-                        <a href="/views/college/plan/page1.html" class="dropdown-link" data-translate="monitoring">План работы внутриколледжного контроля</a>
-                    </div>
-                </div>
-                <div class="dropdown-item">
-                    <a href="#" class="dropdown-link" data-translate="activities">Направления деятельности колледжа</a>
-                    <div class="sub-dropdown-menu">
-                        <a href="/views/college/naprav/page1.html" class="dropdown-link" data-translate="education">Учебная работа</a>
-                        <a href="/views/college/naprav/page2.html" class="dropdown-link" data-translate="upbringing">Воспитательная работа</a>
-                        <a href="/views/college/naprav/page3.html" class="dropdown-link" data-translate="methodical">Учебно-методическая работа</a>
-                        <a href="/views/college/naprav/page4.html" class="dropdown-link" data-translate="production">Учебно-производственная работа</a>
-                        <a href="/views/college/naprav/page5.html" class="dropdown-link" data-translate="union">Учебно-методическое объединение</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="menu-item">
-            <a href="#" class="menu-link">
-                <i class="fas fa-school"></i>
-                <span data-translate="menu_admissions">АБИТУРИЕНТАМ</span>
-                <i class="fas fa-chevron-down dropdown-arrow"></i>
-            </a>
-            <div class="dropdown-menu">
-                <div class="dropdown-item">
-                    <a href="#" class="dropdown-link" data-translate="results">Итоги</a>
-                    <div class="sub-dropdown-menu">
-                        <a href="/views/abit/itog/page1.html" class="dropdown-link" data-translate="first">первое</a>
-                        <a href="/views/abit/itog/page2.html" class="dropdown-link" data-translate="second">второе</a>
-                    </div>
-                </div>
-                <div class="dropdown-item">
-                    <a href="#" class="dropdown-link" data-translate="admissions">Кабылдау</a>
-                    <div class="sub-dropdown-menu">
-                        <a href="/views/abit/kabyldau/page1.html" class="dropdown-link" data-translate="admission_rules">Правила приема</a>
-                        <a href="/views/abit/kabyldau/page2.html" class="dropdown-link" data-translate="admission_plan">План приема</a>
-                        <a href="/views/abit/kabyldau/page3.html" class="dropdown-link" data-translate="document_list">Перечень документов</a>
-                        <a href="/views/abit/kabyldau/page4.html" class="dropdown-link" data-translate="free_education">Бесплатное обучение</a>
-                        <a href="https://gz.bilimalmaty.kz/login" class="dropdown-link" data-translate="online_applications">Онлайн подача заявок</a>
-                    </div>
-                </div>
-                <div class="dropdown-item">
-                    <a href="#" class="dropdown-link" data-translate="specialties">Выбор спецальности</a>
-                    <div class="sub-dropdown-menu">
-                        <a href="/views/abit/maman tandau/page1.html" class="dropdown-link" data-translate="career_diagnostics">Профессиональная диагностика</a>
-                        <a href="/views/abit/maman tandau/page2.html" class="dropdown-link" data-translate="programming_profession">Профессия программиста</a>
-                        <a href="https://atlasbt.enbek.kz/" class="dropdown-link" data-translate="new_professions">Атлас новых профессий</a>
-                    </div>
-                </div>
-                <div class="dropdown-item">
-                    <a href="/views/abit/mamandyk/page1.html" class="dropdown-link" data-translate="specialties_video">спецальности</a>
-                </div>
-            </div>
-        </div>
-    
-    
-        <div class="menu-item">
-            <a href="#" class="menu-link">
-                <i class="fas fa-book-open"></i>
-                <span>СТУДЕНТАМ</span>
-                <i class="fas fa-chevron-down dropdown-arrow"></i>
-            </a>
-            <div class="dropdown-menu">
-                <div class="dropdown-item">
-                    <a href="/views/stud/obshaga/page1.html" class="dropdown-link" data-translate="student_house">Дом студентов</a>
-                </div>
-                <div class="dropdown-item">
-                    <a href="/views/college/plan/page2.html" class="dropdown-link">Правила внутреннего распорядка</a>
-                    <a href="/views/college/plan/page1.html" class="dropdown-link">Контингент по специальностям</a>
-                    <a href="/views/college/plan/page2.html" class="dropdown-link">График учебного процесса</a>
-                    <a href="/views/college/plan/page1.html" class="dropdown-link">График промежуточной аттестации</a>
-                    <a href="/views/college/plan/page2.html" class="dropdown-link">График итоговой аттестации</a>
-                    <a href="/views/college/plan/page1.html" class="dropdown-link">Вакантные места</a>
-                </div>
-                <div class="dropdown-item">
-                    <a href="founders.html" class="dropdown-link">Учебная работа</a>
-                    <a href="/views/college/naprav/page1.html" class="dropdown-link">Психолог</a>
-                    <a href="/views/college/naprav/page3.html" class="dropdown-link">Рекомендации</a>
-                </div>
-                <div class="dropdown-item">
-                    <a href="ССЫЛКА ТУТ ДОЛЖНА БЫТЬ" class="dropdown-link">Правила</a>
-                </div>
-            </div>
-        </div>
-    
-        <div class="menu-item">
-            <a href="#" class="menu-link">
-                <i class="fas fa-chalkboard-teacher"></i>
-                <span>ПРЕПОДАВАТЕЛЯМ</span>
-                <i class="fas fa-chevron-down dropdown-arrow"></i>
-            </a>
-            <div class="dropdown-menu">
-                <div class="dropdown-item">
-                    <a href="/views/prepod/page1.html" class="dropdown-link" data-translate="methodology">Методические рекомендации</a>
-    <a href="/views/prepod/page2.html" class="dropdown-link" data-translate="forms_of_upd">Формы УПД</a>
-    <a href="/views/prepod/page3.html" class="dropdown-link" data-translate="educational_programs">Образовательные программы</a>
-                </div>
-            </div>
-        </div>
-    
-        <div class="menu-item">
-            <a href="#" class="menu-link">
-                <i class="fas fa-university"></i>
-                <span>ГОСУДАРСТВО</span>
-                <i class="fas fa-chevron-down dropdown-arrow"></i>
-            </a>
-            <div class="dropdown-menu">
-                <div class="dropdown-item">
-                    <a href="/views/memleket/page1.html" class="dropdown-link" data-translate="state_symbols">Государственные символы</a>
-                    <a href="/views/memleket/page3.html" class="dropdown-link" data-translate="citizen_reception_schedule">График приема граждан</a>
-                    <a href="https://www.akorda.kz/ru/official_documents/constitution" class="dropdown-link" data-translate="constitution">Конституция</a>
-                    <a href="https://open-almaty.kz/" class="dropdown-link" data-translate="open_almaty">Open Almaty</a>
-                    
-                </div>
-            </div>
-        </div>
-    
-        <div class="menu-item">
-            <a href="#" class="menu-link">
-                <i class="fas fa-briefcase"></i>
-                <span>ВАКАНСИИ</span>
-                <i class="fas fa-chevron-down dropdown-arrow"></i>
-            </a>
-            <div class="dropdown-menu">
-                <div class="dropdown-item">
-                    <a href="/views/vaka/page1.html" class="dropdown-link">Подать заявку</a>
-                </div>
-            </div>
-        </div>
-    
-        <div class="menu-item">
-            <a href="/views/contact/page1.html" class="menu-link">
-                <i class="fas fa-envelope"></i>
-                <span>КОНТАКТЫ</span>
-            </a>
-        </div>
-    </nav>
-    <div class="header">
-        <h1>Әкімшілік</h1>
-    </div>
-    <div class="container">
-        <div class="card">
-            <img src="https://i.ibb.co/ss3ndK4/IMG-2817.jpg" alt="Директор">
-            <h3>Омарбеков Медет Астетович</h3>
-            <p>Колледж директоры</p>
-            <a class="email" href="mailto:polytech@aspc.kz">
-                <i class="fa-solid fa-envelope"></i> polytech@aspc.kz
-            </a>
-        </div>
-        <h2>Директордың орынбасарлары</h2>
-        <div class="grid">
-            <div class="card">
-                <img src="https://i.ibb.co.com/R9nTCKS/image.jpg" alt="Орынбасар 1">
-                <h3>Мәлікoва Маржан Сабырқызы</h3>
-                <p>Директордың оқу-ісі жөніндегі орынбасары</p>
-                <a class="email" href="mailto:malikova_m@agpk.kz">
-                    <i class="fa-solid fa-envelope"></i> malikova_m@agpk.kz
-                </a>
-            </div>
-            <div class="card">
-                <img src="https://i.ibb.co.com/GM5V915/image.jpg" alt="Орынбасар 2">
-                <h3>Косерова Нағашкүл Макеновна</h3>
-                <p>Директордың оқу-ісі жөніндегі орынбасары</p>
-                <a class="email" href="mailto:Koserova.89@mail.ru">
-                    <i class="fa-solid fa-envelope"></i> Koserova.89@mail.ru
-                </a>
-            </div>
-            <div class="card">
-                <img src="https://i.ibb.co.com/ZGhjRhN/image.jpg" alt="Орынбасар 3">
-                <h3>Абылханова Назым Жумахановна</h3>
-                <p>Директордың оқу-өндірістік жұмысы жөніндегі орынбасары</p>
-                <a class="email" href="mailto:merei_nasim@mail.ru">
-                    <i class="fa-solid fa-envelope"></i> merei_nasim@mail.ru
-                </a>
-            </div>
+    <script>
+        // JavaScript для интерактивности
+        document.querySelectorAll('.toggle-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const targetId = button.getAttribute('data-target');
+                const targetContent = document.getElementById(targetId);
+                targetContent.classList.toggle('show');
+            });
+        });
 
-            <!-- Новые карточки -->
-            <div class="card">
-                <img src="https://i.ibb.co.com/new1.jpg" alt="Орынбасар 4">
-                <h3>Жанарбекова Айгүл Тұрсынқызы</h3>
-                <p>Директордың тәрбие жұмысы жөніндегі орынбасары</p>
-                <a class="email" href="mailto:janarbekova@mail.kz">
-                    <i class="fa-solid fa-envelope"></i> janarbekova@mail.kz
-                </a>
-            </div>
-            <div class="card">
-                <img src="https://i.ibb.co.com/new2.jpg" alt="Орынбасар 5">
-                <h3>Сейітов Ерлан Қайратұлы</h3>
-                <p>Директордың ғылыми жұмысы жөніндегі орынбасары</p>
-                <a class="email" href="mailto:seitov@mail.kz">
-                    <i class="fa-solid fa-envelope"></i> seitov@mail.kz
-                </a>
-            </div>
-            <div class="card">
-                <img src="https://i.ibb.co.com/new3.jpg" alt="Орынбасар 6">
-                <h3>Нұрғалиева Гүлжанат Әбдірахманқызы</h3>
-                <p>Директордың кадр жұмысы жөніндегі орынбасары</p>
-                <a class="email" href="mailto:nurgalieva@mail.kz">
-                    <i class="fa-solid fa-envelope"></i> nurgalieva@mail.kz
-                </a>
-            </div>
-            <div class="card">
-                <img src="https://i.ibb.co.com/new4.jpg" alt="Орынбасар 7">
-                <h3>Ахметов Бауыржан Серікұлы</h3>
-                <p>Директордың қаржы жұмысы жөніндегі орынбасары</p>
-                <a class="email" href="mailto:ahmetov@mail.kz">
-                    <i class="fa-solid fa-envelope"></i> ahmetov@mail.kz
-                </a>
-            </div>
-            <div class="card">
-                <img src="https://i.ibb.co.com/new5.jpg" alt="Орынбасар 8">
-                <h3>Қасымова Әлия Мұратқызы</h3>
-                <p>Директордың әкімшілік жұмысы жөніндегі орынбасары</p>
-                <a class="email" href="mailto:kassymova@mail.kz">
-                    <i class="fa-solid fa-envelope"></i> kassymova@mail.kz
-                </a>
-            </div>
-        </div>
-    </div>
+        // Анимация появления элементов
+        const nodes = document.querySelectorAll('.admin-node');
+        nodes.forEach((node, index) => {
+            node.style.opacity = '0';
+            setTimeout(() => {
+                node.style.transition = 'opacity 0.5s ease';
+                node.style.opacity = '1';
+            }, index * 200);
+        });
+    </script>
 </body>
-<script src="/static/languageSwitcher.js"></script>
-<script src="/static/translations.js"></script>
-<script src="/static/particles_config.js"></script>
 </html>
