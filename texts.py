@@ -50,7 +50,7 @@ ADMIN_REQUEST_DETAILS_TEMPLATE = (
     "Местоположение: {location}\n"
     "Описание:\n{description}\n\n"
     "Создана: {created_at}\n"
-    "Завершено: {completed_at}"
+    "Завершено: {completed_at}\n"
 )
 
 ADMIN_STATUS_UPDATED_ANSWER_TEMPLATE = "👍 Статус заявки №{request_id} изменен на '{status_ru}'."
@@ -116,3 +116,21 @@ ADMIN_CLEAR_HISTORY_NO_DATA = "🤷‍♀️ Нет заявок для очис
 ADMIN_EXPORT_HISTORY_MESSAGE = "📥 Подготавливаю и отправляю историю заявок..."
 ADMIN_EXPORT_HISTORY_NO_DATA = "🤷‍♀️ Нет истории для экспорта."
 ADMIN_EXPORT_HISTORY_FILE_TITLE = "История_заявок"
+
+TEACHER_RATING_REQUEST_TEMPLATE = (
+    "✅ Ваша заявка №{request_id} ('{request_type} в {location}') завершена.\n\n"
+    "Будем благодарны, если вы оцените качество выполненных работ по шкале от 1 до 10:"
+)
+TEACHER_RATING_THANK_YOU = "✨ Спасибо за вашу оценку!"
+TEACHER_RATING_ALREADY_RATED = "❗️ Вы уже оценили эту заявку."
+TEACHER_RATING_INVALID_REQUEST = "❌ Не удалось оценить заявку. Возможно, она не найдена или не завершена."
+
+TEACHER_NO_ACTIVE_REQUESTS = "У вас нет активных заявок."
+TEACHER_ACTIVE_REQUESTS_LIST_TEMPLATE = "📊 Ваши активные заявки:\n\n"
+
+ADMIN_TAKEN_BY_TEMPLATE = "Взял в работу: {admin_fullname} (ID: {admin_id}{username_mention})\n"
+
+ADMIN_MANUAL_STATUS_PROMPT = "🔧 Выберите новый статус для заявки №{request_id}:"
+ADMIN_MANUAL_STATUS_SUCCESS_TEMPLATE = "👍 Статус заявки №{request_id} вручную изменен на '{status_ru}'."
+ADMIN_MANUAL_STATUS_CANCELLED = "✅ Изменение статуса вручную отменено."
+ADMIN_MANUAL_STATUS_REQUEST_NOT_FOUND = "🔎 Заявка №{request_id} не найдена для ручного изменения статуса."

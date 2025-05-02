@@ -9,19 +9,15 @@ from typing import Dict, Any
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, BufferedInputFile
 from io import BytesIO
 
-from states import AdminStates
+from states import AdminStates, TeacherRatingState
 import keyboards as kb
 import texts as txt
 import json_storage as db
 import config
+from utils import escape_html
 
 router = Router()
 logger = logging.getLogger(__name__)
-
-def escape_html(text: str) -> str:
-    if text is None:
-        return ""
-    return text.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
 
 def admin_required(func):
     async def wrapper(event: types.Message, **kwargs: Dict[str, Any]):
@@ -138,10 +134,22 @@ async def admin_view_request_details(callback_query: types.CallbackQuery):
     status = request.get("status", "N/A")
     created_at = request.get("created_at", "N/A")
     completed_at = request.get("completed_at")
+    taken_by_id = request.get("taken_by_id")
+    taken_by_username = request.get("taken_by_username")
+    taken_by_fullname = request.get("taken_by_fullname", "Неизвестно")
 
     username_mention = f', @{escape_html(teacher_username)}' if teacher_username else ''
     completed_at_formatted = completed_at if completed_at else 'еще нет'
     status_ru = txt.STATUS_MAP_RU.get(status, status)
+
+    taken_by_info = ""
+    if taken_by_id:
+         taken_by_username_mention = f', @{escape_html(taken_by_username)}' if taken_by_username else ''
+         taken_by_info = txt.ADMIN_TAKEN_BY_TEMPLATE.format(
+              admin_fullname=escape_html(taken_by_fullname),
+              admin_id=taken_by_id,
+              username_mention=taken_by_username_mention
+         )
 
     text = txt.ADMIN_REQUEST_DETAILS_TEMPLATE.format(
         request_id=req_id,
@@ -155,7 +163,8 @@ async def admin_view_request_details(callback_query: types.CallbackQuery):
         description=escape_html(description),
         created_at=created_at,
         completed_at=completed_at_formatted
-    )
+    ) + taken_by_info
+
 
     details_kb = kb.get_request_details_kb(req_id, status)
 
@@ -168,38 +177,66 @@ async def admin_view_request_details(callback_query: types.CallbackQuery):
 
 @router.callback_query(F.data.startswith("update_status_"))
 @admin_callback_required
-async def admin_update_request_status(callback_query: types.CallbackQuery, bot: Bot):
+async def admin_update_request_status(callback_query: types.CallbackQuery, bot: Bot, state: FSMContext):
     try:
         parts = callback_query.data.split("_")
         request_id = int(parts[2])
         new_status = parts[3]
 
-        db.update_request_status(request_id, new_status)
+        current_request_details = db.get_request_details(request_id)
+        if not current_request_details:
+             await callback_query.answer(txt.ADMIN_REQUEST_NOT_FOUND, show_alert=True)
+             await admin_view_open_requests(callback_query)
+             return
 
-        request = db.get_request_details(request_id)
-        if request:
-            req_id = request.get("id", "N/A")
-            teacher_id = request.get("teacher_id", "N/A")
-            req_type = request.get("request_type", "Неизвестно")
-            location = request.get("location", "Не указано")
-            status = request.get("status", "N/A")
+        teacher_id = current_request_details.get("teacher_id")
+        req_type = current_request_details.get("request_type", "Неизвестно")
+        location = current_request_details.get("location", "Не указано")
+
+        admin_user_id = callback_query.from_user.id
+        admin_username = callback_query.from_user.username
+        admin_fullname = callback_query.from_user.full_name
+
+        db.update_request_status(request_id, new_status, admin_user_id, admin_username, admin_fullname)
+
+        updated_request_details = db.get_request_details(request_id)
+        if updated_request_details:
+            req_id = updated_request_details.get("id", "N/A")
+            status = updated_request_details.get("status", "N/A")
 
             status_ru = txt.STATUS_MAP_RU.get(status, status)
             await callback_query.answer(txt.ADMIN_STATUS_UPDATED_ANSWER_TEMPLATE.format(request_id=req_id, status_ru=status_ru))
 
-            try:
-                await bot.send_message(
-                    teacher_id,
-                    txt.ADMIN_NOTIFY_TEACHER_STATUS_TEMPLATE.format(
-                        request_id=req_id,
-                        request_type=escape_html(req_type),
-                        location=escape_html(location),
-                        status_ru=status_ru
-                    ),
-                    parse_mode=ParseMode.HTML
-                )
-            except Exception as e:
-                logger.error(f"Не удалось уведомить учителя {teacher_id} о смене статуса заявки {req_id}: {e}")
+            if teacher_id:
+                try:
+                    await bot.send_message(
+                        teacher_id,
+                        txt.ADMIN_NOTIFY_TEACHER_STATUS_TEMPLATE.format(
+                            request_id=req_id,
+                            request_type=escape_html(req_type),
+                            location=escape_html(location),
+                            status_ru=status_ru
+                        ),
+                        parse_mode=ParseMode.HTML
+                    )
+
+                    if new_status == 'completed':
+                         rating_message_text = txt.TEACHER_RATING_REQUEST_TEMPLATE.format(
+                             request_id=req_id,
+                             request_type=escape_html(req_type),
+                             location=escape_html(location)
+                         )
+                         rating_keyboard = kb.get_rating_keyboard(req_id)
+
+                         await bot.send_message(
+                             teacher_id,
+                             rating_message_text,
+                             reply_markup=rating_keyboard,
+                             parse_mode=ParseMode.HTML
+                         )
+
+                except Exception as e:
+                    logger.error(f"Не удалось уведомить учителя {teacher_id} или запросить оценку для заявки {req_id}: {e}")
 
             await admin_view_request_details(callback_query)
 
@@ -450,12 +487,26 @@ async def admin_view_all_requests(callback_query: types.CallbackQuery):
         status = req.get("status", "N/A")
         created_at = req.get("created_at", "N/A")
         completed_at = req.get("completed_at")
+        taken_by_id = req.get("taken_by_id")
+        taken_by_username = req.get("taken_by_username")
+        taken_by_fullname = req.get("taken_by_fullname", "Неизвестно")
+
 
         username_mention = f', @{escape_html(teacher_username)}' if teacher_username else ''
         completed_at_formatted = completed_at if completed_at else 'еще нет'
         status_ru = txt.STATUS_MAP_RU.get(status, status)
 
-        text += txt.ADMIN_HISTORY_ITEM_TEMPLATE.format(
+        taken_by_info = ""
+        if taken_by_id:
+             taken_by_username_mention = f', @{escape_html(taken_by_username)}' if taken_by_username else ''
+             taken_by_info = txt.ADMIN_TAKEN_BY_TEMPLATE.format(
+                  admin_fullname=escape_html(taken_by_fullname),
+                  admin_id=taken_by_id,
+                  username_mention=taken_by_username_mention
+             )
+
+
+        history_text = txt.ADMIN_HISTORY_ITEM_TEMPLATE.format(
              request_id=req_id,
              request_type=escape_html(req_type),
              location=escape_html(location),
@@ -465,7 +516,9 @@ async def admin_view_all_requests(callback_query: types.CallbackQuery):
              status_ru=status_ru,
              created_at=created_at,
              completed_at_formatted=completed_at_formatted
-        ) + "\n---\n"
+        )
+        text += history_text + taken_by_info + "\n---\n"
+
 
     history_kb = InlineKeyboardMarkup(
         inline_keyboard=[
@@ -548,3 +601,113 @@ async def admin_export_history(callback_query: types.CallbackQuery, bot: Bot):
     except Exception as e:
          logger.error(f"Ошибка при экспорте истории: {e}")
          await callback_query.message.edit_text(txt.ADMIN_ACTION_ERROR, reply_markup=kb.get_admin_menu_kb())
+
+@router.callback_query(F.data.startswith("manual_status_start_"))
+@admin_callback_required
+async def admin_manual_status_start(callback_query: types.CallbackQuery, state: FSMContext):
+    try:
+        request_id = int(callback_query.data.split("_")[3])
+        request = db.get_request_details(request_id)
+
+        if not request:
+            await callback_query.answer(txt.ADMIN_MANUAL_STATUS_REQUEST_NOT_FOUND.format(request_id=request_id), show_alert=True)
+            await admin_view_open_requests(callback_query)
+            return
+
+        await state.update_data(manual_status_request_id=request_id)
+        await state.set_state(AdminStates.waiting_for_manual_status_selection)
+
+        await callback_query.message.edit_text(
+            txt.ADMIN_MANUAL_STATUS_PROMPT.format(request_id=request_id),
+            reply_markup=kb.get_manual_status_keyboard(),
+            parse_mode=ParseMode.HTML
+        )
+        await callback_query.answer()
+
+    except (ValueError, IndexError) as e:
+        logger.error(f"Invalid callback data for manual status start: {callback_query.data} - {e}")
+        await callback_query.answer(txt.ADMIN_ACTION_ERROR, show_alert=True)
+    except Exception as e:
+        logger.error(f"Error starting manual status change for callback {callback_query.data}: {e}")
+        await callback_query.answer(txt.ADMIN_ACTION_ERROR, show_alert=True)
+
+
+@router.callback_query(AdminStates.waiting_for_manual_status_selection, F.data.startswith("manual_status_"))
+@admin_callback_required
+async def admin_manual_status_process(callback_query: types.CallbackQuery, state: FSMContext):
+    try:
+        parts = callback_query.data.split("_")
+        if len(parts) != 3:
+             raise ValueError("Invalid manual status callback data format")
+
+        new_status = parts[2]
+
+        valid_statuses = ['open', 'in_progress', 'completed', 'cancelled']
+        if new_status not in valid_statuses:
+            raise ValueError(f"Invalid status selected: {new_status}")
+
+        user_data = await state.get_data()
+        request_id = user_data.get('manual_status_request_id')
+
+        if request_id is None:
+             logger.error("Manual status state data missing request_id")
+             await state.clear()
+             await callback_query.answer(txt.ADMIN_ACTION_ERROR, show_alert=True)
+             await callback_query.message.edit_text(txt.ADMIN_PANEL_MESSAGE, reply_markup=kb.get_admin_menu_kb())
+             return
+
+        admin_user_id = callback_query.from_user.id
+        admin_username = callback_query.from_user.username
+        admin_fullname = callback_query.from_user.full_name
+
+        db.update_request_status(request_id, new_status, admin_user_id, admin_username, admin_fullname)
+
+        updated_request = db.get_request_details(request_id)
+        status_ru = txt.STATUS_MAP_RU.get(new_status, new_status)
+
+        await state.clear()
+
+        if updated_request:
+             confirm_text = txt.ADMIN_MANUAL_STATUS_SUCCESS_TEMPLATE.format(
+                 request_id=request_id,
+                 status_ru=status_ru
+             )
+             await callback_query.message.edit_text(
+                  f"{confirm_text}\n\n{txt.ADMIN_PANEL_MESSAGE}",
+                  reply_markup=kb.get_admin_menu_kb(),
+                  parse_mode=ParseMode.HTML
+             )
+             await callback_query.answer(f"Статус изменен на '{status_ru}'", show_alert=True)
+
+             if new_status == 'completed':
+                 teacher_id = updated_request.get("teacher_id")
+                 if teacher_id:
+                     try:
+                         rating_message_text = txt.TEACHER_RATING_REQUEST_TEMPLATE.format(
+                             request_id=request_id,
+                             request_type=escape_html(updated_request.get("request_type", "Неизвестно")),
+                             location=escape_html(updated_request.get("location", "Не указано"))
+                         )
+                         rating_keyboard = kb.get_rating_keyboard(request_id)
+                         await bot.send_message(
+                             teacher_id,
+                             rating_message_text,
+                             reply_markup=rating_keyboard,
+                             parse_mode=ParseMode.HTML
+                         )
+                     except Exception as e:
+                         logger.error(f"Failed to send rating request to teacher {teacher_id} after manual completion of request {request_id}: {e}")
+
+        else:
+             await callback_query.answer(txt.ADMIN_MANUAL_STATUS_REQUEST_NOT_FOUND.format(request_id=request_id), show_alert=True)
+             await callback_query.message.edit_text(txt.ADMIN_PANEL_MESSAGE, reply_markup=kb.get_admin_menu_kb())
+    except (ValueError, IndexError) as e:
+        logger.error(f"Invalid callback data for manual status process: {callback_query.data} - {e}")
+        await state.clear()
+        await callback_query.answer("Некорректный выбор статуса.", show_alert=True)
+        await callback_query.message.edit_text(txt.ADMIN_PANEL_MESSAGE, reply_markup=kb.get_admin_menu_kb())
+    except Exception as e:
+        logger.error(f"Error processing manual status change for callback {callback_query.data}: {e}")
+        await state.clear()
+        await callback_query.answer(txt.ADMIN_ACTION_ERROR, show_alert=True)
+        await callback_query.message.edit_text(txt.ADMIN_PANEL_MESSAGE, reply_markup=kb.get_admin_menu_kb())

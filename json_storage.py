@@ -26,6 +26,15 @@ def load_data() -> Dict[str, Any]:
             for key, default_value in DEFAULT_DATA_STRUCTURE.items():
                 if key not in data:
                     data[key] = default_value
+            for req in data.get("requests", []):
+                 if "rating" not in req:
+                      req["rating"] = None
+                 if "taken_by_id" not in req:
+                      req["taken_by_id"] = None
+                 if "taken_by_username" not in req:
+                      req["taken_by_username"] = None
+                 if "taken_by_fullname" not in req:
+                      req["taken_by_fullname"] = None
             return data
     except json.JSONDecodeError as e:
         logger.error(f"Error decoding JSON from '{config.DATA_FILE}': {e}. Using default structure.")
@@ -88,8 +97,10 @@ def is_teacher_allowed(user_id: int) -> bool:
 
 def add_allowed_teacher(user_id: int) -> bool:
     data = load_data()
-    if user_id in data.get("allowed_teachers", []) or user_id in data.get("admins", []):
+    if user_id in data.get("allowed_teachers", []):
         return False
+    if user_id in data.get("admins", []):
+         return False
     data.setdefault("allowed_teachers", []).append(user_id)
     save_data(data)
     return True
@@ -124,7 +135,11 @@ def add_request(teacher_id: int, teacher_username: Union[str, None], teacher_ful
         "contact_name": contact_name,
         "status": "open",
         "created_at": created_at,
-        "completed_at": None
+        "completed_at": None,
+        "rating": None,
+        "taken_by_id": None,
+        "taken_by_username": None,
+        "taken_by_fullname": None
     }
     data.setdefault("requests", []).append(new_request)
     data["next_request_id"] = request_id + 1
@@ -142,11 +157,34 @@ def get_requests_by_status(status: str = 'open') -> List[Dict[str, Any]]:
                  "request_type": req.get("request_type"),
                  "location": req.get("location"),
                  "created_at": req.get("created_at"),
-                 "completed_at": req.get("completed_at")
+                 "completed_at": req.get("completed_at"),
+                 "rating": req.get("rating"),
+                 "taken_by_id": req.get("taken_by_id"),
+                 "taken_by_username": req.get("taken_by_username"),
+                 "taken_by_fullname": req.get("taken_by_fullname"),
              })
 
     filtered_requests.sort(key=lambda x: x.get("created_at", ""))
     return filtered_requests
+
+def get_user_active_requests(user_id: int) -> List[Dict[str, Any]]:
+    data = load_data()
+    user_requests: List[Dict[str, Any]] = []
+    for req in data.get("requests", []):
+        if req.get("teacher_id") == user_id and req.get("status") in ("open", "in_progress"):
+             user_requests.append({
+                 "id": req.get("id"),
+                 "request_type": req.get("request_type"),
+                 "location": req.get("location"),
+                 "status": req.get("status"),
+                 "created_at": req.get("created_at"),
+                 "taken_by_id": req.get("taken_by_id"),
+                 "taken_by_username": req.get("taken_by_username"),
+                 "taken_by_fullname": req.get("taken_by_fullname"),
+             })
+    user_requests.sort(key=lambda x: x.get("created_at", ""))
+    return user_requests
+
 
 def get_request_details(request_id: int) -> Dict[str, Any] | None:
     data = load_data()
@@ -155,7 +193,7 @@ def get_request_details(request_id: int) -> Dict[str, Any] | None:
             return req
     return None
 
-def update_request_status(request_id: int, status: str):
+def update_request_status(request_id: int, status: str, admin_user_id: int | None = None, admin_username: str | None = None, admin_fullname: str | None = None):
     data = load_data()
     for req in data.get("requests", []):
         if req.get("id") == request_id:
@@ -164,8 +202,31 @@ def update_request_status(request_id: int, status: str):
                 req["completed_at"] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
             else:
                 req["completed_at"] = None
+                req["rating"] = None # Сбрасываем рейтинг, если статус не завершен
+
+            if status == 'in_progress':
+                req["taken_by_id"] = admin_user_id
+                req["taken_by_username"] = admin_username
+                req["taken_by_fullname"] = admin_fullname
+            elif status in ('open', 'cancelled'): # Если вернули в открытые или отменили, сбрасываем "взято кем"
+                req["taken_by_id"] = None
+                req["taken_by_username"] = None
+                req["taken_by_fullname"] = None
+            # Если статус стал 'completed', оставляем информацию о том, кто взял в работу
+
             save_data(data)
             return
+
+def update_request_rating(request_id: int, rating: int) -> bool:
+    data = load_data()
+    for req in data.get("requests", []):
+        if req.get("id") == request_id:
+            if req.get("status") == 'completed' and req.get("rating") is None:
+                 req["rating"] = rating
+                 save_data(data)
+                 return True
+            return False
+    return False
 
 def count_active_requests(user_id: int) -> int:
     data = load_data()
@@ -209,12 +270,28 @@ def get_all_requests_formatted() -> str:
          status = req.get("status", "N/A")
          created_at = req.get("created_at", "N/A")
          completed_at = req.get("completed_at")
+         rating = req.get("rating")
+         taken_by_id = req.get("taken_by_id")
+         taken_by_username = req.get("taken_by_username")
+         taken_by_fullname = req.get("taken_by_fullname", "Неизвестно")
 
          username_mention = f', @{teacher_username}' if teacher_username else ''
          completed_at_formatted = completed_at if completed_at else 'еще нет'
          status_ru = txt.STATUS_MAP_RU.get(status, status)
 
-         formatted_text += txt.ADMIN_HISTORY_ITEM_TEMPLATE.format(
+         rating_info = f"Оценка: {rating}/10" if rating is not None else "Оценка: нет"
+
+         taken_by_info = ""
+         if taken_by_id:
+              taken_by_username_mention = f', @{taken_by_username}' if taken_by_username else ''
+              taken_by_info = txt.ADMIN_TAKEN_BY_TEMPLATE.format(
+                   admin_fullname=taken_by_fullname,
+                   admin_id=taken_by_id,
+                   username_mention=taken_by_username_mention.replace('&amp;', '&').replace('&lt;', '<').replace('&gt;', '>')
+              )
+
+
+         history_text = txt.ADMIN_HISTORY_ITEM_TEMPLATE.format(
              request_id=req_id,
              request_type=req_type,
              location=location,
@@ -224,6 +301,8 @@ def get_all_requests_formatted() -> str:
              status_ru=status_ru,
              created_at=created_at,
              completed_at_formatted=completed_at_formatted
-         ) + "\n---\n"
+         )
+         formatted_text += history_text + taken_by_info + f"{rating_info}\n---\n"
+
 
     return formatted_text.strip()

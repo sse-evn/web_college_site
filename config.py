@@ -11,7 +11,7 @@ BOT_TOKEN = os.getenv('BOT_TOKEN', '7532615064:AAEJdQWA1XknjVgwEIgNu7fXMNQWoK1EJ
 # Для пользователя это его обычный User ID.
 # Замените 'YOUR_ADMIN_CHAT_ID' на реальный ID.
 ADMIN_NOTIFICATION_CHAT_ID = int(os.getenv('ADMIN_CHAT_ID', '5233316360'))
-
+DISPLAY_TIMEZONE = "Asia/Almaty"
 # --- Настройки Доступа и Хранения ---
 # Имя файла, где будут храниться все данные (админы, учителя, заявки) в формате JSON.
 DATA_FILE = 'data.json'
