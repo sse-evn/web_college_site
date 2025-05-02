@@ -1,0 +1,51 @@
+{
+    "admins": [
+        5233316360
+    ],
+    "allowed_teachers": [
+        5233316360,
+        1051647789
+    ],
+    "requests": [
+        {
+            "id": 1,
+            "teacher_id": 5233316360,
+            "teacher_username": "sse_evn",
+            "teacher_fullname": "evn",
+            "request_type": "Компьютер",
+            "description": "Аладм",
+            "location": "111",
+            "contact_name": "Ум",
+            "status": "cancelled",
+            "created_at": "2025-05-02 16:23:18",
+            "completed_at": null
+        },
+        {
+            "id": 2,
+            "teacher_id": 5233316360,
+            "teacher_username": "sse_evn",
+            "teacher_fullname": "evn",
+            "request_type": "💻 ПК",
+            "description": "Fjdkf",
+            "location": "111",
+            "contact_name": "Evn",
+            "status": "in",
+            "created_at": "2025-05-02 16:31:33",
+            "completed_at": null
+        },
+        {
+            "id": 3,
+            "teacher_id": 1051647789,
+            "teacher_username": null,
+            "teacher_fullname": "Astrid",
+            "request_type": "💻 ПК",
+            "description": "Оперативка сгорела",
+            "location": "245",
+            "contact_name": "Эмили",
+            "status": "in",
+            "created_at": "2025-05-02 16:52:18",
+            "completed_at": null
+        }
+    ],
+    "next_request_id": 4
+}
