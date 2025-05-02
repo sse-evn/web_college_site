@@ -50,14 +50,31 @@
             "description": "F",
             "location": "32",
             "contact_name": "Ric",
-            "status": "open",
+            "status": "completed",
             "created_at": "2025-05-02 20:26:03",
-            "completed_at": null,
+            "completed_at": "2025-05-02 20:28:32",
+            "rating": null,
+            "taken_by_id": null,
+            "taken_by_username": null,
+            "taken_by_fullname": null
+        },
+        {
+            "id": 4,
+            "teacher_id": 5233316360,
+            "teacher_username": "sse_evn",
+            "teacher_fullname": "evn",
+            "request_type": "🖥️ Интерактивная доска",
+            "description": "К",
+            "location": "112",
+            "contact_name": "К",
+            "status": "completed",
+            "created_at": "2025-05-02 20:35:18",
+            "completed_at": "2025-05-02 20:35:28",
             "rating": null,
             "taken_by_id": null,
             "taken_by_username": null,
             "taken_by_fullname": null
         }
     ],
-    "next_request_id": 4
+    "next_request_id": 5
 }
