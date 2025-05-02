@@ -1,9 +1,9 @@
+# keyboards.py
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from typing import List, Dict, Any, Tuple
 
-# --- Клавиатуры для пользователя ---
-
+# --- Клавиатуры для пользователя (без изменений) ---
 def get_request_types_kb() -> ReplyKeyboardMarkup:
     """Возвращает Reply-клавиатуру для выбора типа заявки с эмодзи."""
     return ReplyKeyboardMarkup(
@@ -37,14 +37,18 @@ def get_admin_menu_kb() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(
         inline_keyboard=[
             [InlineKeyboardButton(text="Посмотреть открытые заявки", callback_data="admin_view_open_requests")],
-            [InlineKeyboardButton(text="Посмотреть завершенные заявки", callback_data="admin_view_completed_requests")], # <-- Новая кнопка
-            [InlineKeyboardButton(text="История всех заявок", callback_data="admin_view_all_requests")], # <-- Новая кнопка
+            [InlineKeyboardButton(text="Посмотреть завершенные заявки", callback_data="admin_view_completed_requests")],
+            [InlineKeyboardButton(text="История всех заявок", callback_data="admin_view_all_requests")],
+            [
+                InlineKeyboardButton(text="🧹 Очистить историю", callback_data="admin_clear_history_start"), # <-- Новая кнопка
+                InlineKeyboardButton(text="📥 Экспортировать историю", callback_data="admin_export_history") # <-- Новая кнопка
+            ],
             [InlineKeyboardButton(text="Управление администраторами", callback_data="admin_manage_admins")],
             [InlineKeyboardButton(text="Управление учителями", callback_data="admin_manage_teachers")]
         ]
     )
 
-# Функция для построения клавиатуры со списком заявок (используется для открытых и завершенных)
+# Функция для построения клавиатуры со списком заявок (используется для открытых и завершенных) (без изменений)
 def build_requests_list_kb(requests: List[Dict[str, Any]]) -> InlineKeyboardMarkup:
     """Строит Inline-клавиатуру со списком заявок для админа."""
     builder = InlineKeyboardBuilder()
@@ -56,16 +60,14 @@ def build_requests_list_kb(requests: List[Dict[str, Any]]) -> InlineKeyboardMark
         created_at = req.get("created_at", "N/A")
 
         button_text = f"№{req_id} - {req_type} в {location} от {contact_name}"
-        # Кнопка ведет на просмотр деталей, используя существующий хэндлер
         builder.add(InlineKeyboardButton(text=button_text[:60], callback_data=f"view_request_{req_id}"))
 
     builder.adjust(1)
-    # Добавим кнопку "Назад в админ-панель" в конце списков заявок
     builder.row(InlineKeyboardButton(text="Назад в админ-панель", callback_data="admin"))
 
     return builder.as_markup()
 
-
+# Клавиатура деталей заявки (без изменений)
 def get_request_details_kb(request_id: int, status: str) -> InlineKeyboardMarkup:
     """Возвращает Inline-клавиатуру с действиями для конкретной заявки."""
     builder = InlineKeyboardBuilder()
@@ -79,12 +81,11 @@ def get_request_details_kb(request_id: int, status: str) -> InlineKeyboardMarkup
     if status != 'completed' and status != 'cancelled':
          builder.add(InlineKeyboardButton(text="Отменить", callback_data=f"update_status_{request_id}_cancelled"))
 
-    # Кнопка "Назад к открытым"
     builder.add(InlineKeyboardButton(text="Назад к открытым", callback_data="admin_view_open_requests"))
     builder.adjust(1)
     return builder.as_markup()
 
-
+# Клавиатура управления админами (без изменений)
 def get_admin_manage_kb() -> InlineKeyboardMarkup:
     """Возвращает Inline-клавиатуру для управления администраторами (добавить/удалить)."""
     return InlineKeyboardMarkup(
@@ -97,6 +98,7 @@ def get_admin_manage_kb() -> InlineKeyboardMarkup:
         ]
     )
 
+# Клавиатура управления учителями (без изменений)
 def get_teacher_manage_kb() -> InlineKeyboardMarkup:
     """Возвращает Inline-клавиатуру для управления учителями (добавить/удалить)."""
     return InlineKeyboardMarkup(
@@ -106,5 +108,17 @@ def get_teacher_manage_kb() -> InlineKeyboardMarkup:
                 InlineKeyboardButton(text="Удалить учителя", callback_data="teacher_remove_start")
             ],
             [InlineKeyboardButton(text="Назад в админ-панель", callback_data="admin")]
+        ]
+    )
+
+# <-- Новая клавиатура для подтверждения очистки истории
+def get_clear_history_confirmation_kb() -> InlineKeyboardMarkup:
+    """Возвращает Inline-клавиатуру для подтверждения очистки истории."""
+    return InlineKeyboardMarkup(
+        inline_keyboard=[
+            [
+                InlineKeyboardButton(text="Да, очистить", callback_data="admin_clear_history_confirm_yes"),
+                InlineKeyboardButton(text="Нет, отмена", callback_data="admin_clear_history_confirm_no")
+            ]
         ]
     )

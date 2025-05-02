@@ -1,4 +1,3 @@
-# handlers/admin.py
 import logging
 import re
 from aiogram import Router, types, F, Bot
@@ -7,8 +6,8 @@ from aiogram.fsm.context import FSMContext
 from aiogram.enums import ParseMode
 from datetime import datetime
 from typing import Dict, Any
-# <-- Добавляем импорт InlineKeyboardMarkup и InlineKeyboardButton
-from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, BufferedInputFile
+from io import BytesIO
 
 from states import AdminStates
 import keyboards as kb
@@ -19,20 +18,12 @@ import config
 router = Router()
 logger = logging.getLogger(__name__)
 
-# ... Остальной код handlers/admin.py без изменений ...
-
-
-# --- Вспомогательная функция для экранирования HTML ---
 def escape_html(text: str) -> str:
-    """Экранирует специальные символы HTML (<, >, &)."""
     if text is None:
         return ""
     return text.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
 
-
-# --- Декораторы для проверки прав админа ---
 def admin_required(func):
-    """Декоратор для проверки прав администратора."""
     async def wrapper(event: types.Message, **kwargs: Dict[str, Any]):
         data = kwargs.get('data', {})
         bot_instance = kwargs.get('bot')
@@ -42,20 +33,13 @@ def admin_required(func):
         if state_instance and 'state' not in data:
              data['state'] = state_instance
 
-        # --- Отладочное логирование в декораторе ---
-        logger.debug(f"admin_required wrapper triggered for {func.__name__}")
         user_id = event.from_user.id
         is_admin_status = db.is_admin(user_id)
-        logger.debug(f"User ID: {user_id}, Is Admin: {is_admin_status}")
-        # --- Конец отладочного логирования ---
-
 
         if not is_admin_status:
-            logger.warning(f"Access denied for user {user_id} trying to access {func.__name__}")
             await event.reply(txt.ACCESS_DENIED_ADMIN)
             return
 
-        logger.debug(f"Access granted for user {user_id} to {func.__name__}. Calling handler.")
         try:
              return await func(event, **data)
         except TypeError as e:
@@ -65,9 +49,7 @@ def admin_required(func):
     wrapper.__wrapped__ = func
     return wrapper
 
-
 def admin_callback_required(func):
-    """Декоратор для проверки прав администратора в callback_query."""
     async def wrapper(event: types.CallbackQuery, **kwargs: Dict[str, Any]):
         data = kwargs.get('data', {})
         bot_instance = kwargs.get('bot')
@@ -77,21 +59,13 @@ def admin_callback_required(func):
         if state_instance and 'state' not in data:
              data['state'] = state_instance
 
-        # --- Отладочное логирование в декораторе ---
-        logger.debug(f"admin_callback_required wrapper triggered for {func.__name__}")
         user_id = event.from_user.id
         is_admin_status = db.is_admin(user_id)
-        logger.debug(f"User ID: {user_id}, Is Admin: {is_admin_status}")
-        logger.debug(f"Callback data: {event.data}")
-        # --- Конец отладочного логирования ---
-
 
         if not is_admin_status:
-            logger.warning(f"Access denied for user {user_id} trying to access {func.__name__} via callback.")
             await event.answer(txt.ACCESS_DENIED_ADMIN, show_alert=True)
             return
 
-        logger.debug(f"Access granted for user {user_id} to {func.__name__} via callback. Calling handler.")
         try:
              return await func(event, **data)
         except TypeError as e:
@@ -101,36 +75,23 @@ def admin_callback_required(func):
     wrapper.__wrapped__ = func
     return wrapper
 
-# --- Админские команды ---
-
 @router.message(Command("admin"))
 @admin_required
 async def handle_admin_command(message: types.Message):
-    """Обработчик команды /admin. Показывает админ-панель."""
     await message.reply(txt.ADMIN_PANEL_MESSAGE, reply_markup=kb.get_admin_menu_kb())
 
-# Хэндлер для callback_data="admin" - Должен обрабатывать кнопку "Назад в админ-панель"
 @router.callback_query(F.data == "admin")
 @admin_callback_required
 async def handle_admin_callback(callback_query: types.CallbackQuery):
-    """Показывает главное админ-меню по колбэку."""
-    # --- Отладочное логирование в хэндлере ---
-    logger.info("Admin main menu callback handler triggered.")
-    # --- Конец отладочного логирования ---
     await callback_query.message.edit_text(txt.ADMIN_PANEL_MESSAGE, reply_markup=kb.get_admin_menu_kb())
     await callback_query.answer()
-
-
-# --- Хэндлеры для просмотра и управления заявками ---
 
 @router.callback_query(F.data == "admin_view_open_requests")
 @admin_callback_required
 async def admin_view_open_requests(callback_query: types.CallbackQuery):
-    """Показывает список открытых заявок."""
     requests = db.get_requests_by_status('open')
 
     if not requests:
-        # Возвращаемся в главное меню, если нет открытых
         await callback_query.message.edit_text(txt.ADMIN_NO_OPEN_REQUESTS, reply_markup=kb.get_admin_menu_kb())
         await callback_query.answer()
         return
@@ -146,7 +107,6 @@ async def admin_view_open_requests(callback_query: types.CallbackQuery):
 
         text += f"№{req_id}: {escape_html(req_type)} в {escape_html(location)} от {escape_html(contact_name)} ({created_at})\n"
 
-    # Используем build_requests_list_kb, которая теперь включает кнопку "Назад в админ-панель"
     requests_kb = kb.build_requests_list_kb(requests)
 
     await callback_query.message.edit_text(
@@ -156,17 +116,14 @@ async def admin_view_open_requests(callback_query: types.CallbackQuery):
     )
     await callback_query.answer()
 
-
 @router.callback_query(F.data.startswith("view_request_"))
 @admin_callback_required
 async def admin_view_request_details(callback_query: types.CallbackQuery):
-    """Показывает детали конкретной заявки и кнопки действий."""
     request_id = int(callback_query.data.split("_")[2])
     request = db.get_request_details(request_id)
 
     if not request:
         await callback_query.answer(txt.ADMIN_REQUEST_NOT_FOUND, show_alert=True)
-        # После ошибки показа деталей, возвращаемся к списку открытых
         await admin_view_open_requests(callback_query)
         return
 
@@ -181,7 +138,6 @@ async def admin_view_request_details(callback_query: types.CallbackQuery):
     status = request.get("status", "N/A")
     created_at = request.get("created_at", "N/A")
     completed_at = request.get("completed_at")
-
 
     username_mention = f', @{escape_html(teacher_username)}' if teacher_username else ''
     completed_at_formatted = completed_at if completed_at else 'еще нет'
@@ -210,11 +166,9 @@ async def admin_view_request_details(callback_query: types.CallbackQuery):
     )
     await callback_query.answer()
 
-
 @router.callback_query(F.data.startswith("update_status_"))
 @admin_callback_required
 async def admin_update_request_status(callback_query: types.CallbackQuery, bot: Bot):
-    """Обновляет статус заявки по кнопке из админки."""
     try:
         parts = callback_query.data.split("_")
         request_id = int(parts[2])
@@ -247,26 +201,19 @@ async def admin_update_request_status(callback_query: types.CallbackQuery, bot: 
             except Exception as e:
                 logger.error(f"Не удалось уведомить учителя {teacher_id} о смене статуса заявки {req_id}: {e}")
 
-
-            # После смены статуса, обновляем детали заявки
             await admin_view_request_details(callback_query)
 
         else:
             await callback_query.answer(txt.ADMIN_REQUEST_NOT_FOUND, show_alert=True)
-            # После ошибки обновления, возвращаемся к списку открытых
             await admin_view_open_requests(callback_query)
 
     except Exception as e:
          logger.error(f"Ошибка при смене статуса заявки: {e}")
          await callback_query.answer(txt.ADMIN_ACTION_ERROR, show_alert=True)
 
-
-# --- Хэндлеры для управления администраторами ---
-
 @router.callback_query(F.data == "admin_manage_admins")
 @admin_callback_required
 async def admin_manage_admins(callback_query: types.CallbackQuery):
-    """Показывает список администраторов и кнопки управления."""
     admins_ids = db.get_admins()
 
     text = txt.ADMIN_LIST_ADMINS_TEMPLATE
@@ -279,20 +226,16 @@ async def admin_manage_admins(callback_query: types.CallbackQuery):
     await callback_query.message.edit_text(text, reply_markup=kb.get_admin_manage_kb(), parse_mode=ParseMode.HTML)
     await callback_query.answer()
 
-
 @router.callback_query(F.data == "admin_add_start")
 @admin_callback_required
 async def admin_add_start(callback_query: types.CallbackQuery, state: FSMContext):
-    """Начинает процесс добавления администратора."""
     await callback_query.message.edit_text(txt.ADMIN_ADD_ADMIN_PROMPT)
     await state.set_state(AdminStates.waiting_for_admin_id_to_add)
     await callback_query.answer()
 
-
 @router.message(AdminStates.waiting_for_admin_id_to_add)
 @admin_required
 async def admin_add_process(message: types.Message, state: FSMContext, bot: Bot):
-    """Обрабатывает ввод User ID для добавления админа."""
     try:
         user_id_to_add = int(message.text.strip())
         success = db.add_admin_user(user_id_to_add)
@@ -313,7 +256,6 @@ async def admin_add_process(message: types.Message, state: FSMContext, bot: Bot)
             parse_mode=ParseMode.HTML
         )
 
-
     except ValueError:
         await message.answer(txt.ADMIN_INVALID_ID)
         await state.clear()
@@ -322,20 +264,16 @@ async def admin_add_process(message: types.Message, state: FSMContext, bot: Bot)
         await message.answer(txt.ADMIN_ACTION_ERROR)
         await state.clear()
 
-
 @router.callback_query(F.data == "admin_remove_start")
 @admin_callback_required
 async def admin_remove_start(callback_query: types.CallbackQuery, state: FSMContext):
-    """Начинает процесс удаления администратора."""
     await callback_query.message.edit_text(txt.ADMIN_REMOVE_ADMIN_PROMPT)
     await state.set_state(AdminStates.waiting_for_admin_id_to_remove)
     await callback_query.answer()
 
-
 @router.message(AdminStates.waiting_for_admin_id_to_remove)
 @admin_required
 async def admin_remove_process(message: types.Message, state: FSMContext, bot: Bot):
-    """Обрабатывает ввод User ID для удаления админа."""
     try:
         user_id_to_remove = int(message.text.strip())
 
@@ -362,7 +300,6 @@ async def admin_remove_process(message: types.Message, state: FSMContext, bot: B
             parse_mode=ParseMode.HTML
         )
 
-
     except ValueError:
         await message.answer(txt.ADMIN_INVALID_ID)
         await state.clear()
@@ -371,12 +308,9 @@ async def admin_remove_process(message: types.Message, state: FSMContext, bot: B
         await message.answer(txt.ADMIN_ACTION_ERROR)
         await state.clear()
 
-# --- Хэндлеры для управления учителями ---
-
 @router.callback_query(F.data == "admin_manage_teachers")
 @admin_callback_required
 async def admin_manage_teachers(callback_query: types.CallbackQuery):
-    """Показывает список разрешенных учителей и кнопки управления."""
     teacher_ids = db.get_allowed_teachers()
 
     text = txt.ADMIN_LIST_TEACHERS_TEMPLATE
@@ -389,20 +323,16 @@ async def admin_manage_teachers(callback_query: types.CallbackQuery):
     await callback_query.message.edit_text(text, reply_markup=kb.get_teacher_manage_kb(), parse_mode=ParseMode.HTML)
     await callback_query.answer()
 
-
 @router.callback_query(F.data == "teacher_add_start")
 @admin_callback_required
 async def teacher_add_start(callback_query: types.CallbackQuery, state: FSMContext):
-    """Начинает процесс добавления разрешенного учителя."""
     await callback_query.message.edit_text(txt.ADMIN_ADD_TEACHER_PROMPT)
     await state.set_state(AdminStates.waiting_for_teacher_id_to_add)
     await callback_query.answer()
 
-
 @router.message(AdminStates.waiting_for_teacher_id_to_add)
 @admin_required
 async def teacher_add_process(message: types.Message, state: FSMContext, bot: Bot):
-    """Обрабатывает ввод User ID для добавления учителя."""
     try:
         user_id_to_add = int(message.text.strip())
         success = db.add_allowed_teacher(user_id_to_add)
@@ -423,7 +353,6 @@ async def teacher_add_process(message: types.Message, state: FSMContext, bot: Bo
              parse_mode=ParseMode.HTML
         )
 
-
     except ValueError:
         await message.answer(txt.ADMIN_INVALID_ID)
         await state.clear()
@@ -435,16 +364,13 @@ async def teacher_add_process(message: types.Message, state: FSMContext, bot: Bo
 @router.callback_query(F.data == "teacher_remove_start")
 @admin_callback_required
 async def teacher_remove_start(callback_query: types.CallbackQuery, state: FSMContext):
-    """Начинает процесс удаления разрешенного учителя."""
     await callback_query.message.edit_text(txt.ADMIN_REMOVE_TEACHER_PROMPT)
     await state.set_state(AdminStates.waiting_for_teacher_id_to_remove)
     await callback_query.answer()
 
-
 @router.message(AdminStates.waiting_for_teacher_id_to_remove)
 @admin_required
 async def teacher_remove_process(message: types.Message, state: FSMContext, bot: Bot):
-    """Обрабатывает ввод User ID для удаления учителя."""
     try:
         user_id_to_remove = int(message.text.strip())
         success = db.remove_allowed_teacher(user_id_to_remove)
@@ -465,7 +391,6 @@ async def teacher_remove_process(message: types.Message, state: FSMContext, bot:
             parse_mode=ParseMode.HTML
         )
 
-
     except ValueError:
         await message.answer(txt.ADMIN_INVALID_ID)
         await state.clear()
@@ -474,12 +399,9 @@ async def teacher_remove_process(message: types.Message, state: FSMContext, bot:
         await message.answer(txt.ADMIN_ACTION_ERROR)
         await state.clear()
 
-# --- НОВЫЕ Хэндлеры для просмотра завершенных и всех заявок ---
-
 @router.callback_query(F.data == "admin_view_completed_requests")
 @admin_callback_required
 async def admin_view_completed_requests(callback_query: types.CallbackQuery):
-    """Показывает список завершенных заявок."""
     requests = db.get_requests_by_status('completed')
 
     if not requests:
@@ -497,22 +419,18 @@ async def admin_view_completed_requests(callback_query: types.CallbackQuery):
         created_at = req.get("created_at", "N/A")
         text += f"№{req_id}: {escape_html(req_type)} в {escape_html(location)} от {escape_html(contact_name)} (Создана: {created_at})\n"
 
-
-    # Используем build_requests_list_kb, которая теперь включает кнопку "Назад в админ-панель"
-    completed_requests_kb = kb.build_requests_list_kb(requests)
+    requests_kb = kb.build_requests_list_kb(requests)
 
     await callback_query.message.edit_text(
         text,
-        reply_markup=completed_requests_kb,
+        reply_markup=requests_kb,
         parse_mode=ParseMode.HTML
     )
     await callback_query.answer()
 
-
 @router.callback_query(F.data == "admin_view_all_requests")
 @admin_callback_required
 async def admin_view_all_requests(callback_query: types.CallbackQuery):
-    """Показывает историю всех заявок."""
     requests = db.get_all_requests()
 
     if not requests:
@@ -549,7 +467,6 @@ async def admin_view_all_requests(callback_query: types.CallbackQuery):
              completed_at_formatted=completed_at_formatted
         ) + "\n---\n"
 
-    # Создаем отдельную Inline-клавиатуру только с кнопкой "Назад в админ-панель" для истории
     history_kb = InlineKeyboardMarkup(
         inline_keyboard=[
             [InlineKeyboardButton(text="Назад в админ-панель", callback_data="admin")]
@@ -562,3 +479,72 @@ async def admin_view_all_requests(callback_query: types.CallbackQuery):
         parse_mode=ParseMode.HTML
     )
     await callback_query.answer()
+
+@router.callback_query(F.data == "admin_clear_history_start")
+@admin_callback_required
+async def admin_clear_history_start(callback_query: types.CallbackQuery, state: FSMContext):
+    if not db.get_all_requests():
+         await callback_query.message.edit_text(txt.ADMIN_CLEAR_HISTORY_NO_DATA, reply_markup=kb.get_admin_menu_kb())
+         await callback_query.answer()
+         return
+
+    await callback_query.message.edit_text(
+        txt.ADMIN_CLEAR_HISTORY_CONFIRM_PROMPT,
+        reply_markup=kb.get_clear_history_confirmation_kb()
+    )
+    await state.set_state(AdminStates.waiting_for_clear_history_confirmation)
+    await callback_query.answer()
+
+@router.callback_query(AdminStates.waiting_for_clear_history_confirmation, F.data == "admin_clear_history_confirm_yes")
+@admin_callback_required
+async def admin_clear_history_confirm_yes(callback_query: types.CallbackQuery, state: FSMContext):
+    count_removed = db.clear_all_requests()
+    await state.clear()
+
+    await callback_query.message.edit_text(
+        txt.ADMIN_CLEAR_HISTORY_SUCCESS,
+        reply_markup=kb.get_admin_menu_kb()
+    )
+    await callback_query.answer("История очищена.")
+
+@router.callback_query(AdminStates.waiting_for_clear_history_confirmation, F.data == "admin_clear_history_confirm_no")
+@admin_callback_required
+async def admin_clear_history_confirm_no(callback_query: types.CallbackQuery, state: FSMContext):
+    await state.clear()
+
+    await callback_query.message.edit_text(
+        txt.ADMIN_CLEAR_HISTORY_CANCELLED,
+        reply_markup=kb.get_admin_menu_kb()
+    )
+    await callback_query.answer("Очистка отменена.")
+
+@router.callback_query(F.data == "admin_export_history")
+@admin_callback_required
+async def admin_export_history(callback_query: types.CallbackQuery, bot: Bot):
+    formatted_history = db.get_all_requests_formatted()
+
+    if formatted_history == txt.ADMIN_EXPORT_HISTORY_NO_DATA or not formatted_history.strip():
+         await callback_query.message.edit_text(txt.ADMIN_EXPORT_HISTORY_NO_DATA, reply_markup=kb.get_admin_menu_kb())
+         await callback_query.answer()
+         return
+
+    await callback_query.answer("Подготовка файла...", show_alert=True)
+
+    file_content = formatted_history.encode('utf-8')
+    file_io = BytesIO(file_content)
+    file_io.name = f"{txt.ADMIN_EXPORT_HISTORY_FILE_TITLE}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
+
+    try:
+         await bot.send_document(
+             chat_id=callback_query.message.chat.id,
+             document=BufferedInputFile(file_io.getvalue(), filename=file_io.name)
+         )
+         await callback_query.message.edit_text(
+             f"📥 История заявок экспортирована в файл `{escape_html(file_io.name)}`.",
+             reply_markup=kb.get_admin_menu_kb(),
+             parse_mode=ParseMode.HTML
+         )
+
+    except Exception as e:
+         logger.error(f"Ошибка при экспорте истории: {e}")
+         await callback_query.message.edit_text(txt.ADMIN_ACTION_ERROR, reply_markup=kb.get_admin_menu_kb())

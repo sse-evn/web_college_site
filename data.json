@@ -12,40 +12,14 @@
             "teacher_id": 5233316360,
             "teacher_username": "sse_evn",
             "teacher_fullname": "evn",
-            "request_type": "Компьютер",
-            "description": "Аладм",
-            "location": "111",
-            "contact_name": "Ум",
-            "status": "cancelled",
-            "created_at": "2025-05-02 16:23:18",
-            "completed_at": null
-        },
-        {
-            "id": 2,
-            "teacher_id": 5233316360,
-            "teacher_username": "sse_evn",
-            "teacher_fullname": "evn",
             "request_type": "💻 ПК",
-            "description": "Fjdkf",
-            "location": "111",
-            "contact_name": "Evn",
+            "description": "Fjfk",
+            "location": "Fjck",
+            "contact_name": "Dkfi",
             "status": "in",
-            "created_at": "2025-05-02 16:31:33",
-            "completed_at": null
-        },
-        {
-            "id": 3,
-            "teacher_id": 1051647789,
-            "teacher_username": null,
-            "teacher_fullname": "Astrid",
-            "request_type": "💻 ПК",
-            "description": "Оперативка сгорела",
-            "location": "245",
-            "contact_name": "Эмили",
-            "status": "in",
-            "created_at": "2025-05-02 16:52:18",
+            "created_at": "2025-05-02 17:20:34",
             "completed_at": null
         }
     ],
-    "next_request_id": 4
+    "next_request_id": 2
 }
