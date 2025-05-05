@@ -1,6 +1,5 @@
 {
     "admins": [
-        1051647789,
         5233316360
     ],
     "allowed_teachers": [
@@ -13,35 +12,54 @@
             "teacher_username": "sse_evn",
             "teacher_fullname": "evn",
             "request_type": "💻 ПК",
-            "description": "ds",
-            "location": "12",
-            "contact_name": "ds",
+            "description": "K",
+            "location": "H",
+            "contact_name": "M",
             "status": "completed",
-            "created_at": "2025-05-05T14:14:33.207788Z",
-            "completed_at": "2025-05-05T14:18:02.317919Z",
-            "taken_by_id": null,
+            "created_at": "2025-05-05T15:21:23.388501Z",
+            "completed_at": "2025-05-05T15:22:04.228971Z",
+            "taken_by_id": 1051647789,
             "taken_by_username": null,
-            "taken_by_fullname": null,
-            "rating": 10
+            "taken_by_fullname": "Astrid",
+            "rating": null
         },
         {
             "id": 2,
             "teacher_id": 5233316360,
             "teacher_username": "sse_evn",
             "teacher_fullname": "evn",
-            "request_type": "💻 ПК",
-            "description": "П",
-            "location": "О",
-            "contact_name": "А",
+            "request_type": "🖥️ Интерактивная доска",
+            "description": "C",
+            "location": "S",
+            "contact_name": "C",
             "status": "in_progress",
-            "created_at": "2025-05-05T14:22:01.932032Z",
+            "created_at": "2025-05-05T15:45:43.655318Z",
             "completed_at": null,
-            "taken_by_id": 5233316360,
-            "taken_by_username": "sse_evn",
-            "taken_by_fullname": "evn",
+            "taken_by_id": 1051647789,
+            "taken_by_username": null,
+            "taken_by_fullname": "Astrid",
             "rating": null
+        },
+        {
+            "id": 3,
+            "teacher_id": 5233316360,
+            "teacher_username": "sse_evn",
+            "teacher_fullname": "evn",
+            "request_type": "🖨️ Принтер",
+            "description": "Евн",
+            "location": "132",
+            "contact_name": "Ербакыт",
+            "status": "completed",
+            "created_at": "2025-05-05T18:55:59.054221Z",
+            "completed_at": "2025-05-05T18:56:04.508960Z",
+            "taken_by_id": null,
+            "taken_by_username": null,
+            "taken_by_fullname": null,
+            "rating": 10
         }
     ],
     "next_request_id": 1,
-    "support_staff": []
+    "support_staff": [
+        1051647789
+    ]
 }
