@@ -1,11 +1,47 @@
 {
     "admins": [
+        1051647789,
         5233316360
     ],
     "allowed_teachers": [
-        5233316360,
-        1051647789
+        5233316360
     ],
-    "requests": [],
-    "next_request_id": 1
+    "requests": [
+        {
+            "id": 1,
+            "teacher_id": 5233316360,
+            "teacher_username": "sse_evn",
+            "teacher_fullname": "evn",
+            "request_type": "💻 ПК",
+            "description": "ds",
+            "location": "12",
+            "contact_name": "ds",
+            "status": "completed",
+            "created_at": "2025-05-05T14:14:33.207788Z",
+            "completed_at": "2025-05-05T14:18:02.317919Z",
+            "taken_by_id": null,
+            "taken_by_username": null,
+            "taken_by_fullname": null,
+            "rating": 10
+        },
+        {
+            "id": 2,
+            "teacher_id": 5233316360,
+            "teacher_username": "sse_evn",
+            "teacher_fullname": "evn",
+            "request_type": "💻 ПК",
+            "description": "П",
+            "location": "О",
+            "contact_name": "А",
+            "status": "in_progress",
+            "created_at": "2025-05-05T14:22:01.932032Z",
+            "completed_at": null,
+            "taken_by_id": 5233316360,
+            "taken_by_username": "sse_evn",
+            "taken_by_fullname": "evn",
+            "rating": null
+        }
+    ],
+    "next_request_id": 1,
+    "support_staff": []
 }

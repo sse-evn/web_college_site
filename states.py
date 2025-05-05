@@ -13,7 +13,13 @@ class AdminStates(StatesGroup):
     waiting_for_teacher_id_to_add = State()
     waiting_for_teacher_id_to_remove = State()
     waiting_for_clear_history_confirmation = State()
-    waiting_for_manual_status_selection = State() # Возвращаем это состояние
+    waiting_for_manual_status_selection = State()
+    waiting_for_support_staff_id_to_add = State()
+    waiting_for_support_staff_id_to_remove = State()
+
+
+class SupportStaffStates(StatesGroup):
+    waiting_for_request_selection = State()
 
 class TeacherRatingState(StatesGroup):
     waiting_for_rating = State()
